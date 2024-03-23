@@ -11,7 +11,7 @@ local bookmark_content = {
 }
 
 local config_content = {
-	{ key = "b", description = "Config" },
+	{ key = "e", description = "Config" },
 	{ key = "ed", description = "Edit Config", method = "<cmd>edit $MYVIMRC<cr>" },
 	{ key = "eR", description = "Reload Config", method = "<cmd>source $MYVIMRC<cr>" },
 	{ key = "eU", description = "Update Packages", method = packager_use_case.update },

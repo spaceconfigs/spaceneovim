@@ -25,24 +25,20 @@ local default_map = {
 	{ key = "'", description = "Terminal", method = terminal_use_case.toggle_buffer_dir },
 }
 
-local result = {}
-local contents = {}
+local results = {}
 for _, content in pairs({
 	default_map,
 }) do
 	for _, bind in pairs(content) do
-		table.insert(contents, bind)
+		local result = vim.deepcopy(bind)
+		result.key = "<leader>" .. result.key
+		result.mode = "n"
+		result.buffer = nil
+		result.silent = true
+		result.noremap = true
+		result.nowait = true
+		table.insert(results, result)
 	end
-end
-for _, content in pairs(contents) do
-	local bind = vim.deepcopy(content)
-	bind.key = "<leader>" .. bind.key
-	bind.mode = "n"
-	bind.buffer = nil
-	bind.silent = true
-	bind.noremap = true
-	bind.nowait = true
-	table.insert(result, bind)
 end
 
 for _, map in ipairs({
@@ -64,7 +60,9 @@ for _, map in ipairs({
 	toggler_map,
 	unprefixed_map,
 }) do
-	table.insert(result, map)
+	for _, content in pairs(map) do
+		table.insert(results, content)
+	end
 end
 
-return result
+return results

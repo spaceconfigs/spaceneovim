@@ -1,7 +1,6 @@
 local quit_content = {
 	{ key = "q", description = "Kill", method = ":confirm qall<cr>" },
-	{ key = "l", description = "Line", method = ":qall!<cr>" },
-  { key = "s", description = "Sae and quit", method = ":wqall<cr>" },
+	{ key = "s", description = "Save and quit", method = ":wqall<cr>" },
 }
 
 local result = {}

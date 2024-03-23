@@ -1,4 +1,5 @@
 local vim = vim
+local lsp_use_case = require("application.use_cases.lsp")
 local buffer_use_case = require("application.use_cases.buffer")
 local noter_use_case = require("application.use_cases.noter")
 local formatter_use_case = require("application.use_cases.formatter")
@@ -17,9 +18,9 @@ local database_content = {
 
 local goto_content = {
 	{ key = "g", description = "Goto" },
-	{ key = "gd", description = "Goto Definition", method = vim.lsp.buf.definition },
-	{ key = "gi", description = "Goto Implementation", method = vim.lsp.buf.implementation },
-	{ key = "gr", description = "References", method = buffer_use_case.lsp_references },
+	{ key = "gd", description = "Goto Definition", method = lsp_use_case.definition },
+	{ key = "gi", description = "Goto Implementation", method = lsp_use_case.implementation },
+	{ key = "gr", description = "References", method = lsp_use_case.references },
 }
 
 local help_content = {
@@ -78,7 +79,7 @@ end
 
 table.insert(result, {
 	key = "<leader>m",
-	description = "Major",
+	name = "Major",
 	mode = "n",
 	buffer = nil,
 	silent = true,
@@ -99,7 +100,7 @@ end
 
 table.insert(result, {
 	key = ",",
-	description = "Major",
+	name = "Major",
 	mode = "n",
 	buffer = nil,
 	silent = true,

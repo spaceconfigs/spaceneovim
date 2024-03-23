@@ -1,3 +1,5 @@
+local documentation_use_case = require("application.use_cases.lsp")
+
 local unprefixed_content = {
 	{ key = "<C-j>", description = "Drag line down", method = ":m .+1==<CR>" },
 	{ key = "<C-k>", description = "Drag line up", method = ":m .-2==<CR>" },
