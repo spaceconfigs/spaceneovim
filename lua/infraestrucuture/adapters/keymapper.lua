@@ -29,7 +29,17 @@ local format_group = function(map)
 	}
 end
 
-M.register = function(map)
+M.format = function(map)
+	if map.method ~= nil then
+		local result = format_map(map)
+		return result
+	end
+
+	local result = format_group(map)
+	return result
+end
+
+M.regist = function(map)
 	if map.method ~= nil then
 		local result = format_map(map)
 		-- return plugin.register(result)
@@ -45,19 +55,9 @@ M.register = function(map)
 	-- return plugin.register(result)
 end
 
-M.format = function(map)
-	if map.method ~= nil then
-		local result = format_map(map)
-		return result
-	end
-
-	local result = format_group(map)
-	return result
-end
-
 M.regist_all = function(maps)
 	for _, map in pairs(maps) do
-		M.register(map)
+		M.regist(map)
 	end
 end
 
