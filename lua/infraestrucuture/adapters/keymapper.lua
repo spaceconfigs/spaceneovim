@@ -1,5 +1,6 @@
 local M = {}
 
+local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.keymapper")
 
 local format_map = function(map)
@@ -30,6 +31,13 @@ local format_group = function(map)
 end
 
 M.format = function(map)
+	local message = {
+		module = "adapters/keymapper",
+		func = "format",
+		server = map,
+	}
+	logger_use_manage.debug(message)
+
 	if map.method ~= nil then
 		local result = format_map(map)
 		return result
@@ -40,6 +48,13 @@ M.format = function(map)
 end
 
 M.regist = function(map)
+	local message = {
+		module = "adapters/keymapper",
+		func = "regist",
+		server = map,
+	}
+	logger_use_manage.debug(message)
+
 	if map.method ~= nil then
 		local result = format_map(map)
 		-- return plugin.register(result)
@@ -56,6 +71,13 @@ M.regist = function(map)
 end
 
 M.regist_all = function(maps)
+	local message = {
+		module = "adapters/keymapper",
+		func = "regist_all",
+		server = maps,
+	}
+	logger_use_manage.debug(message)
+
 	for _, map in pairs(maps) do
 		M.regist(map)
 	end
