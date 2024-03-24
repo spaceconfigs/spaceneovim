@@ -58,6 +58,16 @@ M.go_implementation = function()
 	vim.lsp.buf.implementation()
 end
 
+M.go_references = function()
+	local message = {
+		module = "adapters/lsp",
+		func = "go_references",
+	}
+	logger_use_manage.debug(message)
+
+	vim.lsp.buf.references()
+end
+
 M.show_signature = function()
 	local message = {
 		module = "adapters/lsp",

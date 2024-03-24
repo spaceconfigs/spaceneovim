@@ -61,6 +61,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			description = "Goto declaration",
 			buffer = ev.buf,
 		})
+
+		attach_lsp_binds({
+			key = "K",
+			description = "Hover",
+			method = vim.lsp.buf.hover,
+			buffer = ev.buf,
+		})
+    
+		attach_lsp_binds({
+			key = "<C-k>",
+			description = "Show signature help",
+			method = vim.lsp.buf.signature_help,
+			buffer = ev.buf,
+		})
 	end,
 })
 
