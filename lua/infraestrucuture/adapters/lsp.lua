@@ -25,46 +25,6 @@ for _, server in pairs(language_servers) do
 	logger_use_manage.debug(message)
 
 	local config = { capabilities = capabilities }
-	if server == "lua_ls" then
-		config.settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-				},
-				hint = {
-					enable = true,
-				},
-			},
-		}
-	end
-	if server == "tsserver" then
-		config.setting = {
-			javascript = {
-				inlayHints = {
-					includeInlayEnumMemberValueHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayVariableTypeHints = false,
-				},
-			},
-
-			typescript = {
-				inlayHints = {
-					includeInlayEnumMemberValueHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayVariableTypeHints = false,
-				},
-			},
-		}
-	end
-
 	lspconfig[server].setup(config)
 end
 

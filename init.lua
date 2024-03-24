@@ -10,13 +10,10 @@
 -- TODO: Configure the bind <Super-m-i-H> to insert header apropertly in each kind of file (org or markdown)
 -- TODO: change from `vim.notify` in each `plugin` file to `logger_use_case.error`
 -- TODO: look for how check performance on bootstrap of neovim. Spended time to start it
+-- TODO: restart neovim with all changeds on children modules
 -- FIX: connection with js-debugger-dap with node version `v14.15.0`
--- FIX: restart neovim with all changeds on children modules
--- FIX: null-ls client and lsp clients on same buffer
--- FIX: cmp stopping in some cases
--- FIX: search on file is searching in others places
 
-local environment = require("domain.environments").DEVELOPMENT
+local environment = require("domain.environments").PRODUCTION
 vim.fn.setenv("NVIM_ENVIRONMENT", environment)
 
 require("config")
