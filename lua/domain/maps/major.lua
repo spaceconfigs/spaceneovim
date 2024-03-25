@@ -21,6 +21,7 @@ local goto_content = {
 	{ key = "gd", description = "Goto Definition", method = lsp_use_case.definition },
 	{ key = "gi", description = "Goto Implementation", method = lsp_use_case.implementation },
 	{ key = "gr", description = "References", method = lsp_use_case.references },
+	{ key = "gt", description = "Goto type-definition", method = lsp_use_case.go_typedefinition },
 }
 
 local help_content = {

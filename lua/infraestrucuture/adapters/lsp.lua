@@ -68,6 +68,16 @@ M.go_references = function()
 	vim.lsp.buf.references()
 end
 
+M.go_typedefinition = function()
+	local message = {
+		module = "adapters/lsp",
+		func = "go_typedefinition",
+	}
+	logger_use_manage.debug(message)
+
+	vim.lsp.buf.type_definition()
+end
+
 M.show_signature = function()
 	local message = {
 		module = "adapters/lsp",

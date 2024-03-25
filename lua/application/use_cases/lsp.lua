@@ -42,6 +42,17 @@ M.go_references = function()
 
 	adapter.go_references()
 end
+
+M.go_typedefinition = function()
+	local message = {
+		module = "use_cases/lsp",
+		func = "go_typedefinition",
+	}
+	logger_use_case.debug(message)
+
+	adapter.go_typedefinition()
+end
+
 M.show_signature = function()
 	local message = {
 		module = "use_cases/lsp",
