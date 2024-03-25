@@ -17,6 +17,16 @@ local config_content = {
 	{ key = "eU", description = "Update Packages", method = packager_use_case.update },
 }
 
+local yank_content = {
+	{ key = "y", description = "Copy" },
+	{ key = "yd", description = "Directory", method = file_use_case.copy_folder_path },
+	{ key = "yD", description = "Project directory", method = file_use_case.copy_project_folder_path },
+	{ key = "yn", description = "Name", method = file_use_case.copy_name },
+	{ key = "yN", description = "Name without extetion", method = file_use_case.copy_name_no_extention },
+	{ key = "yy", description = "Path", method = file_use_case.copy_path },
+	{ key = "yY", description = "Project path", method = file_use_case.copy_project_path },
+}
+
 local file_content = {
 	{ key = "D", description = "Delete", method = "<cmd>call delete(expand('%')) | bdelete!<cr>" },
 	{ key = "f", description = "Find", method = file_use_case.list },
@@ -33,6 +43,7 @@ for _, content in pairs({
 	file_content,
 	bookmark_content,
 	config_content,
+	yank_content,
 }) do
 	for _, bind in pairs(content) do
 		table.insert(contents, bind)

@@ -4,6 +4,24 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 local adapter = require("infraestrucuture.adapters.file")
 
+local copy_item = function(opt)
+	local full_path = vim.fn.expand(opt.wildcards)
+	if opt.is_project then
+		local handle = io.popen("git rev-parse --show-toplevel")
+		local project_root_path = handle:read("*a")
+		handle:close()
+
+		local git_root = string.gsub(project_root_path, "%s+$", "")
+		full_path = full_path:sub(#git_root + 2)
+	end
+
+	if opt.without_extention then
+		full_path = full_path:match("(.+)%..+") or full_path
+	end
+
+	vim.fn.setreg("+", full_path)
+end
+
 M.oldfiles = function()
 	local message = {
 		module = "use_cases/file",
@@ -76,6 +94,73 @@ M.rename = function()
 
 	vim.api.nvim_buf_set_name(buffer, new_name)
 	vim.cmd("!w")
+end
+
+M.copy_path = function()
+	local message = {
+		module = "use_cases/file",
+		func = "copy_path",
+	}
+	logger_use_case.debug(message)
+
+	copy_item({ wildcards = "%:p" })
+end
+
+M.copy_project_path = function()
+	local message = {
+		module = "use_cases/file",
+		func = "copy_project_path",
+	}
+	logger_use_case.debug(message)
+
+	copy_item({
+		is_project = true,
+		wildcards = "%:p",
+	})
+end
+
+M.copy_name = function()
+	local message = {
+		module = "use_cases/file",
+		func = "copy_name",
+	}
+	logger_use_case.debug(message)
+
+	copy_item({ wildcards = "%:t" })
+end
+
+M.copy_name_no_extention = function()
+	local message = {
+		module = "use_cases/file",
+		func = "copy_name",
+	}
+	logger_use_case.debug(message)
+
+	copy_item({
+		without_extention = true,
+		wildcards = "%:t",
+	})
+end
+
+M.copy_folder_path = function()
+	local message = {
+		module = "use_cases/file",
+		func = "copy_folder_path",
+	}
+	logger_use_case.debug(message)
+	copy_item({ wildcards = "%:p:h" })
+end
+
+M.copy_project_folder_path = function()
+	local message = {
+		module = "use_cases/file",
+		func = "copy_folder_path",
+	}
+	logger_use_case.debug(message)
+	copy_item({
+		is_project = true,
+		wildcards = "%:p:h",
+	})
 end
 
 return M

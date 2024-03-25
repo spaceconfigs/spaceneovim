@@ -4,7 +4,6 @@ local buffer_use_case = require("application.use_cases.buffer")
 local noter_use_case = require("application.use_cases.noter")
 local formatter_use_case = require("application.use_cases.formatter")
 local database_use_case = require("application.use_cases.database")
--- local rest_use_case = require("application.use_cases.rest")
 
 local format_content = {
 	{ key = "=", description = "Format" },
