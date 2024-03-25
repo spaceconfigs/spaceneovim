@@ -20,7 +20,9 @@ local goto_content = {
 	{ key = "g", description = "Goto" },
 	{ key = "gd", description = "Goto Definition", method = lsp_use_case.definition },
 	{ key = "gi", description = "Goto Implementation", method = lsp_use_case.implementation },
-	{ key = "gr", description = "References", method = lsp_use_case.references },
+	{ key = "gk", description = "Documentation", method = lsp_use_case.show_documentation },
+	{ key = "gK", description = "Signature", method = lsp_use_case.show_signature },
+	{ key = "gr", description = "Goto references", method = lsp_use_case.references },
 	{ key = "gt", description = "Goto type-definition", method = lsp_use_case.go_typedefinition },
 }
 
