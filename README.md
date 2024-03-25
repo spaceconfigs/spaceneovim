@@ -1,11 +1,15 @@
-# Neovim Config Framework 🛠️
+# spaceneovim 🛠️
 
-Welcome to the Neovim Config Framework, a powerful and flexible framework designed to enhance your Neovim experience. Our framework is dedicated to providing a highly customizable and easy-to-use environment for all users, whether you're an experienced developer or just getting started with Neovim. 🌟
+Welcome to spaceneovim, a powerful and flexible framework designed to enhance your Neovim experience, inspired by Spacemacs. Our framework is dedicated to providing a highly customizable and easy-to-use environment for all users, whether you're an experienced developer or just getting started with Neovim. 🌟
+
+## Inspired by Spacemacs
+
+spaceneovim draws inspiration from Spacemacs, aiming to bring its efficient, mnemonic, and enjoyable key-binding system to the Neovim environment. This inspiration guides our approach to making development faster, more efficient, and enjoyable for programmers of all skill levels.
 
 ## Features 🎉
 
-- **GPL-3.0 Licensed** 📜: This framework is open source and free to use, modify, and distribute under the terms of the GNU General Public License v3.0.
-- **Clean Architecture** 🏛️: Inspired by the principles of Clean Architecture, our framework ensures that the configuration structure is easy to understand, maintain, and extend.
+- **GPL-3.0 Licensed** 📜: spaceneovim is open source and free to use, modify, and distribute under the terms of the GNU General Public License v3.0.
+- **Built Following Clean Architecture Pattern** 🏛️: Embracing the principles of Clean Architecture, spaceneovim ensures that the configuration structure is intuitive, maintainable, and scalable.
 - **Easy to Configure** ⚙️: We prioritize simplicity and efficiency, making it straightforward for users to adjust settings and preferences to fit their needs.
 - **Plugin Flexibility** 🔄: Switching between plugins or adding new ones has never been easier. Our framework is designed to accommodate changes seamlessly, empowering users to customize their development environment to their liking.
 
@@ -14,8 +18,8 @@ Welcome to the Neovim Config Framework, a powerful and flexible framework design
 1. **Installation**: Clone this repository to your local machine and follow the installation instructions provided in the `INSTALL.md` file to set up the framework with Neovim.
 
     ```bash
-    git clone https://github.com/nitaichran/cleanvim.git
-    cd cleanvim
+    git clone https://github.com/yourusername/spaceneovim.git
+    cd spaceneovim
     ```
 
 2. **Configuration**: Navigate to the `config` directory to customize your Neovim settings. We've provided a comprehensive guide in the `CONFIGURE.md` file to help you get started.
@@ -76,8 +80,6 @@ The framework follows a Clean Architecture pattern to ensure a modular, scalable
             └── workspaces.lua
 </pre>
 
-This structure separates concerns into distinct layers, making it easier to manage configurations, plugins, and other aspects of your Neovim setup.
-
 ## Documentation 📚
 
 For more detailed information about the framework's architecture, configuration options, and plugin management, please refer to the `docs` directory. Here you'll find everything you need to customize your Neovim setup to your heart's content.
@@ -89,11 +91,6 @@ We welcome contributions from the community! Whether it's adding new features, i
 ## License 📄
 
 This project is licensed under the GNU General Public License v3.0. For more information, please see the `LICENSE` file.
-
-## Acknowledgments 💖
-
-- Special thanks to the Neovim community for their continuous support and inspiration.
-- Gratitude to the contributors who have made this framework what it is today.
 
 ## Contact 📩
 
