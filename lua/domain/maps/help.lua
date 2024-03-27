@@ -22,7 +22,7 @@ table.insert(result, {
 	buffer = nil,
 	silent = true,
 	noremap = true,
-	nowait = true,
+	nowait = false,
 })
 
 for _, content in pairs(contents) do
@@ -32,7 +32,7 @@ for _, content in pairs(contents) do
 	bind.buffer = nil
 	bind.silent = true
 	bind.noremap = true
-	bind.nowait = true
+	bind.nowait = false
 	table.insert(result, bind)
 end
 

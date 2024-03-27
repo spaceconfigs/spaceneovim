@@ -58,17 +58,17 @@ M.regist = function(map)
 	if map.method ~= nil then
 		local result = format_map(map)
 		-- print(vim.inspect(result))
-		return plugin.register(result)
-		-- vim.keymap.set(map.mode, map.key, map.method, {
-		-- 	noremap = map.noremap,
-		-- 	nowait = map.nowait,
-		-- 	silent = map.silent,
-		-- })
+		-- return plugin.register(result)
+		vim.keymap.set(map.mode, map.key, map.method, {
+			noremap = map.noremap,
+			nowait = map.nowait,
+			silent = map.silent,
+		})
 	end
 
 	local result = format_group(map)
 	-- print(vim.inspect(result))
-	return plugin.register(result)
+	-- return plugin.register(result)
 end
 
 M.regist_all = function(maps)

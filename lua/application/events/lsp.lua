@@ -17,7 +17,7 @@ local attach_lsp_binds = function(opts)
 		buffer = opts.buffer,
 		silent = true,
 		noremap = true,
-		nowait = true,
+		nowait = false,
 	}
 
 	local config = vim.deepcopy(common_config)

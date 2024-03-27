@@ -42,7 +42,7 @@ for _, content in pairs({
 		result.buffer = nil
 		result.silent = true
 		result.noremap = true
-		result.nowait = true
+		result.nowait = false
 		table.insert(results, result)
 	end
 end
