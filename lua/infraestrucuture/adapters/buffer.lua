@@ -3,8 +3,11 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local telescope = require("infraestrucuture.plugins.telescope")
-local outline = require("infraestrucuture.plugins.outline")
-local bufferline = require("infraestrucuture.plugins.bufferline")
+local plugins = require("infraestrucuture.plugins.buffer")
+
+local outline = plugins.outline
+local bufferline = plugins.bufferline
+local bufdelete = plugins.bufdelete
 local builtin = telescope.builtin
 
 M.list = function()
@@ -24,7 +27,7 @@ M.delete = function()
 	}
 	logger_use_manage.debug(message)
 
-	vim.cmd("bdelete")
+	bufdelete.bufdelete(0)
 end
 
 M.next = function()

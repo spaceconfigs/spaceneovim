@@ -1,5 +1,10 @@
 return {
-	"hedyhli/outline.nvim",
+	{
+		"hedyhli/outline.nvim",
+	},
+  {
+    "famiu/bufdelete.nvim",
+  },
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
