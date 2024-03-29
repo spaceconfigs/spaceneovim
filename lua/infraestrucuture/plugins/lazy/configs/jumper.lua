@@ -1,4 +1,9 @@
 return {
-	"phaazon/hop.nvim",
-	branch = "v2",
+	{
+		"folke/flash.nvim",
+	},
+	{
+		"phaazon/hop.nvim",
+		branch = "v2",
+	},
 }
