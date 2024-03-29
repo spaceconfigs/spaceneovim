@@ -56,7 +56,7 @@ M.regist = function(map)
 	logger_use_manage.debug(message)
 
 	if map.method ~= nil then
-		local result = format_map(map)
+		-- local result = format_map(map)
 		-- print(vim.inspect(result))
 		-- return plugin.register(result)
 		vim.keymap.set(map.mode, map.key, map.method, {
