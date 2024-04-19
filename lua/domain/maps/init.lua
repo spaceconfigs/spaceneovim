@@ -8,6 +8,7 @@ local error_map = require("domain.maps.error")
 local file_map = require("domain.maps.file")
 local git_map = require("domain.maps.git")
 local jump_map = require("domain.maps.jump")
+local layout_map = require("domain.maps.layout")
 local major_map = require("domain.maps.major")
 local project_map = require("domain.maps.project")
 local search_map = require("domain.maps.search")
@@ -57,6 +58,7 @@ for _, map in ipairs({
 	error_map,
 	git_map,
 	jump_map,
+  layout_map,
 	project_map,
 	search_map,
 	quit_map,

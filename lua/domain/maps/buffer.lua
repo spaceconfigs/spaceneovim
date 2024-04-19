@@ -1,9 +1,7 @@
-local session_use_case = require("application.use_cases.session")
 local buffer_use_case = require("application.use_cases.buffer")
 
 local buffer_content = {
 	{ key = "<C-c>", description = "Close others", method = buffer_use_case.close_others },
-	{ key = "a", description = "Save session", method = session_use_case.save },
 	{ key = "b", description = "Find", method = buffer_use_case.list },
 	{ key = "d", description = "Close", method = buffer_use_case.delete },
 	{ key = "i", description = "Document Symbols", method = buffer_use_case.lsp_symbols },
@@ -11,7 +9,6 @@ local buffer_content = {
 	{ key = "n", description = "Next", method = buffer_use_case.next },
 	{ key = "m", description = "Message buffer", method = buffer_use_case.messages },
 	{ key = "p", description = "Previous", method = buffer_use_case.previous },
-	{ key = "r", description = "Delete session", method = session_use_case.delete },
 	{ key = "u", description = "Reopen", method = buffer_use_case.reopen },
 }
 

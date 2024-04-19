@@ -1,7 +1,7 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.session")
+local adapter = require("infraestrucuture.adapters.layout")
 
 M.list = function()
 	local message = {
