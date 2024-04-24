@@ -5,7 +5,6 @@ local buffer_content = {
 	{ key = "b", description = "Find", method = buffer_use_case.list },
 	{ key = "d", description = "Close", method = buffer_use_case.delete },
 	{ key = "i", description = "Document Symbols", method = buffer_use_case.lsp_symbols },
-	{ key = "l", description = "List persp buffers", method = buffer_use_case.list_persp },
 	{ key = "n", description = "Next", method = buffer_use_case.next },
 	{ key = "m", description = "Message buffer", method = buffer_use_case.messages },
 	{ key = "p", description = "Previous", method = buffer_use_case.previous },

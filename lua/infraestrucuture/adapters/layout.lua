@@ -23,6 +23,16 @@ M.save = function()
 	plugin.save_current_session()
 end
 
+M.reload = function()
+	local message = {
+		module = "adapters/layout",
+		func = "reload",
+	}
+	logger_use_manage.debug(message)
+
+	plugin.load_current_dir_session()
+end
+
 M.delete = function()
 	local message = {
 		module = "adapters/layout",

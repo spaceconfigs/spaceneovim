@@ -2,6 +2,7 @@ local layout_use_case = require("application.use_cases.layout")
 
 local layout_content = {
 	{ key = "d", description = "Delete", method = layout_use_case.delete },
+	{ key = "l", description = "Reload", method = layout_use_case.reload },
 	{ key = "L", description = "List", method = layout_use_case.list },
 	{ key = "s", description = "Save", method = layout_use_case.save },
 }

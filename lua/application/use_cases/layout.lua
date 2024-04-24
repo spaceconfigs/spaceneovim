@@ -5,7 +5,7 @@ local adapter = require("infraestrucuture.adapters.layout")
 
 M.list = function()
 	local message = {
-		module = "use_cases/session",
+		module = "use_cases/layout",
 		func = "list",
 	}
 	logger_use_case.debug(message)
@@ -13,9 +13,19 @@ M.list = function()
 	adapter.list()
 end
 
+M.reload = function()
+	local message = {
+		module = "use_cases/layout",
+		func = "reload",
+	}
+	logger_use_case.debug(message)
+
+	adapter.reload()
+end
+
 M.save = function()
 	local message = {
-		module = "use_cases/session",
+		module = "use_cases/layout",
 		func = "save",
 	}
 	logger_use_case.debug(message)
@@ -25,7 +35,7 @@ end
 
 M.delete = function()
 	local message = {
-		module = "use_cases/session",
+		module = "use_cases/layout",
 		func = "delete",
 	}
 	logger_use_case.debug(message)
