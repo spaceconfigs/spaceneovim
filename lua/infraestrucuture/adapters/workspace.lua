@@ -35,7 +35,10 @@ M.files = function(opts)
 	}
 	logger_use_manage.debug(message)
 
-	telescope.builtin.git_files({ show_line = false })
+	telescope.builtin.git_files({
+		show_untracked = true,
+		show_line = false,
+	})
 end
 
 M.search = function(opts)
