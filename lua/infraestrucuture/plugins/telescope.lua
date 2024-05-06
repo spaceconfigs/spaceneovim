@@ -26,7 +26,6 @@ plugin.setup({
 				["<C-h>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
 				["<CR>"] = actions.select_default,
-				["<C-g>"] = actions.close,
 			},
 			n = {
 				o = false,
@@ -37,7 +36,6 @@ plugin.setup({
 				["<C-h>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
 				["<CR>"] = actions.select_default,
-				["<C-g>"] = actions.close,
 				["<Space>"] = actions.which_key,
 				["?"] = actions.which_key,
 			},
