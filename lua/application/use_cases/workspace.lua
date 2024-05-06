@@ -2,6 +2,7 @@ local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
 local adapter = require("infraestrucuture.adapters.workspace")
+local lsp_adapter = require("infraestrucuture.adapters.lsp")
 
 local function find_project_path()
 	local message = {
@@ -74,10 +75,26 @@ M.search_hover = function()
 end
 
 M.grep_input = function()
+	local message = {
+		module = "use_cases/workspace",
+		func = "grep_input",
+	}
+	logger_use_case.debug(message)
+
 	local path = find_project_path()
 	local text = vim.fn.input("Grep symble: ")
 
 	adapter.search({ cwd = path, text = text })
+end
+
+M.diagnostics = function()
+	local message = {
+		module = "use_cases/workspace",
+		func = "diagnostics",
+	}
+	logger_use_case.debug(message)
+
+	lsp_adapter.diagnostics()
 end
 
 return M

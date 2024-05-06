@@ -13,7 +13,7 @@ if not bufferline_ok then
 end
 
 if not bufdelete_ok then
-	return vim.notify("Failed to load plugin `akinsho/bufferline.nvim`")
+	return vim.notify("Failed to load plugin `famiu/bufdelete.nvim`")
 end
 
 bufferline.setup({

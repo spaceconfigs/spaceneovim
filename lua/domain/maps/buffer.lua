@@ -1,7 +1,7 @@
 local buffer_use_case = require("application.use_cases.buffer")
 
 local buffer_content = {
-	{ key = "<C-c>", description = "Close others", method = buffer_use_case.close_others },
+	{ key = "<C-d>", description = "Close others", method = buffer_use_case.close_others },
 	{ key = "b", description = "Find", method = buffer_use_case.list },
 	{ key = "d", description = "Close", method = buffer_use_case.delete },
 	{ key = "i", description = "Document Symbols", method = buffer_use_case.lsp_symbols },

@@ -30,23 +30,20 @@ local job_codegpt = plenary.job:new({
 job_codegpt:start()
 
 gen.setup({
-	model = "llama2",
-	host = "192.168.1.251",
-	port = "11434",
-	debug = true,
+	model = "deepseek-coder",
+  display_mode = "split"
 })
 
-llm.setup({
-	backend = "ollama",
-	model = "codellama:7b",
-	url = "http://192.168.1.251:11434/api/generate",
-	accept_keymap = "<C-j>",
-	dismiss_keymap = "<C-g>",
-	enable_suggestions_on_startup = false,
-	lsp = {
-		bin_path = vim.api.nvim_call_function("stdpath", { "data" }) .. "/mason/bin/llm-ls",
-	},
-	tokenizer = {
-		repository = "bigcode/starcoder",
-	},
-})
+-- llm.setup({
+-- 	backend = "ollama",
+-- 	model = "codellama:7b",
+-- 	accept_keymap = "<C-j>",
+-- 	dismiss_keymap = "<C-g>",
+-- 	enable_suggestions_on_startup = false,
+-- 	lsp = {
+-- 		bin_path = vim.api.nvim_call_function("stdpath", { "data" }) .. "/mason/bin/llm-ls",
+-- 	},
+-- 	tokenizer = {
+-- 		repository = "bigcode/starcoder",
+-- 	},
+-- })

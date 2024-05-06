@@ -3,8 +3,8 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 require("infraestrucuture.plugins.treesitter")
-
 local lsp = require("infraestrucuture.plugins.lsp")
+
 local mason_lspconfig = lsp.mason_lspconfig
 local lspconfig = lsp.lspconfig
 local cmp_nvim_lsp = lsp.cmp_nvim_lsp
@@ -136,6 +136,16 @@ M.format = function()
 	logger_use_manage.debug(message)
 
 	vim.lsp.buf.format({ async = true })
+end
+
+M.diagnostics = function()
+	local message = {
+		module = "adapters/lsp",
+		func = "diagnostics",
+	}
+	logger_use_manage.debug(message)
+
+	vim.lsp.diagnostic()
 end
 
 return M

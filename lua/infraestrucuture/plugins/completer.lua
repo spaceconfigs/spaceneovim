@@ -10,6 +10,8 @@ if not luasnip_ok then
 	return vim.notify("Failed to require package `luasnip`")
 end
 
+-- vim.g.vim_dadbod_completion_mark = ""
+
 plugin.setup({
 	snippet = {
 		expand = function(args)
@@ -17,12 +19,13 @@ plugin.setup({
 		end,
 	},
 	sources = {
-		{ name = "codeium" },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "luasnip", keyword_length = 1 },
 		{ name = "nvim_lsp", keyword_length = 2 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "codeium" },
+		{ name = "luasnip", keyword_length = 1 },
 		{ name = "path" },
 		{ name = "orgmode" },
+		{ name = "vim-dadbod-completion" },
 	},
 	window = {
 		documentation = plugin.config.window.bordered(),
@@ -39,6 +42,7 @@ plugin.setup({
 				orgmode = "",
 				cmdline = "",
 				git = "󰊢",
+				["vim-dadbod-completion"] = "",
 			}
 
 			item.menu = menu_icon[entry.source.name]
@@ -73,6 +77,13 @@ plugin.setup.filetype("gitcommit", {
 	} }, { {
 		name = "buffer",
 	} }),
+})
+
+plugin.setup.filetype("sql", {
+	sources = {
+		{ name = "vim-dadbod-completion" },
+		{ name = "buffer" },
+	},
 })
 
 plugin.setup.cmdline({ "/", "?" }, {
