@@ -26,7 +26,7 @@ local attach_lsp_binds = function(opts)
 	config.description = opts.description
 	-- local map = keymapper_use_case.format(config)
 	-- keymapper_use_case.register(map)
-	keymapper_use_case.regist(config)
+	keymapper_use_case.register(config)
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {

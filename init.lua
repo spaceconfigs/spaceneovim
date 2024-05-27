@@ -11,7 +11,8 @@
 -- TODO: change from `vim.notify` in each `plugin` file to `logger_use_case.error`
 -- TODO: look for how check performance on bootstrap of neovim. Spended time to start it
 -- TODO: restart neovim with all changeds on children modules
--- FIX: connection with js-debugger-dap with node version `v14.15.0`
+-- TODO: add keybind to jump with treesitter
+-- TODO: add keybind to `require('flash).remote()`
 
 local environment = require("domain.environments").PRODUCTION
 vim.fn.setenv("NVIM_ENVIRONMENT", environment)
@@ -19,6 +20,11 @@ vim.fn.setenv("NVIM_ENVIRONMENT", environment)
 require("config")
 require("application.use_cases")
 require("application.events")
+
+local maps = require("domain.maps")
+local keymaper_usecase = require("application.use_cases.keymapper")
+
+keymaper_usecase.register_all(maps)
 
 local logger_use_case = require("application.use_cases.logger")
 -- logger_use_case.info("NVIM_ENVIRONMENT=" .. environment)

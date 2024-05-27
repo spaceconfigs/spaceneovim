@@ -21,56 +21,51 @@ local commenter_use_case = require("application.use_cases.commenter")
 local buffer_use_case = require("application.use_cases.buffer")
 
 local default_map = {
-	{ key = ";", description = "Comment line", method = commenter_use_case.toggle_current_line },
-	{
-		key = ";",
-		description = "Comment line",
-		mode = "v",
-		method = commenter_use_case.toggle_current_line_visual_mode,
-	},
-	{ key = "<Tab>", description = "Previous buffer", method = buffer_use_case.reopen },
-	{ key = "'", description = "Terminal", method = terminal_use_case.toggle_buffer_dir },
+  { key = ";",     description = "Comment line",    method = commenter_use_case.toggle_current_line },
+  { key = ";",     description = "Comment line",    method = commenter_use_case.toggle_current_line_visual_mode, mode = "v", },
+  { key = "<Tab>", description = "Previous buffer", method = buffer_use_case.reopen },
+  { key = "'",     description = "Terminal",        method = terminal_use_case.toggle_buffer_dir },
 }
 
 local results = {}
 for _, content in pairs({
-	default_map,
+  default_map,
 }) do
-	for _, bind in pairs(content) do
-		local result = vim.deepcopy(bind)
-		result.key = "<leader>" .. result.key
-		result.mode = result.mode or "n"
-		result.buffer = nil
-		result.silent = true
-		result.noremap = true
-		result.nowait = false
-		table.insert(results, result)
-	end
+  for _, bind in pairs(content) do
+    local result = vim.deepcopy(bind)
+    result.key = "<leader>" .. result.key
+    result.mode = result.mode or "n"
+    result.buffer = nil
+    result.silent = true
+    result.noremap = true
+    result.nowait = false
+    table.insert(results, result)
+  end
 end
 
 for _, map in ipairs({
-	application_map,
-	chatbot_map,
-	major_map,
-	file_map,
-	buffer_map,
-	debugger_map,
-	error_map,
-	git_map,
-	jump_map,
+  application_map,
+  chatbot_map,
+  major_map,
+  file_map,
+  buffer_map,
+  debugger_map,
+  error_map,
+  git_map,
+  jump_map,
   layout_map,
-	project_map,
-	search_map,
-	quit_map,
-	window_map,
-	complete_map,
-	help_map,
-	toggler_map,
-	unprefixed_map,
+  project_map,
+  search_map,
+  quit_map,
+  window_map,
+  complete_map,
+  help_map,
+  toggler_map,
+  unprefixed_map,
 }) do
-	for _, content in pairs(map) do
-		table.insert(results, content)
-	end
+  for _, content in pairs(map) do
+    table.insert(results, content)
+  end
 end
 
 return results
