@@ -81,7 +81,7 @@ end
 
 table.insert(result, {
 	key = "<leader>m",
-	name = "Major",
+	description = "Major",
 	mode = "n",
 	buffer = nil,
 	silent = true,
@@ -102,7 +102,7 @@ end
 
 table.insert(result, {
 	key = ",",
-	name = "Major",
+	description = "Major",
 	mode = "n",
 	buffer = nil,
 	silent = true,
