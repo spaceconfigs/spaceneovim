@@ -1,7 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local conform = require("infraestrucuture.plugins.conform")
+local conform = require("infraestrucuture.plugins.formatter")
 
 M.format = function()
 	local message = {
