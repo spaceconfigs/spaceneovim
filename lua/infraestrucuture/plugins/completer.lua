@@ -50,10 +50,10 @@ plugin.setup({
 		end,
 	},
 	mapping = {
-		["<C-j>"] = plugin.mapping(plugin.mapping.select_next_item(), { "s", "i", "c" }),
-		["<C-k>"] = plugin.mapping(plugin.mapping.select_prev_item(), { "s", "i", "c" }),
+		["<DOWN>"] = plugin.mapping(plugin.mapping.select_next_item(), { "s", "i", "c" }),
+		["<UP>"] = plugin.mapping(plugin.mapping.select_prev_item(), { "s", "i", "c" }),
 		["<CR>"] = plugin.mapping(plugin.mapping.confirm(), { "s", "i" }),
-		["<C-G>"] = plugin.mapping(plugin.mapping.close(), { "s", "i", "n", "c" }),
+		["<Esc>"] = plugin.mapping(plugin.mapping.close(), { "s", "i", "n", "c" }),
 		["<Tab>"] = plugin.mapping(function(fallback)
 			if plugin.visible() then
 				plugin.select_next_item()

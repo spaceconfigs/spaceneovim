@@ -8,6 +8,17 @@ local database_use_case = require("application.use_cases.database")
 local format_content = {
 	{ key = "=", description = "Format" },
 	{ key = "==", description = "Format", method = formatter_use_case.format },
+	{
+		key = "=o",
+		description = "Format",
+		method = function()
+			vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%p") } })
+		end,
+	},
+	-- 	=o = {
+	-- 		"<cmd>lua <cr>",
+	-- 		"",
+	-- 	},
 }
 
 local database_content = {
@@ -17,12 +28,12 @@ local database_content = {
 
 local goto_content = {
 	{ key = "g", description = "Goto" },
-	{ key = "gd", description = "Goto Definition", method = lsp_use_case.definition },
-	{ key = "gi", description = "Goto Implementation", method = lsp_use_case.implementation },
+	{ key = "gd", description = "Definition", method = lsp_use_case.go_definition },
+	{ key = "gi", description = "Implementation", method = lsp_use_case.go_implementation },
 	{ key = "gk", description = "Documentation", method = lsp_use_case.show_documentation },
 	{ key = "gK", description = "Signature", method = lsp_use_case.show_signature },
-	{ key = "gr", description = "Goto references", method = lsp_use_case.references },
-	{ key = "gt", description = "Goto type-definition", method = lsp_use_case.go_typedefinition },
+	{ key = "gr", description = "References", method = lsp_use_case.go_references },
+	{ key = "gt", description = "Type-definition", method = lsp_use_case.go_typedefinition },
 }
 
 local help_content = {
@@ -54,14 +65,6 @@ local major_content = {
 	{ key = "P", description = "Next link", method = "?https\\?=\\?<CR>" },
 }
 
--- ["="] = {
--- 	o = {
--- 		"<cmd>lua vim.lsp.buf.execute_command({ command = '_typescript.organizeImports', arguments = { vim.fn.expand('%p') } })<cr>",
--- 		"Organaze Imports",
--- 	},
--- },
---
-
 local result = {}
 local contents = {}
 for _, content in pairs({
@@ -92,26 +95,6 @@ table.insert(result, {
 for _, content in pairs(contents) do
 	local bind = vim.deepcopy(content)
 	bind.key = "<leader>m" .. bind.key
-	bind.mode = "n"
-	bind.buffer = nil
-	bind.silent = true
-	bind.noremap = true
-	bind.nowait = false
-	table.insert(result, bind)
-end
-
-table.insert(result, {
-	key = ",",
-	description = "Major",
-	mode = "n",
-	buffer = nil,
-	silent = true,
-	noremap = true,
-	nowait = false,
-})
-for _, content in pairs(contents) do
-	local bind = vim.deepcopy(content)
-	bind.key = "," .. bind.key
 	bind.mode = "n"
 	bind.buffer = nil
 	bind.silent = true

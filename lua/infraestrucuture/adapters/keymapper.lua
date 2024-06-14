@@ -65,7 +65,6 @@ M.register_all = function(maps)
   }
   logger_use_manage.debug(message)
 
-  local result = {}
   for _, map in pairs(maps) do
     M.register(map)
   end

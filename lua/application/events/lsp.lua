@@ -34,40 +34,40 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		attach_lsp_binds({
-			key = "gd",
-			method = lsp_use_case.go_definition,
-			description = "Goto definition",
-			buffer = ev.buf,
-		})
-
-		attach_lsp_binds({
-			key = "gi",
-			method = lsp_use_case.go_implementation,
-			description = "Goto implementation",
-			buffer = ev.buf,
-		})
-
-		attach_lsp_binds({
-			key = "gr",
-			method = lsp_use_case.go_references,
-			description = "Goto references",
-			buffer = ev.buf,
-		})
-
-		attach_lsp_binds({
-			key = "gD",
-			method = lsp_use_case.go_declaretion,
-			description = "Goto declaration",
-			buffer = ev.buf,
-		})
-
-		attach_lsp_binds({
-			key = "K",
-			description = "Hover",
-			method = vim.lsp.buf.hover,
-			buffer = ev.buf,
-		})
+		-- attach_lsp_binds({
+		-- 	key = "gd",
+		-- 	method = lsp_use_case.go_definition,
+		-- 	description = "Goto definition",
+		-- 	buffer = ev.buf,
+		-- })
+		--
+		-- attach_lsp_binds({
+		-- 	key = "gi",
+		-- 	method = lsp_use_case.go_implementation,
+		-- 	description = "Goto implementation",
+		-- 	buffer = ev.buf,
+		-- })
+		--
+		-- attach_lsp_binds({
+		-- 	key = "gr",
+		-- 	method = lsp_use_case.go_references,
+		-- 	description = "Goto references",
+		-- 	buffer = ev.buf,
+		-- })
+		--
+		-- attach_lsp_binds({
+		-- 	key = "gD",
+		-- 	method = lsp_use_case.go_declaretion,
+		-- 	description = "Goto declaration",
+		-- 	buffer = ev.buf,
+		-- })
+		--
+		-- attach_lsp_binds({
+		-- 	key = "K",
+		-- 	description = "Hover",
+		-- 	method = vim.lsp.buf.hover,
+		-- 	buffer = ev.buf,
+		-- })
 	end,
 })
 
