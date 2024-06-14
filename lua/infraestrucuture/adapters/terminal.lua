@@ -2,7 +2,7 @@ local vim = vim
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local terminal = require("infraestrucuture.plugins.toggleterm")
+local terminal = require("infraestrucuture.plugins.terminal")
 
 M.open = function()
 	local message = {
