@@ -1,6 +1,7 @@
 local vim = vim
 local lsp_use_case = require("application.use_cases.lsp")
 local buffer_use_case = require("application.use_cases.buffer")
+local rest_use_case = require("application.use_cases.rest")
 local noter_use_case = require("application.use_cases.noter")
 local formatter_use_case = require("application.use_cases.formatter")
 local database_use_case = require("application.use_cases.database")
@@ -61,6 +62,7 @@ local toggle_content = {
 
 local major_content = {
 	{ key = "a", description = "Code Action", method = vim.lsp.buf.code_action },
+	{ key = "j", description = "Rest", method = rest_use_case.toggle },
 	{ key = "N", description = "Previous link", method = "/https\\?=\\?<CR>" },
 	{ key = "P", description = "Next link", method = "?https\\?=\\?<CR>" },
 }
