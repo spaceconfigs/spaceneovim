@@ -3,6 +3,11 @@ if not ok then
   return vim.notify("Failed to load plugin `nvim-tree/nvim-tree.lua`")
 end
 
+local ok_oil, oil = pcall(require, "oil")
+if not ok_oil then
+  return vim.notify("Failed to load plugin `stevearc/oil.nvim`")
+end
+
 local nvim_tree_api = require("nvim-tree.api")
 
 local on_attach = function(bufnr)
@@ -70,11 +75,6 @@ plugin.setup({
     cmd = "trash",
   },
 })
-
-local ok_oil, oil = pcall(require, "oil")
-if not ok_oil then
-  return vim.notify("Failed to load plugin `stevearc/oil.nvim`")
-end
 
 oil.setup({
   keymaps = {
