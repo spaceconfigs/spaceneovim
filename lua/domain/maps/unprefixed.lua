@@ -1,12 +1,12 @@
 local documentation_use_case = require("application.use_cases.lsp")
 
 local unprefixed_content = {
-	{ key = "<C-j>", description = "Drag line down", method = ":m .+1==<CR>" },
-	{ key = "<C-k>", description = "Drag line up", method = ":m .-2==<CR>" },
-	{ key = "<C-j>", mode = "v", description = "Drag line down", method = ":m '>+1<CR>gv=gv" },
-	{ key = "<C-k>", mode = "v", description = "Drag line up", method = ":m '<-2<CR>gv=gv" },
-	{ key = "<C-j>", mode = "i", description = "Drag line down", method = ":m '>+1<CR>gv=gv" },
-	{ key = "<C-k>", mode = "i", description = "Drag line up", method = ":m '<-2<CR>gv=gv" },
+	{ key = "<M-j>", description = "Drag line down", method = ":m .+1==<CR>" },
+	{ key = "<M-k>", description = "Drag line up", method = ":m .-2==<CR>" },
+	{ key = "<M-j>", mode = "v", description = "Drag line down", method = ":m '>+1<CR>gv=gv" },
+	{ key = "<M-k>", mode = "v", description = "Drag line up", method = ":m '<-2<CR>gv=gv" },
+	{ key = "<M-j>", mode = "i", description = "Drag line down", method = "<Esc>:m .+1<CR>==gi" },
+	{ key = "<M-k>", mode = "i", description = "Drag line up", method = "<Esc>:m .-2<CR>==gi" },
 }
 
 local result = {}
