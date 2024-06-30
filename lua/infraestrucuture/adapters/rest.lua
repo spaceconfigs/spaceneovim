@@ -1,9 +1,9 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local plugin = require("infraestrucuture.plugins.rest")
+require("infraestrucuture.plugins.rest")
 
-M.toggle = function(opts)
+M.send = function(opts)
 	local message = {
 		module = "adapters/request",
 		func = "search",
@@ -11,7 +11,7 @@ M.toggle = function(opts)
 	}
 	logger_use_manage.debug(message)
 
-	plugin.show()
+	vim.cmd("Rest run")
 end
 
 return M

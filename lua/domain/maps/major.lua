@@ -62,7 +62,7 @@ local toggle_content = {
 
 local major_content = {
 	{ key = "a", description = "Code Action", method = vim.lsp.buf.code_action },
-	{ key = "j", description = "Rest", method = rest_use_case.toggle },
+	{ key = "s", description = "Rest", method = rest_use_case.send },
 	{ key = "N", description = "Previous link", method = "/https\\?=\\?<CR>" },
 	{ key = "P", description = "Next link", method = "?https\\?=\\?<CR>" },
 }
