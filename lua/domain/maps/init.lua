@@ -20,8 +20,10 @@ local selector_map = require("domain.maps.selector")
 local terminal_use_case = require("application.use_cases.terminal")
 local commenter_use_case = require("application.use_cases.commenter")
 local buffer_use_case = require("application.use_cases.buffer")
+local commander_use_case = require("application.use_cases.commander")
 
 local default_map = {
+	{ key = "<leader>", description = "Commands", method = commander_use_case.find },
 	{ key = ";", description = "Comment line", method = commenter_use_case.toggle_current_line },
 	{
 		key = ";",
