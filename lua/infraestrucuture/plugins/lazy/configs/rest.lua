@@ -12,4 +12,8 @@ return {
 		"rest-nvim/rest.nvim",
 		dependencies = { "luarocks.nvim" },
 	},
+	{
+		lazy = false,
+		"BlackLight/nvim-http",
+	},
 }
