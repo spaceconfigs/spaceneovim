@@ -25,6 +25,7 @@ local format_content = {
 local database_content = {
 	{ key = "b", description = "database" },
 	{ key = "bc", description = "Open", method = database_use_case.open },
+	{ key = "br", description = "Lsp Restart", method = ":LspRestart<cr>" },
 }
 
 local goto_content = {
