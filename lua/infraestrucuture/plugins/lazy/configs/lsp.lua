@@ -1,5 +1,9 @@
 return {
 	{
+		"mfussenegger/nvim-jdtls",
+		lazy = true,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-context",
 		lazy = false,
 		dependencies = {

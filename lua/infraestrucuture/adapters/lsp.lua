@@ -25,6 +25,12 @@ for _, server in pairs(language_servers) do
 	logger_use_manage.debug(message)
 
 	local config = { capabilities = capabilities }
+
+	if server == "jdtls" then
+		local lombok = vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
+		config.cmd = { "jdtls", "--jvm-arg=-javaagent:" .. lombok }
+	end
+
 	lspconfig[server].setup(config)
 end
 
