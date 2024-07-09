@@ -34,4 +34,19 @@ M.balance_area = function()
 	vim.cmd("wincmd =")
 end
 
+M.move_far_up = function()
+	adapter.move_far_up()
+end
+
+M.move_far_down = function()
+	adapter.move_far_down()
+end
+
+M.move_far_left = function()
+	adapter.move_far_left()
+end
+
+M.move_far_right = function()
+	adapter.move_far_right()
+end
 return M

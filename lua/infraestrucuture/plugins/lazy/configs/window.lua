@@ -1,3 +1,4 @@
 return {
-	"declancm/maximize.nvim",
+	{ "sindrets/winshift.nvim" },
+	{ "declancm/maximize.nvim" },
 }
