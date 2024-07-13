@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local plugin = require("infraestrucuture.plugins.window")
+
+local require_plugin = function()
+	return require("infraestrucuture.plugins.window")
+end
 
 M.toggle = function()
 	local message = {
@@ -9,7 +12,7 @@ M.toggle = function()
 		func = "toggle",
 	}
 	logger_use_manage.debug(message)
-
+	local plugin = require_plugin()
 	plugin.toggle()
 end
 

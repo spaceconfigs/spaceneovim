@@ -2,10 +2,18 @@ local vim = vim
 local M = {}
 
 local log_levels = require("domain.log_levels")
-local plugin = require("infraestrucuture.plugins.notification")
-local telescope = require("infraestrucuture.plugins.file")
 
-vim.opt.termguicolors = true
+local setup = function()
+	local notification = require("infraestrucuture.plugins.notification")
+	local file = require("infraestrucuture.plugins.file")
+
+	vim.opt.termguicolors = true
+
+	return {
+		file = file,
+		notification = notification,
+	}
+end
 
 M.notify = function(opts)
 	local level = opts.level
@@ -22,26 +30,38 @@ M.notify = function(opts)
 end
 
 M.dismiss = function()
+	local plugin = setup().notification
+
 	plugin.dismiss()
 end
 
 M.list = function()
-	telescope.extensions.notify.notify({ layout_strategy = "vertical" })
+	local plugin = setup().plugin()
+
+	plugin.extensions.notify.notify({ layout_strategy = "vertical" })
 end
 
 M.debug = function(opts)
+	local plugin = setup().notification
+
 	plugin.notify(opts.message, log_levels.DEBUG)
 end
 
 M.info = function(opts)
+	local plugin = setup().notification
+
 	plugin.notify(opts.message, log_levels.INFO)
 end
 
 M.warn = function(opts)
+	local plugin = setup().notification
+
 	plugin.notify(opts.message, log_levels.WARN)
 end
 
 M.error = function(opts)
+	local plugin = setup().notification
+
 	plugin.notify(opts.message, log_levels.ERROR)
 end
 

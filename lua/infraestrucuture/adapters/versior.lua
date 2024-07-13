@@ -1,8 +1,14 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local gitsigns = require("infraestrucuture.plugins.gitsigns")
-local neogit = require("infraestrucuture.plugins.neogit")
+
+local require_gitsigns = function()
+	return require("infraestrucuture.plugins.gitsigns")
+end
+
+local require_neogit = function()
+	return require("infraestrucuture.plugins.neogit")
+end
 
 M.blame_line = function()
 	local message = {
@@ -11,6 +17,7 @@ M.blame_line = function()
 	}
 	logger_use_manage.debug(message)
 
+	local gitsigns = require_gitsigns()
 	gitsigns.blame_line()
 end
 
@@ -21,6 +28,7 @@ M.open = function()
 	}
 	logger_use_manage.debug(message)
 
+	local neogit = require_neogit()
 	neogit.open()
 end
 
@@ -31,6 +39,7 @@ M.stage_files = function()
 	}
 	logger_use_manage.debug(message)
 
+	local gitsigns = require_gitsigns()
 	gitsigns.stage_buffer()
 end
 
@@ -41,6 +50,7 @@ M.unstage_files = function()
 	}
 	logger_use_manage.debug(message)
 
+	local gitsigns = require_gitsigns()
 	gitsigns.undo_stage_hunk()
 end
 

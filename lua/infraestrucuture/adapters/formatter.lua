@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local conform = require("infraestrucuture.plugins.formatter")
+
+local setup = function()
+	return require("infraestrucuture.plugins.formatter")
+end
 
 M.format = function()
 	local message = {
@@ -9,8 +12,9 @@ M.format = function()
 		func = "format",
 	}
 	logger_use_manage.debug(message)
+	local plugin = setup()
 
-	conform.format({
+	plugin.format({
 		lsp_fallback = true,
 		async = false,
 		timeout_ms = 1000,

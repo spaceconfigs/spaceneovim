@@ -2,7 +2,10 @@ local vim = vim
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local terminal = require("infraestrucuture.plugins.terminal")
+
+local setup = function()
+	return require("infraestrucuture.plugins.terminal")
+end
 
 M.open = function()
 	local message = {
@@ -10,8 +13,8 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_manage.debug(message)
-
-	terminal:open()
+	local plugin = setup()
+	plugin:open()
 end
 
 M.close = function()
@@ -20,8 +23,9 @@ M.close = function()
 		func = "close",
 	}
 	logger_use_manage.debug(message)
+	local plugin = setup()
 
-	terminal:close()
+	plugin:close()
 end
 
 M.toggle = function()
@@ -30,8 +34,9 @@ M.toggle = function()
 		func = "toggle",
 	}
 	logger_use_manage.debug(message)
+	local plugin = setup()
 
-	terminal:new():toggle()
+	plugin:new():toggle()
 end
 
 M.toggle_buffer_dir = function()
@@ -40,10 +45,10 @@ M.toggle_buffer_dir = function()
 		func = "toggle_buffer_dir",
 	}
 	logger_use_manage.debug(message)
-
+	local plugin = setup()
 	local buffer = vim.fn.expand("%:p:h")
 
-	terminal:new({ dir = buffer }):toggle()
+	plugin:new({ dir = buffer }):toggle()
 end
 
 return M

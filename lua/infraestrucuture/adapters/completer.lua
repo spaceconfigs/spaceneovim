@@ -1,7 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local cmp = require("infraestrucuture.plugins.completer")
+local plugin = require("infraestrucuture.plugins.completer")
 
 M.complete = function()
 	local message = {
@@ -10,11 +10,11 @@ M.complete = function()
 	}
 	logger_use_manage.debug(message)
 
-	if cmp.visible() then
-		cmp.abort()
+	if plugin.visible() then
+		plugin.abort()
 	end
 
-	cmp.complete()
+	plugin.complete()
 end
 
 return M

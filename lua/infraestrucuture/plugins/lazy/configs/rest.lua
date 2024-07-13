@@ -13,7 +13,6 @@ return {
 		dependencies = { "luarocks.nvim" },
 	},
 	{
-		lazy = false,
 		"BlackLight/nvim-http",
 	},
 }

@@ -1,9 +1,10 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local jump = require("infraestrucuture.plugins.jump")
-local hop = jump.hop
-local flash = jump.flash
+
+local setup = function()
+	return require("infraestrucuture.plugins.jump")
+end
 
 M.timer = function()
 	local message = {
@@ -11,8 +12,9 @@ M.timer = function()
 		func = "words",
 	}
 	logger_use_manage.debug(message)
+	local plugin = setup().flash
 
-	flash.jump()
+	plugin.jump()
 end
 
 M.words = function()
@@ -21,8 +23,9 @@ M.words = function()
 		func = "words",
 	}
 	logger_use_manage.debug(message)
+	local plugin = setup().hop
 
-	hop.hint_char1({ multi_windows = true })
+	plugin.hint_char1({ multi_windows = true })
 end
 
 M.lines = function()
@@ -31,8 +34,9 @@ M.lines = function()
 		func = "lines",
 	}
 	logger_use_manage.debug(message)
+	local plugin = setup().hop
 
-	hop.hint_lines()
+	plugin.hint_lines()
 end
 
 return M

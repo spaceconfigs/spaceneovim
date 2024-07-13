@@ -2,7 +2,10 @@ local vim = vim
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local plugin = require("infraestrucuture.plugins.database")
+
+local require_plugin = function()
+	return require("infraestrucuture.plugins.database")
+end
 
 M.open = function()
 	local message = {
@@ -10,6 +13,7 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_manage.debug(message)
+	require_plugin()
 
 	vim.cmd("DBUI")
 end

@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-orgmode/orgmode",
 		dependencies = {
-			{ "nvim-treesitter/nvim-treesitter", lazy = true },
+			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	},
 	{
@@ -13,7 +13,6 @@ return {
 			"hrsh7th/nvim-cmp",
 			"nvim-telescope/telescope.nvim",
 		},
-		lazy = false,
 		opts = {
 			workspaces = {
 				{

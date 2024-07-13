@@ -1,8 +1,11 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local telescope = require("infraestrucuture.plugins.file")
-local builtin = telescope.builtin
+
+local setup = function()
+	local file = require("infraestrucuture.plugins.file")
+	return file.builtin
+end
 
 M.oldfiles = function()
 	local message = {
@@ -10,6 +13,7 @@ M.oldfiles = function()
 		func = "oldfiles",
 	}
 	logger_use_manage.debug(message)
+	local builtin = setup()
 
 	builtin.oldfiles({ show_line = false })
 end
@@ -21,6 +25,7 @@ M.list = function(opts)
 		opts = opts,
 	}
 	logger_use_manage.debug(message)
+	local builtin = setup()
 
 	local cwd = opts and opts.path or nil
 	builtin.find_files({
@@ -35,6 +40,7 @@ M.search = function(opts)
 		func = "search",
 	}
 	logger_use_manage.debug(message)
+	local builtin = setup()
 
 	opts = opts or {}
 

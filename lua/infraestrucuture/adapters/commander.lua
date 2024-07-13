@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local telescope = require("infraestrucuture.plugins.file")
+
+local require_plugin = function()
+	return require("infraestrucuture.plugins.file")
+end
 
 M.find = function(opts)
 	local message = {
@@ -10,9 +13,9 @@ M.find = function(opts)
 		opts = opts,
 	}
 	logger_use_manage.debug(message)
+	local file = require_plugin()
 
-	local mode = opts and opts.mode or nil
-	telescope.builtin.commands()
+	file.builtin.commands()
 end
 
 return M

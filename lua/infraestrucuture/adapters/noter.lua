@@ -2,9 +2,11 @@ local vim = vim
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local org = require("infraestrucuture.plugins.org")
 
--- org.action("org_mappings.meta_return")
+local setup = function()
+	return require("infraestrucuture.plugins.noter")
+end
+
 M.add = function()
 	local message = {
 		module = "adapters/noter",

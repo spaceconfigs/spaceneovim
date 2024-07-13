@@ -1,10 +1,15 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local telescope = require("infraestrucuture.plugins.file")
-local harpoon = require("infraestrucuture.plugins.harpoon")
-telescope.load_extension("harpoon")
-harpoon.ui.toggle_quick_menu = telescope.extensions.harpoon.marks
+
+local require_bookmarker = function()
+	local telescope = require("infraestrucuture.plugins.file")
+	local bookmarker = require("infraestrucuture.plugins.bookmarker")
+	telescope.load_extension("harpoon")
+	bookmarker.ui.toggle_quick_menu = telescope.extensions.harpoon.marks
+
+	return bookmarker
+end
 
 M.add = function()
 	local message = {
@@ -13,7 +18,8 @@ M.add = function()
 	}
 	logger_use_manage.debug(message)
 
-	harpoon.mark.add_file()
+	local bookmarker = require_bookmarker()
+	bookmarker.mark.add_file()
 end
 
 M.remove = function()
@@ -23,7 +29,8 @@ M.remove = function()
 	}
 	logger_use_manage.debug(message)
 
-	harpoon.mark.rm_file()
+	local bookmarker = require_bookmarker()
+	bookmarker.mark.rm_file()
 end
 
 M.remove_all = function()
@@ -33,7 +40,8 @@ M.remove_all = function()
 	}
 	logger_use_manage.debug(message)
 
-	harpoon.mark.clear_all()
+	local bookmarker = require_bookmarker()
+	bookmarker.mark.clear_all()
 end
 
 M.list = function()
@@ -43,7 +51,8 @@ M.list = function()
 	}
 	logger_use_manage.debug(message)
 
-	harpoon.ui.toggle_quick_menu()
+	local bookmarker = require_bookmarker()
+	bookmarker.ui.toggle_quick_menu()
 end
 
 return M

@@ -1,22 +1,11 @@
 return {
 	{
-		"hrsh7th/nvim-cmp",
-		lazy = false,
-	},
-	{
 		"kristijanhusak/vim-dadbod-ui",
-		lazy = false,
-	},
-	{
-		"kristijanhusak/vim-dadbod-completion",
-		lazy = false,
-	},
-	{
-		"kristijanhusak/vim-dadbod-ui",
-		lazy = false,
+    cmd = "DBUI",
 		dependencies = {
 			{ "tpope/vim-dadbod" },
 			{ "kristijanhusak/vim-dadbod-completion" },
+			{ "hrsh7th/nvim-cmp" },
 		},
 		init = function()
 			vim.g.db_ui_use_nerd_fonts = 1
