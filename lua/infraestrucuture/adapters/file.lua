@@ -1,7 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local telescope = require("infraestrucuture.plugins.telescope")
+local telescope = require("infraestrucuture.plugins.file")
 local builtin = telescope.builtin
 
 M.oldfiles = function()

@@ -2,7 +2,7 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local workspaces = require("infraestrucuture.plugins.workspaces")
-local telescope = require("infraestrucuture.plugins.telescope")
+local telescope = require("infraestrucuture.plugins.file")
 
 telescope.load_extension("workspaces")
 

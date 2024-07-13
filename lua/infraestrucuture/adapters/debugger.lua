@@ -3,7 +3,7 @@ local M = {}
 
 local dap = require("infraestrucuture.plugins.nvim-dap")
 local dapui = require("infraestrucuture.plugins.nvim-dap-ui")
-local telescope = require("infraestrucuture.plugins.telescope")
+local telescope = require("infraestrucuture.plugins.file")
 require("infraestrucuture.plugins.nvim-dap-virtual-text")
 require("infraestrucuture.plugins.neodev")
 telescope.load_extension("dap")
