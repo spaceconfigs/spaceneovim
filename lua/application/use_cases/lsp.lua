@@ -3,6 +3,16 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 local adapter = require("infraestrucuture.adapters.lsp")
 
+M.setup = function()
+	local message = {
+		module = "use_cases/lsp",
+		func = "setup",
+	}
+	logger_use_case.debug(message)
+
+  adapter.setup()
+end
+
 M.go_declaration = function()
 	local message = {
 		module = "use_cases/lsp",

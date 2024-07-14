@@ -5,6 +5,5 @@ return {
       'smoka7/hydra.nvim',
     },
     opts = {},
-    lazy = false
   },
 }

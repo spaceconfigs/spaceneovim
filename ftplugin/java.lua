@@ -3,10 +3,16 @@ local workspace_path = vim.api.nvim_call_function("stdpath", { "data" }) .. "/jd
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = workspace_path .. project_name
 
-local status, jdtls = pcall(require, "jdtls")
-if not status then
+local ok, jdtls = pcall(require, "jdtls")
+if not ok then
 	return
 end
+-- Failed to run config for nvim-jdtls
+--     │...local/share/nvim/lazy/lazy.nvim/lua/lazy/core/loader.lua:373: attempt to call field 'setup' (a table value)
+--      Projects/spaceconfig/spaceneovim/ftplugin/java.lua:6                                                      │
+--     /usr/share/nvim/runtime/filetype.lua:36                                                                   │
+--     /usr/share/nvim/runtime/filetype.lua:35                   
+
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 
 local config = {
@@ -31,7 +37,8 @@ local config = {
 		"-data",
 		workspace_dir,
 	},
-	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
+
+	root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
 
 	settings = {
 		java = {

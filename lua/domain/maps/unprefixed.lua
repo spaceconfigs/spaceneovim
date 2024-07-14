@@ -7,10 +7,8 @@ local unprefixed_content = {
 	{ key = "<M-k>", mode = "v", description = "Drag line up", method = ":m '<-2<CR>gv=gv" },
 	{ key = "<M-j>", mode = "i", description = "Drag line down", method = "<Esc>:m .+1<CR>==gi" },
 	{ key = "<M-k>", mode = "i", description = "Drag line up", method = "<Esc>:m .-2<CR>==gi" },
-	{ key = "<C-BS>", mode = "i", description = "Delete previous word", method = "<C-w>" },
-	{ key = "<C-BS>", mode = "c", description = "Delete previous word", method = "<C-w>" },
-	{ key = "<C-H>", mode = "i", description = "Delete previous word", method = "<C-w>" },
-	{ key = "<C-H>", mode = "c", description = "Delete previous word", method = "<C-w>" },
+	{ key = "<C-BS>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
+	{ key = "<C-H>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
 }
 
 local result = {}

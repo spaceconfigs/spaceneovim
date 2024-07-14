@@ -13,4 +13,14 @@ M.list = function()
   adapter.list()
 end
 
+M.load = function()
+	local message = {
+		module = "use_cases/theme",
+		func = "load",
+	}
+	logger_use_case.debug(message)
+
+  adapter.load()
+end
+
 return M

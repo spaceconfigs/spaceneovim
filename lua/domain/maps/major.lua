@@ -5,21 +5,11 @@ local rest_use_case = require("application.use_cases.rest")
 local noter_use_case = require("application.use_cases.noter")
 local formatter_use_case = require("application.use_cases.formatter")
 local database_use_case = require("application.use_cases.database")
+local screenshot_use_case = require("application.use_cases.screenshot")
 
 local format_content = {
 	{ key = "=", description = "Format" },
-	{ key = "==", description = "Format", method = formatter_use_case.format },
-	{
-		key = "=o",
-		description = "Format",
-		method = function()
-			vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%p") } })
-		end,
-	},
-	-- 	=o = {
-	-- 		"<cmd>lua <cr>",
-	-- 		"",
-	-- 	},
+	{ key = "=b", description = "Buffer", method = formatter_use_case.format },
 }
 
 local database_content = {
@@ -46,6 +36,8 @@ local help_content = {
 
 local insert_content = {
 	{ key = "i", description = "Insert" },
+	{ key = "iDs", description = "Take screenshot", method = screenshot_use_case.copy, mode = "v" },
+	{ key = "iDS", description = "Save screenshot", method = screenshot_use_case.save, mode = "v" },
 	{ key = "iH", description = "Heading", method = noter_use_case.insert_heading },
 }
 
@@ -98,7 +90,7 @@ table.insert(result, {
 for _, content in pairs(contents) do
 	local bind = vim.deepcopy(content)
 	bind.key = "<leader>m" .. bind.key
-	bind.mode = "n"
+	bind.mode = bind.mode or "n"
 	bind.buffer = nil
 	bind.silent = true
 	bind.noremap = true
