@@ -14,17 +14,11 @@
 -- TODO: add keybind to jump with treesitter
 -- TODO: add keybind to `require('flash).remote()`
 
-local environment = require("domain.environments").PRODUCTION
-vim.fn.setenv("NVIM_ENVIRONMENT", environment)
-
 require("config")
 require("application.use_cases")
-require("application.events")
+require("infraestrucuture.events")
 
-local maps = require("domain.maps")
-local keymaper_usecase = require("application.use_cases.keymapper")
+local environment = require("domain.environments")
 
-keymaper_usecase.register_all(maps)
-
-local logger_use_case = require("application.use_cases.logger")
--- logger_use_case.info("NVIM_ENVIRONMENT=" .. environment)
+vim.fn.setenv("NVIM_ENVIRONMENT", environment.PRODUCTION)
+vim.api.nvim_exec_autocmds("User", { pattern = "OnModuleInit" })

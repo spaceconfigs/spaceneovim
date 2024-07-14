@@ -1,16 +1,16 @@
-local documentation_use_case = require("application.use_cases.lsp")
+-- local documentation_use_case = require("application.use_cases.lsp")
+-- local completer_use_case = require("application.use_cases.completer")
 
 local unprefixed_content = {
+	-- { key = "<C-Space>", mode = { "i", "c" }, description = "Drag line down", method = completer_use_case.complete },
 	{ key = "<M-j>", description = "Drag line down", method = ":m .+1==<CR>" },
 	{ key = "<M-k>", description = "Drag line up", method = ":m .-2==<CR>" },
 	{ key = "<M-j>", mode = "v", description = "Drag line down", method = ":m '>+1<CR>gv=gv" },
 	{ key = "<M-k>", mode = "v", description = "Drag line up", method = ":m '<-2<CR>gv=gv" },
 	{ key = "<M-j>", mode = "i", description = "Drag line down", method = "<Esc>:m .+1<CR>==gi" },
 	{ key = "<M-k>", mode = "i", description = "Drag line up", method = "<Esc>:m .-2<CR>==gi" },
-	{ key = "<C-BS>", mode = "i", description = "Delete previous word", method = "<C-w>" },
-	{ key = "<C-BS>", mode = "c", description = "Delete previous word", method = "<C-w>" },
-	{ key = "<C-H>", mode = "i", description = "Delete previous word", method = "<C-w>" },
-	{ key = "<C-H>", mode = "c", description = "Delete previous word", method = "<C-w>" },
+	{ key = "<C-BS>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
+	{ key = "<C-H>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
 }
 
 local result = {}

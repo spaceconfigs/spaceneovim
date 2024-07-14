@@ -1,36 +1,22 @@
 return {
 	{
-		"folke/neodev.nvim",
-		lazy = false,
-		opts = {},
-	},
-	{
 		"LunarVim/bigfile.nvim",
-		lazy = false,
-	},
-	{
-		"EdenEast/nightfox.nvim",
-		priority = 1000,
-		lazy = false,
-		config = function()
-			require("nightfox")
-			vim.cmd.colorscheme("carbonfox")
-		end,
+		event = "BufRead",
+		config = true,
 	},
 	{
 		"kylechui/nvim-surround",
-		lazy = false,
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		opts = {},
+		event = "BufRead",
+		config = true,
 	},
 	{
 		"declancm/cinnamon.nvim",
-		lazy = false,
-		opts = {},
+		event = "BufRead",
+		config = true,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		lazy = false,
+		event = "BufRead",
 		config = function()
 			require("lualine").setup({
 				options = {
@@ -43,64 +29,33 @@ return {
 	},
 	{
 		"tzachar/local-highlight.nvim",
-		lazy = false,
-		opts = {},
+		event = "BufRead",
 	},
-	{
-		"goolord/alpha-nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		lazy = false,
-		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
-		end,
-	},
-	{
-		"folke/noice.nvim",
-		lazy = false,
-		opts = {
-			routes = {
-				{
-					filter = {
-						event = "msg_show",
-						kind = "",
-						find = "written",
-					},
-					opts = { skip = true },
-				},
-			},
-			views = {
-				cmdline_popup = {
-					border = {
-						style = "single",
-						padding = { 2, 2 },
-					},
-					filter_options = {},
-					win_options = {
-						winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-					},
-				},
-			},
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-	},
+	-- {
+	-- 	"goolord/alpha-nvim",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		require("alpha").setup(require("alpha.themes.startify").config)
+	-- 	end,
+	-- },
 	{
 		"hedyhli/outline.nvim",
-		lazy = false,
+		event = "BufRead",
 	},
-	{ "folke/neodev.nvim", lazy = false, opts = {} },
-	{ "windwp/nvim-ts-autotag", lazy = false, config = true },
-	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
 	{
 		"tris203/precognition.nvim",
-		lazy = false,
-		opts = {},
+		config = true,
+		event = "BufRead",
 	},
 	{
 		"m4xshen/hardtime.nvim",
-		lazy = false,
+		event = "BufRead",
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		opts = {
 			disabled_keys = {

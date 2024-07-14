@@ -8,6 +8,7 @@ end
 which_key.setup({
 	---@type false | "classic" | "modern" | "helix"
 	preset = "modern",
+	delay = 1000,
 	win = {
 		padding = { 3, 3 }, -- extra window padding [top/bottom, right/left]
 	},

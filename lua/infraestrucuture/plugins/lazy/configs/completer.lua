@@ -20,7 +20,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-    lazy = false,
+    -- event = "BufEnter",
 		opts = {},
 	},
 }

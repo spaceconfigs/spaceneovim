@@ -36,7 +36,7 @@ M.dismiss = function()
 end
 
 M.list = function()
-	local plugin = setup().plugin()
+	local plugin = setup().file
 
 	plugin.extensions.notify.notify({ layout_strategy = "vertical" })
 end
