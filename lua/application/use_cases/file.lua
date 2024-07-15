@@ -2,6 +2,7 @@ local vim = vim
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
+local file_util = require("infraestrucuture.utils.file")
 local adapter = require("infraestrucuture.adapters.file")
 
 local copy_item = function(opt)
@@ -41,26 +42,8 @@ M.list = function(opts)
 		}
 		logger_use_case.debug(message)
 
-		opts = opts or {}
-		opts.location = opts.location or "project"
-
-		if opts.location == "file" then
-			adapter.list({
-				path = vim.fn.expand("%:p:h"),
-			})
-
-			return
-		end
-
-		local cwd = vim.loop.cwd()
-		local path = vim.fs.find(
-			{ ".git", "package.json", "setup.py", "Makefile", "CMakeLists.txt" },
-			{ upward = true, stop = vim.loop.os_homedir(), path = cwd }
-		)[1]
-
-		path = vim.fn.fnamemodify(path, ":h")
 		adapter.list({
-			path = path,
+			path = file_util.get_path(opts),
 		})
 	end
 end
