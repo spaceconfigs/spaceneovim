@@ -34,7 +34,7 @@ local file_content = {
 	{ key = "R", description = "Rename", method = file_use_case.rename },
 	{ key = "s", description = "Save", method = "<cmd>write!<cr>" },
 	{ key = "S", description = "Save All", method = "<cmd>wall!<cr>" },
-	{ key = "t", description = "Tree", method = tree_use_case.toggle },
+	{ key = "t", description = "Tree", method = tree_use_case.toggle({ location = "file" }) },
 }
 
 local result = {}

@@ -28,15 +28,16 @@ M.close = function()
 	plugin.close()
 end
 
-M.toggle = function()
+M.toggle = function(opts)
 	local message = {
 		module = "adapters/todo",
 		func = "toggle",
+		opts = opts,
 	}
 	logger_use_manage.debug(message)
 	local plugin = setup().oil
 
-	plugin.toggle_float()
+	plugin.toggle_float(opts.location)
 	-- nvim_tree.toggle()
 end
 

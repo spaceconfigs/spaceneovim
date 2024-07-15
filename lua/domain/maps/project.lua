@@ -12,7 +12,7 @@ local project_content = {
 		description = "Tree",
 		method = function()
 			workspace_use_case.add()
-			tree_use_case.toggle()
+			tree_use_case.toggle()()
 		end,
 	},
 	-- TODO: add project diagnostic
