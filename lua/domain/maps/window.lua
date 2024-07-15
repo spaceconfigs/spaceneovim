@@ -10,6 +10,8 @@ local pop_content = {
 local window_content = {
 	{ key = "d", description = "Delete", method = ":quit<cr>" },
 	{ key = "m", description = "Maximize", method = window_use_case.toggle },
+	{ key = "s", description = "Split below", method = ":split | wincmd p<cr>" },
+	{ key = "v", description = "Split right", method = ":vsplit | wincmd p<cr>" },
 	{ key = "S", description = "Split below", method = ":split<cr>" },
 	{ key = "V", description = "Split right", method = ":vsplit<cr>" },
 	{ key = "K", description = "Move to up", method = window_use_case.move_far_up },
