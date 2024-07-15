@@ -4,7 +4,7 @@ local logger_use_case = require("application.use_cases.logger")
 local adapter = require("infraestrucuture.adapters.completer")
 
 M.setup = function()
-  adapter.setup()
+	adapter.setup()
 end
 
 M.complete = function()

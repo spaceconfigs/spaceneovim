@@ -32,17 +32,37 @@ M.oldfiles = function()
 	adapter.oldfiles()
 end
 
-M.list = function()
-	local message = {
-		module = "use_cases/file",
-		func = "list",
-	}
-	logger_use_case.debug(message)
-	local path = vim.fn.expand("%:p:h")
+M.list = function(opts)
+	return function()
+		local message = {
+			module = "use_cases/file",
+			func = "list",
+			opts = opts,
+		}
+		logger_use_case.debug(message)
 
-	adapter.list({
-		path = path,
-	})
+		opts = opts or {}
+		opts.location = opts.location or "project"
+
+		if opts.location == "file" then
+			adapter.list({
+				path = vim.fn.expand("%:p:h"),
+			})
+
+			return
+		end
+
+		local cwd = vim.loop.cwd()
+		local path = vim.fs.find(
+			{ ".git", "package.json", "setup.py", "Makefile", "CMakeLists.txt" },
+			{ upward = true, stop = vim.loop.os_homedir(), path = cwd }
+		)[1]
+
+		path = vim.fn.fnamemodify(path, ":h")
+		adapter.list({
+			path = path,
+		})
+	end
 end
 
 M.search = function()

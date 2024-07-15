@@ -9,7 +9,7 @@ local screenshot_use_case = require("application.use_cases.screenshot")
 
 local format_content = {
 	{ key = "=", description = "Format" },
-	{ key = "=b", description = "Buffer", method = formatter_use_case.format },
+	{ key = "==", description = "Buffer", method = formatter_use_case.format },
 }
 
 local database_content = {

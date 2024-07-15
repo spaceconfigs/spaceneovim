@@ -7,7 +7,7 @@ local file = require("application.use_cases.file")
 
 workspaces.setup({
 	hooks = {
-		open = file.list,
+		open = file.list(),
 	},
 })
 

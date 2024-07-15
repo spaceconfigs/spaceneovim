@@ -29,7 +29,7 @@ local yank_content = {
 
 local file_content = {
 	{ key = "D", description = "Delete", method = "<cmd>call delete(expand('%')) | bdelete!<cr>" },
-	{ key = "f", description = "Find", method = file_use_case.list },
+	{ key = "f", description = "Find", method = file_use_case.list({ location = "file" }) },
 	{ key = "r", description = "Recents", method = file_use_case.oldfiles },
 	{ key = "R", description = "Rename", method = file_use_case.rename },
 	{ key = "s", description = "Save", method = "<cmd>write!<cr>" },

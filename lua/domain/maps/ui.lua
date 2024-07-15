@@ -7,7 +7,6 @@ local toggler_content = {
 local result = {}
 local contents = {}
 for _, content in pairs({
-	numberline_content,
 	toggler_content,
 }) do
 	for _, bind in pairs(content) do
