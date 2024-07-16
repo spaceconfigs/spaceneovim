@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.rest")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.rest")
+end
 
 M.send = function()
 	local message = {
@@ -9,6 +12,7 @@ M.send = function()
 		func = "add",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.send()
 end

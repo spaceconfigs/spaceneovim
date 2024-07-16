@@ -1,10 +1,9 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.completer")
 
 M.setup = function()
-	adapter.setup()
+	return require("infraestrucuture.adapters.completer")
 end
 
 M.complete = function()
@@ -13,6 +12,7 @@ M.complete = function()
 		func = "complete",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.complete()
 end

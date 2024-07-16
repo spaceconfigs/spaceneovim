@@ -1,31 +1,26 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local setup = function()
-  return require("infraestrucuture.plugins.selector")
-end
+require("infraestrucuture.plugins.selector")
 
 M.all_selected = function()
-  local message = {
-    module = "adapters/selector",
-    func = "all_selected",
-  }
-  logger_use_manage.debug(message)
-  setup()
+	local message = {
+		module = "adapters/selector",
+		func = "all_selected",
+	}
+	logger_use_manage.debug(message)
 
-  vim.cmd('MCstart')
+	vim.cmd("MCstart")
 end
 
 M.quit = function()
-  local message = {
-    module = "adapters/selector",
-    func = "quit",
-  }
-  logger_use_manage.debug(message)
-  setup()
+	local message = {
+		module = "adapters/selector",
+		func = "quit",
+	}
+	logger_use_manage.debug(message)
 
-  vim.cmd("MCclear")
+	vim.cmd("MCclear")
 end
 
 return M

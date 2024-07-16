@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.formatter")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.formatter")
+end
 
 M.format = function()
 	local message = {
@@ -9,6 +12,7 @@ M.format = function()
 		func = "format",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.format()
 end

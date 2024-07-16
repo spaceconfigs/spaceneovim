@@ -1,10 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local setup = function()
-	return require("infraestrucuture.plugins.commenter")
-end
+local plugin = require("infraestrucuture.plugins.commenter")
 
 M.toggle = function(opts)
 	local message = {
@@ -13,7 +10,6 @@ M.toggle = function(opts)
 		opts = opts,
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	local mode = opts and opts.mode or nil
 	plugin.api.toggle.linewise(mode)

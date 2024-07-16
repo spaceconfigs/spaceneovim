@@ -2,10 +2,7 @@ local vim = vim
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local setup = function()
-	return require("infraestrucuture.plugins.noter")
-end
+local plugin = require("infraestrucuture.plugins.noter")
 
 M.add = function()
 	local message = {
@@ -49,9 +46,11 @@ M.checkbox = function(action)
 	}
 	logger_use_manage.debug(message)
 
-	if action == "toggle" then
-		org.action("org_mappings.toggle_checkbox")
+	if not action == "toggle" then
+		return
 	end
+
+	plugin.action("org_mappings.toggle_checkbox")
 end
 
 M.todo = function(action)
@@ -62,9 +61,11 @@ M.todo = function(action)
 	}
 	logger_use_manage.debug(message)
 
-	if action == "next_state" then
-		org.action("org_mappings.todo_next_state")
+	if not action == "next_state" then
+		return
 	end
+
+	plugin.action("org_mappings.todo_next_state")
 end
 
 M.insert_heading = function(type)
@@ -75,8 +76,10 @@ M.insert_heading = function(type)
 	}
 	logger_use_manage.debug(message)
 
-	if type == "same" then
-		org.action("org_mappings.insert_heading_respect_content")
+	if not type == "same" then
+		return
 	end
+
+	plugin.action("org_mappings.insert_heading_respect_content")
 end
 return M

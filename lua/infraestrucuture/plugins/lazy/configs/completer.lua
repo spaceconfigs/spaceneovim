@@ -13,14 +13,15 @@ return {
 			"onsails/lspkind.nvim",
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
+			"ray-x/cmp-treesitter",
+			"hrsh7th/cmp-nvim-lsp",
+			{
+				"Exafunction/codeium.nvim",
+				dependencies = {
+					"nvim-lua/plenary.nvim",
+				},
+				config = true,
+			},
 		},
-	},
-	{
-		"Exafunction/codeium.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-    -- event = "BufEnter",
-		opts = {},
 	},
 }

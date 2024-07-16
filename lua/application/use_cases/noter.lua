@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.noter")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.noter")
+end
 
 M.add = function()
 	local message = {
@@ -9,6 +12,7 @@ M.add = function()
 		func = "add",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 end
 
 M.list = function()
@@ -17,6 +21,7 @@ M.list = function()
 		func = "list",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.list()
 end
@@ -27,6 +32,7 @@ M.dismiss = function()
 		func = "dismiss",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.dismiss()
 end
@@ -37,6 +43,7 @@ M.find = function()
 		func = "find",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.find()
 end
@@ -47,6 +54,7 @@ M.toggle_checkbox = function()
 		func = "toggle_checkbox",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.checkbox("toggle")
 end
@@ -57,6 +65,7 @@ M.todo_next_state = function()
 		func = "change_todo_state",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.todo("next_state")
 end
@@ -67,6 +76,7 @@ M.insert_heading = function()
 		func = "insert_heading",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.insert_heading("same")
 end

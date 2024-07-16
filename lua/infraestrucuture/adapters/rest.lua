@@ -1,10 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local setup = function()
-	require("infraestrucuture.plugins.rest")
-end
+require("infraestrucuture.plugins.rest")
 
 M.send = function(opts)
 	local message = {
@@ -13,7 +10,6 @@ M.send = function(opts)
 		opts = opts,
 	}
 	logger_use_manage.debug(message)
-	setup()
 
 	vim.cmd("Rest run")
 end

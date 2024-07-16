@@ -1,14 +1,9 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local require_telescope = function()
-	return require("infraestrucuture.plugins.file")
-end
-
-local require_workspaces = function()
-	return require("infraestrucuture.plugins.workspaces")
-end
+local workspaces = require("infraestrucuture.plugins.workspaces")
+local file = require("infraestrucuture.plugins.file")
+file.load_extension("workspaces")
 
 M.open = function()
 	local message = {
@@ -17,11 +12,7 @@ M.open = function()
 	}
 	logger_use_manage.debug(message)
 
-	require_workspaces()
-	local telescope = require_telescope()
-	telescope.load_extension("workspaces")
-
-	telescope.extensions.workspaces.workspaces()
+	file.extensions.workspaces.workspaces()
 end
 
 M.add = function(opts)
@@ -32,7 +23,6 @@ M.add = function(opts)
 	}
 	logger_use_manage.debug(message)
 
-	local workspaces = require_workspaces()
 	workspaces.add(opts.path)
 end
 
@@ -44,8 +34,7 @@ M.files = function(opts)
 	}
 	logger_use_manage.debug(message)
 
-	local telescope = require_telescope()
-	telescope.builtin.git_files({
+	file.builtin.git_files({
 		show_untracked = true,
 		show_line = false,
 	})
@@ -62,15 +51,14 @@ M.search = function(opts)
 	opts = opts or {}
 	opts.cwd = opts.cwd or ""
 
-	local telescope = require_telescope()
 	if opts.text ~= "" and opts.text ~= nil then
-		return telescope.builtin.grep_string({
+		return file.builtin.grep_string({
 			search = opts.text,
 			cwd = opts.cwd,
 		})
 	end
 
-	telescope.builtin.live_grep({
+	file.builtin.live_grep({
 		show_line = false,
 		cwd = opts.cwd,
 	})

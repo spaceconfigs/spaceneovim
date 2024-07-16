@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.jumper")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.jumper")
+end
 
 M.timer = function()
 	local message = {
@@ -9,6 +12,7 @@ M.timer = function()
 		func = "words",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.timer()
 end
@@ -19,6 +23,7 @@ M.words = function()
 		func = "words",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.words()
 end
@@ -29,6 +34,7 @@ M.lines = function()
 		func = "lines",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.lines()
 end

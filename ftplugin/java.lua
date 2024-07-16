@@ -11,7 +11,7 @@ end
 --     │...local/share/nvim/lazy/lazy.nvim/lua/lazy/core/loader.lua:373: attempt to call field 'setup' (a table value)
 --      Projects/spaceconfig/spaceneovim/ftplugin/java.lua:6                                                      │
 --     /usr/share/nvim/runtime/filetype.lua:36                                                                   │
---     /usr/share/nvim/runtime/filetype.lua:35                   
+--     /usr/share/nvim/runtime/filetype.lua:35
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 

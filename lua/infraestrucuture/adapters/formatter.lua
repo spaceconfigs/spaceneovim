@@ -1,10 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local setup = function()
-	return require("infraestrucuture.plugins.formatter")
-end
+local plugin = require("infraestrucuture.plugins.formatter")
 
 M.format = function()
 	local message = {
@@ -12,7 +9,6 @@ M.format = function()
 		func = "format",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	plugin.format({
 		lsp_fallback = true,

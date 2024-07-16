@@ -1,10 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local setup = function()
-	return require("infraestrucuture.plugins.screenshot")
-end
+local plugin = require("infraestrucuture.plugins.screenshot")
 
 M.copy = function()
 	local message = {
@@ -12,7 +9,6 @@ M.copy = function()
 		func = "copy",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	plugin.copy_into_clipboard()
 end
@@ -23,7 +19,6 @@ M.save = function()
 		func = "save",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	plugin.save_snapshot()
 end

@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.chatbot")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.chatbot")
+end
 
 M.toggle = function()
 	local message = {
@@ -9,6 +12,7 @@ M.toggle = function()
 		func = "list",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.toggle()
 end

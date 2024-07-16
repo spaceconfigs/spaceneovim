@@ -21,4 +21,3 @@ require("infraestrucuture.events")
 local environment = require("domain.environments")
 
 vim.fn.setenv("NVIM_ENVIRONMENT", environment.PRODUCTION)
-vim.api.nvim_exec_autocmds("User", { pattern = "OnModuleInit" })

@@ -1,10 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local setup = function()
-	return require("infraestrucuture.plugins.layout")
-end
+local plugin = require("infraestrucuture.plugins.layout")
 
 M.list = function()
 	local message = {
@@ -12,7 +9,6 @@ M.list = function()
 		func = "list",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	plugin.load_session()
 end
@@ -23,7 +19,6 @@ M.save = function()
 		func = "save",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	plugin.save_current_session()
 end
@@ -34,7 +29,6 @@ M.reload = function()
 		func = "reload",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	plugin.load_current_dir_session()
 end
@@ -45,7 +39,6 @@ M.delete = function()
 		func = "delete",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup()
 
 	plugin.delete_session()
 end

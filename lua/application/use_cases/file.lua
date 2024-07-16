@@ -3,7 +3,10 @@ local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
 local file_util = require("infraestrucuture.utils.file")
-local adapter = require("infraestrucuture.adapters.file")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.file")
+end
 
 local copy_item = function(opt)
 	local full_path = vim.fn.expand(opt.wildcards)
@@ -29,6 +32,7 @@ M.oldfiles = function()
 		func = "oldfiles",
 	}
 	logger_use_case.debug(message)
+  local adapter = M.setup()
 
 	adapter.oldfiles()
 end
@@ -41,6 +45,7 @@ M.list = function(opts)
 			opts = opts,
 		}
 		logger_use_case.debug(message)
+    local adapter = M.setup()
 
 		adapter.list({
 			path = file_util.get_path(opts),
@@ -54,6 +59,7 @@ M.search = function()
 		func = "search",
 	}
 	logger_use_case.debug(message)
+  local adapter = M.setup()
 
 	local path = vim.fn.expand("%:h")
 
@@ -68,6 +74,7 @@ M.search_hover = function()
 		func = "search_hover",
 	}
 	logger_use_case.debug(message)
+  local adapter = M.setup()
 
 	local path = vim.api.nvim_buf_get_name(0)
 	local text = vim.fn.expand("<cword>")

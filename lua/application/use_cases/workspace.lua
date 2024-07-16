@@ -1,9 +1,13 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.workspace")
 local lsp_adapter = require("infraestrucuture.adapters.lsp")
 
+M.setup = function()
+	return require("infraestrucuture.adapters.workspace")
+end
+
+-- TODO: change it to use `get_path` of utils module
 local function find_project_path()
 	local message = {
 		module = "use_cases/workspace",
@@ -24,6 +28,7 @@ M.add = function()
 		func = "add",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 	local path = vim.loop.cwd()
 
 	adapter.add({ path = path })
@@ -35,6 +40,7 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.open()
 end
@@ -45,6 +51,7 @@ M.files = function()
 		func = "files",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.files()
 end
@@ -55,6 +62,7 @@ M.search = function()
 		func = "search",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	local path = find_project_path()
 
@@ -67,6 +75,7 @@ M.search_hover = function()
 		func = "search_hover",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	local text = vim.fn.expand("<cword>")
 	local path = find_project_path()
@@ -80,6 +89,7 @@ M.grep_input = function()
 		func = "grep_input",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	local path = find_project_path()
 	local text = vim.fn.input("Grep symble: ")
