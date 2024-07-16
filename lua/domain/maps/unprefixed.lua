@@ -1,8 +1,9 @@
--- local documentation_use_case = require("application.use_cases.lsp")
--- local completer_use_case = require("application.use_cases.completer")
+local documentation_use_case = require("application.use_cases.lsp")
+local completer_use_case = require("application.use_cases.completer")
 
 local unprefixed_content = {
-	-- { key = "<C-Space>", mode = { "i", "c" }, description = "Drag line down", method = completer_use_case.complete },
+	{ key = "<S-k>", description = "Show documentation", method = documentation_use_case.show_documentation },
+	{ key = "<C-Space>", mode = { "i", "c" }, description = "Drag line down", method = completer_use_case.complete },
 	{ key = "<M-j>", description = "Drag line down", method = ":m .+1==<CR>" },
 	{ key = "<M-k>", description = "Drag line up", method = ":m .-2==<CR>" },
 	{ key = "<M-j>", mode = "v", description = "Drag line down", method = ":m '>+1<CR>gv=gv" },

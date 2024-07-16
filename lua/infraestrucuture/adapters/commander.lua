@@ -1,10 +1,7 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-
-local require_plugin = function()
-	return require("infraestrucuture.plugins.file")
-end
+local plugin = require("infraestrucuture.plugins.file")
 
 M.find = function(opts)
 	local message = {
@@ -13,9 +10,8 @@ M.find = function(opts)
 		opts = opts,
 	}
 	logger_use_manage.debug(message)
-	local file = require_plugin()
 
-	file.builtin.commands()
+	plugin.builtin.commands()
 end
 
 return M

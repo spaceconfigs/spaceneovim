@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.selector")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.selector")
+end
 
 M.quit = function()
 	local message = {
@@ -9,6 +12,7 @@ M.quit = function()
 		func = "quit",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.quit()
 end
@@ -19,6 +23,7 @@ M.all_selected = function()
 		func = "all_selected",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.all_selected()
 end

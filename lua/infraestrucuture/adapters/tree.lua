@@ -1,10 +1,10 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
+local tree = require("infraestrucuture.plugins.tree")
 
-local setup = function()
-	return require("infraestrucuture.plugins.tree")
-end
+local nvim_tree = tree.nvim_tree
+local oil = tree.oil
 
 M.open = function()
 	local message = {
@@ -12,9 +12,8 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().nvim_tree
 
-	plugin.open()
+	nvim_tree.open()
 end
 
 M.close = function()
@@ -23,21 +22,18 @@ M.close = function()
 		func = "close",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().nvim_tree
 
-	plugin.close()
+	nvim_tree.close()
 end
 
-M.toggle = function(opts)
+M.toggle = function()
 	local message = {
 		module = "adapters/todo",
 		func = "toggle",
-		opts = opts,
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().oil
 
-	plugin.toggle_float(opts.location)
+	oil.toggle_float()
 	-- nvim_tree.toggle()
 end
 

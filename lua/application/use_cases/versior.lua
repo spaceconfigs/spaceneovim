@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.versior")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.versior")
+end
 
 M.blame_line = function()
 	local message = {
@@ -9,6 +12,7 @@ M.blame_line = function()
 		func = "blame_line",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.blame_line()
 end
@@ -19,6 +23,7 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.open()
 end
@@ -29,6 +34,7 @@ M.stage_file = function()
 		func = "stage_file",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.stage_files()
 end
@@ -39,6 +45,7 @@ M.unstage_file = function()
 		func = "unstage_file",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.unstage_files()
 end

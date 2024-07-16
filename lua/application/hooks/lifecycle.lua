@@ -12,10 +12,10 @@ M.onModuleInit = function()
 		func = "onModuleInit",
 	}
 	logger_use_manage.debug(message)
-	-- completer_use_case.setup()
+	theme_use_case.load()
+	completer_use_case.setup()
 
 	keymaper_usecase.register_all(maps)
-	theme_use_case.load()
 end
 
 return M

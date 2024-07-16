@@ -1,7 +1,6 @@
 local application_map = require("domain.maps.application")
 local buffer_map = require("domain.maps.buffer")
 local chatbot_map = require("domain.maps.chatbot")
-local complete_map = require("domain.maps.complete")
 local help_map = require("domain.maps.help")
 local debugger_map = require("domain.maps.debugger")
 local error_map = require("domain.maps.error")
@@ -76,7 +75,6 @@ for _, map in ipairs({
 	search_map,
 	quit_map,
 	window_map,
-	complete_map,
 	help_map,
 	toggler_map,
 	unprefixed_map,

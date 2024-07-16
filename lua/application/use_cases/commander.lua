@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.commander")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.commander")
+end
 
 M.find = function()
 	local message = {
@@ -9,6 +12,7 @@ M.find = function()
 		func = "toggle_current_line",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.find()
 end

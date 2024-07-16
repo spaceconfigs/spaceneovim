@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.terminal")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.terminal")
+end
 
 M.open = function()
 	local message = {
@@ -9,6 +12,7 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.open()
 end
@@ -19,6 +23,7 @@ M.close = function()
 		func = "close",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.close()
 end
@@ -29,6 +34,7 @@ M.toggle = function()
 		func = "toggle",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.toggle()
 end
@@ -39,6 +45,7 @@ M.toggle_buffer_dir = function()
 		func = "toggle_buffer_dir",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.toggle_buffer_dir()
 end

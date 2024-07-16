@@ -1,8 +1,11 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.tree")
 local file_util = require("infraestrucuture.utils.file")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.tree")
+end
 
 M.open = function()
 	local message = {
@@ -10,6 +13,7 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.open()
 end
@@ -20,6 +24,7 @@ M.close = function()
 		func = "close",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 	adapter.close()
 end
 
@@ -31,6 +36,7 @@ M.toggle = function(opts)
 			opts = opts,
 		}
 		logger_use_case.debug(message)
+		local adapter = M.setup()
 		local path = file_util.get_path(opts)
 
 		adapter.toggle({ location = path })

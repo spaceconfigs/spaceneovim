@@ -19,13 +19,14 @@ plugin.setup({
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp", keyword_length = 2 },
-		{ name = "buffer", keyword_length = 3 },
+		{ name = "nvim_lsp" },
 		{ name = "codeium" },
-		{ name = "luasnip", keyword_length = 1 },
+		{ name = "luasnip" },
+		{ name = "vim-dadbod-completion" },
+		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "orgmode" },
-		{ name = "vim-dadbod-completion" },
+		{ name = "treesitter" },
 	},
 	window = {
 		documentation = plugin.config.window.bordered(),
@@ -34,6 +35,7 @@ plugin.setup({
 		fields = { "menu", "abbr" },
 		format = function(entry, item)
 			local menu_icon = {
+				treesitter = "",
 				nvim_lsp = "λ",
 				luasnip = "",
 				buffer = "",

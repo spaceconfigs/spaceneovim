@@ -2,7 +2,10 @@ local vim = vim
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.debugger")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.debugger")
+end
 
 M.clear_breakpoints = function()
 	local message = {
@@ -10,6 +13,7 @@ M.clear_breakpoints = function()
 		func = "clear_breakpoints",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.clear_breakpoints()
 end
@@ -20,6 +24,7 @@ M.close = function()
 		func = "close",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.close()
 end
@@ -30,6 +35,7 @@ M.continue = function()
 		func = "continue",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.continue()
 end
@@ -40,6 +46,7 @@ M.focus_frame = function()
 		func = "focus_frame",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.focus_frame()
 end
@@ -50,6 +57,7 @@ M.go_up = function()
 		func = "go_up",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.go_up()
 end
@@ -60,6 +68,7 @@ M.go_down = function()
 		func = "go_down",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.go_down()
 end
@@ -70,6 +79,7 @@ M.hover = function()
 		func = "hover",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.hover()
 end
@@ -80,6 +90,7 @@ M.list_breakpoints = function()
 		func = "list_breakpoints",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.list_breakpoints()
 end
@@ -90,6 +101,7 @@ M.list_frames = function()
 		func = "list_frames",
 	}
 	logger_use_case.debug(message)
+  local adapter = M.setup()
 
 	local widgets = require("dap.ui.widgets")
 
@@ -102,6 +114,7 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.open()
 end
@@ -112,6 +125,7 @@ M.preview = function()
 		func = "preview",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.hover()
 end
@@ -122,6 +136,7 @@ M.set_exception_breakpoints = function()
 		func = "set_exception_breakpoints",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.set_exception_breakpoints()
 end
@@ -132,6 +147,7 @@ M.step_over = function()
 		func = "step_over",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.step_over()
 end
@@ -142,6 +158,7 @@ M.step_into = function()
 		func = "step_into",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.step_into()
 end
@@ -152,6 +169,7 @@ M.step_out = function()
 		func = "step_out",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.step_out()
 end
@@ -162,6 +180,7 @@ M.step_back = function()
 		func = "step_back",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.step_back()
 end
@@ -172,6 +191,7 @@ M.set_breakpoint = function()
 		func = "set_breakpoint",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	local condition = vim.fn.input("Condition: ")
 
@@ -184,6 +204,7 @@ M.toggle_breakpoint = function()
 		func = "toggle_breakpoint",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.toggle_breakpoint()
 end
@@ -194,6 +215,7 @@ M.repl_toggle = function()
 		func = "repl_toggle",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.repl_toggle()
 end
@@ -204,6 +226,7 @@ M.run_last = function()
 		func = "run_last",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.run_last()
 end
@@ -214,6 +237,7 @@ M.run_to_cursor = function()
 		func = "run_to_cursor",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.run_to_cursor()
 end
@@ -224,6 +248,7 @@ M.restart_frame = function()
 		func = "restart_frame",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.restart_frame()
 end
@@ -234,6 +259,7 @@ M.list_variables = function()
 		func = "list_variables",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	local widgets = require("dap.ui.widgets")
 	widgets.centered_float(widgets.scopes)

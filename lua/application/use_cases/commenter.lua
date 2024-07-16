@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.commenter")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.commenter")
+end
 
 M.toggle_current_line_visual_mode = function()
 	local message = {
@@ -9,6 +12,7 @@ M.toggle_current_line_visual_mode = function()
 		func = "toggle_current_line_visual_mode",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	local key = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
 	vim.api.nvim_feedkeys(key, "nx", false)
@@ -23,6 +27,7 @@ M.toggle_current_line = function()
 		func = "toggle_current_line",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.toggle()
 end

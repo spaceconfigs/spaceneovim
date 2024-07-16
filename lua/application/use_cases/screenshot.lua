@@ -1,7 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.screenshot")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.screenshot")
+end
 
 M.copy = function()
 	local message = {
@@ -9,6 +12,7 @@ M.copy = function()
 		func = "copy",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.copy()
 end
@@ -19,6 +23,7 @@ M.save = function()
 		func = "save",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.save()
 end

@@ -2,10 +2,15 @@ local M = {}
 
 local environments = require("domain.environments")
 local log_levels = require("domain.log_levels")
-local adapter = require("infraestrucuture.adapters.logger")
 local notification_use_case = require("application.use_cases.notification")
 
+M.setup = function()
+	return require("infraestrucuture.adapters.logger")
+end
+
 M.log = function(opts)
+	local adapter = M.setup()
+
 	local level = opts.level
 	local message = opts.message
 	local environment_log_levels_mapper = {

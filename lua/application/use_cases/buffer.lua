@@ -2,7 +2,10 @@ local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
 local tree_adapter = require("infraestrucuture.adapters.tree")
-local adapter = require("infraestrucuture.adapters.buffer")
+
+M.setup = function()
+	return require("infraestrucuture.adapters.buffer")
+end
 
 M.add = function()
 	local message = {
@@ -10,6 +13,7 @@ M.add = function()
 		func = "add",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.add()
 end
@@ -20,6 +24,7 @@ M.delete = function()
 		func = "delete",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 	tree_adapter.close()
 	adapter.delete()
 end
@@ -30,6 +35,7 @@ M.close_others = function()
 		func = "remove_all",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.close_others()
 end
@@ -40,6 +46,7 @@ M.list = function()
 		func = "list",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.list()
 end
@@ -50,6 +57,7 @@ M.next = function()
 		func = "next",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.next()
 end
@@ -60,6 +68,7 @@ M.previous = function()
 		func = "previous",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.previous()
 end
@@ -70,6 +79,7 @@ M.reopen = function()
 		func = "reopen",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.reopen()
 end
@@ -80,6 +90,7 @@ M.messages = function()
 		func = "messages",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.messages()
 end
@@ -90,6 +101,7 @@ M.list_persp = function()
 		func = "list_persp",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.list_persp()
 end
@@ -100,6 +112,7 @@ M.lsp_symbols = function()
 		func = "lsp_symbols",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.lsp_symbols()
 end
@@ -110,6 +123,7 @@ M.lsp_references = function()
 		func = "lsp_references",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.diagnostics()
 end
@@ -120,6 +134,7 @@ M.lsp_definitions = function()
 		func = "lsp_definitions",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.diagnostics()
 end
@@ -130,6 +145,7 @@ M.lsp_implementations = function()
 		func = "lsp_implementations",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.diagnostics()
 end
@@ -140,6 +156,7 @@ M.diagnostics = function()
 		func = "diagnostics",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	adapter.diagnostics()
 end
