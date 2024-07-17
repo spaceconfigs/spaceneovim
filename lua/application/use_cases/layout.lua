@@ -50,4 +50,25 @@ M.delete = function()
 	adapter.delete()
 end
 
+M.rename = function()
+	local message = {
+		module = "use_cases/layout",
+		func = "rename",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.rename()
+end
+
+M.previous = function()
+	local message = {
+		module = "use_cases/layout",
+		func = "previous",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.previous()
+end
 return M

@@ -2,6 +2,7 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.layout")
+print(vim.inspect(plugin))
 
 M.list = function()
 	local message = {
@@ -43,4 +44,23 @@ M.delete = function()
 	plugin.delete_session()
 end
 
+M.previous = function()
+	local message = {
+		module = "adapters/layout",
+		func = "previous",
+	}
+	logger_use_manage.debug(message)
+
+	plugin.load_last_session()
+end
+
+M.rename = function()
+	local message = {
+		module = "adapters/layout",
+		func = "rename",
+	}
+	logger_use_manage.debug(message)
+
+	vim.fn.input("Rename: ")
+end
 return M

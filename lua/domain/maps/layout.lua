@@ -1,10 +1,11 @@
 local layout_use_case = require("application.use_cases.layout")
 
 local layout_content = {
+	{ key = "<Tab>", description = "Load previous", method = layout_use_case.previous },
 	{ key = "d", description = "Delete", method = layout_use_case.delete },
-	{ key = "l", description = "Reload", method = layout_use_case.reload },
-	{ key = "L", description = "List", method = layout_use_case.list },
-	{ key = "s", description = "Save", method = layout_use_case.save },
+	{ key = "l", description = "List", method = layout_use_case.list },
+	{ key = "L", description = "Reload", method = layout_use_case.reload },
+	{ key = "R", description = "Rename", method = layout_use_case.rename },
 }
 
 local result = {}
