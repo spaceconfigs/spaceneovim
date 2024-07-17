@@ -2,7 +2,6 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.layout")
-print(vim.inspect(plugin))
 
 M.list = function()
 	local message = {

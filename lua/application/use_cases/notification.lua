@@ -7,14 +7,19 @@ M.setup = function()
 end
 
 M.list = function()
+	local adapter = M.setup()
+
 	adapter.list()
 end
 
 M.dismiss = function()
+	local adapter = M.setup()
+
 	adapter.dismiss()
 end
 
 M.notify = function(opts)
+	local adapter = M.setup()
 	local level = opts.level
 	local message = opts.message
 
