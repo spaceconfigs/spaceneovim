@@ -144,4 +144,15 @@ M.diagnostics = function()
 	adapter.diagnostics()
 end
 
+M.info = function()
+	local message = {
+		module = "use_cases/lsp",
+		func = "info",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.info()
+end
+
 return M

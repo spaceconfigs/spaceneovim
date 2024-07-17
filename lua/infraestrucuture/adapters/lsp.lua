@@ -3,11 +3,11 @@ local M = {}
 
 require("infraestrucuture.plugins.treesitter")
 local logger_use_manage = require("application.use_cases.logger")
-local lsp = require("infraestrucuture.plugins.lsp")
+local plugin = require("infraestrucuture.plugins.lsp")
 
-local mason_lspconfig = lsp.mason_lspconfig
-local lspconfig = lsp.lspconfig
-local cmp_nvim_lsp = lsp.cmp_nvim_lsp
+local mason_lspconfig = plugin.mason_lspconfig
+local lspconfig = plugin.lspconfig
+local cmp_nvim_lsp = plugin.cmp_nvim_lsp
 
 vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticDefault" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", numhl = "DiagnosticDefault" })
@@ -154,4 +154,13 @@ M.diagnostics = function()
 	vim.lsp.diagnostic()
 end
 
+M.info = function()
+	local message = {
+		module = "adapters/lsp",
+		func = "info",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("LspInfo")
+end
 return M

@@ -15,7 +15,8 @@ local format_content = {
 local database_content = {
 	{ key = "b", description = "database" },
 	{ key = "bc", description = "Open", method = database_use_case.open },
-	{ key = "br", description = "Lsp Restart", method = ":LspRestart<cr>" },
+	{ key = "bd", description = "Lsp info", method = lsp_use_case.info },
+	{ key = "br", description = "Lsp restart", method = ":LspRestart<cr>" },
 }
 
 local goto_content = {
@@ -39,6 +40,7 @@ local insert_content = {
 	{ key = "iDs", description = "Take screenshot", method = screenshot_use_case.copy, mode = "v" },
 	{ key = "iDS", description = "Save screenshot", method = screenshot_use_case.save, mode = "v" },
 	{ key = "iH", description = "Heading", method = noter_use_case.insert_heading },
+	{ key = "in", description = "New note", method = noter_use_case.new },
 }
 
 local refact_content = {

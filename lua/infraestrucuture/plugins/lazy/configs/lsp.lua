@@ -44,6 +44,9 @@ return {
 					opts = { skip = true },
 				},
 			},
+			messages = {
+				enabled = true,
+			},
 			views = {
 				cmdline_popup = {
 					border = {
