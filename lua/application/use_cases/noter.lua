@@ -6,13 +6,15 @@ M.setup = function()
 	return require("infraestrucuture.adapters.noter")
 end
 
-M.add = function()
+M.new = function()
 	local message = {
 		module = "use_cases/noter",
 		func = "add",
 	}
 	logger_use_case.debug(message)
 	local adapter = M.setup()
+
+  adapter.new()
 end
 
 M.list = function()

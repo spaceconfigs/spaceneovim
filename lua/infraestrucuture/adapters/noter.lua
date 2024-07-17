@@ -4,12 +4,14 @@ local M = {}
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.noter")
 
-M.add = function()
+M.new = function()
 	local message = {
 		module = "adapters/noter",
 		func = "add",
 	}
 	logger_use_manage.debug(message)
+
+	vim.cmd("ObsidianNew")
 end
 
 M.list = function()
