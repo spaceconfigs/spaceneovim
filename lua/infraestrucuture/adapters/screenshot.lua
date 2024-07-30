@@ -22,4 +22,5 @@ M.save = function()
 
 	plugin.save_snapshot()
 end
+
 return M

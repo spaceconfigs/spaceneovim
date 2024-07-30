@@ -1,8 +1,8 @@
 local ok, plugin = pcall(require, "dap")
 if not ok then
 	return vim.notify("Failed to load plugin `mfussenegger/nvim-dap`")
-end
 
+end
 local widgets = require("dap.ui.widgets")
 plugin.ui = plugin.ui or {}
 plugin.ui.widgets = widgets

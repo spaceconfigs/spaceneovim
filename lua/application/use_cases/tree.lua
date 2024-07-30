@@ -37,7 +37,7 @@ M.toggle = function(opts)
 		}
 		logger_use_case.debug(message)
 		local adapter = M.setup()
-		local path = file_util.get_path(opts)
+		local path = file_util.pwd(opts)
 
 		adapter.toggle({ location = path })
 	end

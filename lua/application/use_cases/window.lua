@@ -13,7 +13,7 @@ M.toggle = function()
 		func = "toggle",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.toggle()
 end
@@ -74,7 +74,7 @@ M.move_far_up = function()
 		func = "move_far_up",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.move_far_up()
 end
@@ -85,7 +85,7 @@ M.move_far_down = function()
 		func = "move_far_down",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.move_far_down()
 end
@@ -96,7 +96,7 @@ M.move_far_left = function()
 		func = "move_far_left",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.move_far_left()
 end
@@ -107,8 +107,105 @@ M.move_far_right = function()
 		func = "move_far_right",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
-  adapter.move_far_right()
+	adapter.move_far_right()
 end
+
+M.go_left = function()
+	local message = {
+		module = "use_cases/window",
+		func = "go_left",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.go_left()
+end
+
+M.go_right = function()
+	local message = {
+		module = "use_cases/window",
+		func = "go_right",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.go_right()
+end
+
+M.go_up = function()
+	local message = {
+		module = "use_cases/window",
+		func = "go_left",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.go_up()
+end
+
+M.go_down = function()
+	local message = {
+		module = "use_cases/window",
+		func = "go_down",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.go_down()
+end
+
+M.move_left = function()
+	local message = {
+		module = "use_cases/window",
+		func = "move_left",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.move_left()
+end
+
+M.move_right = function()
+	local message = {
+		module = "use_cases/window",
+		func = "move_right",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.move_right()
+end
+
+M.move_up = function()
+	local message = {
+		module = "use_cases/window",
+		func = "move_up",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.move_up()
+end
+
+M.move_down = function()
+	local message = {
+		module = "use_cases/window",
+		func = "move_down",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.move_down()
+end
+
 return M

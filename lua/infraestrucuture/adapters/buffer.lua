@@ -8,7 +8,7 @@ local plugins = require("infraestrucuture.plugins.buffer")
 local outline = plugins.outline
 local bufferline = plugins.bufferline
 local bufdelete = plugins.bufdelete
-local builtin = file.builtin
+local builtin = file.telescope.builtin
 
 M.list = function()
 	local message = {
@@ -17,7 +17,7 @@ M.list = function()
 	}
 	logger_use_manage.debug(message)
 
-	builtin.buffers()
+	builtin.buffers({ sort_lastused = true })
 end
 
 M.delete = function()

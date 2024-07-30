@@ -7,6 +7,7 @@ local ok, jdtls = pcall(require, "jdtls")
 if not ok then
 	return
 end
+
 -- Failed to run config for nvim-jdtls
 --     │...local/share/nvim/lazy/lazy.nvim/lua/lazy/core/loader.lua:373: attempt to call field 'setup' (a table value)
 --      Projects/spaceconfig/spaceneovim/ftplugin/java.lua:6                                                      │
@@ -68,4 +69,5 @@ local config = {
 		bundles = {},
 	},
 }
+
 require("jdtls").start_or_attach(config)

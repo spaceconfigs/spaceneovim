@@ -1,7 +1,9 @@
 local documentation_use_case = require("application.use_cases.lsp")
 local completer_use_case = require("application.use_cases.completer")
+local hover_use_case = require("application.use_cases.hover")
 
 local unprefixed_content = {
+	{ key = "<C-w>", description = "Go windows", method = ":lua vim.notify('Use Spacemacs bind') <cr>" },
 	{ key = "<S-k>", description = "Show documentation", method = documentation_use_case.show_documentation },
 	{ key = "<C-Space>", mode = { "i", "c" }, description = "Drag line down", method = completer_use_case.complete },
 	{ key = "<M-j>", description = "Drag line down", method = ":m .+1==<CR>" },
@@ -12,6 +14,7 @@ local unprefixed_content = {
 	{ key = "<M-k>", mode = "i", description = "Drag line up", method = "<Esc>:m .-2<CR>==gi" },
 	{ key = "<C-BS>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
 	{ key = "<C-H>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
+	{ key = "<S-k>", description = "Hover", method = hover_use_case.toggle },
 }
 
 local result = {}

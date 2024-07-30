@@ -6,8 +6,6 @@ return {
 	},
 	{
 		"mfussenegger/nvim-jdtls",
-		ft = "java",
-		config = true,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
@@ -68,5 +66,9 @@ return {
 	{
 		"windwp/nvim-ts-autotag",
 		config = true,
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	},
 }

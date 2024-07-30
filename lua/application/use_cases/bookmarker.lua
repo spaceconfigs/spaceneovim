@@ -12,7 +12,7 @@ M.add = function()
 		func = "add",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.add()
 end
@@ -23,7 +23,7 @@ M.remove = function()
 		func = "remove",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.remove()
 end
@@ -34,7 +34,7 @@ M.remove_all = function()
 		func = "remove_all",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.remove_all()
 end
@@ -45,7 +45,7 @@ M.list = function()
 		func = "list",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	adapter.list()
 end

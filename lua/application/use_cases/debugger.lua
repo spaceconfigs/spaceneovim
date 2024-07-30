@@ -101,7 +101,7 @@ M.list_frames = function()
 		func = "list_frames",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	local widgets = require("dap.ui.widgets")
 

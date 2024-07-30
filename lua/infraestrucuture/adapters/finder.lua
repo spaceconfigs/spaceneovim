@@ -8,67 +8,6 @@ end
 local logger_use_manage = require("application.use_cases.logger")
 local actions = require("telescope.actions")
 
-telescope.setup({
-	defaults = {
-		path_display = {
-			-- shorten = {
-			--   len = 3, exclude = { 1, -1 }
-			-- },
-			-- tail=true,
-			truncate = true,
-		},
-		default_mappings = false,
-		file_ignore_patterns = { ".git/", "node_modules/*" },
-		mappings = {
-			i = {
-				["<DOWN>"] = actions.cycle_history_next,
-				["<UP>"] = actions.cycle_history_prev,
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
-				["<C-h>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<CR>"] = actions.select_default,
-				["<C-c>"] = actions.close,
-			},
-			n = {
-				o = false,
-				["<DOWN>"] = actions.cycle_history_next,
-				["<UP>"] = actions.cycle_history_prev,
-				["<C-n>"] = actions.move_selection_next,
-				["<C-p>"] = actions.move_selection_previous,
-				["<C-h>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<CR>"] = actions.select_default,
-				["<C-c>"] = actions.close,
-				["?"] = actions.which_key,
-			},
-		},
-	},
-	pickers = {
-		colorscheme = {
-			enable_preview = true,
-		},
-		grep_string = {
-			layout_strategy = "vertical",
-		},
-		live_grep = {
-			layout_strategy = "vertical",
-		},
-	},
-	mappings = {
-		i = {},
-		n = {},
-	},
-	extensions = {
-		{
-			override_generic_sorter = true, -- override the generic sorter
-			override_finder_sorter = true, -- override the file sorter
-			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-			-- the default case_mode is "smart_case"
-		},
-	},
-})
-
 telescope.load_extension("ui-select")
 telescope.load_extension("frecency")
 

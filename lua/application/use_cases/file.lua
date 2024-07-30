@@ -26,15 +26,21 @@ local copy_item = function(opt)
 	vim.fn.setreg("+", full_path)
 end
 
-M.oldfiles = function()
-	local message = {
-		module = "use_cases/file",
-		func = "oldfiles",
-	}
-	logger_use_case.debug(message)
-  local adapter = M.setup()
+M.oldfiles = function(opts)
+	return function()
+		local message = {
+			module = "use_cases/file",
+			func = "oldfiles",
+			opts = opts,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.oldfiles()
+		opts = opts or {}
+		opts.cwd_only = opts.cwd_only or false
+
+		adapter.oldfiles(opts)
+	end
 end
 
 M.list = function(opts)
@@ -45,10 +51,16 @@ M.list = function(opts)
 			opts = opts,
 		}
 		logger_use_case.debug(message)
-    local adapter = M.setup()
+		local adapter = M.setup()
+
+		opts = opts or {}
+		opts.location = opts.location or "file"
+		opts.path = file_util.pwd(opts)
+		opts.cwd_only = opts.cwd_only or false
 
 		adapter.list({
-			path = file_util.get_path(opts),
+			path = opts.path,
+			cwd_only = opts.cwd_only,
 		})
 	end
 end
@@ -59,12 +71,10 @@ M.search = function()
 		func = "search",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
-
-	local path = vim.fn.expand("%:h")
+	local adapter = M.setup()
 
 	adapter.search({
-		path = path,
+		path = file_util.path(),
 	})
 end
 
@@ -74,7 +84,7 @@ M.search_hover = function()
 		func = "search_hover",
 	}
 	logger_use_case.debug(message)
-  local adapter = M.setup()
+	local adapter = M.setup()
 
 	local path = vim.api.nvim_buf_get_name(0)
 	local text = vim.fn.expand("<cword>")

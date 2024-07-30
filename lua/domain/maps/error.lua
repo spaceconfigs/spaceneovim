@@ -1,4 +1,5 @@
 local buffer_use_case = require("application.use_cases.buffer")
+local diagnostic_use_case = require("application.use_cases.diagnostic")
 
 local maps = {
 	{ key = "l", description = "Buffer Diagnostics", method = buffer_use_case.diagnostics },

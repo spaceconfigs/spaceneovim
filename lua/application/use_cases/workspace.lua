@@ -2,6 +2,7 @@ local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
 local lsp_adapter = require("infraestrucuture.adapters.lsp")
+local file_usecase = require("application.use_cases.file")
 
 M.setup = function()
 	return require("infraestrucuture.adapters.workspace")
@@ -53,7 +54,8 @@ M.files = function()
 	logger_use_case.debug(message)
 	local adapter = M.setup()
 
-	adapter.files()
+	-- adapter.files()
+	file_usecase.list({ location = "profile" })()
 end
 
 M.search = function()
@@ -92,7 +94,7 @@ M.grep_input = function()
 	local adapter = M.setup()
 
 	local path = find_project_path()
-	local text = vim.fn.input("Grep symble: ")
+	local text = vim.fn.input("Grep symbol: ")
 
 	adapter.search({ cwd = path, text = text })
 end
@@ -103,6 +105,7 @@ M.diagnostics = function()
 		func = "diagnostics",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	lsp_adapter.diagnostics()
 end
