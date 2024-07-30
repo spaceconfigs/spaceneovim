@@ -1,4 +1,5 @@
 return {
+	-- { "xiyaowong/transparent.nvim", options = {}, lazy = false },
 	{
 		"LunarVim/bigfile.nvim",
 		event = "BufRead",
@@ -53,17 +54,17 @@ return {
 		config = true,
 		event = "BufRead",
 	},
-	{
-		"m4xshen/hardtime.nvim",
-		event = "BufRead",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {
-			disabled_keys = {
-				["<Up>"] = { "" },
-				["<Down>"] = { "" },
-				["<Left>"] = { "" },
-				["<Right>"] = { "" },
-			},
-		},
-	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	event = "BufRead",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	opts = {
+	-- 		disabled_keys = {
+	-- 			["<Up>"] = { "" },
+	-- 			["<Down>"] = { "" },
+	-- 			["<Left>"] = { "" },
+	-- 			["<Right>"] = { "" },
+	-- 		},
+	-- 	},
+	-- },
 }

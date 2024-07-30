@@ -92,7 +92,7 @@ M.grep_input = function()
 	local adapter = M.setup()
 
 	local path = find_project_path()
-	local text = vim.fn.input("Grep symble: ")
+	local text = vim.fn.input("Grep symbol: ")
 
 	adapter.search({ cwd = path, text = text })
 end
@@ -103,6 +103,7 @@ M.diagnostics = function()
 		func = "diagnostics",
 	}
 	logger_use_case.debug(message)
+	local adapter = M.setup()
 
 	lsp_adapter.diagnostics()
 end

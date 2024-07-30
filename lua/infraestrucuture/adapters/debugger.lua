@@ -126,7 +126,7 @@ M.focus_frame = function()
 	logger_use_manage.debug(message)
 	local plugin = setup().dap
 
-	dap.focus_frame()
+	plugin.focus_frame()
 end
 
 M.go_up = function()

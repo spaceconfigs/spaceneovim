@@ -1,21 +1,17 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
+local plugin = require("infraestrucuture.plugins.file")
 
-local setup = function()
-	local file = require("infraestrucuture.plugins.file")
-	return file.builtin
-end
-
-M.oldfiles = function()
+M.oldfiles = function(opts)
 	local message = {
 		module = "adapters/file",
 		func = "oldfiles",
+		opts = opts,
 	}
 	logger_use_manage.debug(message)
-	local builtin = setup()
 
-	builtin.oldfiles({ show_line = false })
+	plugin.telescope.builtin.oldfiles({ show_line = false, cwd_only = opts.cwd_only })
 end
 
 M.list = function(opts)
@@ -25,13 +21,19 @@ M.list = function(opts)
 		opts = opts,
 	}
 	logger_use_manage.debug(message)
-	local builtin = setup()
 
-	local cwd = opts and opts.path or nil
-	builtin.find_files({
+	local cwd = opts and opts.path
+
+	-- plugin.fzf.files({ prompt = "LS> ", cwd = cwd })
+	plugin.telescope.builtin.find_files({
+		hidden = true,
 		show_line = false,
 		cwd = cwd,
 	})
+	-- plugins.telescope.extensions.smart_open.smart_open({
+	-- 	show_line = false,
+	-- 	cwd_only = opts.cwd_only,
+	-- })
 end
 
 M.search = function(opts)
@@ -40,12 +42,11 @@ M.search = function(opts)
 		func = "search",
 	}
 	logger_use_manage.debug(message)
-	local builtin = setup()
 
 	opts = opts or {}
 
 	if opts.text ~= nil and opts.text ~= "" then
-		return builtin.grep_string({
+		return plugin.telescope.builtin.grep_string({
 			show_line = false,
 			search = opts.text,
 			search_dirs = {
@@ -54,7 +55,7 @@ M.search = function(opts)
 		})
 	end
 
-	builtin.live_grep({
+	plugin.telescope.builtin.live_grep({
 		show_line = false,
 		search_dirs = {
 			opts.path,

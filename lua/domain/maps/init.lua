@@ -21,6 +21,7 @@ local commenter_use_case = require("application.use_cases.commenter")
 local buffer_use_case = require("application.use_cases.buffer")
 local commander_use_case = require("application.use_cases.commander")
 local ui_map = require("domain.maps.ui")
+local yank_map = require("domain.maps.yank")
 
 local default_map = {
 	{ key = "<leader>", description = "Commands", method = commander_use_case.find },
@@ -80,6 +81,7 @@ for _, map in ipairs({
 	unprefixed_map,
 	selector_map,
 	ui_map,
+  yank_map,
 }) do
 	for _, content in pairs(map) do
 		table.insert(results, content)

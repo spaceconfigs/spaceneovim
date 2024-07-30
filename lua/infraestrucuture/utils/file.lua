@@ -1,6 +1,6 @@
 local M = {}
 
-M.get_path = function(opts)
+M.pwd = function(opts)
 	opts = opts or {}
 	opts.location = opts.location or "project"
 
@@ -16,4 +16,9 @@ M.get_path = function(opts)
 
 	return vim.fn.fnamemodify(path, ":h")
 end
+
+M.path = function()
+	return vim.fn.expand("%:p")
+end
+
 return M

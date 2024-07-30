@@ -35,4 +35,14 @@ M.lines = function()
 	hop.hint_lines()
 end
 
+M.remote = function()
+	local message = {
+		module = "adapters/jumper",
+		func = "remote",
+	}
+	logger_use_manage.debug(message)
+
+  flash.remote()
+end
+
 return M

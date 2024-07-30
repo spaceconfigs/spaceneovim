@@ -1,13 +1,13 @@
 local M = {}
 
-local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.keymapper")
+local logger_use_manage = require("application.use_cases.logger")
 
 local format_map = function(map)
 	return {
 		map.key,
-		desc = map.description,
 		map.method,
+		desc = map.description,
 		buffer = map.buffer,
 		silent = map.silent,
 		noremap = map.noremap,
@@ -20,6 +20,7 @@ local format_group = function(map)
 	return {
 		map.key,
 		group = map.description,
+		mode = map.mode,
 	}
 end
 

@@ -6,6 +6,7 @@ local noter_use_case = require("application.use_cases.noter")
 local formatter_use_case = require("application.use_cases.formatter")
 local database_use_case = require("application.use_cases.database")
 local screenshot_use_case = require("application.use_cases.screenshot")
+local hover_use_case = require("application.use_cases.hover")
 
 local format_content = {
 	{ key = "=", description = "Format" },
@@ -31,12 +32,12 @@ local goto_content = {
 
 local help_content = {
 	{ key = "h", description = "Help" },
-	{ key = "hh", description = "Show hover", method = vim.lsp.buf.hover },
+	{ key = "hh", description = "Show hover", method = hover_use_case.toggle },
 	{ key = "hH", description = "show signature help", method = vim.lsp.buf.signature_help },
 }
 
 local insert_content = {
-	{ key = "i", description = "Insert" },
+	{ key = "i", mode = { "n", "v" }, description = "Insert" },
 	{ key = "iDs", description = "Take screenshot", method = screenshot_use_case.copy, mode = "v" },
 	{ key = "iDS", description = "Save screenshot", method = screenshot_use_case.save, mode = "v" },
 	{ key = "iH", description = "Heading", method = noter_use_case.insert_heading },
@@ -82,7 +83,7 @@ end
 table.insert(result, {
 	key = "<leader>m",
 	description = "Major",
-	mode = "n",
+	mode = { "n", "v" },
 	buffer = nil,
 	silent = true,
 	noremap = true,

@@ -39,4 +39,14 @@ M.lines = function()
 	adapter.lines()
 end
 
+M.remote = function()
+	local message = {
+		module = "use_cases/remote",
+		func = "lines",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.remote()
+end
 return M

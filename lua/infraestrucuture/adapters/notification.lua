@@ -22,7 +22,7 @@ M.notify = function(opts)
 end
 
 M.dismiss = function()
-	plugin.dismiss()
+	plugin.dismiss({ pending = true, silent = true })
 end
 
 M.list = function()

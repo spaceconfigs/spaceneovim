@@ -1,13 +1,12 @@
-local M = {}
-
-local ok, plugin = pcall(require, "telescope")
-if not ok then
+local ok_telescope, telescope = pcall(require, "telescope")
+if not ok_telescope then
 	return vim.notify("Failed to require load `nvim-telescope/telescope.nvim`")
 end
 
 local actions = require("telescope.actions")
-plugin.setup({
+telescope.setup({
 	defaults = {
+		-- sorter = require("telescope.sorters").get_generic_fuzzy_sorter(),
 		path_display = {
 			-- shorten = {
 			--   len = 3, exclude = { 1, -1 }
@@ -16,7 +15,7 @@ plugin.setup({
 			truncate = true,
 		},
 		default_mappings = false,
-		file_ignore_patterns = { "node_modules/*" },
+		file_ignore_patterns = { "^.git/" },
 		mappings = {
 			i = {
 				["<S-DOWN>"] = actions.cycle_history_next,
@@ -41,7 +40,14 @@ plugin.setup({
 			},
 		},
 	},
+	-- file_sorter = function()
+	-- 	return require("telescope.sorters").get_generic_fuzzy_sorter()
+	-- end,
 	pickers = {
+		-- find_files = {
+		-- 	theme = "dropdown",
+		-- 	sorter = require("telescope.sorters").get_generic_fuzzy_sorter(),
+		-- },
 		colorscheme = {
 			enable_preview = true,
 		},
@@ -57,23 +63,34 @@ plugin.setup({
 		n = {},
 	},
 	extensions = {
-		extensions = {
-			frecency = {
-				auto_validate = false,
-				matcher = "fuzzy",
-				-- path_display = { "filename_first" },
-			},
+		smart_open = {
+			match_algorithm = "fzf",
+			-- disable_devicons = false,
+		},
+		frecency = {
+			auto_validate = false,
+			matcher = "fuzzy",
+			-- path_display = { "filename_first" },
 		},
 	},
 })
 
-plugin.load_extension("ui-select")
-plugin.load_extension("frecency")
+telescope.load_extension("ui-select")
+telescope.load_extension("frecency")
+telescope.load_extension("frecency")
 
 local result = {}
-for key, value in pairs(plugin) do
+for key, value in pairs(telescope) do
 	result[key] = value
 end
 result.builtin = require("telescope.builtin")
 
-return result
+local ok_fzf, fzf = pcall(require, "fzf-lua")
+if not ok_fzf then
+	return vim.notify("Failed to require load `ibhagwan/fzf-lua`")
+end
+
+return {
+	telescope = result,
+	fzf = fzf,
+}
