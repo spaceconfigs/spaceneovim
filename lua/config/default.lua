@@ -40,12 +40,11 @@ vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17"
 vim.opt.title = true
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
-vim.opt.cmdheight=0
+vim.opt.cmdheight = 0
 
 vim.lsp.set_log_level("off")
 vim.o.showtabline = 1
 vim.o.laststatus = 0
-
 
 vim.g.mapleader = "<space>"
 vim.g.maplocalleader = "<space>"
