@@ -3,73 +3,117 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 
-local setup = function()
-	local dap = require("infraestrucuture.plugin.nvim-dap")
-	local dapui = require("infraestrucuture.plugin.nvim-dap-ui")
-	local file = require("infraestrucuture.plugin.file")
+local debugger = require("infraestrucuture.plugins.debugger")
+local dap = debugger.dap
+local dapui = debugger.dapui
 
-	require("infraestrucuture.plugin.nvim-dap-virtual-text")
-	require("infraestrucuture.plugin.neodev")
+local file = require("infraestrucuture.plugins.file")
 
-	file.load_extension("dap")
-	local telescope_dap = file.extensions.dap
+file.telescope.load_extension("dap")
+local telescope_dap = file.telescope.extensions.dap
 
-	vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#993939" })
-	vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#61afef" })
-	vim.api.nvim_set_hl(0, "DapStopped", { fg = "#98c379" })
+vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#993939" })
+vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#61afef" })
+vim.api.nvim_set_hl(0, "DapStopped", { fg = "#98c379" })
 
-	vim.fn.sign_define("DapBreakpoint", { text = "󰝥", texthl = "DapBreakpoint" })
-	vim.fn.sign_define("DapBreakpointCondition", { text = "󰮍", texthl = "DapBreakpoint" })
-	vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DapBreakpoint" })
-	vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint" })
-	vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped" })
+vim.fn.sign_define("DapBreakpoint", { text = "󰝥", texthl = "DapBreakpoint" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "󰮍", texthl = "DapBreakpoint" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DapBreakpoint" })
+vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped" })
 
-	dap.listeners.after.event_stopped["dapui_config"] = function()
-		vim.api.nvim_command("doautocmd User DapStopped")
-	end
+dap.listeners.after.event_stopped["dapui_config"] = function()
+	vim.api.nvim_command("doautocmd User DapStopped")
+end
 
-	dap.listeners.before.event_terminated["dapui_config"] = function()
-		vim.api.nvim_command("doautocmd User DapTerminated")
-	end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	vim.api.nvim_command("doautocmd User DapTerminated")
+end
 
-	dap.listeners.before.event_exited["dapui_config"] = function()
-		vim.api.nvim_command("doautocmd User DapExited")
-	end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	vim.api.nvim_command("doautocmd User DapExited")
+end
 
-	dap.adapters["pwa-node"] = {
-		type = "server",
-		host = "localhost",
-		port = 8123,
-		executable = {
-			command = "js-debug-adapter",
+dap.adapters.chrome = {
+	type = "executable",
+	command = "chrome-debug-adapter",
+}
+
+dap.adapters["pwa-node"] = {
+	type = "server",
+	host = "localhost",
+	port = "${port}",
+	executable = {
+		command = "js-debug-adapter",
+	},
+}
+
+dap.adapters["node-terminal"] = {
+	type = "server",
+	host = "localhost",
+	port = 8123,
+	executable = {
+		command = "js-debug-adapter",
+	},
+}
+
+for _, language in ipairs({ "typescript", "javascript", "typescriptreact" }) do
+	dap.configurations[language] = {
+		{
+			type = "pwa-node",
+			request = "launch",
+			name = "Launch file",
+			program = "${file}",
+			cwd = "${workspaceFolder}",
 		},
-	}
-
-	for _, language in ipairs({ "typescript", "javascript" }) do
-		dap.configurations[language] = {
-			{
-				type = "pwa-node",
-				request = "launch",
-				name = "Launch file",
-				program = "${file}",
-				cwd = "${workspaceFolder}",
-			},
-			{
-				type = "pwa-node",
-				request = "attach",
-				name = "Attach",
-				processId = function()
-					return dap.utils.pick_process({ filter = "--inspect" })
-				end,
-				cwd = "${workspaceFolder}",
-			},
-		}
-	end
-	return {
-		dap = dap,
-		dapui = dapui,
-		file = file,
-		telescope_dap = telescope_dap,
+		{
+			type = "pwa-node",
+			request = "attach",
+			name = "Attach",
+			processId = function()
+				return dap.utils.pick_process({ filter = "--inspect" })
+			end,
+			cwd = "${workspaceFolder}",
+		},
+		{
+			name = "Next.js: launch server-side",
+			type = "node-terminal",
+			request = "launch",
+			command = "npm run dev",
+		},
+		{
+			name = "Next.js: launch client-side",
+			type = "chrome",
+			request = "launch",
+			runtimeExecutable = "/usr/bin/google-chrome-stable",
+			url = "http://localhost:3000",
+		},
+		{
+			name = "Next.js: attach client-side",
+			type = "chrome",
+			request = "attach",
+			program = "${file}",
+			cwd = vim.fn.getcwd(),
+			sourceMaps = true,
+			protocol = "inspector",
+			port = 9229,
+			webRoot = "${workspaceFolder}",
+		},
+		-- {
+		-- 	name = "Next.js: debug full stack",
+		-- 	type = "node",
+		-- 	request = "launch",
+		-- 	program = "${workspaceFolder}/node_modules/.bin/next",
+		-- 	runtimeArgs = { "--inspect" },
+		-- 	skipFiles = { "<node_internals>/**" },
+		-- 	serverReadyAction = {
+		-- 		action = "debugWithEdge",
+		-- 		killOnServerStop = true,
+		-- 		pattern = "- Local:.+(https?://.+)",
+		-- 		uriFormat = "%s",
+		-- 		webRoot = "${workspaceFolder}",
+		-- 	},
+		-- },
 	}
 end
 
@@ -79,9 +123,8 @@ M.clear_breakpoints = function()
 		func = "clear_breakpoints",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.clear_breakpoints()
+	dap.clear_breakpoints()
 end
 
 M.close = function()
@@ -90,10 +133,9 @@ M.close = function()
 		func = "close",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.terminate()
-	plugin.close()
+	dap.terminate()
+	dap.close()
 end
 
 M.continue = function()
@@ -102,9 +144,8 @@ M.continue = function()
 		func = "continue",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.continue()
+	dap.continue()
 end
 
 M.list_frames = function()
@@ -113,9 +154,8 @@ M.list_frames = function()
 		func = "list_frames",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.ui.widgets.centered_float(plugin.ui.widgets.frames)
+	dap.ui.widgets.centered_float(dap.ui.widgets.frames)
 end
 
 M.focus_frame = function()
@@ -124,9 +164,8 @@ M.focus_frame = function()
 		func = "focus_frame",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.focus_frame()
+	dap.focus_frame()
 end
 
 M.go_up = function()
@@ -135,9 +174,8 @@ M.go_up = function()
 		func = "go_up",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.up()
+	dap.up()
 end
 
 M.go_down = function()
@@ -146,9 +184,8 @@ M.go_down = function()
 		func = "go_down",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.down()
+	dap.down()
 end
 
 M.open = function()
@@ -157,9 +194,8 @@ M.open = function()
 		func = "open",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dapui
 
-	plugin.open()
+	dapui.open()
 end
 
 M.preview = function()
@@ -168,9 +204,8 @@ M.preview = function()
 		func = "preview",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.ui.widgets.preview()
+	dap.ui.widgets.preview()
 end
 
 M.set_exception_breakpoints = function()
@@ -179,9 +214,8 @@ M.set_exception_breakpoints = function()
 		func = "set_exception_breakpoints",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.set_exception_breakpoints()
+	dap.set_exception_breakpoints()
 end
 
 M.step_over = function()
@@ -190,9 +224,8 @@ M.step_over = function()
 		func = "step_over",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.step_over()
+	dap.step_over()
 end
 
 M.step_into = function()
@@ -201,9 +234,8 @@ M.step_into = function()
 		func = "step_into",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.step_into()
+	dap.step_into()
 end
 
 M.step_out = function()
@@ -212,9 +244,8 @@ M.step_out = function()
 		func = "step_out",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.step_out()
+	dap.step_out()
 end
 
 M.hover = function()
@@ -223,9 +254,8 @@ M.hover = function()
 		func = "hover",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.ui.widgets.hover()
+	dap.ui.widgets.hover()
 end
 
 M.list_breakpoints = function()
@@ -234,9 +264,8 @@ M.list_breakpoints = function()
 		func = "list_breakpoints",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().telescope_dap
 
-	plugin.list_breakpoints({ show_line = false })
+	telescope_dap.list_breakpoints({ show_line = false })
 end
 
 M.toggle_breakpoint = function()
@@ -245,9 +274,8 @@ M.toggle_breakpoint = function()
 		func = "toggle_breakpoint",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.toggle_breakpoint()
+	dap.toggle_breakpoint()
 end
 
 M.list_variables = function()
@@ -256,9 +284,8 @@ M.list_variables = function()
 		func = "list_variables",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.ui.widgets.centered_float(plugin.ui.widgets.scopes)
+	dap.ui.widgets.centered_float(dap.ui.widgets.scopes)
 end
 
 M.set_breakpoint = function(opts)
@@ -268,11 +295,10 @@ M.set_breakpoint = function(opts)
 		opts = opts,
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
 	local condition = opts and opts.condition or nil
 
-	plugin.set_breakpoint(condition)
+	dap.set_breakpoint(condition)
 end
 
 M.step_back = function()
@@ -281,9 +307,8 @@ M.step_back = function()
 		func = "step_back",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.step_back()
+	dap.step_back()
 end
 
 M.repl_toggle = function()
@@ -292,9 +317,8 @@ M.repl_toggle = function()
 		func = "repl_toggle",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.repl.toggle()
+	dap.repl.toggle()
 end
 
 M.run_last = function()
@@ -303,9 +327,8 @@ M.run_last = function()
 		func = "run_last",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.run_last()
+	dap.run_last()
 end
 
 M.run_to_cursor = function()
@@ -314,9 +337,8 @@ M.run_to_cursor = function()
 		func = "run_to_cursor",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.run_to_cursor()
+	dap.run_to_cursor()
 end
 
 M.restart_frame = function()
@@ -325,9 +347,8 @@ M.restart_frame = function()
 		func = "restart_frame",
 	}
 	logger_use_manage.debug(message)
-	local plugin = setup().dap
 
-	plugin.restart_frame()
+	dap.restart_frame()
 end
 
 return M
