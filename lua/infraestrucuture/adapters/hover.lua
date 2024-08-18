@@ -10,7 +10,8 @@ M.toggle = function()
 	}
 	logger_use_manage.debug(message)
 
-	plugin.hover()
+	-- plugin.hover()
+	vim.lsp.buf.hover()
 end
 
 return M
