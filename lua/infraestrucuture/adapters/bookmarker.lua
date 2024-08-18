@@ -1,9 +1,9 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local telescope = require("infraestrucuture.plugins.file")
+local file = require("infraestrucuture.plugins.file")
 local harpoon = require("infraestrucuture.plugins.harpoon")
-telescope.load_extension("harpoon")
+file.telescope.load_extension("harpoon")
 harpoon.ui.toggle_quick_menu = telescope.extensions.harpoon.marks
 
 M.add = function()

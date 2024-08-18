@@ -3,7 +3,8 @@ local M = {}
 
 local log_levels = require("domain.log_levels")
 local plugin = require("infraestrucuture.plugins.notification")
-local telescope = require("infraestrucuture.plugins.file")
+local file = require("infraestrucuture.plugins.file")
+telescope = file.telescope
 
 vim.opt.termguicolors = true
 

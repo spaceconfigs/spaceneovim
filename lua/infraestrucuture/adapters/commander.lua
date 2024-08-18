@@ -11,7 +11,7 @@ M.find = function(opts)
 	}
 	logger_use_manage.debug(message)
 
-	plugin.builtin.commands()
+	plugin.telescope.builtin.commands()
 end
-
 return M
+
