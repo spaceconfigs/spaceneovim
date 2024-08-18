@@ -10,7 +10,7 @@ M.open = function()
 	}
 	logger_use_manage.debug(message)
 
-	plugin.open()
+	-- plugin.open()
 end
 
 return M

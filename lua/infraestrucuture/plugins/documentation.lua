@@ -7,8 +7,8 @@ plugin.setup({
 	previewer_cmd = "glow",
 })
 
-plugin.open = function ()
-  vim.cmd(':DevdocsOpen')
+plugin.open = function()
+	vim.cmd(":DevdocsOpen")
 end
 
 return plugin
