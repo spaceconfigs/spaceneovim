@@ -1,6 +1,10 @@
 return {
 	-- { "xiyaowong/transparent.nvim", options = {}, lazy = false },
 	{
+		"jinh0/eyeliner.nvim",
+		lazy = false,
+	},
+	{
 		"LunarVim/bigfile.nvim",
 		event = "BufRead",
 		config = true,
