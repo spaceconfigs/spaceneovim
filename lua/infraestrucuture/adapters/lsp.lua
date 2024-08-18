@@ -14,7 +14,16 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", numhl = "DiagnosticDef
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", numhl = "DiagnosticDefault" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticDefault" })
 
-local capabilities = cmp_nvim_lsp.default_capabilities()
+local cmp_capabilities = cmp_nvim_lsp.default_capabilities()
+
+local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+
+local capabilities = vim.tbl_deep_extend("force", cmp_capabilities, lsp_capabilities)
+
 local language_servers = mason_lspconfig.get_installed_servers()
 for _, server in pairs(language_servers) do
 	local message = {

@@ -8,11 +8,11 @@ return {
 		"mfussenegger/nvim-jdtls",
 	},
 	{
-		"nvim-treesitter/nvim-treesitter-context",
+		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
+			"nvim-treesitter/nvim-treesitter-context",
+			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
-		opts = {},
 	},
 	{ "neovim/nvim-lspconfig" },
 	{
