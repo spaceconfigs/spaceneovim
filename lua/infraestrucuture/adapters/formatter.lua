@@ -12,8 +12,7 @@ M.format = function()
 
 	plugin.format({
 		lsp_fallback = true,
-		async = false,
-		timeout_ms = 1000,
+		async = true,
 	})
 end
 
