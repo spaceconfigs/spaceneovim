@@ -5,6 +5,7 @@ vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.conceallevel = 1
 vim.opt.fileencoding = "utf-8"
+vim.o.encoding = "utf-8"
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.mouse = "a"

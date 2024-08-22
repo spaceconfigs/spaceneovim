@@ -16,12 +16,6 @@ return {
 	},
 	{ "neovim/nvim-lspconfig" },
 	{
-		"nvimtools/none-ls.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-	},
-	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
 			"williamboman/mason.nvim",
