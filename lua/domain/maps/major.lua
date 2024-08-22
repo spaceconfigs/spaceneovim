@@ -7,6 +7,13 @@ local formatter_use_case = require("application.use_cases.formatter")
 local database_use_case = require("application.use_cases.database")
 local screenshot_use_case = require("application.use_cases.screenshot")
 local hover_use_case = require("application.use_cases.hover")
+local tester_use_case = require("application.use_cases.tester")
+
+local test_content = {
+	{ key = "t", description = "Test" },
+	{ key = "tb", description = "Buffer", method = tester_use_case.run() },
+	{ key = "tT", description = "Toggle", method = tester_use_case.toggle() },
+}
 
 local format_content = {
 	{ key = "=", description = "Format" },
@@ -74,6 +81,7 @@ for _, content in pairs({
 	refact_content,
 	toggle_content,
 	major_content,
+	test_content,
 }) do
 	for _, bind in pairs(content) do
 		table.insert(contents, bind)

@@ -11,4 +11,19 @@ end
 
 maximize.setup()
 
-return maximize
+local stickybuf_ok, stickybuf = pcall(require, "stickybuf")
+if not stickybuf_ok then
+	return vim.notify("Failed to load plugin `stevearc/stickybuf.nvim`")
+end
+stickybuf.setup()
+
+local zen_mode_ok, zen_mode = pcall(require, "zen-mode")
+if not zen_mode_ok then
+	return vim.notify("Failed to load plugin `folke/zen-mode.nvim`")
+end
+zen_mode.setup()
+
+return {
+	zen_mode = zen_mode,
+	maximize = maximize,
+}

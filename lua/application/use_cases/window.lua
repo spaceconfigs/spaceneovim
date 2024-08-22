@@ -208,4 +208,27 @@ M.move_down = function()
 	adapter.move_down()
 end
 
+M.dedicate = function()
+	local message = {
+		module = "use_cases/window",
+		func = "dedicate",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.dedicate()
+end
+
+M.center = function()
+	local message = {
+		module = "use_cases/window",
+		func = "center",
+	}
+
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.center()
+end
 return M

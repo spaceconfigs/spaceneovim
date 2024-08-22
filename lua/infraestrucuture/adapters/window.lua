@@ -2,6 +2,8 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.window")
+local maximize = plugin.maximize
+local zen_mode = plugin.zen_mode
 
 M.toggle = function()
 	local message = {
@@ -10,7 +12,7 @@ M.toggle = function()
 	}
 	logger_use_manage.debug(message)
 
-	plugin.toggle()
+	maximize.toggle()
 end
 
 M.go_right = function()
@@ -131,6 +133,26 @@ M.move_far_down = function()
 	logger_use_manage.debug(message)
 
 	vim.cmd("WinShift far_down")
+end
+
+M.dedicate = function()
+	local message = {
+		module = "adapters/window",
+		func = "dedicate",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("PinBuffer")
+end
+
+M.center = function()
+	local message = {
+		module = "adapters/window",
+		func = "center",
+	}
+	logger_use_manage.debug(message)
+
+	zen_mode.toggle()
 end
 
 return M
