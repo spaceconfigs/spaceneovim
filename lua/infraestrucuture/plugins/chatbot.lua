@@ -4,6 +4,7 @@ local ok_codegpt, codegpt = pcall(require, "codegpt")
 local ok_plenary, plenary = pcall(require, "plenary")
 local ok_ogpt, ogpt = pcall(require, "ogpt")
 local ok_chatgpt, chatgpt = pcall(require, "chatgpt")
+local ok_avante, avante = pcall(require, "avante")
 
 if not ok_codegpt then
 	return vim.notify("Failed to load plugin `dpayne/CodeGPT.nvim`")
@@ -29,7 +30,11 @@ if not ok_chatgpt then
 	return vim.notify("Failed to load plugin `jackMort/ChatGPT.nvim`")
 end
 
-local job_codegpt = plenary.job:new({
+if not ok_avante then
+	return vim.notify("Failed to load plugin `yetone/avante.nvim`")
+end
+
+local openai_job = plenary.job:new({
 	command = "pass",
 	args = { "show", "openai.com/token" },
 	on_exit = function(j)
@@ -37,8 +42,17 @@ local job_codegpt = plenary.job:new({
 		vim.g["codegpt_openai_api_key"] = result
 	end,
 })
+openai_job:start()
 
-job_codegpt:start()
+-- local claude_job = plenary.job:new({
+-- 	command = "pass",
+-- 	args = { "show", "anthropic.com/token" },
+-- 	on_exit = function(j)
+-- 		local result = table.concat(j:result(), "\n")
+-- 		vim.g["ANTHROPIC_API_KEY"] = result
+-- 	end,
+-- })
+-- claude_job:start()
 
 gen.setup({
 	model = "deepseek-coder",
@@ -64,3 +78,11 @@ llm.setup({
 		repository = "bigcode/starcoder",
 	},
 })
+
+avante.setup({
+	provider = "claude",
+})
+
+return {
+	avant = avante,
+}
