@@ -10,9 +10,18 @@ M.toggle = function()
 		func = "toggle",
 	}
 	logger_use_manage.debug(message)
-	local request = vim.fn.input("Chatbot: ")
 
-	vim.cmd(":Chat " .. request)
+	vim.cmd("AvanteAsk")
+end
+
+M.edit = function()
+	local message = {
+		module = "adapters/chatbot",
+		func = "edit",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("AvanteEdit")
 end
 
 return M

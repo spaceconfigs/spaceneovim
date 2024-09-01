@@ -17,4 +17,15 @@ M.toggle = function()
 	adapter.toggle()
 end
 
+M.edit = function()
+	local message = {
+		module = "use_cases/ai",
+		func = "edit",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.edit()
+end
+
 return M

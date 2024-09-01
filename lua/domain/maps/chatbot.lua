@@ -3,6 +3,7 @@ local use_case = require("application.use_cases.chatbot")
 local output_content = {
 	{ key = "o", description = "Output" },
 	{ key = "og", description = "Toggle", method = use_case.toggle },
+	{ key = "oe", mode = "v", description = "Edit", method = use_case.edit },
 }
 local chatbot_content = {}
 
@@ -29,7 +30,7 @@ table.insert(result, {
 for _, content in pairs(contents) do
 	local bind = vim.deepcopy(content)
 	bind.key = "<leader>$" .. bind.key
-	bind.mode = "n"
+	bind.mode = bind.mode or "n"
 	bind.buffer = nil
 	bind.silent = true
 	bind.noremap = true
