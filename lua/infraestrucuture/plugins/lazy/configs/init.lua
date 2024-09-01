@@ -1,5 +1,8 @@
 return {
-	-- { "xiyaowong/transparent.nvim", options = {}, lazy = false },
+	{ "HakonHarnes/img-clip.nvim", lazy = false },
+	{ "norcalli/nvim-colorizer.lua", options = {}, lazy = false },
+	{ "stevearc/dressing.nvim", options = {}, lazy = false },
+	{ "xiyaowong/transparent.nvim", options = {}, lazy = false },
 	{
 		"jinh0/eyeliner.nvim",
 		lazy = false,
@@ -35,6 +38,7 @@ return {
 	{
 		"tzachar/local-highlight.nvim",
 		event = "BufRead",
+		lazy = false,
 	},
 	-- {
 	-- 	"goolord/alpha-nvim",
@@ -53,22 +57,22 @@ return {
 		event = "InsertEnter",
 		config = true,
 	},
-	{
-		"tris203/precognition.nvim",
-		config = true,
-		event = "BufRead",
-	},
 	-- {
-	-- 	"m4xshen/hardtime.nvim",
+	-- 	"tris203/precognition.nvim",
+	-- 	config = true,
 	-- 	event = "BufRead",
-	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	-- 	opts = {
-	-- 		disabled_keys = {
-	-- 			["<Up>"] = { "" },
-	-- 			["<Down>"] = { "" },
-	-- 			["<Left>"] = { "" },
-	-- 			["<Right>"] = { "" },
-	-- 		},
-	-- 	},
 	-- },
+	{
+		"m4xshen/hardtime.nvim",
+		event = "BufRead",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {
+			disabled_keys = {
+				["<Up>"] = { "" },
+				["<Down>"] = { "" },
+				["<Left>"] = { "" },
+				["<Right>"] = { "" },
+			},
+		},
+	},
 }
