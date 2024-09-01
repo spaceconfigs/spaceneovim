@@ -150,15 +150,4 @@ M.lsp_implementations = function()
 	adapter.diagnostics()
 end
 
-M.diagnostics = function()
-	local message = {
-		module = "use_cases/buffer",
-		func = "diagnostics",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
-
-	adapter.diagnostics()
-end
-
 return M

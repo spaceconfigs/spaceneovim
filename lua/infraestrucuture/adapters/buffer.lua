@@ -81,16 +81,6 @@ M.lsp_symbols = function()
 	builtin.lsp_document_symbols()
 end
 
-M.diagnostics = function()
-	local message = {
-		module = "adapters/buffer",
-		func = "diagnostics",
-	}
-	logger_use_manage.debug(message)
-
-	builtin.diagnostics()
-end
-
 M.lsp_references = function()
 	local message = {
 		module = "adapters/buffer",

@@ -1,10 +1,10 @@
-local buffer_use_case = require("application.use_cases.buffer")
 local diagnostic_use_case = require("application.use_cases.diagnostic")
 
 local maps = {
-	{ key = "l", description = "Buffer Diagnostics", method = buffer_use_case.diagnostics },
-	{ key = "n", description = "Next Diagnostic", method = vim.diagnostic.goto_next },
-	{ key = "p", description = "Prev Diagnostic", method = vim.diagnostic.goto_prev },
+	{ key = "l", description = "List", method = diagnostic_use_case.toggle },
+	{ key = "n", description = "Next", method = diagnostic_use_case.show("next") },
+	{ key = "p", description = "Previous", method = diagnostic_use_case.show("previous") },
+	{ key = "x", description = "Show", method = diagnostic_use_case.show() },
 }
 
 local result = {}
