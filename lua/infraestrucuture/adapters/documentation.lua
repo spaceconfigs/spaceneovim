@@ -10,7 +10,8 @@ M.open = function()
 	}
 	logger_use_manage.debug(message)
 
-	-- plugin.open()
+	-- vim.cmd("DevdocsOpen")
+	vim.cmd("DevdocsOpenFloat")
 end
 
 return M
