@@ -1,7 +1,8 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local use_case = require("application.use_cases.lsp")
+local lsp_use_case = require("application.use_cases.lsp")
+-- local fold_use_case = require("application.use_cases.fold")
 
 M.onInit = function()
 	local message = {
@@ -10,7 +11,8 @@ M.onInit = function()
 	}
 	logger_use_case.debug(message)
 
-	use_case.setup()
+	lsp_use_case.setup()
+	-- fold_use_case.setup()
 end
 
 return M
