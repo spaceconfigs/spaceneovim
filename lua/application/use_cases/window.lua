@@ -220,15 +220,4 @@ M.dedicate = function()
 	adapter.dedicate()
 end
 
-M.center = function()
-	local message = {
-		module = "use_cases/window",
-		func = "center",
-	}
-
-	logger_use_case.debug(message)
-	local adapter = M.setup()
-
-	adapter.center()
-end
 return M

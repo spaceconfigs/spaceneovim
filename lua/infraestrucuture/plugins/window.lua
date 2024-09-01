@@ -17,13 +17,6 @@ if not stickybuf_ok then
 end
 stickybuf.setup()
 
-local zen_mode_ok, zen_mode = pcall(require, "zen-mode")
-if not zen_mode_ok then
-	return vim.notify("Failed to load plugin `folke/zen-mode.nvim`")
-end
-zen_mode.setup()
-
 return {
-	zen_mode = zen_mode,
 	maximize = maximize,
 }

@@ -1,10 +1,12 @@
 local window_use_case = require("application.use_cases.window")
+local zen_use_case = require("application.use_cases.zen")
 local notification_use_case = require("application.use_cases.notification")
 
 local center_content = {
 	{ key = "c", description = "Center" },
-	{ key = "cC", description = "Buffer", method = window_use_case.center },
-	-- { key = "C", description = "Dismiss messages", method = notification_use_case.dismiss },
+	{ key = "cC", description = "Buffer", method = zen_use_case.center },
+	{ key = "ca", description = "Area", mode = "v", method = zen_use_case.area },
+	{ key = "cz", description = "Zen", method = zen_use_case.toggle },
 }
 
 local pop_content = {
@@ -60,7 +62,7 @@ table.insert(result, {
 for _, content in pairs(contents) do
 	local bind = vim.deepcopy(content)
 	bind.key = "<leader>w" .. bind.key
-	bind.mode = "n"
+	bind.mode = bind.mode or "n"
 	bind.buffer = nil
 	bind.silent = true
 	bind.noremap = true

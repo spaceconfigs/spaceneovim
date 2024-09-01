@@ -145,14 +145,4 @@ M.dedicate = function()
 	vim.cmd("PinBuffer")
 end
 
-M.center = function()
-	local message = {
-		module = "adapters/window",
-		func = "center",
-	}
-	logger_use_manage.debug(message)
-
-	zen_mode.toggle()
-end
-
 return M
