@@ -17,10 +17,10 @@ spaceneovim draws inspiration from Spacemacs, aiming to bring its efficient, mne
 
 1. **Installation**: Clone this repository to your local machine and follow the installation instructions provided in the `INSTALL.md` file to set up the framework with Neovim.
 
-    ```bash
-    git clone https://github.com/yourusername/spaceneovim.git
-    cd spaceneovim
-    ```
+   ```bash
+   git clone https://github.com/yourusername/spaceneovim.git
+   cd spaceneovim
+   ```
 
 2. **Configuration**: Navigate to the `config` directory to customize your Neovim settings. We've provided a comprehensive guide in the `CONFIGURE.md` file to help you get started.
 
@@ -31,53 +31,61 @@ spaceneovim draws inspiration from Spacemacs, aiming to bring its efficient, mne
 The framework follows a Clean Architecture pattern to ensure a modular, scalable, and maintainable setup. Here is the structure of the configuration:
 
 <pre>
-~/.config/nvim
 ├── init.lua
-└── lua
-    ├── application
-    │   ├── events
-    │   │   ├── config.lua
-    │   │   ├── debugger.lua
-    │   │   └── init.lua
-    │   └── use_cases
-    │       ├── application.lua
-    │       ├── bookmarker.lua
-    │       ├── ...
-    │       ├── window.lua
-    │       └── workspace.lua
-    ├── config
-    │   ├── default.lua
-    │   └── init.lua
-    ├── domain
-    │   ├── environments.lua
-    │   ├── log_levels.lua
-    │   └── maps
-    │       ├── application.lua
-    │       ├── bookmarker.lua
-    │       ├── ...
-    │       ├── visual_mode.lua
-    │       └── window.lua
-    └── infrastructure
-        ├── adapters
-        │   ├── application.lua
-        │   ├── bookmarker.lua
-        │   ├── ...
-        │   ├── window.lua
-        │   └── workspace.lua
-        └── plugins
-            ├── lazy
-            │   ├── configs
-            │   │   ├── application.lua
-            │   │   ├── bookmarker.lua
-            │   │   ├── ...
-            │   │   ├── window.lua
-            │   │   └── workspace.lua
-            │   └── init.lua
-            ├── application.lua
-            ├── bookmarker.lua
-            ├── ...
-            ├── window.lua
-            └── workspaces.lua
+├── ftplugin
+│   ├── java.lua
+│   └── typescript.lua
+├── lua
+│   ├── application
+│   │   ├── hooks
+│   │   │   ├── init.lua
+│   │   │   ├── buffer.lua
+│   │   │   ├── ...
+│   │   │   └── lsp.lua
+│   │   └── use_cases
+│   │       ├── bookmarker.lua
+│   │       ├── buffer.lua
+│   │       ├── ...
+│   │       └── zen.lua
+│   ├── config
+│   │   ├── default.lua
+│   │   └── init.lua
+│   ├── domain
+│   │   ├── environments.lua
+│   │   ├── log_levels.lua
+│   │   └── maps
+│   │       ├── application.lua
+│   │       ├── buffer.lua
+│   │       ├── ...
+│   │       └── zoom.lua
+│   └── infraestrucuture
+│       ├── adapters
+│       │   ├── bookmarker.lua
+│       │   ├── buffer.lua
+│       │   ├── ...
+│       │   └── zen.lua
+│       ├── events
+│       │   ├── buffer.lua
+│       │   ├── init.lua
+│       │   └── lifecycle.lua
+│       ├── plugins
+│       │   ├── bookmarker.lua
+│       │   ├── buffer.lua
+│       │   ├── ...
+│       │   ├── lazy
+│       │   │   ├── configs
+│       │   │   │   ├── bookmarker.lua
+│       │   │   │   ├── buffer.lua
+│       │   │   │   ├── ...
+│       │   │   │   └── zen.lua
+│       │   │   └── init.lua
+│       │   ├── logger.lua
+│       │   ├── lsp.lua
+│       │   ├── ...
+│       │   └── zen.lua
+│       └── utils
+│           └── file.lua
+└── README.md
 </pre>
 
 ## Documentation 📚
