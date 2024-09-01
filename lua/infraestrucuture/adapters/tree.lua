@@ -34,8 +34,8 @@ M.toggle = function(opts)
 	}
 	logger_use_manage.debug(message)
 
-	oil.toggle_float(opts.location)
-	-- nvim_tree.toggle()
+	-- oil.toggle_float(opts.location)
+	nvim_tree.toggle()
 end
 
 return M
