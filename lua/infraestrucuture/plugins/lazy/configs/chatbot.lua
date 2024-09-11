@@ -40,7 +40,6 @@ return {
 					"nvim-lua/plenary.nvim",
 					"MunifTanjim/nui.nvim",
 					"nvim-tree/nvim-web-devicons",
-					"MeanderingProgrammer/render-markdown.nvim",
 				},
 			},
 		},

@@ -1,4 +1,19 @@
 return {
+	{ "ThePrimeagen/vim-be-good", lazy = false },
+	{
+		"3rd/image.nvim",
+		lazy = false,
+		config = true,
+		dependencies = {
+			{
+				"vhyrro/luarocks.nvim",
+				priority = 1001,
+				opts = {
+					rocks = { "magick" },
+				},
+			},
+		},
+	},
 	{ "HakonHarnes/img-clip.nvim", lazy = false },
 	{ "norcalli/nvim-colorizer.lua", options = {}, lazy = false },
 	{ "stevearc/dressing.nvim", options = {}, lazy = false },
@@ -6,6 +21,10 @@ return {
 	{
 		"jinh0/eyeliner.nvim",
 		lazy = false,
+		opts = {
+			highlight_on_key = true,
+			dim = true,
+		},
 	},
 	{
 		"LunarVim/bigfile.nvim",

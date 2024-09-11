@@ -3,7 +3,6 @@ local vim = vim
 vim.opt.background = "dark"
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
-vim.opt.conceallevel = 1
 vim.opt.fileencoding = "utf-8"
 vim.o.encoding = "utf-8"
 vim.opt.hlsearch = true
