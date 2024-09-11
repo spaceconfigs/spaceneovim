@@ -2,7 +2,7 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local file = require("infraestrucuture.plugins.file")
-local harpoon = require("infraestrucuture.plugins.harpoon")
+local harpoon = require("infraestrucuture.plugins.bookmarker")
 file.telescope.load_extension("harpoon")
 harpoon.ui.toggle_quick_menu = telescope.extensions.harpoon.marks
 
