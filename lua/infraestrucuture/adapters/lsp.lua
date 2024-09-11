@@ -40,6 +40,10 @@ for _, server in pairs(language_servers) do
 		config.cmd = { "jdtls", "--jvm-arg=-javaagent:" .. lombok }
 	end
 
+	if server == "tsserver" then
+		server = "ts_ls"
+	end
+
 	lspconfig[server].setup(config)
 end
 
@@ -172,4 +176,5 @@ M.info = function()
 
 	vim.cmd("LspInfo")
 end
+
 return M
