@@ -24,15 +24,21 @@ M.copy = function(options)
 	plugin.copy_into_clipboard()
 end
 
-M.save = function()
+M.save = function(options)
 	local message = {
 		module = "adapters/screenshot",
 		func = "save",
+		options = options,
 	}
 	logger_use_manage.debug(message)
 
 	vim.cmd("normal! :<Esc>")
-	plugin.highlight_mode_save_snapshot()
+
+	if options.type == "select" then
+		return plugin.highlight_mode_save_snapshot()
+	end
+
+	plugin.save_snapshot()
 end
 
 return M

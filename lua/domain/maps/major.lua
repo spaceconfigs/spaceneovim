@@ -45,15 +45,21 @@ local help_content = {
 
 local insert_content = {
 	{ key = "i", mode = { "n", "x" }, description = "Insert" },
-	{ key = "iDt", mode = "x", description = "Take screenshot", method = screenshot_use_case.copy({ type = "text" }) },
 	{
 		key = "iDh",
 		mode = "x",
-		description = "Take screenshot",
+		description = "Take highlight",
 		method = screenshot_use_case.copy({ type = "select" }),
 	},
+	{
+		key = "iDH",
+		mode = "x",
+		description = "Save highlight",
+		method = screenshot_use_case.save({ type = "select" }),
+	},
 	{ key = "iDs", mode = "x", description = "Take screenshot", method = screenshot_use_case.copy() },
-	{ key = "iDS", mode = "x", description = "Save screenshot", method = screenshot_use_case.save },
+	{ key = "iDS", mode = "x", description = "Save screenshot", method = screenshot_use_case.save() },
+	{ key = "iDt", mode = "x", description = "Text screenshot", method = screenshot_use_case.copy({ type = "text" }) },
 	{ key = "iH", description = "Heading", method = noter_use_case.insert_heading },
 	{ key = "in", description = "New note", method = noter_use_case.new },
 }

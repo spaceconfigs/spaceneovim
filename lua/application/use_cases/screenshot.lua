@@ -23,15 +23,21 @@ M.copy = function(options)
 	end
 end
 
-M.save = function()
-	local message = {
-		module = "use_cases/screenshot",
-		func = "save",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+M.save = function(options)
+	return function()
+		local message = {
+			module = "use_cases/screenshot",
+			func = "save",
+			options = options,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.save()
+		options = options or {}
+		options.type = options.type or ""
+
+		adapter.save(options)
+	end
 end
 
 return M
