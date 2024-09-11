@@ -1,13 +1,5 @@
 return {
-  {
-    "zaldih/themery.nvim",
-		priority = 1000,
-    lazy = false,
-  },
-
-	{
-		"EdenEast/nightfox.nvim",
-		priority = 1000,
-    lazy = false,
-	},
+	{ "zaldih/themery.nvim" },
+	{ "folke/tokyonight.nvim" },
+	{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 }
