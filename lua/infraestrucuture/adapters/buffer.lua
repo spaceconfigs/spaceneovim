@@ -5,7 +5,6 @@ local logger_use_manage = require("application.use_cases.logger")
 local file = require("infraestrucuture.plugins.file")
 local plugins = require("infraestrucuture.plugins.buffer")
 
-local outline = plugins.outline
 local bufferline = plugins.bufferline
 local bufdelete = plugins.bufdelete
 local builtin = file.telescope.builtin
@@ -68,17 +67,6 @@ M.messages = function()
 	logger_use_manage.debug(message)
 
 	vim.cmd("messages")
-end
-
-M.lsp_symbols = function()
-	local message = {
-		module = "adapters/buffer",
-		func = "lsp_symbols",
-	}
-	logger_use_manage.debug(message)
-
-	outline.open({ focus_outline = false })
-	builtin.lsp_document_symbols()
 end
 
 M.lsp_references = function()

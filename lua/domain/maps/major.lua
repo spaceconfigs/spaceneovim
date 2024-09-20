@@ -1,12 +1,12 @@
 local vim = vim
 local lsp_use_case = require("application.use_cases.lsp")
-local buffer_use_case = require("application.use_cases.buffer")
 local rest_use_case = require("application.use_cases.rest")
 local noter_use_case = require("application.use_cases.noter")
 local formatter_use_case = require("application.use_cases.formatter")
 local database_use_case = require("application.use_cases.database")
 local screenshot_use_case = require("application.use_cases.screenshot")
 local hover_use_case = require("application.use_cases.hover")
+local outline_use_case = require("application.use_cases.outline")
 local tester_use_case = require("application.use_cases.tester")
 
 local test_content = {
@@ -27,14 +27,25 @@ local database_content = {
 	{ key = "br", description = "Lsp restart", method = ":LspRestart<cr>" },
 }
 
+local jumpto_content = {
+	{ key = "G", description = "Jumpto" },
+	{ key = "Gd", description = "Definition", method = lsp_use_case.definition({ type = "remote" }) },
+	{ key = "Gi", description = "Implementation", method = lsp_use_case.implementation({ type = "remote" }) },
+	{ key = "Gk", description = "Documentation", method = lsp_use_case.show_documentation },
+	{ key = "GK", description = "Signature", method = lsp_use_case.show_signature },
+	{ key = "Gr", description = "References", method = lsp_use_case.references({ type = "remote" }) },
+	{ key = "GS", description = "References", method = outline_use_case.toggle },
+	{ key = "Gt", description = "Type-definition", method = lsp_use_case.typedefinition({ type = "remote" }) },
+}
+
 local goto_content = {
 	{ key = "g", description = "Goto" },
-	{ key = "gd", description = "Definition", method = lsp_use_case.go_definition },
-	{ key = "gi", description = "Implementation", method = lsp_use_case.go_implementation },
-	{ key = "gk", description = "Documentation", method = lsp_use_case.show_documentation },
-	{ key = "gK", description = "Signature", method = lsp_use_case.show_signature },
-	{ key = "gr", description = "References", method = lsp_use_case.go_references },
-	{ key = "gt", description = "Type-definition", method = lsp_use_case.go_typedefinition },
+	{ key = "gd", description = "Definition", method = lsp_use_case.definition() },
+	{ key = "gi", description = "Implementation", method = lsp_use_case.implementation() },
+	{ key = "gk", description = "Documentation", method = lsp_use_case.show_documentation() },
+	{ key = "gK", description = "Signature", method = lsp_use_case.show_signature() },
+	{ key = "gr", description = "References", method = lsp_use_case.references() },
+	{ key = "gt", description = "Type-definition", method = lsp_use_case.typedefinition() },
 }
 
 local help_content = {
@@ -89,6 +100,7 @@ for _, content in pairs({
 	format_content,
 	database_content,
 	goto_content,
+	jumpto_content,
 	help_content,
 	insert_content,
 	refact_content,

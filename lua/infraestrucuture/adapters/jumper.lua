@@ -5,14 +5,16 @@ local jump = require("infraestrucuture.plugins.jump")
 local hop = jump.hop
 local flash = jump.flash
 
-M.timer = function()
+M.timer = function(options)
 	local message = {
 		module = "adapters/jumper",
 		func = "words",
 	}
 	logger_use_manage.debug(message)
 
-	flash.jump()
+	flash.jump({
+		action = options.action,
+	})
 end
 
 M.words = function()
@@ -42,7 +44,7 @@ M.remote = function()
 	}
 	logger_use_manage.debug(message)
 
-  flash.remote()
+	flash.remote()
 end
 
 return M

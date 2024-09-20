@@ -5,9 +5,16 @@ end
 
 obsidian.setup({
 	workspaces = {
-		{
-			name = "Notes",
-			path = vim.fn.expand("~") .. "/Notes",
+		ui = { enable = false },
+		workspaces = {
+			{
+				name = "Personal",
+				path = vim.fn.expand("~") .. "/Notes",
+			},
+			{
+				name = "Work",
+				path = vim.fn.expand("~") .. "/Notes",
+			},
 		},
 	},
 })

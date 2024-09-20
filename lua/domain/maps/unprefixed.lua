@@ -1,6 +1,7 @@
 local documentation_use_case = require("application.use_cases.lsp")
 local completer_use_case = require("application.use_cases.completer")
 local hover_use_case = require("application.use_cases.hover")
+local jumper_use_case = require("application.use_cases.jumper")
 
 local unprefixed_content = {
 	{ key = "<C-w>", description = "Go windows", method = ":lua vim.notify('Use Spacemacs bind') <cr>" },
@@ -15,6 +16,7 @@ local unprefixed_content = {
 	{ key = "<C-BS>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
 	{ key = "<C-H>", mode = { "i", "c" }, description = "Delete previous word", method = "<C-w>" },
 	{ key = "<S-k>", description = "Hover", method = hover_use_case.toggle },
+	{ key = "r", mode = { "o" }, description = "Remote jump", method = jumper_use_case.remote },
 }
 
 local result = {}

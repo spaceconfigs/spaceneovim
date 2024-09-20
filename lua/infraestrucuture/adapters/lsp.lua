@@ -3,6 +3,7 @@ local M = {}
 
 require("infraestrucuture.plugins.treesitter")
 local logger_use_manage = require("application.use_cases.logger")
+local jumper_use_manage = require("application.use_cases.jumper")
 local plugin = require("infraestrucuture.plugins.lsp")
 
 local mason_lspconfig = plugin.mason_lspconfig
@@ -47,52 +48,111 @@ for _, server in pairs(language_servers) do
 	lspconfig[server].setup(config)
 end
 
-M.go_declaration = function()
+M.declaration = function(options)
 	local message = {
 		module = "adapters/lsp",
-		func = "go_declaration",
+		func = "declaration",
+		options = options,
 	}
 	logger_use_manage.debug(message)
+
+	if options.type == "remote" then
+		return jumper_use_manage.timer({
+			action = function(match)
+				vim.api.nvim_win_call(match.win, function()
+					vim.api.nvim_win_set_cursor(match.win, match.pos)
+					vim.lsp.buf.declaration()
+				end)
+			end,
+		})
+	end
 
 	vim.lsp.buf.declaration()
 end
 
-M.go_definition = function()
+M.definition = function(options)
 	local message = {
 		module = "adapters/lsp",
-		func = "go_definition",
+		func = "definition",
+		options = options,
 	}
 	logger_use_manage.debug(message)
+
+	if options.type == "remote" then
+		return jumper_use_manage.timer({
+			action = function(match)
+				vim.api.nvim_win_call(match.win, function()
+					vim.api.nvim_win_set_cursor(match.win, match.pos)
+					vim.lsp.buf.definition()
+				end)
+			end,
+		})
+	end
 
 	vim.lsp.buf.definition()
 end
 
-M.go_implementation = function()
+M.implementation = function(options)
 	local message = {
 		module = "adapters/lsp",
-		func = "go_implementation",
+		func = "implementation",
+		options = options,
 	}
 	logger_use_manage.debug(message)
+
+	if options.type == "remote" then
+		return jumper_use_manage.timer({
+			action = function(match)
+				vim.api.nvim_win_call(match.win, function()
+					vim.api.nvim_win_set_cursor(match.win, match.pos)
+					vim.lsp.buf.implementation()
+				end)
+			end,
+		})
+	end
 
 	vim.lsp.buf.implementation()
 end
 
-M.go_references = function()
+M.references = function(options)
 	local message = {
 		module = "adapters/lsp",
-		func = "go_references",
+		func = "references",
+		options = options,
 	}
 	logger_use_manage.debug(message)
+
+	if options.type == "remote" then
+		return jumper_use_manage.timer({
+			action = function(match)
+				vim.api.nvim_win_call(match.win, function()
+					vim.api.nvim_win_set_cursor(match.win, match.pos)
+					vim.lsp.buf.references()
+				end)
+			end,
+		})
+	end
 
 	vim.lsp.buf.references()
 end
 
-M.go_typedefinition = function()
+M.typedefinition = function(options)
 	local message = {
 		module = "adapters/lsp",
-		func = "go_typedefinition",
+		func = "typedefinition",
 	}
 	logger_use_manage.debug(message)
+
+	if options.type == "remote" then
+		return jumper_use_manage.timer({
+			action = function(match)
+				vim.api.nvim_win_call(match.win, function()
+					vim.api.nvim_win_set_cursor(match.win, match.pos)
+					vim.lsp.buf.type_definition()
+				end)
+			end,
+		})
+	end
 
 	vim.lsp.buf.type_definition()
 end

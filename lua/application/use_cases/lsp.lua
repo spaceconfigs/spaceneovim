@@ -12,59 +12,89 @@ M.setup = function()
 	return require("infraestrucuture.adapters.lsp")
 end
 
-M.go_declaration = function()
-	local message = {
-		module = "use_cases/lsp",
-		func = "go_declaration",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+M.declaration = function(options)
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "declaration",
+			options = options,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.go_declaration()
+		options = options or {}
+		options.type = options.type or "local"
+
+		adapter.declaration()
+	end
 end
 
-M.go_definition = function()
-	local message = {
-		module = "use_cases/lsp",
-		func = "go_definition",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+M.definition = function(options)
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "definition",
+			options = options,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.go_definition()
+		options = options or {}
+		options.type = options.type or "local"
+
+		adapter.definition(options)
+	end
 end
 
-M.go_implementation = function()
-	local message = {
-		module = "use_cases/lsp",
-		func = "go_implementation",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+M.implementation = function(options)
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "implementation",
+			options = options,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.go_implementation()
+		options = options or {}
+		options.type = options.type or "local"
+
+		adapter.implementation(options)
+	end
 end
 
-M.go_references = function()
-	local message = {
-		module = "use_cases/lsp",
-		func = "go_references",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+M.references = function(options)
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "references",
+			options = options,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.go_references()
+		options = options or {}
+		options.type = options.type or "local"
+
+		adapter.references(options)
+	end
 end
 
-M.go_typedefinition = function()
-	local message = {
-		module = "use_cases/lsp",
-		func = "go_typedefinition",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+M.typedefinition = function(options)
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "typedefinition",
+			options = options,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.go_typedefinition()
+		options = options or {}
+		options.type = options.type or "local"
+
+		adapter.typedefinition(options)
+	end
 end
 
 M.show_signature = function()

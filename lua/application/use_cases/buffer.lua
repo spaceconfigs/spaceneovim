@@ -106,17 +106,6 @@ M.list_persp = function()
 	adapter.list_persp()
 end
 
-M.lsp_symbols = function()
-	local message = {
-		module = "use_cases/buffer",
-		func = "lsp_symbols",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
-
-	adapter.lsp_symbols()
-end
-
 M.lsp_references = function()
 	local message = {
 		module = "use_cases/buffer",
