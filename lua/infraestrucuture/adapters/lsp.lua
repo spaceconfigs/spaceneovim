@@ -9,6 +9,7 @@ local plugin = require("infraestrucuture.plugins.lsp")
 local mason_lspconfig = plugin.mason_lspconfig
 local lspconfig = plugin.lspconfig
 local cmp_nvim_lsp = plugin.cmp_nvim_lsp
+local builtin = plugin.telescope.builtin
 
 vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticDefault" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", numhl = "DiagnosticDefault" })
@@ -235,6 +236,16 @@ M.info = function()
 	logger_use_manage.debug(message)
 
 	vim.cmd("LspInfo")
+end
+
+M.get_symbol = function()
+	local message = {
+		module = "adapters/lsp",
+		func = "get_symbol",
+	}
+	logger_use_manage.debug(message)
+
+	builtin.lsp_document_symbols({ show_line = false })
 end
 
 return M

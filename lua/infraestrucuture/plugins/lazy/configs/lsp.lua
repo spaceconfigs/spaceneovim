@@ -73,4 +73,8 @@ return {
 			"echasnovski/mini.nvim",
 		},
 	},
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 }

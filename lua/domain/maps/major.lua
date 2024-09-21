@@ -34,7 +34,8 @@ local jumpto_content = {
 	{ key = "Gk", description = "Documentation", method = lsp_use_case.show_documentation },
 	{ key = "GK", description = "Signature", method = lsp_use_case.show_signature },
 	{ key = "Gr", description = "References", method = lsp_use_case.references({ type = "remote" }) },
-	{ key = "GS", description = "References", method = outline_use_case.toggle },
+	{ key = "Gs", description = "Get symbol", method = lsp_use_case.get_symbol },
+	{ key = "GS", description = "Outline toggle", method = outline_use_case.toggle },
 	{ key = "Gt", description = "Type-definition", method = lsp_use_case.typedefinition({ type = "remote" }) },
 }
 

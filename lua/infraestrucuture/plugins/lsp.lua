@@ -29,6 +29,17 @@ if not ok_render_markdown then
 	return
 end
 
+local ok, telescope = pcall(require, "telescope")
+if not ok then
+	return vim.notify("Failed to require package `telescope`")
+end
+
+local result = {}
+for key, value in pairs(telescope) do
+	result[key] = value
+end
+result.builtin = require("telescope.builtin")
+
 -- vim.o.conceallevel = 2
 -- vim.o.concealcursor = "i"
 
@@ -62,4 +73,5 @@ return {
 	mason_lspconfig = mason_lspconfig,
 	lspconfig = lspconfig,
 	cmp_nvim_lsp = cmp_nvim_lsp,
+	telescope = result,
 }

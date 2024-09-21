@@ -185,4 +185,15 @@ M.info = function()
 	adapter.info()
 end
 
+M.get_symbol = function()
+	local message = {
+		module = "use_cases/get_symbol",
+		func = "info",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.get_symbol()
+end
+
 return M

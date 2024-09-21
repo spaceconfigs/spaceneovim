@@ -63,16 +63,6 @@ M.grep = function(opts)
 	})
 end
 
-M.lsp_document_symbols = function()
-	local message = {
-		module = "adapters/finder",
-		func = "lsp_document_symbols",
-	}
-	logger_use_manage.debug(message)
-
-	builtin.lsp_document_symbols({ show_line = false })
-end
-
 M.help_tags = function()
 	local message = {
 		module = "adapters/finder",
