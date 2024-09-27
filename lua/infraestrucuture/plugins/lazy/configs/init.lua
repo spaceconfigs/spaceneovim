@@ -42,19 +42,6 @@ return {
 		config = true,
 	},
 	{
-		"nvim-lualine/lualine.nvim",
-		event = "BufRead",
-		config = function()
-			require("lualine").setup({
-				options = {
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
-					globalstatus = true,
-				},
-			})
-		end,
-	},
-	{
 		"tzachar/local-highlight.nvim",
 		event = "BufRead",
 		lazy = false,

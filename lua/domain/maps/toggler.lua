@@ -1,4 +1,10 @@
 local linenumber_use_case = require("application.use_cases.linenumber")
+local statusline_use_case = require("application.use_cases.statusline")
+
+local statusline_content = {
+	{ key = "m", description = "Statusline" },
+	{ key = "mT", description = "Toggle", method = statusline_use_case.toggle },
+}
 
 local numberline_content = {
 	{ key = "n", description = "Line-number" },
@@ -14,6 +20,7 @@ local toggler_content = {
 local result = {}
 local contents = {}
 for _, content in pairs({
+	statusline_content,
 	numberline_content,
 	toggler_content,
 }) do
