@@ -7,6 +7,7 @@ local database_use_case = require("application.use_cases.database")
 local screenshot_use_case = require("application.use_cases.screenshot")
 local hover_use_case = require("application.use_cases.hover")
 local outline_use_case = require("application.use_cases.outline")
+local pomodoro_use_case = require("application.use_cases.pomodoro")
 local tester_use_case = require("application.use_cases.tester")
 
 local test_content = {
@@ -25,6 +26,11 @@ local database_content = {
 	{ key = "bc", description = "Open", method = database_use_case.open },
 	{ key = "bd", description = "Lsp info", method = lsp_use_case.info },
 	{ key = "br", description = "Lsp restart", method = ":LspRestart<cr>" },
+}
+
+local capture_content = {
+	{ key = "C", description = "database" },
+	{ key = "Cp", description = "Start pomodoro", method = pomodoro_use_case.start },
 }
 
 local jumpto_content = {
@@ -108,6 +114,7 @@ for _, content in pairs({
 	toggle_content,
 	major_content,
 	test_content,
+	capture_content,
 }) do
 	for _, bind in pairs(content) do
 		table.insert(contents, bind)
