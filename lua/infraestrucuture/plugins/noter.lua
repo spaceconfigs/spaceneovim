@@ -4,17 +4,11 @@ if not ok then
 end
 
 obsidian.setup({
+	ui = { enable = false },
 	workspaces = {
-		ui = { enable = false },
-		workspaces = {
-			{
-				name = "Personal",
-				path = vim.fn.expand("~") .. "/Notes",
-			},
-			{
-				name = "Work",
-				path = vim.fn.expand("~") .. "/Notes",
-			},
+		{
+			name = "Personal",
+			path = vim.fn.expand("~") .. "/Notes",
 		},
 	},
 })
