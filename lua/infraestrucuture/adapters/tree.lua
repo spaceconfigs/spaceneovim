@@ -4,7 +4,6 @@ local logger_use_manage = require("application.use_cases.logger")
 local tree = require("infraestrucuture.plugins.tree")
 
 local nvim_tree = tree.nvim_tree
-local oil = tree.oil
 
 M.open = function()
 	local message = {
@@ -34,7 +33,6 @@ M.toggle = function(opts)
 	}
 	logger_use_manage.debug(message)
 
-	-- oil.toggle_float(opts.location)
 	nvim_tree.toggle()
 end
 

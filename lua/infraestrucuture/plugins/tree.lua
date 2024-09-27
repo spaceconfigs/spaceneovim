@@ -3,11 +3,6 @@ if not ok then
   return vim.notify("Failed to load plugin `nvim-tree/nvim-tree.lua`")
 end
 
-local ok_oil, oil = pcall(require, "oil")
-if not ok_oil then
-  return vim.notify("Failed to load plugin `stevearc/oil.nvim`")
-end
-
 local nvim_tree_api = require("nvim-tree.api")
 
 local on_attach = function(bufnr)
@@ -76,30 +71,7 @@ plugin.setup({
   },
 })
 
-oil.setup({
-  keymaps = {
-    ["?"] = "actions.show_help",
-    ["<CR>"] = "actions.select",
-    ["oo"] = "actions.select",
-    ["ov"] = "actions.select_vsplit",
-    ["oh"] = "actions.select_split",
-    ["<C-t>"] = "actions.select_tab",
-    ["<C-p>"] = "actions.preview",
-    ["q"] = "actions.close",
-    ["<C-l>"] = "actions.refresh",
-    ["<S-h>"] = "actions.parent",
-    ["_"] = "actions.open_cwd",
-    ["`"] = "actions.cd",
-    ["~"] = "actions.tcd",
-    ["gs"] = "actions.change_sort",
-    ["gx"] = "actions.open_external",
-    ["th"] = "actions.toggle_hidden",
-    ["g\\"] = "actions.toggle_trash",
-  },
-})
-
 local nvim_tree = require("nvim-tree.api").tree
 return {
   nvim_tree = nvim_tree,
-  oil = oil
 }
