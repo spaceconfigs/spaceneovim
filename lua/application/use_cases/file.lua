@@ -8,9 +8,9 @@ M.setup = function()
 	return require("infraestrucuture.adapters.file")
 end
 
-local copy_item = function(opt)
-	local full_path = vim.fn.expand(opt.wildcards)
-	if opt.is_project then
+local copy_item = function(options)
+	local full_path = vim.fn.expand(options.wildcards)
+	if options.is_project then
 		local handle = io.popen("git rev-parse --show-toplevel")
 		local project_root_path = handle:read("*a")
 		handle:close()
@@ -19,11 +19,12 @@ local copy_item = function(opt)
 		full_path = full_path:sub(#git_root + 2)
 	end
 
-	if opt.without_extention then
+	if options.without_extention then
 		full_path = full_path:match("(.+)%..+") or full_path
 	end
 
 	vim.fn.setreg("+", full_path)
+	return full_path
 end
 
 M.oldfiles = function(opts)
@@ -123,7 +124,8 @@ M.copy_path = function()
 	}
 	logger_use_case.debug(message)
 
-	copy_item({ wildcards = "%:p" })
+	local result = copy_item({ wildcards = "%:p" })
+	vim.notify("Copied " .. result)
 end
 
 M.copy_project_path = function()
@@ -133,10 +135,11 @@ M.copy_project_path = function()
 	}
 	logger_use_case.debug(message)
 
-	copy_item({
+	local result = copy_item({
 		is_project = true,
 		wildcards = "%:p",
 	})
+	vim.notify("Copied " .. result)
 end
 
 M.copy_name = function()
@@ -146,7 +149,8 @@ M.copy_name = function()
 	}
 	logger_use_case.debug(message)
 
-	copy_item({ wildcards = "%:t" })
+	local result = copy_item({ wildcards = "%:t" })
+	vim.notify("Copied " .. result)
 end
 
 M.copy_name_no_extention = function()
@@ -156,10 +160,11 @@ M.copy_name_no_extention = function()
 	}
 	logger_use_case.debug(message)
 
-	copy_item({
+	local result = copy_item({
 		without_extention = true,
 		wildcards = "%:t",
 	})
+	vim.notify("Copied " .. result)
 end
 
 M.copy_folder_path = function()
@@ -168,7 +173,9 @@ M.copy_folder_path = function()
 		func = "copy_folder_path",
 	}
 	logger_use_case.debug(message)
-	copy_item({ wildcards = "%:p:h" })
+
+	local result = copy_item({ wildcards = "%:p:h" })
+	vim.notify("Copied " .. result)
 end
 
 M.copy_project_folder_path = function()
@@ -177,10 +184,12 @@ M.copy_project_folder_path = function()
 		func = "copy_folder_path",
 	}
 	logger_use_case.debug(message)
-	copy_item({
+
+	local result = copy_item({
 		is_project = true,
 		wildcards = "%:p:h",
 	})
+	vim.notify("Copied " .. result)
 end
 
 return M
