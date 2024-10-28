@@ -1,0 +1,9 @@
+---@meta
+--- Contract for the layout controller.
+---@class LayoutContract
+---@field list fun(): ControllerAction
+---@field reload fun(): ControllerAction
+---@field save fun(): ControllerAction
+---@field delete fun(): ControllerAction
+---@field rename fun(): ControllerAction
+---@field previous fun(): ControllerAction
