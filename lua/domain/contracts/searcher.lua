@@ -1,0 +1,10 @@
+---@meta
+--- Contract for the searcher controller.
+---@class SearcherContract
+---@field oldfiles fun(opts?: { cwd_only?: boolean }): ControllerAction
+---@field search fun(opts?: { location?: "buffer"|"project"|"directory", in_live?: boolean }): ControllerAction
+---@field search_selection fun(opts?: { location?: "buffer"|"project" }): ControllerAction
+---@field search_hover fun(opts?: { location?: "buffer"|"project"|"directory" }): ControllerAction
+---@field resume fun(opts?: table): ControllerAction
+---@field search_link_next fun(): ControllerAction
+---@field search_link_previous fun(): ControllerAction

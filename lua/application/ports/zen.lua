@@ -1,0 +1,6 @@
+---@meta
+--- Output port for the zen feature. Implemented by lua/infrastructure/adapters/zen.lua.
+---@class ZenPort
+---@field toggle fun(): nil
+---@field center fun(): nil
+---@field area fun(): nil
