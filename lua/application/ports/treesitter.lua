@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the treesitter feature. Implemented by lua/infrastructure/adapters/treesitter.lua.
+---@class TreesitterPort
+---@field setup fun(): nil

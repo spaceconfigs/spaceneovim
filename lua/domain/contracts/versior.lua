@@ -1,0 +1,11 @@
+---@meta
+--- Contract for the versior controller.
+---@class VersiorContract
+---@field blame fun(opts?: { location?: "file"|"line" }): ControllerAction
+---@field open fun(): ControllerAction
+---@field stage_file fun(): ControllerAction
+---@field unstage_file fun(): ControllerAction
+---@field browse fun(): ControllerAction
+---@field branches fun(): ControllerAction
+---@field log fun(): ControllerAction
+---@field jump_file fun(opts?: { direction?: "next"|"previous" }): ControllerAction
