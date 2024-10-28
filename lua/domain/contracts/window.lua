@@ -1,0 +1,14 @@
+---@meta
+--- Contract for the window controller.
+---@class WindowContract
+---@field toggle fun(opts?: {}): ControllerAction
+---@field go fun(opts: { direction: "up"|"down"|"left"|"right" }): ControllerAction
+---@field move fun(opts: { direction: "up"|"down"|"left"|"right" }): ControllerAction
+---@field move_far fun(opts: { direction: "up"|"down"|"left"|"right" }): ControllerAction
+---@field resize fun(opts: { axis: "width"|"height", delta: integer }): ControllerAction
+---@field balance_area fun(opts?: {}): ControllerAction
+---@field go_to fun(opts: { number: integer }): ControllerAction
+---@field close fun(opts?: {}): ControllerAction
+---@field split fun(opts: { type: "split"|"vsplit", previous?: boolean }): ControllerAction
+---@field layout fun(opts: { count: integer }): ControllerAction
+---@field dedicate fun(): ControllerAction

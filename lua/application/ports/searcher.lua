@@ -1,0 +1,8 @@
+---@meta
+--- Output port for the searcher feature. Implemented by lua/infrastructure/adapters/searcher.lua.
+---@class SearcherPort
+---@field search fun(opts?: table): any
+---@field resume fun(opts?: table): nil
+---@field search_link_next fun(): nil
+---@field search_link_previous fun(): nil
+---@field keymaps fun(): nil

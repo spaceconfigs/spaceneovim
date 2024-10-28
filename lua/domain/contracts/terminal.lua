@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the terminal controller.
+---@class TerminalContract
+---@field toggle fun(options?: { type?: "internal"|"external", location?: "file"|"project", path?: string }): ControllerAction

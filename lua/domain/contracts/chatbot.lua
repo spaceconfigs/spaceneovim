@@ -1,0 +1,18 @@
+---@meta
+--- Contract for the chatbot controller.
+---@class ChatbotContract
+---@field toggle fun(): ControllerAction
+---@field focus fun(): ControllerAction
+---@field send fun(): ControllerAction
+---@field add_buffer fun(): ControllerAction
+---@field add_file fun(): ControllerAction
+---@field add fun(): ControllerAction
+---@field select_model fun(): ControllerAction
+---@field diff_accept fun(): ControllerAction
+---@field diff_deny fun(): ControllerAction
+---@field add_word fun(): ControllerAction
+---@field add_selection fun(): ControllerAction
+---@field status fun(): ControllerAction
+---@field resume fun(): ControllerAction
+---@field continue fun(): ControllerAction
+---@field open_hub fun(): ControllerAction
