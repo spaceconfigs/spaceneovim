@@ -1,0 +1,13 @@
+---@meta
+--- Contract for the lsp controller.
+---@class LspContract
+---@field navigate fun(opts: { type: "definition"|"implementation"|"references"|"typedefinition", options?: table }): ControllerAction
+---@field show_signature fun(): ControllerAction
+---@field show_documentation fun(): ControllerAction
+---@field show_code_action fun(): ControllerAction
+---@field format fun(): ControllerAction
+---@field diagnostics fun(): ControllerAction
+---@field info fun(): ControllerAction
+---@field restart fun(): ControllerAction
+---@field rename fun(): ControllerAction
+---@field get_symbol fun(): ControllerAction

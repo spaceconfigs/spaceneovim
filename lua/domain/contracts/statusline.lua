@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the statusline controller.
+---@class StatuslineContract
+---@field toggle fun(): ControllerAction

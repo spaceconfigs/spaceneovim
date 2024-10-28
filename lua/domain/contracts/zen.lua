@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the zen controller.
+---@class ZenContract
+---@field toggle fun(): ControllerAction
+---@field center fun(): ControllerAction
+---@field area fun(): ControllerAction
