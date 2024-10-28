@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the packager controller.
+---@class PackagerContract
+---@field install fun(): ControllerAction
+---@field update fun(): ControllerAction

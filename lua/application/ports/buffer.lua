@@ -1,0 +1,10 @@
+---@meta
+--- Output port for the buffer feature. Implemented by lua/infrastructure/adapters/buffer.lua.
+---@class BufferPort
+---@field list fun(): nil          Open the buffer picker
+---@field delete fun(): nil        Close the current buffer
+---@field next fun(): nil          Go to the next buffer
+---@field previous fun(): nil      Go to the previous buffer
+---@field reopen fun(): nil        Reopen the last-closed buffer
+---@field messages fun(): nil      Show the :messages buffer
+---@field close_others fun(): nil  Close all buffers except the current one

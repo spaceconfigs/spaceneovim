@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the fold feature. Implemented by lua/infrastructure/adapters/fold.lua.
+---@class FoldPort
+---@field fold fun(action?: string, opts?: table): nil
