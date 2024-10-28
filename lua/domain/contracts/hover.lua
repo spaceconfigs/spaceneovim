@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the hover adapter.
+---@class HoverAdapter
+---@field toggle fun(): nil
+---@field dismiss fun(): nil

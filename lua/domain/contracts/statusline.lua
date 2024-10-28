@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the statusline adapter.
+---@class StatuslineAdapter
+---@field toggle fun(): nil

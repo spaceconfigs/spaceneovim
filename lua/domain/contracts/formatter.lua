@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the formatter adapter.
+---@class FormatterAdapter
+---@field format fun(): nil

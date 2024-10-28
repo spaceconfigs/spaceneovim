@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the zoom adapter.
+---@class ZoomAdapter
+---@field change fun(opts?: table): any

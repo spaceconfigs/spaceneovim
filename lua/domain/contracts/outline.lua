@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the outline adapter.
+---@class OutlineAdapter
+---@field toggle fun(): nil

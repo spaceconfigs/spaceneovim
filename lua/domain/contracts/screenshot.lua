@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the screenshot adapter.
+---@class ScreenshotAdapter
+---@field capture fun(action?: string, options?: table): nil

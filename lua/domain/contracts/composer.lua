@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the composer adapter.
+---@class ComposerAdapter
+---@field open fun(opts?: table): nil

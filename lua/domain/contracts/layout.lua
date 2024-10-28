@@ -1,0 +1,9 @@
+---@meta
+--- Contract for the layout adapter.
+---@class LayoutAdapter
+---@field list fun(): nil
+---@field save fun(): nil
+---@field reload fun(): nil
+---@field delete fun(): nil
+---@field previous fun(): nil
+---@field rename fun(): nil

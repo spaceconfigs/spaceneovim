@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the database adapter.
+---@class DatabaseAdapter
+---@field open fun(): nil

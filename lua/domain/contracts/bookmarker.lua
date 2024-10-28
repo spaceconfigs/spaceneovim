@@ -1,0 +1,7 @@
+---@meta
+--- Contract for the bookmarker adapter.
+---@class BookmarkerAdapter
+---@field add fun(): nil
+---@field remove fun(): nil
+---@field remove_all fun(): nil
+---@field list fun(): nil

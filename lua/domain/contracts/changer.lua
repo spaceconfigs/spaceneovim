@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the changer adapter.
+---@class ChangerAdapter
+---@field list fun(): nil

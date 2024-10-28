@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the pomodoro adapter.
+---@class PomodoroAdapter
+---@field start fun(): nil
+---@field status fun(): any

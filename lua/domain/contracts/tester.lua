@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the tester adapter.
+---@class TesterAdapter
+---@field toggle fun(): nil
+---@field run fun(): nil

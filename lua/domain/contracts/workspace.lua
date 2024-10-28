@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the workspace adapter.
+---@class WorkspaceAdapter
+---@field open fun(): nil
+---@field add fun(opts?: table): nil

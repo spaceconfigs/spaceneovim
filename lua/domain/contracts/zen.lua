@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the zen adapter.
+---@class ZenAdapter
+---@field toggle fun(): nil
+---@field center fun(): nil
+---@field area fun(): nil

@@ -1,0 +1,9 @@
+---@meta
+--- Contract for the editor adapter.
+---@class EditorAdapter
+---@field drag fun(opts?: table): nil
+---@field paragraph fun(direction?: string): nil
+---@field paste fun(position?: string): nil
+---@field delete_word fun(): nil
+---@field terminal_escape fun(): nil
+---@field noop fun(): nil

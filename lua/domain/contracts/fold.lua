@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the fold adapter.
+---@class FoldAdapter
+---@field fold fun(action?: string, opts?: table): nil

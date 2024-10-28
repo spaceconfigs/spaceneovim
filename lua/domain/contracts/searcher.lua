@@ -1,0 +1,7 @@
+---@meta
+--- Contract for the searcher adapter.
+---@class SearcherAdapter
+---@field search fun(opts?: table): any
+---@field resume fun(opts?: table): nil
+---@field search_link_next fun(): nil
+---@field search_link_previous fun(): nil

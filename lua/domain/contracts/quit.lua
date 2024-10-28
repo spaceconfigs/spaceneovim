@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the quit adapter.
+---@class QuitAdapter
+---@field quit fun(opts?: table): nil
+---@field restart fun(): nil

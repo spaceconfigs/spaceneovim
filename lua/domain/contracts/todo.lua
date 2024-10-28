@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the todo adapter.
+---@class TodoAdapter
+---@field list fun(): nil

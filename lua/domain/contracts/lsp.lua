@@ -1,0 +1,13 @@
+---@meta
+--- Contract for the lsp adapter.
+---@class LspAdapter
+---@field navigate fun(type?: string, options?: table): nil
+---@field restart fun(): nil
+---@field rename fun(): nil
+---@field show_signature fun(): nil
+---@field show_documentation fun(): nil
+---@field show_code_action fun(): nil
+---@field format fun(): nil
+---@field diagnostics fun(): nil
+---@field info fun(): nil
+---@field get_symbol fun(): nil
