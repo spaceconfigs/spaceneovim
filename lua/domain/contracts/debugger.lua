@@ -1,0 +1,22 @@
+---@meta
+--- Contract for the debugger controller.
+---@class DebuggerContract
+---@field clear_breakpoints fun(): ControllerAction
+---@field close fun(): ControllerAction
+---@field continue fun(): ControllerAction
+---@field focus_frame fun(): ControllerAction
+---@field go fun(opts: { direction: "up"|"down" }): ControllerAction
+---@field hover fun(): ControllerAction
+---@field list_breakpoints fun(): ControllerAction
+---@field list_frames fun(): ControllerAction
+---@field open fun(): ControllerAction
+---@field preview fun(): ControllerAction
+---@field set_exception_breakpoints fun(): ControllerAction
+---@field step fun(opts: { type: "into"|"out"|"over"|"back" }): ControllerAction
+---@field set_breakpoint fun(): ControllerAction
+---@field toggle_breakpoint fun(): ControllerAction
+---@field repl_toggle fun(): ControllerAction
+---@field run_last fun(): ControllerAction
+---@field run_to_cursor fun(): ControllerAction
+---@field restart_frame fun(): ControllerAction
+---@field list_variables fun(): ControllerAction

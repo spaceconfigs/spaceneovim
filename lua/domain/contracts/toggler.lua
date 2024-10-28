@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the toggler controller.
+---@class TogglerContract
+---@field number fun(): ControllerAction
+---@field wrap fun(): ControllerAction

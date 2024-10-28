@@ -1,0 +1,6 @@
+---@meta
+--- Output port for the documentation feature. Implemented by lua/infrastructure/adapters/documentation.lua.
+---@class DocumentationPort
+---@field open fun(): nil
+---@field install fun(): nil
+---@field remove fun(): nil
