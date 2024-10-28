@@ -1,0 +1,3 @@
+-- local plugin = require("typescript-tools")
+--
+-- plugin.setup({})
