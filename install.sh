@@ -5,4 +5,4 @@ echo "-------------> Instalando Neovim"
 # $pminstall sxhkd
 
 echo "-------------> Configurando Neovim"
-ln -sf $(pwd) ~/.config/nvim
+ln -sf . ~/.config/install

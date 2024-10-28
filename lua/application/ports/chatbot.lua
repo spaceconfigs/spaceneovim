@@ -1,0 +1,8 @@
+---@meta
+--- Output port for the chatbot feature. Implemented by lua/infrastructure/adapters/chatbot.lua.
+---@class ChatbotPort
+---@field toggle fun(): nil
+---@field open fun(): nil
+---@field close fun(): nil
+---@field send fun(target?: string): nil
+---@field switch fun(): nil

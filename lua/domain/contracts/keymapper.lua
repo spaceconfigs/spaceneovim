@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the keymapper controller.
+---@class KeymapperContract
+---@field activate_transient fun(opts: { keys: string }): ControllerAction
