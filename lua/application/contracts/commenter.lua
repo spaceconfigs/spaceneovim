@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the commenter use case. Implemented by lua/application/usecases/commenter.lua.
+---@class CommenterUseCase
+---@field setup fun(): CommenterPort
+---@field toggle_current_line_visual_mode fun(): nil
+---@field toggle_current_line fun(): nil

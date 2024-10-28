@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the todo use case. Implemented by lua/application/usecases/todo.lua.
+---@class TodoUseCase
+---@field setup fun(): TodoPort
+---@field list fun(): nil

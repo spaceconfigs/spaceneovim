@@ -1,0 +1,7 @@
+---@meta
+--- Inbound contract for the tree use case. Implemented by lua/application/usecases/tree.lua.
+---@class TreeUseCase
+---@field setup fun(): TreePort
+---@field open fun(): nil
+---@field close fun(): nil
+---@field toggle fun(opts?: { location: string? }): nil

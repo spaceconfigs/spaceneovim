@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the database use case. Implemented by lua/application/usecases/database.lua.
+---@class DatabaseUseCase
+---@field setup fun(): DatabasePort
+---@field open fun(): nil

@@ -1,0 +1,145 @@
+local vim = vim
+
+local make_logged = require("application.helpers.make_logged")
+local jumper_usecase = require("application.usecases.jumper")
+local plugin = require("infrastructure.plugins.plugin_registry").lsp()
+local mason_lspconfig = plugin.mason_lspconfig
+local blink_cmp = plugin.blink_cmp
+local snacks = plugin.snacks
+
+local severity = vim.diagnostic.severity
+vim.diagnostic.config({
+  signs = {
+    text = {
+      -- [severity.ERROR] = " ",
+      [severity.ERROR] = " ", -- error
+      -- [severity.WARN] = " ",
+      [severity.WARN] = " ", -- warning
+      -- [severity.INFO] = " ",
+      [severity.INFO] = " ", -- info
+      -- [severity.HINT] = "󰌵",
+      [severity.HINT] = "󰌶", -- hint (added a nice lightbulb icon)
+    },
+  },
+})
+
+local blink_capabilities = blink_cmp.get_lsp_capabilities()
+local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+
+local capabilities = vim.tbl_deep_extend("force", blink_capabilities, lsp_capabilities)
+
+local servers = mason_lspconfig.get_installed_servers()
+
+local mason_tsc = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "tsc")
+
+local server_overrides = {
+  tsc = {
+    cmd = { mason_tsc, "--lsp", "--stdio" },
+  },
+  eslint = {
+    root_dir = function(bufnr, on_dir)
+      local root = vim.fs.root(
+        bufnr,
+        { "eslint.config.js", "eslint.config.mjs", "eslint.config.cjs", ".eslintrc.json", ".eslintrc.js", ".eslintrc" }
+      )
+
+      if root then
+        on_dir(root)
+      end
+    end,
+  },
+}
+
+for _, server in ipairs(servers) do
+  local config = vim.tbl_deep_extend("force", { capabilities = capabilities }, server_overrides[server] or {})
+
+  -- require('lspconfig')[server].setup(config)
+  vim.lsp.config(server, config)
+end
+
+vim.lsp.enable(servers)
+
+local navigate_dispatch = {
+  declaration = function()
+    snacks.picker.lsp_declarations()
+  end,
+  definition = function()
+    snacks.picker.lsp_definitions()
+  end,
+  implementation = function()
+    vim.lsp.buf.implementation()
+  end,
+  references = function()
+    snacks.picker.lsp_references()
+  end,
+  typedefinition = function()
+    vim.lsp.buf.type_definition()
+  end,
+}
+
+---@type LspPort
+local M = {
+  navigate = function(type, options)
+    local action = navigate_dispatch[type]
+
+    if options.type == "remote" then
+      jumper_usecase.timer({
+        action = function(match)
+          vim.api.nvim_win_call(match.win, function()
+            vim.api.nvim_win_set_cursor(match.win, match.pos)
+            action()
+          end)
+        end,
+      })
+      return
+    end
+
+    action()
+  end,
+
+  restart = function()
+    for _, client in ipairs(vim.lsp.get_clients()) do
+      client:stop()
+    end
+
+    vim.cmd("edit")
+  end,
+
+  rename = function()
+    vim.lsp.buf.rename()
+  end,
+
+  show_signature = function()
+    vim.lsp.buf.signature_help()
+  end,
+
+  show_documentation = function()
+    vim.lsp.buf.hover()
+  end,
+
+  show_code_action = function()
+    vim.lsp.buf.code_action()
+  end,
+
+  format = function()
+    vim.lsp.buf.format({ async = true })
+  end,
+
+  diagnostics = function()
+    vim.lsp.diagnostic()
+  end,
+
+  info = function()
+    vim.cmd("LspInfo")
+  end,
+
+  get_symbol = function()
+    snacks.picker.lsp_symbols()
+  end,
+}
+
+return make_logged("adapters/lsp", M)

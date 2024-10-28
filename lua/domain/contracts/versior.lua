@@ -1,0 +1,17 @@
+---@meta
+--- Contract for the versior controller.
+---@class VersiorContract
+---@field blame fun(opts?: { location?: "file"|"line" }): ControllerAction
+---@field open fun(): ControllerAction
+---@field stage_file fun(): ControllerAction
+---@field unstage_file fun(): ControllerAction
+---@field browse fun(): ControllerAction
+---@field branches fun(): ControllerAction
+---@field log fun(): ControllerAction
+---@field jump_file fun(opts?: { direction?: "next"|"previous" }): ControllerAction
+---@field time_machine fun(): ControllerAction
+---@field review fun(): ControllerAction
+---@field pull_request fun(): ControllerAction
+---@field pull_requests fun(opts?: { author: ("mine"|"others")?, drafts: boolean? }): ControllerAction
+---@field reload_pull_request fun(): ControllerAction
+---@field notifications fun(opts?: { status: ("unread"|"read"|"all")? }): ControllerAction

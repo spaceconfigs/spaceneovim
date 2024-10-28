@@ -1,0 +1,7 @@
+---@meta
+--- Inbound contract for the bookmarker use case. Implemented by lua/application/usecases/bookmarker.lua.
+---@class BookmarkerUseCase
+---@field setup fun(): BookmarkerPort
+---@field add fun(): nil
+---@field remove fun(): nil
+---@field list fun(): nil

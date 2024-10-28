@@ -1,0 +1,10 @@
+---@meta
+--- Inbound contract for the logger use case. Implemented by lua/application/usecases/logger.lua.
+---@class LoggerUseCase
+---@field setup fun(): LoggerPort
+---@field setup_lsp_log fun(): nil
+---@field log fun(opts: { message: any, level: LogLevel }): nil
+---@field debug fun(message: any): nil
+---@field info fun(message: any): nil
+---@field warn fun(message: any): nil
+---@field error fun(message: any): nil

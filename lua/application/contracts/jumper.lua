@@ -1,0 +1,8 @@
+---@meta
+--- Inbound contract for the jumper use case. Implemented by lua/application/usecases/jumper.lua.
+---@class JumperUseCase
+---@field setup fun(): JumperPort
+---@field timer fun(options?: table): nil
+---@field words fun(): nil
+---@field lines fun(): nil
+---@field remote fun(): nil

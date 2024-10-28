@@ -1,0 +1,25 @@
+---@meta
+--- Inbound contract for the notebook use case. Implemented by lua/application/usecases/notebook.lua.
+---@class NotebookUseCase
+---@field setup fun(): NotebookPort
+---@field activate_transient fun(): nil
+---@field send_motion fun(opts?: table): nil
+---@field send_line fun(opts?: table): nil
+---@field send_file fun(opts?: table): nil
+---@field send_until_cursor fun(opts?: table): nil
+---@field send_mark fun(opts?: { mark: string? }): nil
+---@field repl_here fun(opts?: table): nil
+---@field repl_restart fun(opts?: table): nil
+---@field interrupt fun(opts?: table): nil
+---@field exit fun(opts?: table): nil
+---@field clear fun(opts?: table): nil
+---@field focus fun(opts?: table): nil
+---@field toggle fun(opts?: table): nil
+---@field goto_cell fun(opts?: { direction: ("next"|"previous")? }): nil
+---@field delete_cell fun(opts?: table): nil
+---@field insert_cell fun(opts?: { position: ("above"|"below")? }): nil
+---@field execute_cell fun(opts?: table): nil
+---@field execute_and_goto_next fun(opts?: table): nil
+---@field save fun(opts?: table): nil
+---@field toggle_output_visibility fun(opts?: { action: ("show"|"hide")? }): nil
+---@field reevaluate_cell fun(opts?: table): nil

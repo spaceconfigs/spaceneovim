@@ -1,0 +1,7 @@
+---@meta
+--- Inbound contract for the documentation use case. Implemented by lua/application/usecases/documentation.lua.
+---@class DocumentationUseCase
+---@field setup fun(): DocumentationPort
+---@field open fun(): nil
+---@field install fun(): nil
+---@field remove fun(): nil

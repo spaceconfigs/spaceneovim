@@ -1,0 +1,12 @@
+---@meta
+--- Inbound contract for the searcher use case. Implemented by lua/application/usecases/searcher.lua.
+---@class SearcherUseCase
+---@field setup fun(): SearcherPort
+---@field search fun(opts?: { location: ("buffer"|"project"|"directory")?, in_live: boolean? }): nil
+---@field search_selection fun(opts?: { location: ("buffer"|"project")? }): nil
+---@field search_input fun(opts?: { location: ("buffer"|"project"|"directory")? }): nil
+---@field search_hover fun(opts?: { location: ("buffer"|"project"|"directory")? }): nil
+---@field resume fun(): nil
+---@field search_link_next fun(): nil
+---@field search_link_previous fun(): nil
+---@field keymaps fun(): nil

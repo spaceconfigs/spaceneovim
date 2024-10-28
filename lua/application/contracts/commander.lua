@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the commander use case. Implemented by lua/application/usecases/commander.lua.
+---@class CommanderUseCase
+---@field setup fun(): CommanderPort
+---@field find fun(): nil

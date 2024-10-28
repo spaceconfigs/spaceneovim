@@ -1,0 +1,21 @@
+---@meta
+--- Output port for the debugger feature. Implemented by lua/infrastructure/adapters/debugger.lua.
+---@class DebuggerPort
+---@field clear_breakpoints fun(): nil
+---@field close fun(): nil
+---@field continue fun(): nil
+---@field list_frames fun(): nil
+---@field focus_frame fun(): nil
+---@field go fun(direction?: string): nil
+---@field open fun(): nil
+---@field preview fun(): nil
+---@field set_exception_breakpoints fun(): nil
+---@field step fun(type?: string): nil
+---@field hover fun(): nil
+---@field toggle_breakpoint fun(): nil
+---@field list_variables fun(): nil
+---@field set_breakpoint fun(opts?: table): nil
+---@field repl_toggle fun(): nil
+---@field run_last fun(): nil
+---@field run_to_cursor fun(): nil
+---@field restart_frame fun(): nil

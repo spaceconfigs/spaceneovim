@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the quit use case. Implemented by lua/application/usecases/quit.lua.
+---@class QuitUseCase
+---@field setup fun(): QuitPort
+---@field quit fun(opts?: { save: boolean? }): nil
+---@field restart fun(): nil

@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the changer use case. Implemented by lua/application/usecases/changer.lua.
+---@class ChangerUseCase
+---@field setup fun(): ChangerPort
+---@field list fun(): nil

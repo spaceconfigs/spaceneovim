@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the hover use case. Implemented by lua/application/usecases/hover.lua.
+---@class HoverUseCase
+---@field setup fun(): HoverPort
+---@field toggle fun(): nil
+---@field dismiss fun(): nil

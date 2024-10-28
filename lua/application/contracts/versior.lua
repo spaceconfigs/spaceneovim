@@ -1,0 +1,18 @@
+---@meta
+--- Inbound contract for the versior use case. Implemented by lua/application/usecases/versior.lua.
+---@class VersiorUseCase
+---@field setup fun(): VersiorPort
+---@field blame fun(opts?: { location: ("file"|"line")? }): nil
+---@field open fun(): nil
+---@field stage_file fun(): nil
+---@field unstage_file fun(): nil
+---@field browse fun(): nil
+---@field branches fun(): nil
+---@field log fun(): nil
+---@field jump_file fun(opts?: { direction: ("next"|"previous")? }): nil
+---@field time_machine fun(): nil
+---@field review fun(): nil
+---@field pull_request fun(): nil
+---@field pull_requests fun(opts?: { author: ("mine"|"others")?, drafts: boolean? }): nil
+---@field reload_pull_request fun(): nil
+---@field notifications fun(opts?: { status: ("unread"|"read"|"all")? }): nil

@@ -1,0 +1,11 @@
+---@meta
+--- Inbound contract for the noter use case. Implemented by lua/application/usecases/noter.lua.
+---@class NoterUseCase
+---@field setup fun(): NoterPort
+---@field new fun(): nil
+---@field list fun(): nil
+---@field dismiss fun(): nil
+---@field find fun(): nil
+---@field toggle_checkbox fun(): nil
+---@field todo_next_state fun(): nil
+---@field insert_heading fun(): nil

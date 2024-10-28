@@ -1,0 +1,10 @@
+---@meta
+--- Inbound contract for the layout use case. Implemented by lua/application/usecases/layout.lua.
+---@class LayoutUseCase
+---@field setup fun(): LayoutPort
+---@field list fun(): nil
+---@field reload fun(): nil
+---@field save fun(): nil
+---@field delete fun(): nil
+---@field rename fun(): nil
+---@field previous fun(): nil

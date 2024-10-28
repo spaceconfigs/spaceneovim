@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the formatter use case. Implemented by lua/application/usecases/formatter.lua.
+---@class FormatterUseCase
+---@field setup fun(): FormatterPort
+---@field format fun(): nil
