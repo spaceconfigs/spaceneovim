@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the selector controller.
+---@class SelectorContract
+---@field quit fun(): ControllerAction
+---@field all_selected fun(): ControllerAction

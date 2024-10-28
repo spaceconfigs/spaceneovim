@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the composer feature. Implemented by lua/infrastructure/adapters/composer.lua.
+---@class ComposerPort
+---@field open fun(opts?: table): nil

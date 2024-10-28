@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the documentation controller.
+---@class DocumentationContract
+---@field open fun(): ControllerAction
+---@field install fun(): ControllerAction
