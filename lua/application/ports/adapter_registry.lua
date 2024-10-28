@@ -1,0 +1,53 @@
+--- Application-owned lazy port registry (composition seam). Infrastructure
+--- populates these resolvers at bootstrap; use cases read their port from here
+--- (require("application.ports.adapter_registry").<name>()) instead of importing infrastructure.
+---@class AdapterRegistry
+---@field bookmarker fun(): BookmarkerPort
+---@field buffer fun(): BufferPort
+---@field changer fun(): ChangerPort
+---@field chatbot fun(): ChatbotPort
+---@field commander fun(): CommanderPort
+---@field commenter fun(): CommenterPort
+---@field completer fun(): CompleterPort
+---@field composer fun(): ComposerPort
+---@field database fun(): DatabasePort
+---@field debugger fun(): DebuggerPort
+---@field diagnostic fun(): DiagnosticPort
+---@field documentation fun(): DocumentationPort
+---@field editor fun(): EditorPort
+---@field file fun(): FilePort
+---@field fold fun(): FoldPort
+---@field formatter fun(): FormatterPort
+---@field hover fun(): HoverPort
+---@field jumper fun(): JumperPort
+---@field keymapper fun(): KeymapperPort
+---@field layout fun(): LayoutPort
+---@field logger fun(): LoggerPort
+---@field lsp fun(): LspPort
+---@field notebook fun(): NotebookPort
+---@field noter fun(): NoterPort
+---@field notification fun(): NotificationPort
+---@field outline fun(): OutlinePort
+---@field packager fun(): PackagerPort
+---@field pomodoro fun(): PomodoroPort
+---@field quit fun(): QuitPort
+---@field rest fun(): RestPort
+---@field screenshot fun(): ScreenshotPort
+---@field searcher fun(): SearcherPort
+---@field selector fun(): SelectorPort
+---@field statusline fun(): StatuslinePort
+---@field terminal fun(): TerminalPort
+---@field tester fun(): TesterPort
+---@field theme fun(): ThemePort
+---@field todo fun(): TodoPort
+---@field toggler fun(): TogglerPort
+---@field tree fun(): TreePort
+---@field versior fun(): VersiorPort
+---@field window fun(): WindowPort
+---@field workspace fun(): WorkspacePort
+---@field zen fun(): ZenPort
+---@field zoom fun(): ZoomPort
+---@field file_util fun(): FileUtilPort
+local M = {}
+
+return M

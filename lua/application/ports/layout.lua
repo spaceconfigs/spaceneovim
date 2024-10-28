@@ -1,0 +1,9 @@
+---@meta
+--- Output port for the layout feature. Implemented by lua/infrastructure/adapters/layout.lua.
+---@class LayoutPort
+---@field list fun(): nil
+---@field save fun(): nil
+---@field reload fun(): nil
+---@field delete fun(): nil
+---@field previous fun(): nil
+---@field rename fun(): nil
