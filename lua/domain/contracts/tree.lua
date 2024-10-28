@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the tree controller.
+---@class TreeContract
+---@field open fun(): ControllerAction
+---@field close fun(): ControllerAction
+---@field toggle fun(opts?: { location?: string }): ControllerAction

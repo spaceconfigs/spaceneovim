@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the outline feature. Implemented by lua/infrastructure/adapters/outline.lua.
+---@class OutlinePort
+---@field toggle fun(): nil

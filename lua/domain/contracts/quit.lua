@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the quit controller.
+---@class QuitContract
+---@field quit fun(opts?: { save?: boolean }): ControllerAction
+---@field restart fun(): ControllerAction
