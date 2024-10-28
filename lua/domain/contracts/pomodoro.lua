@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the pomodoro controller.
+---@class PomodoroContract
+---@field start fun(): ControllerAction
+---@field status fun(): ControllerAction
