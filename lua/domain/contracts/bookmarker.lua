@@ -1,0 +1,7 @@
+---@meta
+--- Contract for the bookmarker controller.
+---@class BookmarkerContract
+---@field add fun(): ControllerAction
+---@field remove fun(): ControllerAction
+---@field remove_all fun(): ControllerAction
+---@field list fun(): ControllerAction
