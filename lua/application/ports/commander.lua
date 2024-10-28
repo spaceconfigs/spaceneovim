@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the commander feature. Implemented by lua/infrastructure/adapters/commander.lua.
+---@class CommanderPort
+---@field find fun(opts?: table): nil

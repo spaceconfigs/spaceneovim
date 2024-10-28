@@ -1,0 +1,6 @@
+---@meta
+--- Output port for the tree feature. Implemented by lua/infrastructure/adapters/tree.lua.
+---@class TreePort
+---@field open fun(): nil
+---@field close fun(): nil
+---@field toggle fun(opts?: table): nil
