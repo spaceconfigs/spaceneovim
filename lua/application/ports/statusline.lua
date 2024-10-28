@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the statusline feature. Implemented by lua/infrastructure/adapters/statusline.lua.
+---@class StatuslinePort
+---@field toggle fun(): nil

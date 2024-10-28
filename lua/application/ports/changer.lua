@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the changer feature. Implemented by lua/infrastructure/adapters/changer.lua.
+---@class ChangerPort
+---@field list fun(): nil

@@ -1,0 +1,12 @@
+---@meta
+--- Output port for the file feature. Implemented by lua/infrastructure/adapters/file.lua.
+---@class FilePort
+---@field oldfiles fun(opts?: table): nil
+---@field list fun(opts?: table): nil
+---@field copy fun(opts?: table): any
+---@field edit_config fun(): nil
+---@field source_config fun(): nil
+---@field delete_current fun(): nil
+---@field save fun(): nil
+---@field save_all fun(): nil
+---@field rename fun(opts: { name: string }): nil

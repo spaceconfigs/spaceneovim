@@ -1,0 +1,50 @@
+--- Infrastructure-owned plugin registry (composition seam). Populated at bootstrap;
+--- adapters read their plugin wrapper from here
+--- (require("infrastructure.plugins.plugin_registry").<name>()) instead of importing the
+--- plugin wrapper directly. Keyed by plugin MODULE name (not adapter name).
+--- Resolvers are typed loosely because wrappers return varied shapes.
+---@class PluginRegistry
+---@field bookmarker fun(): table
+---@field buffer fun(): table
+---@field changer fun(): table
+---@field chatbot fun(): table
+---@field commenter fun(): table
+---@field completer fun(): table
+---@field composer fun(): table
+---@field database fun(): table
+---@field debugger fun(): table
+---@field diagnostic fun(): table
+---@field documentation fun(): table
+---@field file fun(): table
+---@field fold fun(): table
+---@field formatter fun(): table
+---@field hover fun(): table
+---@field jump fun(): table
+---@field keymapper fun(): table
+---@field layout fun(): table
+---@field lazy fun(): table
+---@field logger fun(): table
+---@field lsp fun(): table
+---@field notebook fun(): table
+---@field noter fun(): table
+---@field notification fun(): table
+---@field outline fun(): table
+---@field pomodoro fun(): table
+---@field rest fun(): table
+---@field screenshot fun(): table
+---@field searcher fun(): table
+---@field selector fun(): table
+---@field statusline fun(): table
+---@field terminal fun(): table
+---@field tester fun(): table
+---@field theme fun(): table
+---@field todo fun(): table
+---@field tree fun(): table
+---@field versior fun(): table
+---@field window fun(): table
+---@field workspaces fun(): table
+---@field zen fun(): table
+---@field zoom fun(): table
+local M = {}
+
+return M
