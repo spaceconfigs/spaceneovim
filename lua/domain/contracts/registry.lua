@@ -1,0 +1,48 @@
+---@meta
+--- Registry of controllers injected into the domain maps (Dependency Inversion).
+--- The application layer builds this; the domain depends only on this abstraction,
+--- never on the concrete controller modules.
+---@class ControllerRegistry
+---@field bookmarker BookmarkerContract
+---@field buffer BufferContract
+---@field changer ChangerContract
+---@field chatbot ChatbotContract
+---@field commander CommanderContract
+---@field commenter CommenterContract
+---@field completer CompleterContract
+---@field database DatabaseContract
+---@field debugger DebuggerContract
+---@field diagnostic DiagnosticContract
+---@field documentation DocumentationContract
+---@field editor EditorContract
+---@field file FileContract
+---@field fold FoldContract
+---@field formatter FormatterContract
+---@field hover HoverContract
+---@field jumper JumperContract
+---@field layout LayoutContract
+---@field linenumber LinenumberContract
+---@field lsp LspContract
+---@field notebook NotebookContract
+---@field noter NoterContract
+---@field notification NotificationContract
+---@field outline OutlineContract
+---@field packager PackagerContract
+---@field pomodoro PomodoroContract
+---@field quit QuitContract
+---@field rest RestContract
+---@field screenshot ScreenshotContract
+---@field searcher SearcherContract
+---@field selector SelectorContract
+---@field statusline StatuslineContract
+---@field terminal TerminalContract
+---@field tester TesterContract
+---@field theme ThemeContract
+---@field todo TodoContract
+---@field toggler TogglerContract
+---@field tree TreeContract
+---@field versior VersiorContract
+---@field window WindowContract
+---@field workspace WorkspaceContract
+---@field zen ZenContract
+---@field zoom ZoomContract

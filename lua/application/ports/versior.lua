@@ -1,0 +1,11 @@
+---@meta
+--- Output port for the versior feature. Implemented by lua/infrastructure/adapters/versior.lua.
+---@class VersiorPort
+---@field blame fun(opts?: table): any
+---@field open fun(): nil
+---@field stage_files fun(): any
+---@field unstage_files fun(): nil
+---@field browse fun(): nil
+---@field branches fun(): nil
+---@field log fun(): nil
+---@field jump_file fun(opts?: table): any
