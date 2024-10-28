@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the pomodoro feature. Implemented by lua/infrastructure/adapters/pomodoro.lua.
+---@class PomodoroPort
+---@field start fun(): nil
+---@field status fun(): any

@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the changer controller.
+---@class ChangerContract
+---@field list fun(): ControllerAction

@@ -1,0 +1,9 @@
+---@meta
+--- Output port for the editor feature. Implemented by lua/infrastructure/adapters/editor.lua.
+---@class EditorPort
+---@field drag fun(opts?: table): nil
+---@field paragraph fun(direction?: string): nil
+---@field paste fun(position?: string): nil
+---@field delete_word fun(): nil
+---@field terminal_escape fun(): nil
+---@field noop fun(): nil
