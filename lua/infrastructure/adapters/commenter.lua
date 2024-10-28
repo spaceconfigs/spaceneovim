@@ -1,0 +1,18 @@
+local M = {}
+
+local logger_use_case = require("application.use_cases.logger")
+local plugin = require("infrastructure.plugins.commenter")
+
+M.toggle = function(opts)
+	local message = {
+		module = "adapters/commenter",
+		func = "toggle",
+		opts = opts,
+	}
+	logger_use_case.debug(message)
+
+	local mode = opts and opts.mode or nil
+	plugin.api.toggle.linewise(mode)
+end
+
+return M

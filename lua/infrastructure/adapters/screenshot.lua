@@ -1,0 +1,44 @@
+local M = {}
+
+local logger_use_case = require("application.use_cases.logger")
+local plugin = require("infrastructure.plugins.screenshot")
+
+M.copy = function(options)
+	local message = {
+		module = "adapters/screenshot",
+		func = "copy",
+		options = options,
+	}
+	logger_use_case.debug(message)
+
+	vim.cmd("normal! :<Esc>")
+
+	if options.type == "text" then
+		return plugin.copy_ascii_snapshot()
+	end
+
+	if options.type == "select" then
+		return plugin.highlight_mode_copy_into_clipboard()
+	end
+
+	plugin.copy_into_clipboard()
+end
+
+M.save = function(options)
+	local message = {
+		module = "adapters/screenshot",
+		func = "save",
+		options = options,
+	}
+	logger_use_case.debug(message)
+
+	vim.cmd("normal! :<Esc>")
+
+	if options.type == "select" then
+		return plugin.highlight_mode_save_snapshot()
+	end
+
+	plugin.save_snapshot()
+end
+
+return M
