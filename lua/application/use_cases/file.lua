@@ -1,0 +1,111 @@
+local vim = vim
+local M = {}
+local make_logged = require("application.helpers.make_logged")
+
+local notification_use_case = require("application.use_cases.notification")
+local file_util = require("infrastructure.utils.file")
+
+M.setup = function()
+	return require("infrastructure.adapters.file")
+end
+
+M.oldfiles = function(opts)
+	local adapter = M.setup()
+
+	opts = opts or {}
+	opts.cwd_only = opts.cwd_only or false
+
+	adapter.oldfiles(opts)
+end
+
+M.list = function(opts)
+	local adapter = M.setup()
+
+	opts = opts or {}
+	opts.location = opts.location or "file"
+	opts.path = file_util.project(opts.location)
+	opts.cwd_only = opts.cwd_only or false
+
+	adapter.list({
+		path = opts.path,
+		cwd_only = opts.cwd_only,
+	})
+end
+
+M.search = function()
+	local adapter = M.setup()
+
+	adapter.search({
+		path = file_util.path(),
+	})
+end
+
+M.search_hover = function()
+	local adapter = M.setup()
+
+	local path = vim.api.nvim_buf_get_name(0)
+	local text = vim.fn.expand("<cword>")
+
+	adapter.search({
+		path = path,
+		text = text,
+	})
+end
+
+M.rename = function()
+	local new_name = vim.fn.input("New name: ")
+	local buffer = vim.api.nvim_get_current_buf()
+	local old_name = vim.api.nvim_buf_get_name(buffer)
+
+	local success, err = os.rename(old_name, new_name)
+	if not success then
+		notification_use_case.error("Error renaming file: " .. err)
+		return
+	end
+
+	vim.api.nvim_buf_set_name(buffer, new_name)
+	vim.cmd("!w")
+end
+
+M.edit_config = function()
+	local adapter = M.setup()
+
+	adapter.edit_config()
+end
+
+M.source_config = function()
+	local adapter = M.setup()
+
+	adapter.source_config()
+end
+
+M.delete_current = function()
+	local adapter = M.setup()
+
+	adapter.delete_current()
+end
+
+M.save = function()
+	local adapter = M.setup()
+
+	adapter.save()
+end
+
+M.save_all = function()
+	local adapter = M.setup()
+
+	adapter.save_all()
+end
+
+M.copy = function(opts)
+	opts = opts or {}
+	opts.item = opts.item or "file"
+	opts.location = opts.location or "root"
+	opts.extensions = opts.extensions or "type"
+
+	local adapter = M.setup()
+	local result = adapter.copy(opts)
+	notification_use_case.info("Copied " .. result)
+end
+
+return make_logged("use_cases/file", M)
