@@ -1,0 +1,17 @@
+local M = {}
+
+local logger_use_case = require("application.use_cases.logger")
+local plugin = require("infrastructure.plugins.hover")
+
+M.toggle = function()
+	local message = {
+		module = "adapters/hover",
+		func = "toggle",
+	}
+	logger_use_case.debug(message)
+
+	-- plugin.hover()
+	vim.lsp.buf.hover()
+end
+
+return M
