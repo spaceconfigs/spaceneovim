@@ -1,0 +1,8 @@
+---@meta
+--- Inbound contract for the diagnostic use case. Implemented by lua/application/usecases/diagnostic.lua.
+---@class DiagnosticUseCase
+---@field setup fun(): DiagnosticPort
+---@field toggle fun(): nil
+---@field show fun(direction?: "next"|"previous"): nil
+---@field loclist fun(): nil
+---@field lint fun(): nil

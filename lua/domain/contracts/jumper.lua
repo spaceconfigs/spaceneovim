@@ -1,0 +1,7 @@
+---@meta
+--- Contract for the jumper controller.
+---@class JumperContract
+---@field timer fun(options?: table): ControllerAction
+---@field words fun(): ControllerAction
+---@field lines fun(): ControllerAction
+---@field remote fun(): ControllerAction

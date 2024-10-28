@@ -1,0 +1,10 @@
+---@meta
+--- Inbound contract for the workspace use case. Implemented by lua/application/usecases/workspace.lua.
+---@class WorkspaceUseCase
+---@field setup fun(): WorkspacePort, LspUseCase, FileUtilPort, FileUseCase
+---@field add fun(): nil
+---@field open fun(): nil
+---@field files fun(): nil
+---@field grep_input fun(): nil
+---@field diagnostics fun(): nil
+---@field add_and_toggle_tree fun(): nil

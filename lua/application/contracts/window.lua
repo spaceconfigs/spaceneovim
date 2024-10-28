@@ -1,0 +1,16 @@
+---@meta
+--- Inbound contract for the window use case. Implemented by lua/application/usecases/window.lua.
+---@class WindowUseCase
+---@field setup fun(): WindowPort
+---@field toggle fun(): nil
+---@field go fun(opts: { direction: "up"|"down"|"left"|"right" }): nil
+---@field move fun(opts: { direction: "up"|"down"|"left"|"right" }): nil
+---@field move_far fun(direction: "up"|"down"|"left"|"right"): nil
+---@field resize fun(opts: { axis: "width"|"height", delta: integer }): nil
+---@field balance_area fun(): nil
+---@field scroll fun(opts: { direction: "up"|"down" }): nil
+---@field go_to fun(number: integer): nil
+---@field close fun(): nil
+---@field split fun(opts: { type: "split"|"vsplit", previous: boolean? }): nil
+---@field layout fun(opts: { count: integer }): nil
+---@field dedicate fun(): nil

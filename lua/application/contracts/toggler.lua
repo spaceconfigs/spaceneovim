@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the toggler use case. Implemented by lua/application/usecases/toggler.lua.
+---@class TogglerUseCase
+---@field setup fun(): TogglerPort
+---@field number fun(): nil
+---@field wrap fun(): nil

@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the screenshot use case. Implemented by lua/application/usecases/screenshot.lua.
+---@class ScreenshotUseCase
+---@field setup fun(): ScreenshotPort
+---@field capture fun(action: "copy"|"save", options?: { type: (""|"select"|"text")? }): nil

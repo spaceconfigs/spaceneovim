@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the commander controller.
+---@class CommanderContract
+---@field find fun(): ControllerAction

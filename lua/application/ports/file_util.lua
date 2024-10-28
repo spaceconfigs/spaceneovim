@@ -1,0 +1,8 @@
+---@meta
+--- Output port for filesystem/path resolution. Implemented by
+--- lua/infrastructure/utils/file.lua (which wraps the Neovim/OS file APIs).
+---@class FileUtilPort
+---@field project fun(location?: string): string
+---@field path fun(): string
+---@field directory fun(): string
+---@field get_path_from_file fun(location?: string): string

@@ -1,0 +1,7 @@
+---@meta
+--- Inbound contract for the rest use case. Implemented by lua/application/usecases/rest.lua.
+---@class RestUseCase
+---@field setup fun(): RestPort
+---@field open fun(): nil
+---@field send fun(): nil
+---@field replay fun(): nil

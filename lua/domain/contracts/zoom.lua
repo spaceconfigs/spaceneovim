@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the zoom controller.
+---@class ZoomContract
+---@field change fun(opts?: { delta?: integer }): ControllerAction

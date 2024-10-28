@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the completer feature. Implemented by lua/infrastructure/adapters/completer.lua.
+---@class CompleterPort
+---@field complete fun(): nil

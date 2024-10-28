@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the autotag feature. Implemented by lua/infrastructure/adapters/autotag.lua.
+---@class AutotagPort
+---@field setup fun(): nil

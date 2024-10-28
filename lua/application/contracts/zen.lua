@@ -1,0 +1,7 @@
+---@meta
+--- Inbound contract for the zen use case. Implemented by lua/application/usecases/zen.lua.
+---@class ZenUseCase
+---@field setup fun(): ZenPort
+---@field toggle fun(): nil
+---@field center fun(): nil
+---@field area fun(): nil

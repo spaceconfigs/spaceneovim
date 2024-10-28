@@ -1,0 +1,11 @@
+---@meta
+--- Contract for the buffer controller.
+---@class BufferContract
+---@field add fun(): ControllerAction
+---@field delete fun(): ControllerAction
+---@field close_others fun(): ControllerAction
+---@field list fun(): ControllerAction
+---@field next fun(): ControllerAction
+---@field previous fun(): ControllerAction
+---@field messages fun(): ControllerAction
+---@field reopen fun(): ControllerAction

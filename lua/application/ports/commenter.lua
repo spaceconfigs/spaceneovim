@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the commenter feature. Implemented by lua/infrastructure/adapters/commenter.lua.
+---@class CommenterPort
+---@field toggle fun(opts?: table): nil

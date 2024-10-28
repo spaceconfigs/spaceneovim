@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the tester use case. Implemented by lua/application/usecases/tester.lua.
+---@class TesterUseCase
+---@field setup fun(): TesterPort
+---@field toggle fun(opts?: table): nil
+---@field run fun(opts?: table): nil

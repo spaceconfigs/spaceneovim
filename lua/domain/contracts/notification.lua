@@ -1,0 +1,10 @@
+---@meta
+--- Contract for the notification controller.
+---@class NotificationContract
+---@field list fun(): ControllerAction
+---@field dismiss fun(): ControllerAction
+---@field notify fun(opts?: { message: any, level: LogLevel }): ControllerAction
+---@field debug fun(message?: any): ControllerAction
+---@field info fun(message?: any): ControllerAction
+---@field warn fun(message?: any): ControllerAction
+---@field error fun(message?: any): ControllerAction

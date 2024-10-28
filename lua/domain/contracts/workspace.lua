@@ -1,0 +1,9 @@
+---@meta
+--- Contract for the workspace controller.
+---@class WorkspaceContract
+---@field add fun(): ControllerAction
+---@field open fun(): ControllerAction
+---@field files fun(): ControllerAction
+---@field grep_input fun(): ControllerAction
+---@field diagnostics fun(): ControllerAction
+---@field add_and_toggle_tree fun(): ControllerAction

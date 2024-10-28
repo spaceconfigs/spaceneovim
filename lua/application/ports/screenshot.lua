@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the screenshot feature. Implemented by lua/infrastructure/adapters/screenshot.lua.
+---@class ScreenshotPort
+---@field capture fun(action?: string, options?: table): nil

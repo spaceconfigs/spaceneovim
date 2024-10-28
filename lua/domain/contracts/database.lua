@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the database controller.
+---@class DatabaseContract
+---@field open fun(): ControllerAction

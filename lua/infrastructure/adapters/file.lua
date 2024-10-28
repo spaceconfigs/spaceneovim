@@ -1,0 +1,88 @@
+local make_logged = require("application.helpers.make_logged")
+local file_util = require("infrastructure.utils.file")
+local plugin = require("infrastructure.plugins.plugin_registry").file()
+local snacks = plugin.snacks
+
+---@type FilePort
+local M = {
+	oldfiles = function(opts)
+		opts = opts or {}
+		snacks.picker.recent({
+			filter = { cwd = opts.cwd_only or false },
+		})
+	end,
+	list = function(opts)
+		local cwd = opts and opts.path
+		snacks.picker.smart({
+			multi = { { source = "files", follow = true } },
+			cwd = cwd,
+		})
+	end,
+	copy = function(opts)
+		local path = file_util.get_path_from_file(opts.location)
+
+		if opts.item == "directory" then
+			path = vim.fn.fnamemodify(path, ":h")
+			vim.fn.setreg("+", path)
+			return path
+		end
+
+		local line = vim.fn.line(".")
+		local column = vim.fn.col(".")
+
+		local extentions_functions = {
+			none = function()
+				return path:match("(.+)%..+$") or path
+			end,
+			type = function()
+				return path
+			end,
+			type_line = function()
+				return string.format("%s:%s", path, line)
+			end,
+			type_line_column = function()
+				return string.format("%s:%s:%s", path, line, column)
+			end,
+		}
+
+		path = extentions_functions[opts.extensions]()
+		vim.fn.setreg("+", path)
+
+		return path
+	end,
+	edit_config = function()
+		vim.cmd("edit $MYVIMRC")
+	end,
+	source_config = function()
+		vim.cmd("source $MYVIMRC")
+	end,
+	delete_current = function()
+		vim.fn.delete(vim.fn.expand("%"))
+		vim.cmd("bdelete!")
+	end,
+	is_scratch = function(opts)
+		local root = vim.fs.normalize(vim.fn.stdpath("data") .. "/scratch")
+		local name = vim.fs.normalize(opts.name)
+		return name:sub(1, #root + 1) == root .. "/"
+	end,
+	save = function(opts)
+		vim.cmd("write! " .. vim.fn.fnameescape(opts.name))
+	end,
+	save_as = function(opts)
+		local directory = opts.directory:gsub("/+$", "") .. "/"
+		local command = ":write! " .. vim.fn.fnameescape(directory)
+		vim.api.nvim_feedkeys(command, "n", false)
+	end,
+	save_all = function()
+		vim.cmd("wall!")
+	end,
+	rename = function(opts)
+		local buffer = vim.api.nvim_get_current_buf()
+		vim.api.nvim_buf_set_name(buffer, opts.name)
+		-- NOTE: preserved verbatim from the original use case. `!w` runs the shell
+		-- command `w`, not `:w` — likely a latent bug; fix separately, not in this refactor.
+		vim.cmd("!w")
+	end,
+}
+
+return make_logged("adapters/file", M)

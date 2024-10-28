@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the diagnostic controller.
+---@class DiagnosticContract
+---@field toggle fun(): ControllerAction
+---@field show fun(direction?: "next"|"previous"): ControllerAction
+---@field loclist fun(): ControllerAction

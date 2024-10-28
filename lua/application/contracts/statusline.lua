@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the statusline use case. Implemented by lua/application/usecases/statusline.lua.
+---@class StatuslineUseCase
+---@field setup fun(): StatuslinePort
+---@field toggle fun(): nil

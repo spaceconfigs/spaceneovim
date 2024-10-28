@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the formatter feature. Implemented by lua/infrastructure/adapters/formatter.lua.
+---@class FormatterPort
+---@field format fun(): nil

@@ -1,0 +1,6 @@
+---@meta
+--- Output port for the rest feature. Implemented by lua/infrastructure/adapters/rest.lua.
+---@class RestPort
+---@field open fun(opts?: table): nil
+---@field send fun(opts?: table): nil
+---@field replay fun(opts?: table): nil

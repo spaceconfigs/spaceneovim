@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the outline controller.
+---@class OutlineContract
+---@field toggle fun(): ControllerAction

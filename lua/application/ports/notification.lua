@@ -1,0 +1,10 @@
+---@meta
+--- Output port for the notification feature. Implemented by lua/infrastructure/adapters/notification.lua.
+---@class NotificationPort
+---@field notify fun(opts?: table): nil
+---@field dismiss fun(): nil
+---@field list fun(): nil
+---@field debug fun(opts?: table): nil
+---@field info fun(opts?: table): nil
+---@field warn fun(opts?: table): nil
+---@field error fun(opts?: table): nil

@@ -1,0 +1,7 @@
+---@meta
+--- Output port for the diagnostic feature. Implemented by lua/infrastructure/adapters/diagnostic.lua.
+---@class DiagnosticPort
+---@field toggle fun(): nil
+---@field show fun(direction?: string): any
+---@field loclist fun(): nil
+---@field lint fun(): nil

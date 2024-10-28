@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the rest controller.
+---@class RestContract
+---@field open fun(): ControllerAction
+---@field send fun(): ControllerAction
+---@field replay fun(): ControllerAction

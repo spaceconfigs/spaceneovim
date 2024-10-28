@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the fold use case. Implemented by lua/application/usecases/fold.lua.
+---@class FoldUseCase
+---@field setup fun(): FoldPort
+---@field fold fun(action: "open"|"close"|"toggle", opts?: { location: ("cursor"|"all")? }): nil

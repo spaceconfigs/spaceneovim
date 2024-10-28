@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the zoom feature. Implemented by lua/infrastructure/adapters/zoom.lua.
+---@class ZoomPort
+---@field change fun(opts?: table): any

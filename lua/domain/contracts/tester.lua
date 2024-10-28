@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the tester controller.
+---@class TesterContract
+---@field toggle fun(opts?: table): ControllerAction
+---@field run fun(opts?: table): ControllerAction

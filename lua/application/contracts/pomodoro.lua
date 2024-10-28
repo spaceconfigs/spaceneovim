@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the pomodoro use case. Implemented by lua/application/usecases/pomodoro.lua.
+---@class PomodoroUseCase
+---@field setup fun(): PomodoroPort
+---@field start fun(): nil
+---@field status fun(): string

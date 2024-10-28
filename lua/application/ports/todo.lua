@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the todo feature. Implemented by lua/infrastructure/adapters/todo.lua.
+---@class TodoPort
+---@field list fun(): nil

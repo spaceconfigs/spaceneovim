@@ -1,0 +1,10 @@
+---@meta
+--- Inbound contract for the chatbot use case. Implemented by lua/application/usecases/chatbot.lua.
+---@class ChatbotUseCase
+---@field setup fun(): ChatbotPort
+---@field toggle fun(): nil
+---@field open fun(): nil
+---@field close fun(): nil
+---@field send fun(target?: string): nil
+---@field switch fun(): nil
+---@field prompt fun(): nil

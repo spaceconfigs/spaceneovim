@@ -1,0 +1,7 @@
+---@meta
+--- Output port for the terminal feature. Implemented by lua/infrastructure/adapters/terminal.lua.
+---@class TerminalPort
+---@field open fun(options?: table): any
+---@field close fun(options?: table): any
+---@field toggle fun(options?: table): any
+---@field close_buffer fun(buffer: integer): nil

@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the hover controller.
+---@class HoverContract
+---@field toggle fun(): ControllerAction
+---@field dismiss fun(): ControllerAction

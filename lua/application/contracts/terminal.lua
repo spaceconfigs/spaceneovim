@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the terminal use case. Implemented by lua/application/usecases/terminal.lua.
+---@class TerminalUseCase
+---@field setup fun(): TerminalPort
+---@field toggle fun(options?: { type: ("internal"|"external")?, location: ("file"|"project")?, path: string? }): nil
+---@field on_exit fun(opts: { buffer: integer, status: integer }): nil

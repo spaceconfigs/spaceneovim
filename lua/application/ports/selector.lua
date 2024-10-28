@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the selector feature. Implemented by lua/infrastructure/adapters/selector.lua.
+---@class SelectorPort
+---@field all_selected fun(): nil
+---@field quit fun(): nil

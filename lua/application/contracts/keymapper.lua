@@ -1,0 +1,11 @@
+---@meta
+--- Inbound contract for the keymapper use case. Implemented by lua/application/usecases/keymapper.lua.
+---@class KeymapperUseCase
+---@field format fun(opts: KeyBind): any
+---@field register fun(map: KeyBind): nil
+---@field register_all fun(map: KeyBind[]): nil
+---@field create_transient fun(opts: TransientConfig): any
+---@field show fun(opts: { keys: string, loop: boolean? }): nil
+---@field set fun(opts: { mode: string, key: string, action: any, noremap: boolean?, silent: boolean? }): nil
+---@field unset fun(opts: { mode: string, key: string }): nil
+---@field register_filetype fun(filetype: string): nil

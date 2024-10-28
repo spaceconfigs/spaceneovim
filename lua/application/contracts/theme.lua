@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the theme use case. Implemented by lua/application/usecases/theme.lua.
+---@class ThemeUseCase
+---@field setup fun(): ThemePort
+---@field list fun(): nil
+---@field load fun(): nil

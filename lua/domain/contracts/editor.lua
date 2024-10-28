@@ -1,0 +1,9 @@
+---@meta
+--- Contract for the editor controller.
+---@class EditorContract
+---@field drag fun(opts?: { direction?: "up"|"down", mode?: "normal"|"insert"|"visual" }): ControllerAction
+---@field paragraph fun(opts: { direction: "next"|"previous" }): ControllerAction
+---@field paste fun(opts: { position: "before"|"after" }): ControllerAction
+---@field delete_word fun(): ControllerAction
+---@field terminal_escape fun(): ControllerAction
+---@field noop fun(): ControllerAction

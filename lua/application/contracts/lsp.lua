@@ -1,0 +1,14 @@
+---@meta
+--- Inbound contract for the lsp use case. Implemented by lua/application/usecases/lsp.lua.
+---@class LspUseCase
+---@field setup fun(): LspPort
+---@field navigate fun(type: "definition"|"implementation"|"references"|"typedefinition", options?: { type: string? }): nil
+---@field show_signature fun(): nil
+---@field show_documentation fun(): nil
+---@field show_code_action fun(): nil
+---@field format fun(): nil
+---@field diagnostics fun(): nil
+---@field info fun(): nil
+---@field restart fun(): nil
+---@field rename fun(): nil
+---@field get_symbol fun(): nil

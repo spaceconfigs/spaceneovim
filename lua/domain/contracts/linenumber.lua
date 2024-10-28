@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the linenumber controller.
+---@class LinenumberContract
+---@field toggle fun(opts: { type: "absolute"|"relative" }): ControllerAction

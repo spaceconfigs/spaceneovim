@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the formatter controller.
+---@class FormatterContract
+---@field format fun(): ControllerAction

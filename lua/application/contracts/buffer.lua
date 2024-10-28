@@ -1,0 +1,13 @@
+---@meta
+--- Inbound contract for the buffer use case. Implemented by lua/application/usecases/buffer.lua.
+---@class BufferUseCase
+---@field setup fun(): BufferPort
+---@field add fun(): nil
+---@field delete fun(): nil
+---@field close_others fun(): nil
+---@field list fun(): nil
+---@field next fun(): nil
+---@field previous fun(): nil
+---@field messages fun(): nil
+---@field reopen fun(): nil
+---@field scratch fun(): nil

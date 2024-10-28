@@ -1,0 +1,6 @@
+---@meta
+--- Inbound contract for the selector use case. Implemented by lua/application/usecases/selector.lua.
+---@class SelectorUseCase
+---@field setup fun(): SelectorPort
+---@field quit fun(): nil
+---@field all_selected fun(): nil

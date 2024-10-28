@@ -1,0 +1,10 @@
+---@meta
+--- Output port for the keymapper feature. Implemented by lua/infrastructure/adapters/keymapper.lua.
+---@class KeymapperPort
+---@field format fun(map?: table): any
+---@field register fun(map?: table): nil
+---@field register_all fun(maps?: table): nil
+---@field create_transient fun(opts?: table): any
+---@field show fun(opts: { keys: string, loop?: boolean }): nil
+---@field set fun(opts: { mode: string, key: string, action: any, noremap: boolean?, silent: boolean? }): nil
+---@field unset fun(opts: { mode: string, key: string }): nil

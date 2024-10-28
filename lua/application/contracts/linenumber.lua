@@ -1,0 +1,4 @@
+---@meta
+--- Inbound contract for the linenumber use case. Implemented by lua/application/usecases/linenumber.lua.
+---@class LinenumberUseCase
+---@field toggle fun(type: "absolute"|"relative"): nil

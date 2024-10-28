@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the toggler feature. Implemented by lua/infrastructure/adapters/toggler.lua.
+---@class TogglerPort
+---@field number fun(): nil
+---@field wrap fun(): nil

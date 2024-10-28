@@ -1,0 +1,14 @@
+---@meta
+--- Contract for the file controller.
+---@class FileContract
+---@field oldfiles fun(opts?: { cwd_only?: boolean }): ControllerAction
+---@field list fun(opts?: { location?: string, cwd_only?: boolean }): ControllerAction
+---@field search fun(): ControllerAction
+---@field search_hover fun(): ControllerAction
+---@field rename fun(): ControllerAction
+---@field edit_config fun(): ControllerAction
+---@field source_config fun(): ControllerAction
+---@field delete_current fun(): ControllerAction
+---@field save fun(): ControllerAction
+---@field save_all fun(): ControllerAction
+---@field copy fun(opts?: { item?: "file"|"directory", location?: "root"|"file"|"project", extensions?: "none"|"type"|"type_line"|"type_line_column" }): ControllerAction

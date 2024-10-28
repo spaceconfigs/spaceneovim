@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the theme feature. Implemented by lua/infrastructure/adapters/theme.lua.
+---@class ThemePort
+---@field list fun(): nil
+---@field load fun(): nil

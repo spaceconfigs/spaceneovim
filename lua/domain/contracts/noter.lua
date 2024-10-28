@@ -1,0 +1,10 @@
+---@meta
+--- Contract for the noter controller.
+---@class NoterContract
+---@field new fun(): ControllerAction
+---@field list fun(): ControllerAction
+---@field dismiss fun(): ControllerAction
+---@field find fun(): ControllerAction
+---@field toggle_checkbox fun(): ControllerAction
+---@field todo_next_state fun(): ControllerAction
+---@field insert_heading fun(): ControllerAction

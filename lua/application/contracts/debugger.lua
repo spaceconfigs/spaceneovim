@@ -1,0 +1,23 @@
+---@meta
+--- Inbound contract for the debugger use case. Implemented by lua/application/usecases/debugger.lua.
+---@class DebuggerUseCase
+---@field setup fun(): DebuggerPort
+---@field clear_breakpoints fun(): nil
+---@field close fun(): nil
+---@field continue fun(): nil
+---@field focus_frame fun(): nil
+---@field go fun(direction: "up"|"down"): nil
+---@field hover fun(): nil
+---@field list_breakpoints fun(): nil
+---@field list_frames fun(): nil
+---@field open fun(): nil
+---@field preview fun(): nil
+---@field set_exception_breakpoints fun(): nil
+---@field step fun(type: "into"|"out"|"over"|"back"): nil
+---@field set_breakpoint fun(): nil
+---@field toggle_breakpoint fun(): nil
+---@field repl_toggle fun(): nil
+---@field run_last fun(): nil
+---@field run_to_cursor fun(): nil
+---@field restart_frame fun(): nil
+---@field list_variables fun(): nil

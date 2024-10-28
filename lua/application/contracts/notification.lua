@@ -1,0 +1,11 @@
+---@meta
+--- Inbound contract for the notification use case. Implemented by lua/application/usecases/notification.lua.
+---@class NotificationUseCase
+---@field setup fun(): NotificationPort
+---@field list fun(): nil
+---@field dismiss fun(): nil
+---@field notify fun(opts: { message: any, level: LogLevel }): nil
+---@field debug fun(message: any): nil
+---@field info fun(message: any): nil
+---@field warn fun(message: any): nil
+---@field error fun(message: any): nil

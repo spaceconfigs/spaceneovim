@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the workspace feature. Implemented by lua/infrastructure/adapters/workspace.lua.
+---@class WorkspacePort
+---@field open fun(): nil
+---@field add fun(opts?: table): nil

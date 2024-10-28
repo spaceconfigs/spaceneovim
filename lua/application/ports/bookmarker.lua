@@ -1,0 +1,6 @@
+---@meta
+--- Output port for the bookmarker feature. Implemented by lua/infrastructure/adapters/bookmarker.lua.
+---@class BookmarkerPort
+---@field add fun(): nil
+---@field remove fun(): nil
+---@field list fun(): nil

@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the screenshot controller.
+---@class ScreenshotContract
+---@field capture fun(opts: { action: "copy"|"save", type?: ""|"select"|"text" }): ControllerAction

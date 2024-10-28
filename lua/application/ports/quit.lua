@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the quit feature. Implemented by lua/infrastructure/adapters/quit.lua.
+---@class QuitPort
+---@field quit fun(opts?: table): nil
+---@field restart fun(): nil

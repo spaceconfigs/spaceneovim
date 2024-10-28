@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the packager feature. Implemented by lua/infrastructure/adapters/packager.lua.
+---@class PackagerPort
+---@field install fun(): nil
+---@field update fun(): nil

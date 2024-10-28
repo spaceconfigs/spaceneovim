@@ -1,0 +1,54 @@
+--- Application-owned use-case registry (composition seam). Populated at bootstrap;
+--- controllers read their use case from here
+--- (require("application.ports.usecase_registry").<name>()) instead of importing
+--- the use-case module directly. Mirrors application/ports/adapter_registry.lua.
+--- Each resolver returns the feature's <Name>UseCase contract, declared in
+--- lua/application/contracts/<name>.lua and implemented by lua/application/usecases/<name>.lua.
+---@class UseCaseRegistry
+---@field autotag fun(): AutotagUseCase
+---@field bookmarker fun(): BookmarkerUseCase
+---@field buffer fun(): BufferUseCase
+---@field changer fun(): ChangerUseCase
+---@field chatbot fun(): ChatbotUseCase
+---@field commander fun(): CommanderUseCase
+---@field commenter fun(): CommenterUseCase
+---@field completer fun(): CompleterUseCase
+---@field database fun(): DatabaseUseCase
+---@field debugger fun(): DebuggerUseCase
+---@field diagnostic fun(): DiagnosticUseCase
+---@field documentation fun(): DocumentationUseCase
+---@field editor fun(): EditorUseCase
+---@field file fun(): FileUseCase
+---@field fold fun(): FoldUseCase
+---@field formatter fun(): FormatterUseCase
+---@field hover fun(): HoverUseCase
+---@field jumper fun(): JumperUseCase
+---@field layout fun(): LayoutUseCase
+---@field linenumber fun(): LinenumberUseCase
+---@field lsp fun(): LspUseCase
+---@field notebook fun(): NotebookUseCase
+---@field noter fun(): NoterUseCase
+---@field notification fun(): NotificationUseCase
+---@field outline fun(): OutlineUseCase
+---@field packager fun(): PackagerUseCase
+---@field pomodoro fun(): PomodoroUseCase
+---@field quit fun(): QuitUseCase
+---@field rest fun(): RestUseCase
+---@field screenshot fun(): ScreenshotUseCase
+---@field searcher fun(): SearcherUseCase
+---@field selector fun(): SelectorUseCase
+---@field statusline fun(): StatuslineUseCase
+---@field terminal fun(): TerminalUseCase
+---@field tester fun(): TesterUseCase
+---@field theme fun(): ThemeUseCase
+---@field todo fun(): TodoUseCase
+---@field toggler fun(): TogglerUseCase
+---@field tree fun(): TreeUseCase
+---@field versior fun(): VersiorUseCase
+---@field window fun(): WindowUseCase
+---@field workspace fun(): WorkspaceUseCase
+---@field zen fun(): ZenUseCase
+---@field zoom fun(): ZoomUseCase
+local M = {}
+
+return M

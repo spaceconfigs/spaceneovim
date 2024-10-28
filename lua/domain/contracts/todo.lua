@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the todo controller.
+---@class TodoContract
+---@field list fun(): ControllerAction

@@ -1,0 +1,24 @@
+---@meta
+--- Contract for the notebook controller.
+---@class NotebookContract
+---@field activate_transient fun(): ControllerAction
+---@field send_motion fun(opts?: table): ControllerAction
+---@field send_line fun(opts?: table): ControllerAction
+---@field send_file fun(opts?: table): ControllerAction
+---@field send_until_cursor fun(opts?: table): ControllerAction
+---@field send_mark fun(opts?: { mark?: string }): ControllerAction
+---@field repl_here fun(opts?: table): ControllerAction
+---@field repl_restart fun(opts?: table): ControllerAction
+---@field interrupt fun(opts?: table): ControllerAction
+---@field exit fun(opts?: table): ControllerAction
+---@field clear fun(opts?: table): ControllerAction
+---@field focus fun(opts?: table): ControllerAction
+---@field toggle fun(opts?: table): ControllerAction
+---@field goto_cell fun(opts?: { direction?: "next"|"previous" }): ControllerAction
+---@field delete_cell fun(opts?: table): ControllerAction
+---@field insert_cell fun(opts?: { position?: "above"|"below" }): ControllerAction
+---@field execute_cell fun(opts?: table): ControllerAction
+---@field execute_and_goto_next fun(opts?: table): ControllerAction
+---@field save fun(opts?: table): ControllerAction
+---@field toggle_output_visibility fun(opts?: { action?: "show"|"hide" }): ControllerAction
+---@field reevaluate_cell fun(opts?: table): ControllerAction

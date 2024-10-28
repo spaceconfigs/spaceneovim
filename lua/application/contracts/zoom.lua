@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the zoom use case. Implemented by lua/application/usecases/zoom.lua.
+---@class ZoomUseCase
+---@field setup fun(): ZoomPort
+---@field change fun(opts?: { delta: integer? }): nil

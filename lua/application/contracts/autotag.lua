@@ -1,0 +1,4 @@
+---@meta
+--- Inbound contract for the autotag use case. Implemented by lua/application/usecases/autotag.lua.
+---@class AutotagUseCase
+---@field setup fun(filetype: string): nil

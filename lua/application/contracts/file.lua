@@ -1,0 +1,15 @@
+---@meta
+--- Inbound contract for the file use case. Implemented by lua/application/usecases/file.lua.
+---@class FileUseCase
+---@field setup fun(): FilePort
+---@field oldfiles fun(opts?: { cwd_only: boolean? }): nil
+---@field list fun(opts?: { location: string?, cwd_only: boolean?, path: string? }): nil
+---@field search fun(): nil
+---@field search_hover fun(): nil
+---@field rename fun(): nil
+---@field edit_config fun(): nil
+---@field source_config fun(): nil
+---@field delete_current fun(): nil
+---@field save fun(): nil
+---@field save_all fun(): nil
+---@field copy fun(opts?: { item: ("file"|"directory")?, location: ("root"|"file"|"project")?, extensions: ("none"|"type"|"type_line"|"type_line_column")? }): nil

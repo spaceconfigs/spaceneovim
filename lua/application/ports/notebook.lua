@@ -1,0 +1,23 @@
+---@meta
+--- Output port for the notebook feature. Implemented by lua/infrastructure/adapters/notebook.lua.
+---@class NotebookPort
+---@field send_motion fun(opts?: table): nil
+---@field send_line fun(opts?: table): nil
+---@field send_file fun(opts?: table): nil
+---@field send_until_cursor fun(opts?: table): nil
+---@field send_mark fun(opts?: table): nil
+---@field repl_here fun(opts?: table): nil
+---@field repl_restart fun(opts?: table): nil
+---@field interrupt fun(opts?: table): nil
+---@field exit fun(opts?: table): nil
+---@field clear fun(opts?: table): nil
+---@field focus fun(opts?: table): nil
+---@field toggle fun(opts?: table): nil
+---@field goto_cell fun(opts?: table): nil
+---@field delete_cell fun(opts?: table): nil
+---@field insert_cell fun(opts?: table): nil
+---@field execute_cell fun(opts?: table): nil
+---@field execute_and_goto_next fun(opts?: table): nil
+---@field save fun(opts?: table): nil
+---@field toggle_output_visibility fun(opts?: table): nil
+---@field reevaluate_cell fun(opts?: table): nil

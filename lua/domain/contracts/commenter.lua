@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the commenter controller.
+---@class CommenterContract
+---@field toggle_current_line_visual_mode fun(): ControllerAction
+---@field toggle_current_line fun(): ControllerAction

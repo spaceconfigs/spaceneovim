@@ -1,0 +1,15 @@
+---@meta
+--- Inbound contract for the editor use case. Implemented by lua/application/usecases/editor.lua.
+---@class EditorUseCase
+---@field setup fun(): EditorPort
+---@field drag fun(opts?: { direction: ("up"|"down")?, mode: ("normal"|"insert"|"visual")? }): nil
+---@field paragraph fun(direction: "next"|"previous"): nil
+---@field paste fun(position: "before"|"after"): nil
+---@field delete_word fun(): nil
+---@field terminal_escape fun(): nil
+---@field noop fun(): nil
+---@field setup_jumplist_motions fun(): nil
+---@field current_path fun(buffer: number): string
+---@field start_highlighting fun(): nil
+---@field stop_highlighting fun(buffer?: number): nil
+---@field apply_rules fun(filetype: string): nil

@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the outline use case. Implemented by lua/application/usecases/outline.lua.
+---@class OutlineUseCase
+---@field setup fun(): OutlinePort
+---@field toggle fun(): nil

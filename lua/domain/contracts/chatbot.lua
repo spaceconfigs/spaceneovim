@@ -1,0 +1,9 @@
+---@meta
+--- Contract for the chatbot controller.
+---@class ChatbotContract
+---@field toggle fun(): ControllerAction
+---@field open fun(): ControllerAction
+---@field close fun(): ControllerAction
+---@field send fun(target?: string): ControllerAction
+---@field switch fun(): ControllerAction
+---@field prompt fun(): ControllerAction

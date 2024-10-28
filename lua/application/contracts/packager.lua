@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the packager use case. Implemented by lua/application/usecases/packager.lua.
+---@class PackagerUseCase
+---@field install fun(): nil
+---@field update fun(): nil

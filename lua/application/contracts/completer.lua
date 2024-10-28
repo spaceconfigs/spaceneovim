@@ -1,0 +1,5 @@
+---@meta
+--- Inbound contract for the completer use case. Implemented by lua/application/usecases/completer.lua.
+---@class CompleterUseCase
+---@field setup fun(): CompleterPort
+---@field complete fun(): nil

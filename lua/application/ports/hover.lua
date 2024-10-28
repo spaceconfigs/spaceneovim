@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the hover feature. Implemented by lua/infrastructure/adapters/hover.lua.
+---@class HoverPort
+---@field toggle fun(): nil
+---@field dismiss fun(): nil
