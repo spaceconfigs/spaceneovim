@@ -1,0 +1,4 @@
+---@meta
+--- Output port for the database feature. Implemented by lua/infrastructure/adapters/database.lua.
+---@class DatabasePort
+---@field open fun(): nil
