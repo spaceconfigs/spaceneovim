@@ -1,0 +1,105 @@
+local application_map = require("domain.maps.application")
+local buffer_map = require("domain.maps.buffer")
+local chatbot_map = require("domain.maps.chatbot")
+local help_map = require("domain.maps.help")
+local debugger_map = require("domain.maps.debugger")
+local error_map = require("domain.maps.error")
+local file_map = require("domain.maps.file")
+local git_map = require("domain.maps.git")
+local jump_map = require("domain.maps.jump")
+local layout_map = require("domain.maps.layout")
+local major_map = require("domain.maps.major")
+local project_map = require("domain.maps.project")
+local search_map = require("domain.maps.search")
+local toggler_map = require("domain.maps.toggler")
+local quit_map = require("domain.maps.quit")
+local window_map = require("domain.maps.window")
+local unprefixed_map = require("domain.maps.unprefixed")
+local selector_map = require("domain.maps.selector")
+local terminal_use_case = require("application.use_cases.terminal")
+local commenter_use_case = require("application.use_cases.commenter")
+local buffer_use_case = require("application.use_cases.buffer")
+local commander_use_case = require("application.use_cases.commander")
+local window_use_case = require("application.use_cases.window")
+local ui_map = require("domain.maps.ui")
+local yank_map = require("domain.maps.yank")
+local zoom_map = require("domain.maps.zoom")
+
+local default_map = {
+	{ key = "<leader>", description = "Commands", method = commander_use_case.find },
+	{ key = "1", description = "Window 1", method = window_use_case.go_to(1) },
+	{ key = "2", description = "Window 2", method = window_use_case.go_to(2) },
+	{ key = "3", description = "Window 3", method = window_use_case.go_to(3) },
+	{ key = "4", description = "Window 4", method = window_use_case.go_to(4) },
+	{ key = "5", description = "Window 5", method = window_use_case.go_to(5) },
+	{ key = "6", description = "Window 6", method = window_use_case.go_to(6) },
+	{ key = "7", description = "Window 7", method = window_use_case.go_to(7) },
+	{ key = "8", description = "Window 8", method = window_use_case.go_to(8) },
+	{ key = "9", description = "Window 9", method = window_use_case.go_to(9) },
+	{ key = ";", description = "Comment line", method = commenter_use_case.toggle_current_line },
+	{
+		key = ";",
+		description = "Comment line",
+		method = commenter_use_case.toggle_current_line_visual_mode,
+		mode = "v",
+	},
+	{ key = "<Tab>", description = "Previous buffer", method = buffer_use_case.reopen },
+	{
+		key = "'",
+		mode = { "n" },
+		description = "Terminal",
+		method = terminal_use_case.toggle(),
+	},
+	{
+		key = '"',
+		mode = { "n", "t" },
+		description = "External terminal",
+		method = terminal_use_case.toggle({ type = "external" }),
+	},
+}
+
+local results = {}
+for _, content in pairs({
+	default_map,
+}) do
+	for _, bind in pairs(content) do
+		local result = vim.deepcopy(bind)
+		result.key = "<leader>" .. result.key
+		result.mode = result.mode or "n"
+		result.buffer = nil
+		result.silent = true
+		result.noremap = true
+		result.nowait = false
+		table.insert(results, result)
+	end
+end
+
+for _, map in ipairs({
+	application_map,
+	chatbot_map,
+	major_map,
+	file_map,
+	buffer_map,
+	debugger_map,
+	error_map,
+	git_map,
+	jump_map,
+	layout_map,
+	project_map,
+	search_map,
+	quit_map,
+	window_map,
+	help_map,
+	toggler_map,
+	unprefixed_map,
+	selector_map,
+	ui_map,
+	yank_map,
+	zoom_map,
+}) do
+	for _, content in pairs(map) do
+		table.insert(results, content)
+	end
+end
+
+return results
