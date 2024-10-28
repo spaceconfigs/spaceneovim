@@ -1,0 +1,5 @@
+---@meta
+--- Output port for the tester feature. Implemented by lua/infrastructure/adapters/tester.lua.
+---@class TesterPort
+---@field toggle fun(): nil
+---@field run fun(): nil
