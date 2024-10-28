@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the theme controller.
+---@class ThemeContract
+---@field list fun(): ControllerAction
+---@field load fun(): ControllerAction
