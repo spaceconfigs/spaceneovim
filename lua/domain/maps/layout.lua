@@ -1,0 +1,46 @@
+local clone = require("domain.utils.table").clone
+local layout = require("domain.contracts.controller_registry").layout()
+---@return KeyBind[]
+return function()
+	---@type KeyBind[]
+	local layout_content = {
+		{ key = "<Tab>", description = "Load previous", method = layout.previous() },
+		{ key = "D", description = "Delete", method = layout.delete() },
+		{ key = "l", description = "List", method = layout.list() },
+		{ key = "L", description = "Reload", method = layout.reload() },
+		{ key = "s", description = "Save", method = layout.save() },
+		{ key = "R", description = "Rename", method = layout.rename() },
+	}
+
+	local result = {}
+	local contents = {}
+	for _, content in pairs({
+		layout_content,
+	}) do
+		for _, bind in pairs(content) do
+			table.insert(contents, bind)
+		end
+	end
+
+	table.insert(result, {
+		key = "<leader>l",
+		description = "Layout",
+		mode = "n",
+		buffer = nil,
+		silent = true,
+		noremap = true,
+		nowait = false,
+	})
+	for _, content in pairs(contents) do
+		local bind = clone(content)
+		bind.key = "<leader>l" .. bind.key
+		bind.mode = "n"
+		bind.buffer = nil
+		bind.silent = true
+		bind.noremap = true
+		bind.nowait = false
+		table.insert(result, bind)
+	end
+
+	return result
+end

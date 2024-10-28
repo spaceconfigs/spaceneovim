@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the fold controller.
+---@class FoldContract
+---@field fold fun(opts: { action: "open"|"close"|"toggle", location?: "cursor"|"all" }): ControllerAction
