@@ -1,0 +1,8 @@
+---@meta
+--- Output port for the logger feature. Implemented by lua/infrastructure/adapters/logger.lua.
+---@class LoggerPort
+---@field log fun(opts?: table): nil
+---@field debug fun(opts?: table): nil
+---@field info fun(opts?: table): nil
+---@field warn fun(opts?: table): nil
+---@field error fun(opts?: table): nil

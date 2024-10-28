@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the completer controller.
+---@class CompleterContract
+---@field complete fun(): ControllerAction
