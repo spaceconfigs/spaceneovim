@@ -1,0 +1,8 @@
+---@meta
+--- Contract for the logger adapter.
+---@class LoggerAdapter
+---@field log fun(opts?: table): nil
+---@field debug fun(opts?: table): nil
+---@field info fun(opts?: table): nil
+---@field warn fun(opts?: table): nil
+---@field error fun(opts?: table): nil

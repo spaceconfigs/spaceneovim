@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the toggler adapter.
+---@class TogglerAdapter
+---@field number fun(): nil
+---@field wrap fun(): nil

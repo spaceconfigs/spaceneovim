@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the tree adapter.
+---@class TreeAdapter
+---@field open fun(): nil
+---@field close fun(): nil
+---@field toggle fun(opts?: table): nil

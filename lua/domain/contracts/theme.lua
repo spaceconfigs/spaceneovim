@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the theme adapter.
+---@class ThemeAdapter
+---@field list fun(): nil
+---@field load fun(): nil

@@ -1,0 +1,15 @@
+---@meta
+--- Contract for the chatbot adapter.
+---@class ChatbotAdapter
+---@field toggle fun(): nil
+---@field focus fun(): nil
+---@field send fun(text?: string, is_visual?: boolean): nil
+---@field add_buffer fun(): nil
+---@field add_file fun(): nil
+---@field add fun(): nil
+---@field select_model fun(): nil
+---@field diff_accept fun(): nil
+---@field diff_deny fun(): nil
+---@field status fun(): nil
+---@field resume fun(): nil
+---@field continue fun(): nil

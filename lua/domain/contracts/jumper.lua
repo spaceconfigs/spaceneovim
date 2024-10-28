@@ -1,0 +1,7 @@
+---@meta
+--- Contract for the jumper adapter.
+---@class JumperAdapter
+---@field timer fun(options?: table): nil
+---@field words fun(): nil
+---@field lines fun(): nil
+---@field remote fun(): nil

@@ -1,0 +1,7 @@
+---@meta
+--- Contract for the diagnostic adapter.
+---@class DiagnosticAdapter
+---@field toggle fun(): nil
+---@field show fun(direction?: string): any
+---@field loclist fun(): nil
+---@field lint fun(): nil

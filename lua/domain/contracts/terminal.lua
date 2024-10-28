@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the terminal adapter.
+---@class TerminalAdapter
+---@field open fun(options?: table): any
+---@field close fun(options?: table): any
+---@field toggle fun(options?: table): any

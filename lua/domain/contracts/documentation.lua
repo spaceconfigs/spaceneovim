@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the documentation adapter.
+---@class DocumentationAdapter
+---@field open fun(): nil
+---@field install fun(): nil

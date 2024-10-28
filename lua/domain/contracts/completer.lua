@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the completer adapter.
+---@class CompleterAdapter
+---@field complete fun(): nil

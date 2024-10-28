@@ -1,0 +1,6 @@
+---@meta
+--- Contract for the rest adapter.
+---@class RestAdapter
+---@field open fun(opts?: table): nil
+---@field send fun(opts?: table): nil
+---@field replay fun(opts?: table): nil

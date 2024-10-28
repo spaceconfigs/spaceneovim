@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the commenter adapter.
+---@class CommenterAdapter
+---@field toggle fun(opts?: table): nil

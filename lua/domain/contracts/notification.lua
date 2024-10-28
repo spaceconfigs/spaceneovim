@@ -1,0 +1,10 @@
+---@meta
+--- Contract for the notification adapter.
+---@class NotificationAdapter
+---@field notify fun(opts?: table): nil
+---@field dismiss fun(): nil
+---@field list fun(): nil
+---@field debug fun(opts?: table): nil
+---@field info fun(opts?: table): nil
+---@field warn fun(opts?: table): nil
+---@field error fun(opts?: table): nil

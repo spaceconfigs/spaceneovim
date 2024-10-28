@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the selector adapter.
+---@class SelectorAdapter
+---@field all_selected fun(): nil
+---@field quit fun(): nil

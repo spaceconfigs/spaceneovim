@@ -1,0 +1,5 @@
+---@meta
+--- Contract for the packager adapter.
+---@class PackagerAdapter
+---@field install fun(): nil
+---@field update fun(): nil

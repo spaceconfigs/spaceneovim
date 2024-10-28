@@ -1,0 +1,11 @@
+---@meta
+--- Contract for the file adapter.
+---@class FileAdapter
+---@field oldfiles fun(opts?: table): nil
+---@field list fun(opts?: table): nil
+---@field copy fun(opts?: table): any
+---@field edit_config fun(): nil
+---@field source_config fun(): nil
+---@field delete_current fun(): nil
+---@field save fun(): nil
+---@field save_all fun(): nil

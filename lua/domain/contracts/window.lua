@@ -1,0 +1,11 @@
+---@meta
+--- Contract for the window adapter.
+---@class WindowAdapter
+---@field toggle fun(): nil
+---@field go fun(direction?: string): nil
+---@field move fun(direction?: string): nil
+---@field move_far fun(direction?: string): nil
+---@field go_to fun(number?: integer): nil
+---@field close fun(): nil
+---@field split fun(opts?: table): nil
+---@field dedicate fun(): nil

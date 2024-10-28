@@ -1,0 +1,4 @@
+---@meta
+--- Contract for the commander adapter.
+---@class CommanderAdapter
+---@field find fun(opts?: table): nil
