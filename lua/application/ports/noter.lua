@@ -1,0 +1,10 @@
+---@meta
+--- Output port for the noter feature. Implemented by lua/infrastructure/adapters/noter.lua.
+---@class NoterPort
+---@field new fun(): nil
+---@field list fun(): nil
+---@field dismiss fun(): nil
+---@field find fun(): nil
+---@field checkbox fun(action?: string): nil
+---@field todo fun(action?: string): nil
+---@field insert_heading fun(type?: string): nil

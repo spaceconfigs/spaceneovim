@@ -1,0 +1,51 @@
+--- Domain-owned controller registry (composition seam). The presentation layer
+--- populates these resolvers at bootstrap; domain maps read their controller from
+--- here (require("domain.contracts.registry").<name>()) instead of importing
+--- presentation controllers. Mirrors application/ports/registry.lua (PortRegistry).
+---@class ControllerRegistry
+---@field bookmarker fun(): BookmarkerContract
+---@field buffer fun(): BufferContract
+---@field changer fun(): ChangerContract
+---@field chatbot fun(): ChatbotContract
+---@field commander fun(): CommanderContract
+---@field commenter fun(): CommenterContract
+---@field completer fun(): CompleterContract
+---@field database fun(): DatabaseContract
+---@field debugger fun(): DebuggerContract
+---@field diagnostic fun(): DiagnosticContract
+---@field documentation fun(): DocumentationContract
+---@field editor fun(): EditorContract
+---@field file fun(): FileContract
+---@field fold fun(): FoldContract
+---@field formatter fun(): FormatterContract
+---@field hover fun(): HoverContract
+---@field jumper fun(): JumperContract
+---@field layout fun(): LayoutContract
+---@field linenumber fun(): LinenumberContract
+---@field lsp fun(): LspContract
+---@field notebook fun(): NotebookContract
+---@field noter fun(): NoterContract
+---@field notification fun(): NotificationContract
+---@field outline fun(): OutlineContract
+---@field packager fun(): PackagerContract
+---@field pomodoro fun(): PomodoroContract
+---@field quit fun(): QuitContract
+---@field rest fun(): RestContract
+---@field screenshot fun(): ScreenshotContract
+---@field searcher fun(): SearcherContract
+---@field selector fun(): SelectorContract
+---@field statusline fun(): StatuslineContract
+---@field terminal fun(): TerminalContract
+---@field tester fun(): TesterContract
+---@field theme fun(): ThemeContract
+---@field todo fun(): TodoContract
+---@field toggler fun(): TogglerContract
+---@field tree fun(): TreeContract
+---@field versior fun(): VersiorContract
+---@field window fun(): WindowContract
+---@field workspace fun(): WorkspaceContract
+---@field zen fun(): ZenContract
+---@field zoom fun(): ZoomContract
+local M = {}
+
+return M
