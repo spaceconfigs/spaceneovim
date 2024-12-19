@@ -5,44 +5,44 @@ local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.terminal")
 
 M.open = function()
-	local message = {
-		module = "adapters/terminal",
-		func = "open",
-	}
-	logger_use_manage.debug(message)
+  local message = {
+    module = "adapters/terminal",
+    func = "open",
+  }
+  logger_use_manage.debug(message)
 
-	plugin:open()
+  plugin:open()
 end
 
 M.close = function()
-	local message = {
-		module = "adapters/terminal",
-		func = "close",
-	}
-	logger_use_manage.debug(message)
+  local message = {
+    module = "adapters/terminal",
+    func = "close",
+  }
+  logger_use_manage.debug(message)
 
-	plugin:close()
+  plugin:close()
 end
 
 M.toggle = function()
-	local message = {
-		module = "adapters/terminal",
-		func = "toggle",
-	}
-	logger_use_manage.debug(message)
+  local message = {
+    module = "adapters/terminal",
+    func = "toggle",
+  }
+  logger_use_manage.debug(message)
 
-	plugin:new():toggle()
+  vim.cmd('ToggleTerm dir=git_dir')
 end
 
 M.toggle_buffer_dir = function()
-	local message = {
-		module = "adapters/terminal",
-		func = "toggle_buffer_dir",
-	}
-	logger_use_manage.debug(message)
-	local buffer = vim.fn.expand("%:p:h")
+  local message = {
+    module = "adapters/terminal",
+    func = "toggle_buffer_dir",
+  }
+  logger_use_manage.debug(message)
+  local buffer = vim.fn.expand("%:p:h")
 
-	plugin:new({ dir = buffer }):toggle()
+  vim.cmd('ToggleTerm' .. ' dir=' .. buffer)
 end
 
 return M

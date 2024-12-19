@@ -50,4 +50,15 @@ M.unstage_file = function()
 	adapter.unstage_files()
 end
 
+M.browse = function()
+	local message = {
+		module = "use_cases/versior",
+		func = "browse",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.browse()
+end
+
 return M
