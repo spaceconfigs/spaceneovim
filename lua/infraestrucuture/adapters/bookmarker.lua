@@ -1,7 +1,6 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local file = require("infraestrucuture.plugins.file")
 local bookmarker = require("infraestrucuture.plugins.bookmarker")
 local bookmarks = bookmarker.bookmarks
 
@@ -32,7 +31,7 @@ M.remove_all = function()
 	}
 	logger_use_manage.debug(message)
 
-	harpoon.mark.clear_all()
+	bookmarks.bookmark_clear_all()
 end
 
 M.list = function()
@@ -42,7 +41,7 @@ M.list = function()
 	}
 	logger_use_manage.debug(message)
 
-	bookmarks.bookmark_list()
+	bookmarks.bookmarks_list_telescope()
 end
 
 return M
