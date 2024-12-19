@@ -2,62 +2,45 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.file")
+local fzf = plugin.fzf
+
+local fzf_opts = {
+  winopts = {
+    border = 'rounded',
+    preview = {
+      layout = 'vertical',
+      vertical = 'up:60%',
+    },
+  },
+}
+
 
 M.oldfiles = function(opts)
-	local message = {
-		module = "adapters/file",
-		func = "oldfiles",
-		opts = opts,
-	}
-	logger_use_manage.debug(message)
+  local message = {
+    module = "adapters/file",
+    func = "oldfiles",
+    opts = opts,
+  }
+  logger_use_manage.debug(message)
 
-	plugin.telescope.builtin.oldfiles({ show_line = false, cwd_only = opts.cwd_only })
+
+  fzf.oldfiles(fzf_opts)
+  -- plugin.telescope.builtin.oldfiles({ show_line = false, cwd_only = opts.cwd_only })
 end
 
 M.list = function(opts)
-	local message = {
-		module = "adapters/file",
-		func = "list",
-		opts = opts,
-	}
-	logger_use_manage.debug(message)
+  local message = {
+    module = "adapters/file",
+    func = "list",
+    opts = opts,
+  }
+  logger_use_manage.debug(message)
 
-	local cwd = opts and opts.path
+  local cwd = opts and opts.path
+  local temp_opts = vim.deepcopy(fzf_opts)
+  temp_opts.cwd = cwd
 
-	-- plugin.fzf.git_files()
-
-	plugin.telescope.builtin.find_files({
-		hidden = true,
-		show_line = false,
-		cwd = cwd,
-	})
-end
-
-M.search = function(opts)
-	local message = {
-		module = "adapters/file",
-		func = "search",
-	}
-	logger_use_manage.debug(message)
-
-	opts = opts or {}
-
-	if opts.text ~= nil and opts.text ~= "" then
-		return plugin.telescope.builtin.grep_string({
-			show_line = false,
-			search = opts.text,
-			search_dirs = {
-				opts.path,
-			},
-		})
-	end
-
-	plugin.telescope.builtin.live_grep({
-		show_line = false,
-		search_dirs = {
-			opts.path,
-		},
-	})
+  fzf.files(temp_opts)
 end
 
 return M

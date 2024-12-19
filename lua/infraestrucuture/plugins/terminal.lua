@@ -1,7 +1,9 @@
-local ok, plugin = pcall(require, "toggleterm")
+local ok, toggleterm = pcall(require, "toggleterm")
 if not ok then
-	return vim.notify("Failed to load plugin `akinsho/toggleterm.nvim`")
+  return vim.notify("Failed to load plugin `akinsho/toggleterm.nvim`")
 end
-plugin.setup()
+toggleterm.setup()
 
-return require("toggleterm.terminal").Terminal
+return {
+  toggleterm = toggleterm
+}

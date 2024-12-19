@@ -58,33 +58,6 @@ M.files = function()
 	file_usecase.list({ location = "profile" })()
 end
 
-M.search = function()
-	local message = {
-		module = "use_cases/workspace",
-		func = "search",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
-
-	local path = find_project_path()
-
-	adapter.search({ cwd = path })
-end
-
-M.search_hover = function()
-	local message = {
-		module = "use_cases/workspace",
-		func = "search_hover",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
-
-	local text = vim.fn.expand("<cword>")
-	local path = find_project_path()
-
-	adapter.search({ cwd = path, text = text })
-end
-
 M.grep_input = function()
 	local message = {
 		module = "use_cases/workspace",
