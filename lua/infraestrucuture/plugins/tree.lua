@@ -1,5 +1,5 @@
-local ok, plugin = pcall(require, "nvim-tree")
-if not ok then
+local nvim_tree_ok, nvim_tree = pcall(require, "nvim-tree")
+if not nvim_tree_ok then
   return vim.notify("Failed to load plugin `nvim-tree/nvim-tree.lua`")
 end
 
@@ -40,7 +40,7 @@ local on_attach = function(bufnr)
   vim.keymap.set("n", "yr", nvim_tree_api.fs.copy.relative_path, opts("Copy Relative Path"))
 end
 
-plugin.setup({
+nvim_tree.setup({
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
   on_attach = on_attach,
@@ -71,7 +71,18 @@ plugin.setup({
   },
 })
 
-local nvim_tree = require("nvim-tree.api").tree
+local tree = require("nvim-tree.api").tree
+
+local yazi_ok, yazi = pcall(require, "yazi")
+if not yazi_ok then
+  return vim.notify("Failed to load plugin `mikavilpas/yazi.nvim`")
+end
+
+yazi.setup({
+  open_for_directories = false,
+})
+
 return {
-  nvim_tree = nvim_tree,
+  nvim_tree = tree,
+  yazi = yazi
 }
