@@ -11,7 +11,6 @@ end
 
 neogit.setup()
 
-print(vim.inspect(neogit))
 -- neogit.lib.popup:builder()
 
 local snacks_ok, snacks = pcall(require, "snacks")

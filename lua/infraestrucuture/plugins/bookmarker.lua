@@ -8,13 +8,11 @@ if not ok_telescope then
 	return vim.notify("Failed to load plugin `nvim-telescope/telescope.nvim`")
 end
 
-require("telescope").load_extension("bookmarks")
-
 bookmarks.setup({
 	save_file = vim.fn.stdpath("state") .. "/bookmarks",
 })
 
-require("telescope").load_extension("bookmarks")
+telescope.load_extension("bookmarks")
 
 bookmarks.bookmarks_list_telescope = function()
 	require("telescope").extensions.bookmarks.list()

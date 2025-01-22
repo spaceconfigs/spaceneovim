@@ -8,7 +8,6 @@ end
 local logger_use_manage = require("application.use_cases.logger")
 local actions = require("telescope.actions")
 
-telescope.load_extension("ui-select")
 telescope.load_extension("frecency")
 
 local builtin = require("telescope.builtin")

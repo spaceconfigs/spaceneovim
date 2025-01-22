@@ -1,4 +1,4 @@
 return {
   { "mfussenegger/nvim-lint" },
-  { "folke/trouble.nvim" }
+  { "folke/trouble.nvim" },
 }
