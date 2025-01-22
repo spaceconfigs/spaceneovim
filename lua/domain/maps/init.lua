@@ -25,69 +25,70 @@ local yank_map = require("domain.maps.yank")
 local zoom_map = require("domain.maps.zoom")
 
 local default_map = {
-	{ key = "<leader>", description = "Commands", method = commander_use_case.find },
-	{ key = "1", description = "Window 1", method = ":wincmd 1 w<cr>" },
-	{ key = "2", description = "Window 2", method = ":wincmd 2 w<cr>" },
-	{ key = "3", description = "Window 3", method = ":wincmd 3 w<cr>" },
-	{ key = "4", description = "Window 4", method = ":wincmd 4 w<cr>" },
-	{ key = "5", description = "Window 5", method = ":wincmd 5 w<cr>" },
-	{ key = "6", description = "Window 6", method = ":wincmd 6 w<cr>" },
-	{ key = "7", description = "Window 7", method = ":wincmd 7 w<cr>" },
-	{ key = "8", description = "Window 8", method = ":wincmd 8 w<cr>" },
-	{ key = "9", description = "Window 9", method = ":wincmd 9 w<cr>" },
-	{ key = ";", description = "Comment line", method = commenter_use_case.toggle_current_line },
-	{
-		key = ";",
-		description = "Comment line",
-		method = commenter_use_case.toggle_current_line_visual_mode,
-		mode = "v",
-	},
-	{ key = "<Tab>", description = "Previous buffer", method = buffer_use_case.reopen },
-	{ key = "'", mode = { "n", "t" }, description = "Terminal", method = terminal_use_case.toggle_buffer_dir },
+  { key = "<leader>", description = "Commands",     method = commander_use_case.find },
+  { key = "1",        description = "Window 1",     method = ":wincmd 1 w<cr>" },
+  { key = "2",        description = "Window 2",     method = ":wincmd 2 w<cr>" },
+  { key = "3",        description = "Window 3",     method = ":wincmd 3 w<cr>" },
+  { key = "4",        description = "Window 4",     method = ":wincmd 4 w<cr>" },
+  { key = "5",        description = "Window 5",     method = ":wincmd 5 w<cr>" },
+  { key = "6",        description = "Window 6",     method = ":wincmd 6 w<cr>" },
+  { key = "7",        description = "Window 7",     method = ":wincmd 7 w<cr>" },
+  { key = "8",        description = "Window 8",     method = ":wincmd 8 w<cr>" },
+  { key = "9",        description = "Window 9",     method = ":wincmd 9 w<cr>" },
+  { key = ";",        description = "Comment line", method = commenter_use_case.toggle_current_line },
+  {
+    key = ";",
+    description = "Comment line",
+    method = commenter_use_case.toggle_current_line_visual_mode,
+    mode = "v",
+  },
+  { key = "<Tab>", description = "Previous buffer", method = buffer_use_case.reopen },
+  { key = "'",     mode = { "n", "t" },             description = "Terminal",          method = terminal_use_case.toggle_buffer_dir },
+  { key = "\"",    mode = { "n", "t" },             description = "External terminal", method = terminal_use_case.toggle({ type = 'external' }) },
 }
 
 local results = {}
 for _, content in pairs({
-	default_map,
+  default_map,
 }) do
-	for _, bind in pairs(content) do
-		local result = vim.deepcopy(bind)
-		result.key = "<leader>" .. result.key
-		result.mode = result.mode or "n"
-		result.buffer = nil
-		result.silent = true
-		result.noremap = true
-		result.nowait = false
-		table.insert(results, result)
-	end
+  for _, bind in pairs(content) do
+    local result = vim.deepcopy(bind)
+    result.key = "<leader>" .. result.key
+    result.mode = result.mode or "n"
+    result.buffer = nil
+    result.silent = true
+    result.noremap = true
+    result.nowait = false
+    table.insert(results, result)
+  end
 end
 
 for _, map in ipairs({
-	application_map,
-	chatbot_map,
-	major_map,
-	file_map,
-	buffer_map,
-	debugger_map,
-	error_map,
-	git_map,
-	jump_map,
-	layout_map,
-	project_map,
-	search_map,
-	quit_map,
-	window_map,
-	help_map,
-	toggler_map,
-	unprefixed_map,
-	selector_map,
-	ui_map,
+  application_map,
+  chatbot_map,
+  major_map,
+  file_map,
+  buffer_map,
+  debugger_map,
+  error_map,
+  git_map,
+  jump_map,
+  layout_map,
+  project_map,
+  search_map,
+  quit_map,
+  window_map,
+  help_map,
+  toggler_map,
+  unprefixed_map,
+  selector_map,
+  ui_map,
   yank_map,
   zoom_map,
 }) do
-	for _, content in pairs(map) do
-		table.insert(results, content)
-	end
+  for _, content in pairs(map) do
+    table.insert(results, content)
+  end
 end
 
 return results
