@@ -88,7 +88,8 @@ if not ok_fzf then
   return vim.notify("Failed to require load `ibhagwan/fzf-lua`")
 end
 
-fzf.setup()
+local fzf_opts = require("infraestrucuture.plugins.lazy.settings.fzf-lua")
+fzf.setup(fzf_opts.horizontal)
 
 return {
   telescope = result,

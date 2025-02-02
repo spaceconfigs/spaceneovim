@@ -2,17 +2,8 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.searcher")
+local fzf_opts = require("infraestrucuture.plugins.lazy.settings.fzf-lua")
 local fzf = plugin.fzf
-
-local fzf_grep_live_opts = {
-  prompt = '> ',
-  winopts = {
-    preview = {
-      layout = 'vertical',
-      vertical = 'up:60%',
-    },
-  },
-}
 
 M.search = function(opts)
   local message = {
@@ -22,18 +13,18 @@ M.search = function(opts)
   }
   logger_use_manage.debug(message)
 
-  local temp_opts = vim.deepcopy(fzf_grep_live_opts)
-  temp_opts.search = opts.text
-
   if opts.in_live and opts.location == "project" then
-    fzf.live_grep(fzf_grep_live_opts)
+    local temp = vim.deepcopy(fzf_opts.live_grep)
+    return fzf.live_grep(temp)
   end
 
   if opts.location == "project" then
-    return fzf.grep_project(temp_opts)
+    return fzf.grep_project({ search = opts.text })
   end
 
-  return fzf.grep_curbuf(temp_opts)
+  local temp = vim.deepcopy(fzf_opts.lgrep_curbuf)
+  temp.search = opts.text
+  return fzf.lgrep_curbuf(temp)
 end
 
 return M

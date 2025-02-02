@@ -43,7 +43,7 @@ M.toggle = function(options)
     return vim.fn.system(terminal_command)
   end
 
-  vim.cmd('ToggleTerm dir=git_dir')
+  vim.cmd('ToggleTerm dir=git_dir direction=float')
 end
 
 M.toggle_buffer_dir = function()
@@ -54,7 +54,7 @@ M.toggle_buffer_dir = function()
   logger_use_manage.debug(message)
   local buffer = vim.fn.expand("%:p:h")
 
-  vim.cmd('ToggleTerm' .. ' dir=' .. buffer)
+  vim.cmd('ToggleTerm  direction=float' .. ' dir=' .. buffer)
 end
 
 return M

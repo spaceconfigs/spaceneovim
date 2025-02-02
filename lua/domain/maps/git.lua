@@ -3,7 +3,7 @@ local versior_use_case = require("application.use_cases.versior")
 local git_content = {
 	{ key = "s", description = "Status", method = versior_use_case.open, },
 	{ key = "S", description = "Stage file", method = versior_use_case.stage_file, },
-	{ key = "o", description = "Status", method = versior_use_case.browse, },
+	{ key = "o", description = "Browse", method = versior_use_case.browse, },
 	{ key = "U", description = "Unstage file", method = versior_use_case.unstage_file, },
 	{ key = "b", description = "Blame Line", method = versior_use_case.blame_line, },
 }

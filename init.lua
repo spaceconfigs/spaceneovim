@@ -9,10 +9,17 @@
 -- TODO: look for how check performance on bootstrap of neovim. Spended time to start it
 -- TODO: add keybind to jump with treesitter
 
+
+if vim.g.neovide then
+  vim.g.neovide_transparency = 0.8
+  vim.g.neovide_normal_opacity = 0.8
+  vim.g.neovide_scale_factor = 1.0
+end
+
+local environment = require("domain.environments")
+vim.fn.setenv("NVIM_ENVIRONMENT", environment.PRODUCTION)
+
 require("config")
 require("application.use_cases")
 require("infraestrucuture.events")
 
-local environment = require("domain.environments")
-
-vim.fn.setenv("NVIM_ENVIRONMENT", environment.PRODUCTION)

@@ -4,16 +4,6 @@ local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.file")
 local fzf = plugin.fzf
 
-local fzf_opts = {
-  cwd_prompt = false,
-  prompt = "> ",
-  winopts = {
-    preview = {
-      layout = 'vertical',
-      vertical = 'up:60%',
-    },
-  },
-}
 
 M.oldfiles = function(opts)
   local message = {
@@ -24,7 +14,7 @@ M.oldfiles = function(opts)
   logger_use_manage.debug(message)
 
 
-  fzf.oldfiles(fzf_opts)
+  fzf.oldfiles()
 end
 
 M.list = function(opts)
@@ -36,10 +26,7 @@ M.list = function(opts)
   logger_use_manage.debug(message)
 
   local cwd = opts and opts.path
-  local temp_opts = vim.deepcopy(fzf_opts)
-  temp_opts.cwd = cwd
-
-  fzf.files(temp_opts)
+  fzf.files({ cwd = cwd })
 end
 
 return M

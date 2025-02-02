@@ -21,18 +21,11 @@ bufferline.setup({
   },
 })
 
-local fzf_opts = {
-  winopts = {
-    preview = {
-      layout = 'vertical',
-      vertical = 'up:60%',
-    },
-  },
-  prompt = '> '
-}
+local fzf_opts = require("infraestrucuture.plugins.lazy.settings.fzf-lua")
+fzf.setup(fzf_opts.horizontal)
 
 bufferline.list = function()
-  fzf.buffers(fzf_opts)
+  fzf.buffers()
 end
 
 return {

@@ -12,7 +12,12 @@ end
 
 workspaces.setup({
   hooks = {
-    open = file_usecase.list({ location = "profile" }),
+    open = function()
+      file_usecase.list({ location = "profile" })()
+      if vim.bo.buftype == 'terminal' then
+        vim.api.nvim_feedkeys('i', 'n', true)
+      end
+    end
   },
 })
 

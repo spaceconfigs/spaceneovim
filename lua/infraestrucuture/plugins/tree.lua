@@ -73,16 +73,6 @@ nvim_tree.setup({
 
 local tree = require("nvim-tree.api").tree
 
-local yazi_ok, yazi = pcall(require, "yazi")
-if not yazi_ok then
-  return vim.notify("Failed to load plugin `mikavilpas/yazi.nvim`")
-end
-
-yazi.setup({
-  open_for_directories = false,
-})
-
 return {
   nvim_tree = tree,
-  yazi = yazi
 }

@@ -8,7 +8,7 @@ local grep_input_content = {
 
 local search_content = {
   { key = "p", description = "Search in workspace",     method = searcher_use_case.search({ location = 'project', in_live = true }) },
-  { key = "P", description = "Search project w/ input", method = searcher_use_case.search_hover({ location = 'project' }) },
+  { key = "P", description = "Search project w/ input", method = searcher_use_case.search_hover('project') },
   { key = "s", description = "Text",                    method = searcher_use_case.search({ in_live = true }) },
   { key = "S", description = "Search w/ input",         method = searcher_use_case.search_hover() },
 }

@@ -1,17 +1,11 @@
+local is_neovide = vim.g.neovide or false;
+
 return {
   { "ThePrimeagen/vim-be-good", lazy = false },
   { "tiagovla/scope.nvim",      opts = {},   lazy = false },
   {
     "3rd/image.nvim",
-    lazy = false,
-    config = true,
-    dependencies = {
-      {
-        "vhyrro/luarocks.nvim",
-        priority = 1000,
-        config = true,
-      },
-    },
+    enabled = not is_neovide,
   },
   { "HakonHarnes/img-clip.nvim",   lazy = false },
   { "norcalli/nvim-colorizer.lua", options = {}, lazy = false },

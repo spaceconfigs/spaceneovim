@@ -12,7 +12,11 @@ M.toggle = function()
   }
   logger_use_manage.debug(message)
 
-  vim.cmd("Trouble diagnostics filter.buf=0")
+  for _, client in ipairs(vim.lsp.get_clients()) do
+    require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+  end
+
+  vim.cmd("Trouble diagnostics filter")
 end
 
 M.show = function(direction)
