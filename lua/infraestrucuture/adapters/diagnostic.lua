@@ -2,8 +2,7 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.diagnostic")
-local lint = plugin.lint
-local trouble = plugin.trouble
+local snacks = plugin.snacks
 
 M.toggle = function()
   local message = {
@@ -12,11 +11,7 @@ M.toggle = function()
   }
   logger_use_manage.debug(message)
 
-  for _, client in ipairs(vim.lsp.get_clients()) do
-    require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
-  end
-
-  vim.cmd("Trouble diagnostics filter")
+  snacks.picker.diagnostics_buffer({ layout = { preset = "ivy_split" } })
 end
 
 M.show = function(direction)
@@ -35,7 +30,7 @@ M.show = function(direction)
     return vim.diagnostic.goto_next()
   end
 
-  vim.diagnostic.open_float()
+  snacks.picker.diagnostics({ layout = { preset = "ivy_split" } })
 end
 
 return M

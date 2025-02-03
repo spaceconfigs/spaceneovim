@@ -2,8 +2,7 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.searcher")
-local fzf_opts = require("infraestrucuture.plugins.lazy.settings.fzf-lua")
-local fzf = plugin.fzf
+local snacks = plugin.snacks
 
 M.search = function(opts)
   local message = {
@@ -13,18 +12,20 @@ M.search = function(opts)
   }
   logger_use_manage.debug(message)
 
-  if opts.in_live and opts.location == "project" then
-    local temp = vim.deepcopy(fzf_opts.live_grep)
-    return fzf.live_grep(temp)
-  end
-
   if opts.location == "project" then
-    return fzf.grep_project({ search = opts.text })
+    return snacks.picker.grep({
+      live = opts.text == nil,
+      search = opts.text,
+      layout = { preset = "ivy_split" }
+    })
   end
 
-  local temp = vim.deepcopy(fzf_opts.lgrep_curbuf)
-  temp.search = opts.text
-  return fzf.lgrep_curbuf(temp)
+  snacks.picker.grep({
+    live = opts.text == nil,
+    search = opts.text,
+    buffers = { 0 },
+    layout = { preset = "ivy_split" }
+  })
 end
 
 return M

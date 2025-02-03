@@ -1,11 +1,8 @@
-local ok_fzf, fzf = pcall(require, "fzf-lua")
-if not ok_fzf then
-  return vim.notify("Failed to require load `ibhagwan/fzf-lua`")
+local snacks_ok, snacks = pcall(require, "snacks")
+if not snacks_ok then
+  return vim.notify("Failed to load plugin `folke/snacks.nvim`")
 end
 
-local fzf_opts = require("infraestrucuture.plugins.lazy.settings.fzf-lua")
-fzf.setup(fzf_opts.horizontal)
-
 return {
-  fzf = fzf,
+  snacks = snacks,
 }
