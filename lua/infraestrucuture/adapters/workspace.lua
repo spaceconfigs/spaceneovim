@@ -2,8 +2,11 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local file_usecase = require("application.use_cases.logger")
-local workspaces = require("infraestrucuture.plugins.workspaces")
+local plugin = require("infraestrucuture.plugins.workspaces")
+local workspaces = plugin.workspaces
+local snacks = plugin.snacks
 
+-- snacks.picker.grep({ layout = { preset = "ivy_split" } })
 M.open = function()
   local message = {
     module = "adapters/workspace",
@@ -11,6 +14,7 @@ M.open = function()
   }
   logger_use_manage.debug(message)
 
+  -- snacks.picker.projects({ layout = { preset = "ivy_split" } })
   workspaces.workspaces()
 end
 

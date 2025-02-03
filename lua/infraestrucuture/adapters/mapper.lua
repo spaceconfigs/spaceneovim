@@ -1,7 +1,6 @@
 local interface = require("domain.interfaces.mapper")
 
 interface.setup = function(package, config)
-	local finder_use_case = config.finder
 	local lsp_use_case = config.lsp
 	local packager_use_case = config.packager
 	local tree_use_case = config.tree

@@ -9,8 +9,7 @@ local plugin = require("infraestrucuture.plugins.lsp")
 local mason_lspconfig = plugin.mason_lspconfig
 local lspconfig = plugin.lspconfig
 local cmp_nvim_lsp = plugin.cmp_nvim_lsp
-local builtin = plugin.telescope.builtin
-local fzf = plugin.fzf
+local snacks = plugin.snacks
 
 vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticDefault" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", numhl = "DiagnosticDefault" })
@@ -63,13 +62,13 @@ M.declaration = function(options)
       action = function(match)
         vim.api.nvim_win_call(match.win, function()
           vim.api.nvim_win_set_cursor(match.win, match.pos)
-          vim.lsp.buf.declaration()
+          snacks.picker.lsp_declarations({ layout = { preset = "ivy_split" } })
         end)
       end,
     })
   end
 
-  vim.lsp.buf.declaration()
+  snacks.picker.lsp_declarations({ layout = { preset = "ivy_split" } })
 end
 
 M.definition = function(options)
@@ -85,13 +84,13 @@ M.definition = function(options)
       action = function(match)
         vim.api.nvim_win_call(match.win, function()
           vim.api.nvim_win_set_cursor(match.win, match.pos)
-          vim.lsp.buf.definition()
+          snacks.picker.lsp_definitions({ layout = { preset = "ivy_split" } })
         end)
       end,
     })
   end
 
-  vim.lsp.buf.definition()
+  snacks.picker.lsp_definitions({ layout = { preset = "ivy_split" } })
 end
 
 M.implementation = function(options)
@@ -129,16 +128,14 @@ M.references = function(options)
       action = function(match)
         vim.api.nvim_win_call(match.win, function()
           vim.api.nvim_win_set_cursor(match.win, match.pos)
-          -- builtin.lsp_references()
 
-          fzf.lsp_references()
+          snacks.picker.lsp_references({ layout = { preset = "ivy_split" } })
         end)
       end,
     })
   end
 
-  -- builtin.lsp_references()
-  fzf.lsp_references()
+  snacks.picker.lsp_references({ layout = { preset = "ivy_split" } })
 end
 
 M.typedefinition = function(options)
@@ -209,8 +206,7 @@ M.show_references = function()
   }
   logger_use_manage.debug(message)
 
-  fzf.lsp_references()
-  -- vim.lsp.buf.references()
+  snacks.picker.lsp_references({ layout = { preset = "ivy_split" } })
 end
 
 M.format = function()
@@ -250,7 +246,7 @@ M.get_symbol = function()
   }
   logger_use_manage.debug(message)
 
-  builtin.lsp_document_symbols({ show_line = false })
+  snacks.picker.lsp_symbols({ layout = { preset = "ivy_split" } })
 end
 
 return M

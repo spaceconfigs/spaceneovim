@@ -3,8 +3,6 @@ local ok_lspconfig, lspconfig = pcall(require, "lspconfig")
 local ok_mason, mason = pcall(require, "mason")
 local ok_masonlspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 local ok_render_markdown, render_markdown = pcall(require, "render-markdown")
-local ok_telescope, telescope = pcall(require, "telescope")
-local ok_fzf, fzf = pcall(require, "fzf-lua")
 
 if not ok_mason then
   vim.notify("Failed to load plugin `williamboman/mason.nvim`")
@@ -29,20 +27,6 @@ end
 if not ok_render_markdown then
   vim.notify("Failed to load plugin `MeanderingProgrammer/render-markdown.nvim`")
   return
-end
-
-if not ok_telescope then
-  return vim.notify("Failed to require package `telescope`")
-end
-
-local result = {}
-for key, value in pairs(telescope) do
-  result[key] = value
-end
-result.builtin = require("telescope.builtin")
-
-if not ok_fzf then
-  return vim.notify("Failed to require package `ibhagwan/fzf-lua`")
 end
 
 -- vim.o.conceallevel = 2
@@ -74,13 +58,14 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
-local fzf_opts = require("infraestrucuture.plugins.lazy.settings.fzf-lua")
-fzf.setup(fzf_opts.horizontal)
+local snacks_ok, snacks = pcall(require, "snacks")
+if not snacks_ok then
+  return vim.notify("Failed to load plugin `folke/snacks.nvim`")
+end
 
 return {
   mason_lspconfig = mason_lspconfig,
   lspconfig = lspconfig,
   cmp_nvim_lsp = cmp_nvim_lsp,
-  telescope = result,
-  fzf = fzf,
+  snacks = snacks,
 }

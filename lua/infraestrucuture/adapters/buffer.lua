@@ -5,6 +5,7 @@ local plugins = require("infraestrucuture.plugins.buffer")
 
 local bufferline = plugins.bufferline
 local bufdelete = plugins.bufdelete
+local snacks = plugins.snacks
 
 M.list = function()
   local message = {
@@ -13,7 +14,7 @@ M.list = function()
   }
   logger_use_manage.debug(message)
 
-  bufferline.list()
+  snacks.picker.buffers({ layout = { preset = "ivy_split" } })
 end
 
 M.delete = function()

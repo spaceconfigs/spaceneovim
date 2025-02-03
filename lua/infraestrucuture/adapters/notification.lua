@@ -4,6 +4,7 @@ local M = {}
 local log_levels = require("domain.log_levels")
 local plugin = require("infraestrucuture.plugins.notification")
 local notification = plugin.notify
+local snacks = plugin.snacks
 
 vim.opt.termguicolors = true
 
@@ -26,7 +27,7 @@ M.dismiss = function()
 end
 
 M.list = function()
-  notification.list()
+  snacks.picker.notifications({ layout = { preset = "ivy_split" } })
 end
 
 M.debug = function(opts)
