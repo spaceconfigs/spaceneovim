@@ -27,7 +27,7 @@ M.dismiss = function()
 end
 
 M.list = function()
-  snacks.picker.notifications({ layout = { preset = "ivy_split" } })
+  snacks.picker.notifications({ layout = { preset = "nitaicharan" } })
 end
 
 M.debug = function(opts)

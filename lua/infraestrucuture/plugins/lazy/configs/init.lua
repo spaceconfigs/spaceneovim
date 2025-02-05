@@ -81,7 +81,29 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  { 'folke/snacks.nvim' },
+  {
+    'folke/snacks.nvim',
+    opts = {
+      picker = {
+        layouts = {
+          nitaicharan = {
+            layout = {
+              box = "horizontal",
+              backdrop = false,
+              width = 0,
+              height = 0,
+              {
+                box = "vertical",
+                { win = "preview", height = 0.8,        title = "{preview:Preview}", title_pos = "center", },
+                { win = "input",   height = 1,          border = "none",             title = "{title} {live} {flags}", title_pos = "center" },
+                { win = "list",    title = " Results ", title_pos = "center",        border = "none" },
+              },
+            },
+          },
+        },
+      },
+    }
+  },
   {
     "ThePrimeagen/harpoon",
     dependencies = {

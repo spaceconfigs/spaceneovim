@@ -11,7 +11,7 @@ M.toggle = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.diagnostics_buffer({ layout = { preset = "ivy_split" } })
+  snacks.picker.diagnostics_buffer({ layout = { preset = "nitaicharan" } })
 end
 
 M.show = function(direction)
@@ -30,7 +30,7 @@ M.show = function(direction)
     return vim.diagnostic.goto_next()
   end
 
-  snacks.picker.diagnostics({ layout = { preset = "ivy_split" } })
+  snacks.picker.diagnostics({ layout = { preset = "nitaicharan" } })
 end
 
 return M

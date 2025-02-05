@@ -62,13 +62,13 @@ M.declaration = function(options)
       action = function(match)
         vim.api.nvim_win_call(match.win, function()
           vim.api.nvim_win_set_cursor(match.win, match.pos)
-          snacks.picker.lsp_declarations({ layout = { preset = "ivy_split" } })
+          snacks.picker.lsp_declarations({ layout = { preset = "nitaicharan" } })
         end)
       end,
     })
   end
 
-  snacks.picker.lsp_declarations({ layout = { preset = "ivy_split" } })
+  snacks.picker.lsp_declarations({ layout = { preset = "nitaicharan" } })
 end
 
 M.definition = function(options)
@@ -84,13 +84,13 @@ M.definition = function(options)
       action = function(match)
         vim.api.nvim_win_call(match.win, function()
           vim.api.nvim_win_set_cursor(match.win, match.pos)
-          snacks.picker.lsp_definitions({ layout = { preset = "ivy_split" } })
+          snacks.picker.lsp_definitions({ layout = { preset = "nitaicharan" } })
         end)
       end,
     })
   end
 
-  snacks.picker.lsp_definitions({ layout = { preset = "ivy_split" } })
+  snacks.picker.lsp_definitions({ layout = { preset = "nitaicharan" } })
 end
 
 M.implementation = function(options)
@@ -129,13 +129,13 @@ M.references = function(options)
         vim.api.nvim_win_call(match.win, function()
           vim.api.nvim_win_set_cursor(match.win, match.pos)
 
-          snacks.picker.lsp_references({ layout = { preset = "ivy_split" } })
+          snacks.picker.lsp_references({ layout = { preset = "nitaicharan" } })
         end)
       end,
     })
   end
 
-  snacks.picker.lsp_references({ layout = { preset = "ivy_split" } })
+  snacks.picker.lsp_references({ layout = { preset = "nitaicharan" } })
 end
 
 M.typedefinition = function(options)
@@ -206,7 +206,7 @@ M.show_references = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.lsp_references({ layout = { preset = "ivy_split" } })
+  snacks.picker.lsp_references({ layout = { preset = "nitaicharan" } })
 end
 
 M.format = function()
@@ -246,7 +246,7 @@ M.get_symbol = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.lsp_symbols({ layout = { preset = "ivy_split" } })
+  snacks.picker.lsp_symbols({ layout = { preset = "nitaicharan" } })
 end
 
 return M

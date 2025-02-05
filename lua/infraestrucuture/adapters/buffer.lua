@@ -14,7 +14,7 @@ M.list = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.buffers({ layout = { preset = "ivy_split" } })
+  snacks.picker.buffers({ layout = { preset = "nitaicharan" } })
 end
 
 M.delete = function()

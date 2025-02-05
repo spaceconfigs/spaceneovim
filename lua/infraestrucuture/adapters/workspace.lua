@@ -6,7 +6,8 @@ local plugin = require("infraestrucuture.plugins.workspaces")
 local workspaces = plugin.workspaces
 local snacks = plugin.snacks
 
--- snacks.picker.grep({ layout = { preset = "ivy_split" } })
+-- snacks.picker.grep({ layout = { preset = "nitaicharan" }, })
+
 M.open = function()
   local message = {
     module = "adapters/workspace",
@@ -14,7 +15,7 @@ M.open = function()
   }
   logger_use_manage.debug(message)
 
-  -- snacks.picker.projects({ layout = { preset = "ivy_split" } })
+  -- snacks.picker.projects({ layout = { preset = "nitaicharan" }, })
   workspaces.workspaces()
 end
 

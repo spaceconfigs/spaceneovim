@@ -3,7 +3,12 @@ local M = {}
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.searcher")
 local snacks = plugin.snacks
-
+-- print(vim.inspect(snacks.picker.picker_layouts()))
+-- snacks.picker.picker_layouts()
+-- snacks.picker.lines({
+--   -- layout = { preset = "nitaicharan" },
+--   layout = { preset = "telescope" },
+-- })
 M.search = function(opts)
   local message = {
     module = "adapters/searcher",
@@ -14,17 +19,16 @@ M.search = function(opts)
 
   if opts.location == "project" then
     return snacks.picker.grep({
+      layout = { preset = "nitaicharan" },
       live = opts.text == nil,
       search = opts.text,
-      layout = { preset = "ivy_split" }
     })
   end
 
-  snacks.picker.grep({
-    live = opts.text == nil,
-    search = opts.text,
-    buffers = { 0 },
-    layout = { preset = "ivy_split" }
+  snacks.picker.lines({
+    -- layout = { preset = "nitaicharan" },
+    layout = { preset = "nitaicharan" },
+    pattern = opts.text,
   })
 end
 
