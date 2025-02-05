@@ -1,6 +1,16 @@
 local is_neovide = vim.g.neovide or false;
 
 return {
+  {
+    'tristone13th/lspmark.nvim',
+    config = true,
+    dependencies = {
+      {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+      },
+    }
+  },
   { "natecraddock/workspaces.nvim" },
   {
     "folke/lazydev.nvim",

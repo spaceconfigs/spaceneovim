@@ -2,7 +2,8 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local bookmarker = require("infraestrucuture.plugins.bookmarker")
-local snacks = bookmarker.snacks
+local telescope = bookmarker.telescope
+local lspmark = bookmarker.lspmark
 
 M.add = function()
   local message = {
@@ -11,7 +12,8 @@ M.add = function()
   }
   logger_use_manage.debug(message)
 
-  bookmarks.bookmark_toggle()
+  lspmark.toggle_bookmark()
+  lspmark.save_bookmarks()
 end
 
 M.remove = function()
@@ -41,7 +43,12 @@ M.list = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.marks({ global = false, layout = { preset = "ivy_split" } })
+  lspmark.load_bookmarks()
+  telescope.lspmark()
+  -- snacks.picker.marks({
+  --   layout = { preset = "nitaicharan" },
+  --   global = false
+  -- })
 end
 
 return M
