@@ -3,7 +3,7 @@ local workspace_use_case = require("application.use_cases.workspace")
 local tree_use_case = require("application.use_cases.tree")
 
 local project_content = {
-  { key = "'", description = "Terminal",      method = terminal_use_case.toggle() },
+  { key = "'", description = "Terminal",      method = terminal_use_case.toggle({ location = "project" }) },
   { key = "E", description = "Diagnostics",   method = workspace_use_case.diagnostics },
   { key = "f", description = "Find File",     method = workspace_use_case.files },
   { key = "p", description = "Find Projects", method = workspace_use_case.open },

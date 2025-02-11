@@ -94,8 +94,29 @@ return {
   {
     'folke/snacks.nvim',
     opts = {
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      terminal = { enabled = true, },
       picker = {
         layouts = {
+          nitaicharan_lines = {
+            layout = {
+              box = "vertical",
+              backdrop = false,
+              row = -0.0000000000000000001,
+              width = 0,
+              height = 0.2,
+              border = "none",
+              title = " {title} {live} {flags}",
+              title_pos = "left",
+              { win = "input", height = 1, border = "none" },
+              {
+                box = "horizontal",
+                { win = "list",    border = "none" },
+                { win = "preview", title = "{preview}", width = 0.6, border = "none" },
+              },
+            }
+          },
           nitaicharan = {
             layout = {
               box = "horizontal",
@@ -112,6 +133,13 @@ return {
           },
         },
       },
+      styles = {
+        terminal = {
+          position = 'float',
+          width = 0,
+          height = 0,
+        }
+      }
     }
   },
   {
@@ -302,7 +330,6 @@ return {
       "nvim-telescope/telescope.nvim",
     },
   },
-  { "rcarriga/nvim-notify" },
   { "dhruvasagar/vim-table-mode", },
   {
     "epwalsh/pomo.nvim",
@@ -340,6 +367,14 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = true,
+    opts = {
+      float_opts = {
+        border = 'shadow',
+        width = vim.o.columns,
+        height = vim.o.lines,
+      },
+    },
+
   },
   {
     "nvim-neotest/neotest",
@@ -412,9 +447,30 @@ return {
     config = true,
   },
   {
-    "kylechui/nvim-surround",
-    event = "BufRead",
-    config = true,
+    'echasnovski/mini.nvim',
+    lazy = false,
+    init = function()
+      require('mini.surround').setup({
+        mappings = {
+          add = 'ys',
+          delete = 'ds',
+          find = 'sf',
+          find_left = 'sF',
+          -- highlight = 'sh',
+          replace = 'cs',
+          -- update_n_lines = 'sn',
+          suffix_last = 'l',
+          suffix_next = 'n',
+        }
+      })
+
+      vim.api.nvim_set_keymap('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { noremap = true })
+      vim.api.nvim_set_keymap('n', 'yss', 'ys_', { noremap = false })
+
+      require('mini.ai').setup()
+      require('mini.pairs').setup()
+      require('mini.operators').setup()
+    end
   },
   {
     "declancm/cinnamon.nvim",
@@ -427,22 +483,9 @@ return {
     opts = {},
     lazy = false,
   },
-  -- {
-  -- 	"goolord/alpha-nvim",
-  -- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- 	lazy = false,
-  -- 	config = function()
-  -- 		require("alpha").setup(require("alpha.themes.startify").config)
-  -- 	end,
-  -- },
   {
     "hedyhli/outline.nvim",
     event = "BufRead",
-  },
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = true,
   },
   -- {
   -- 	"tris203/precognition.nvim",

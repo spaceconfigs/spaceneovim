@@ -6,8 +6,21 @@ local snacks_opts = require("infraestrucuture.plugins.lazy.settigs.snacks")
 local snacks = plugin.snacks
 
 -- snacks.picker.smart({
-    -- layout = { preset = "nitaicharan" },
+--   multi = { "recent", "files" },
+--   format = "file",     -- use `file` format for all sources
+--   matcher = {
+--     cwd_bonus = true,  -- boost cwd matches
+--     frecency = true,   -- use frecency boosting
+--     sort_empty = true, -- sort even when the filter is empty
+--   },
+--   transform = "unique_file",
+--   layout = { preset = "nitaicharan" },
 -- })
+
+-- snacks.picker.files({
+--   layout = { preset = "nitaicharan" },
+-- })
+
 M.oldfiles = function(opts)
   local message = {
     module = "adapters/file",
@@ -29,7 +42,10 @@ M.list = function(opts)
   logger_use_manage.debug(message)
 
   local cwd = opts and opts.path
-  snacks.picker.smart({ cwd = cwd, layout = { preset = "nitaicharan" },
+  snacks.picker.smart({
+    multi = { "files" },
+    layout = { preset = "nitaicharan" },
+    cwd = cwd,
   })
 end
 

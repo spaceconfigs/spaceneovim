@@ -43,7 +43,7 @@ local default_map = {
     mode = "v",
   },
   { key = "<Tab>", description = "Previous buffer", method = buffer_use_case.reopen },
-  { key = "'",     mode = { "n", "t" },             description = "Terminal",          method = terminal_use_case.toggle_buffer_dir },
+  { key = "'",     mode = { "n", "t" },             description = "Terminal",          method = terminal_use_case.toggle() },
   { key = "\"",    mode = { "n", "t" },             description = "External terminal", method = terminal_use_case.toggle({ type = 'external' }) },
 }
 

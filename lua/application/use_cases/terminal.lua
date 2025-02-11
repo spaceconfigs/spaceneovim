@@ -39,21 +39,10 @@ M.toggle = function(options)
     local adapter = M.setup()
     options = options or {}
     options.type = options.type or 'internal'
-    options.location = options.location or 'project'
+    options.location = options.location or 'file'
 
     adapter.toggle(options)
   end
-end
-
-M.toggle_buffer_dir = function()
-  local message = {
-    module = "use_cases/terminal",
-    func = "toggle_buffer_dir",
-  }
-  logger_use_case.debug(message)
-  local adapter = M.setup()
-
-  adapter.toggle_buffer_dir()
 end
 
 return M

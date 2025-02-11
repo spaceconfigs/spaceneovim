@@ -2,7 +2,9 @@ local vim = vim
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
+local file_util = require("infraestrucuture.utils.file")
 local plugin = require("infraestrucuture.plugins.terminal")
+local snacks = plugin.snacks
 
 M.open = function()
   local message = {
@@ -43,18 +45,14 @@ M.toggle = function(options)
     return vim.fn.system(terminal_command)
   end
 
-  vim.cmd('ToggleTerm dir=git_dir direction=float')
-end
+  if options.location == 'project' then
+    local path = file_util.pwd({ location = "project" })
+    return vim.cmd('ToggleTerm direction=float dir=' .. path)
+  end
 
-M.toggle_buffer_dir = function()
-  local message = {
-    module = "adapters/terminal",
-    func = "toggle_buffer_dir",
-  }
-  logger_use_manage.debug(message)
-  local buffer = vim.fn.expand("%:p:h")
-
-  vim.cmd('ToggleTerm  direction=float' .. ' dir=' .. buffer)
+  local path = file_util.pwd({ location = "file" })
+  vim.cmd('ToggleTerm direction=float dir=' .. path)
+  -- snacks.terminal(nil, { cwd = path })
 end
 
 return M

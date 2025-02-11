@@ -22,4 +22,3 @@ vim.fn.setenv("NVIM_ENVIRONMENT", environment.PRODUCTION)
 require("config")
 require("application.use_cases")
 require("infraestrucuture.events")
-

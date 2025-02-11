@@ -56,4 +56,24 @@ M.browse = function()
   snacks.gitbrowse()
 end
 
+M.branchs = function()
+  local message = {
+    module = "adapters/versior",
+    func = "branchs",
+  }
+  logger_use_manage.debug(message)
+
+  snacks.picker.git_branches()
+end
+
+M.log = function()
+  local message = {
+    module = "adapters/versior",
+    func = "log",
+  }
+  logger_use_manage.debug(message)
+
+  snacks.picker.git_log()
+end
+
 return M

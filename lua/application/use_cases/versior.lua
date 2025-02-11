@@ -61,4 +61,26 @@ M.browse = function()
 	adapter.browse()
 end
 
+M.branchs = function()
+	local message = {
+		module = "use_cases/versior",
+		func = "unstage_file",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.log()
+end
+
+M.log = function()
+	local message = {
+		module = "use_cases/versior",
+		func = "log",
+	}
+	logger_use_case.debug(message)
+	local adapter = M.setup()
+
+	adapter.log()
+end
+
 return M

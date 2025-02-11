@@ -1,10 +1,8 @@
-local documentation_use_case = require("application.use_cases.lsp")
 local completer_use_case = require("application.use_cases.completer")
 local hover_use_case = require("application.use_cases.hover")
 local jumper_use_case = require("application.use_cases.jumper")
 
 local unprefixed_content = {
-	{ key = "<S-k>", description = "Show documentation", method = documentation_use_case.show_documentation },
 	{ key = "<S-k>", description = "Hover", method = hover_use_case.toggle },
 	{ key = "<C-Space>", mode = { "i", "c" }, description = "Complete", method = completer_use_case.complete },
 	{ key = "<M-j>", description = "Drag line down", method = ":m .+1==<CR>" },

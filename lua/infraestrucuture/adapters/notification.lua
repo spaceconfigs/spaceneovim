@@ -3,10 +3,7 @@ local M = {}
 
 local log_levels = require("domain.log_levels")
 local plugin = require("infraestrucuture.plugins.notification")
-local notification = plugin.notify
 local snacks = plugin.snacks
-
-vim.opt.termguicolors = true
 
 M.notify = function(opts)
   local level = opts.level
@@ -23,7 +20,7 @@ M.notify = function(opts)
 end
 
 M.dismiss = function()
-  notification.dismiss({ pending = true, silent = true })
+  snacks.notifier.hide()
 end
 
 M.list = function()
@@ -31,19 +28,19 @@ M.list = function()
 end
 
 M.debug = function(opts)
-  notification.notify(opts.message, log_levels.DEBUG)
+  snacks.notify.info(opts.message)
 end
 
 M.info = function(opts)
-  notification.notify(opts.message, log_levels.INFO)
+  snacks.notify.info(opts.message)
 end
 
 M.warn = function(opts)
-  notification.notify(opts.message, log_levels.WARN)
+  snacks.notify.warn(opts.message)
 end
 
 M.error = function(opts)
-  notification.notify(opts.message, log_levels.ERROR)
+  snacks.notify.error(opts.message)
 end
 
 return M
