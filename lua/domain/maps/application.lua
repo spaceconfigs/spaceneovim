@@ -1,5 +1,5 @@
 local todo_use_case = require("application.use_cases.todo")
-local changer_use_case = require("application.use_cases.todo")
+local changer_use_case = require("application.use_cases.changer")
 
 local org_content = {
   { key = "o",  description = "Org" },
