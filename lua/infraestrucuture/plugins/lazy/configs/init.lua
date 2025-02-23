@@ -3,7 +3,7 @@ local is_neovide = vim.g.neovide or false;
 return {
   {
     'tristone13th/lspmark.nvim',
-    config = true,
+    opts = {},
     dependencies = {
       {
         "nvim-telescope/telescope.nvim",
@@ -14,7 +14,7 @@ return {
   { "natecraddock/workspaces.nvim" },
   {
     "folke/lazydev.nvim",
-    config = true,
+    opts = {},
     ft = "lua",
   },
   {
@@ -73,7 +73,7 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
-    config = true,
+    opts = {},
   },
   {
     "pmizio/typescript-tools.nvim",
@@ -93,11 +93,21 @@ return {
   },
   {
     'folke/snacks.nvim',
+    dependencies = {
+      { "folke/todo-comments.nvim", opts = {}, }
+    },
     opts = {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       terminal = { enabled = true, },
+      image = {
+        enabled = true,
+        doc = {
+          inline = false,
+        },
+      },
       picker = {
+        enabled = true,
         layouts = {
           nitaicharan_lines = {
             layout = {
@@ -242,7 +252,7 @@ return {
         dependencies = {
           "nvim-lua/plenary.nvim",
         },
-        config = true,
+        opts = {},
       },
     },
   },
@@ -298,12 +308,13 @@ return {
   { "mfussenegger/nvim-lint" },
   { "folke/trouble.nvim" },
   {
-    "luckasRanarison/nvim-devdocs",
+    "nitaicharan/nvim-devdocs",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    opts = {}
   },
   { "stevearc/conform.nvim" },
   { "lewis6991/hover.nvim" },
@@ -366,10 +377,9 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "*",
-    config = true,
     opts = {
       float_opts = {
-        border = 'shadow',
+        border = 'none',
         width = vim.o.columns,
         height = vim.o.lines,
       },
@@ -394,11 +404,6 @@ return {
       { "catppuccin/nvim",        name = "catppuccin" },
       { "EdenEast/nightfox.nvim", lazy = false,       priority = 1000 },
     }
-  },
-  {
-    "folke/todo-comments.nvim",
-    opts = {},
-    dependencies = { "nvim-lua/plenary.nvim" },
   },
   { "nvim-tree/nvim-tree.lua", },
   {
@@ -444,7 +449,7 @@ return {
   {
     "LunarVim/bigfile.nvim",
     event = "BufRead",
-    config = true,
+    opts = {},
   },
   {
     'echasnovski/mini.nvim',
@@ -467,15 +472,14 @@ return {
       vim.api.nvim_set_keymap('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { noremap = true })
       vim.api.nvim_set_keymap('n', 'yss', 'ys_', { noremap = false })
 
-      require('mini.ai').setup()
       require('mini.pairs').setup()
-      require('mini.operators').setup()
+      require('mini.ai').setup()
     end
   },
   {
     "declancm/cinnamon.nvim",
     event = "BufRead",
-    config = true,
+    opts = {},
   },
   {
     "tzachar/local-highlight.nvim",
@@ -489,7 +493,7 @@ return {
   },
   -- {
   -- 	"tris203/precognition.nvim",
-  -- 	config = true,
+  -- 	opts = {},
   -- 	event = "BufRead",
   -- },
   {
@@ -505,4 +509,20 @@ return {
       },
     },
   },
+  {
+    'jellydn/hurl.nvim',
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown" },
+        },
+        ft = { "markdown" },
+      },
+    },
+  }
 }
