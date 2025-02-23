@@ -46,6 +46,10 @@ for _, server in pairs(language_servers) do
     server = "ts_ls"
   end
 
+  if server == "angularls" then
+    config.filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
+  end
+
   lspconfig[server].setup(config)
 end
 
