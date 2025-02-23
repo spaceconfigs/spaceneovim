@@ -1,11 +1,9 @@
-local outline_ok, outline = pcall(require, "outline")
+local hurl_ok, hurl = pcall(require, "hurl")
 
-if not outline_ok then
-	return vim.notify("Failed to load plugin `hedyhli/outline.nvim`")
+if not hurl_ok then
+  return vim.notify("Failed to load plugin `jellydn/hurl.nvim`")
 end
 
-outline.setup()
-
 return {
-	outline = outline,
+  hurl = hurl,
 }
