@@ -2,16 +2,17 @@ local vim = vim
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-require("infraestrucuture.plugins.todo-comments")
+local plugins = require("infraestrucuture.plugins.todo")
+local snacks = plugins.snacks
 
 M.list = function()
-	local message = {
-		module = "adapters/todo",
-		func = "list",
-	}
-	logger_use_manage.debug(message)
+  local message = {
+    module = "adapters/todo",
+    func = "list",
+  }
+  logger_use_manage.debug(message)
 
-	vim.api.nvim_command("TodoTelescope")
+  snacks.picker.todo_comments({ layout = { preset = "nitaicharan" }, })
 end
 
 return M
