@@ -100,6 +100,7 @@ return {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       terminal = { enabled = true, },
+      input = { enabled = true, },
       image = {
         enabled = true,
         doc = {
@@ -191,16 +192,35 @@ return {
   { "David-Kunz/gen.nvim" },
   {
     "yetone/avante.nvim",
-    lazy = false,
-    version = false,
-    build = "make",
+    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    opts = {
+      provider = "gemini",
+      gemini = {
+        -- @see https://ai.google.dev/gemini-api/docs/models/gemini
+        model = "gemini-2.0-flash",
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 4096,
+        api_key_name = "cmd:pass ai.google.dev/token"
+      },
+      behaviour = {
+        auto_suggestions = false, -- Experimental stage
+        auto_set_highlight_group = true,
+        auto_set_keymaps = true,
+        auto_apply_diff_after_generation = false,
+        support_paste_from_clipboard = false,
+      },
+    },
+    build = "make", -- if you want to build from source then do make BUILD_FROM_SOURCE=true
     dependencies = {
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "hrsh7th/nvim-cmp",
-      "nvim-tree/nvim-web-devicons",
-      "zbirenbaum/copilot.lua",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -220,7 +240,7 @@ return {
       },
       {
         -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
+        "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
         },
@@ -233,20 +253,12 @@ return {
     dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
   },
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    version = '*',
     dependencies = {
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lua",
-      "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
-      "L3MON4D3/LuaSnip",
-      "rafamadriz/friendly-snippets",
-      "ray-x/cmp-treesitter",
-      "hrsh7th/cmp-nvim-lsp",
+      { "saghen/blink.compat", opts = { enable_events = true } },
+      'rafamadriz/friendly-snippets',
+      'Kaiser-Yang/blink-cmp-avante',
       {
         "Exafunction/codeium.nvim",
         dependencies = {
@@ -255,12 +267,37 @@ return {
         opts = {},
       },
     },
+    opts = {
+      keymap = {
+        preset = 'enter',
+      },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = 'mono'
+      },
+      sources = {
+        default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', "codeium" },
+        providers = {
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+          },
+          codeium = {
+            name = "codeium",
+            module = "blink.compat.source",
+            score_offset = 3,
+          },
+        },
+      },
+      fuzzy = { implementation = "prefer_rust" }
+    },
+    opts_extend = { "sources.default" }
   },
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
+      { 'tpope/vim-dadbod', },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' } }, -- Optional
     },
     cmd = {
       'DBUI',
@@ -428,15 +465,13 @@ return {
   { "pocco81/true-zen.nvim" },
   { "folke/twilight.nvim" },
   { "folke/zen-mode.nvim" },
-  { "ThePrimeagen/vim-be-good", lazy = false },
-  { "tiagovla/scope.nvim",      opts = {},   lazy = false },
+  { "tiagovla/scope.nvim",    opts = {}, lazy = false },
   {
     "3rd/image.nvim",
     enabled = not is_neovide,
   },
   { "HakonHarnes/img-clip.nvim",   lazy = false },
   { "norcalli/nvim-colorizer.lua", options = {}, lazy = false },
-  { "stevearc/dressing.nvim",      options = {}, lazy = false },
   { "xiyaowong/transparent.nvim",  options = {}, lazy = false },
   {
     "jinh0/eyeliner.nvim",
@@ -480,12 +515,6 @@ return {
     "declancm/cinnamon.nvim",
     event = "BufRead",
     opts = {},
-  },
-  {
-    "tzachar/local-highlight.nvim",
-    event = "BufRead",
-    opts = {},
-    lazy = false,
   },
   {
     "hedyhli/outline.nvim",

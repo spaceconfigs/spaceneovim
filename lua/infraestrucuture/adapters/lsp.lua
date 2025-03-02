@@ -8,7 +8,7 @@ local plugin = require("infraestrucuture.plugins.lsp")
 
 local mason_lspconfig = plugin.mason_lspconfig
 local lspconfig = plugin.lspconfig
-local cmp_nvim_lsp = plugin.cmp_nvim_lsp
+local blink_cmp = plugin.blink_cmp
 local snacks = plugin.snacks
 
 vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticDefault" })
@@ -16,7 +16,7 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", numhl = "DiagnosticDef
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", numhl = "DiagnosticDefault" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticDefault" })
 
-local cmp_capabilities = cmp_nvim_lsp.default_capabilities()
+local blink_capabilities = blink_cmp.get_lsp_capabilities()
 
 local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 lsp_capabilities.textDocument.foldingRange = {
@@ -24,7 +24,7 @@ lsp_capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
-local capabilities = vim.tbl_deep_extend("force", cmp_capabilities, lsp_capabilities)
+local capabilities = vim.tbl_deep_extend("force", blink_capabilities, lsp_capabilities)
 
 local language_servers = mason_lspconfig.get_installed_servers()
 for _, server in pairs(language_servers) do

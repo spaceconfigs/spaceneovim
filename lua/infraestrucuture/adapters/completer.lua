@@ -2,19 +2,20 @@ local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
 local plugin = require("infraestrucuture.plugins.completer")
+local blink_cmp = plugin.blink_cmp
 
 M.complete = function()
-	local message = {
-		module = "adapters/completer",
-		func = "complete",
-	}
-	logger_use_manage.debug(message)
+  local message = {
+    module = "adapters/completer",
+    func = "complete",
+  }
+  logger_use_manage.debug(message)
 
-	if plugin.visible() then
-		plugin.abort()
-	end
+  if blink_cmp.visible() then
+    blink_cmp.abort()
+  end
 
-	plugin.complete()
+  blink_cmp.show()
 end
 
 return M
