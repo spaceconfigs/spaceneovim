@@ -18,6 +18,14 @@ local unprefixed_content = {
   { key = "r",         mode = { "o" },                     description = "Remote jump",          method = jumper_use_case.remote },
 }
 
+vim.keymap.set('n', 'k', function()
+  return (vim.v.count > 0 and "m'" .. vim.v.count or "") .. "k"
+end, { expr = true, silent = true })
+
+vim.keymap.set('n', 'j', function()
+  return (vim.v.count > 0 and "m'" .. vim.v.count or "") .. "j"
+end, { expr = true, silent = true })
+
 local result = {}
 local contents = {}
 for _, content in pairs({
