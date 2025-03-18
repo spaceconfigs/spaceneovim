@@ -436,10 +436,15 @@ return {
   {
     "zaldih/themery.nvim",
     dependencies = {
-      { "folke/tokyonight.nvim" },
-      { "iruzo/matrix-nvim" },
-      { "catppuccin/nvim",        name = "catppuccin" },
-      { "EdenEast/nightfox.nvim", lazy = false,       priority = 1000 },
+      { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
+      -- { "folke/tokyonight.nvim" },
+      -- { "iruzo/matrix-nvim" },
+      -- { "catppuccin/nvim",                 name = "catppuccin" },
+      -- { "scottmckendry/cyberdream.nvim" },
+      -- { "Mofiqul/vscode.nvim" },
+      -- { "Mofiqul/dracula.nvim" },
+      -- { "nyoom-engineering/oxocarbon.nvim" },
+      -- { "AlexvZyl/nordic.nvim" },
     }
   },
   { "nvim-tree/nvim-tree.lua", },
