@@ -289,7 +289,27 @@ return {
           },
         },
       },
-      fuzzy = { implementation = "prefer_rust" }
+      fuzzy = { implementation = "prefer_rust" },
+      cmdline = {
+        keymap = {
+          ['<down>'] = { 'select_next' },
+          ['<right>'] = { 'accept' },
+          ["<left>"] = { "fallback" },
+          ['<up>'] = { 'select_prev' },
+          ["<cr>"] = { "fallback" },
+          ["<esc>"] = {
+            "hide",
+            "cancel",
+            function()
+              if vim.fn.getcmdtype() ~= "" then
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", true)
+                return
+              end
+            end,
+          },
+        },
+        completion = { menu = { auto_show = true } },
+      }
     },
     opts_extend = { "sources.default" }
   },
@@ -466,11 +486,11 @@ return {
   },
   { "sindrets/winshift.nvim" },
   { "declancm/maximize.nvim" },
-  { "stevearc/stickybuf.nvim" },
+  { "stevearc/stickybuf.nvim", opts = {} },
   { "pocco81/true-zen.nvim" },
   { "folke/twilight.nvim" },
   { "folke/zen-mode.nvim" },
-  { "tiagovla/scope.nvim",    opts = {}, lazy = false },
+  { "tiagovla/scope.nvim",     opts = {}, lazy = false },
   {
     "3rd/image.nvim",
     enabled = not is_neovide,

@@ -20,7 +20,7 @@ if not ok_lspconfig then
 end
 
 if not ok_cmp_nvim_lsp then
-  vim.notify("Failed to load plugin `hrsh7th/cmp-nvim-lsp`")
+  vim.notify("Failed to load plugin `Saghen/blink.cmp`")
   return
 end
 
