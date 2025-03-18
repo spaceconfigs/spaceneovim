@@ -24,7 +24,13 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        opts = function()
+          vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "none" })
+          return {}
+        end
+      },
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
   },
@@ -192,6 +198,7 @@ return {
   { "David-Kunz/gen.nvim" },
   {
     "yetone/avante.nvim",
+    -- lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       provider = "gemini",
@@ -213,6 +220,7 @@ return {
     },
     build = "make", -- if you want to build from source then do make BUILD_FROM_SOURCE=true
     dependencies = {
+      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
@@ -379,6 +387,19 @@ return {
   { "smoka7/hop.nvim", },
   {
     "folke/which-key.nvim",
+    opts = {
+      preset = "modern",
+      -- delay = 500,
+      win = {
+        padding = { 3, 3 }, -- extra window padding [top/bottom, right/left]
+        wo = {
+          -- winblend = 100,    -- value between 0-100 0 for fully opaque and 100 for fully transparent
+        },
+      },
+      layout = {
+        align = "center", -- align columns center
+      },
+    },
     dependencies = { "echasnovski/mini.nvim" }
   },
   { "mfussenegger/nvim-lint" },
