@@ -1,6 +1,6 @@
 local ok, lualine = pcall(require, "lualine")
 if not ok then
-	return vim.notify("Failed to load plugin `epwalsh/obsidian.nvim`")
+	error("Failed to load plugin `epwalsh/obsidian.nvim`")
 end
 
 local custom_theme = require("lualine.themes.auto")

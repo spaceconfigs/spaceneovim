@@ -1,6 +1,6 @@
 local ok, conform = pcall(require, "conform")
 if not ok then
-	return vim.notify("Failed to load plugin `stevearc/conform.nvim`")
+	error("Failed to load plugin `stevearc/conform.nvim`")
 end
 
 conform.setup({

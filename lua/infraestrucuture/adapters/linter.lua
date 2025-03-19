@@ -1,6 +1,6 @@
 local ok, lint = pcall(require, "lint")
 if not ok then
-  return vim.notify("Failed to require package `lint`")
+  error("Failed to load plugin `lint`")
 end
 
 lint.linters_by_ft = {

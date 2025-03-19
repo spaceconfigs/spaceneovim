@@ -1,6 +1,6 @@
 local ok, plugin = pcall(require, "multicursors")
 if not ok then
-  return vim.notify("Failed to load plugin `nvim-tree/nvim-tree.lua`")
+  error("Failed to load plugin `nvim-tree/nvim-tree.lua`")
 end
 
 vim.g.VM_default_mappings = 0

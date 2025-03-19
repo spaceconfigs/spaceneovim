@@ -1,6 +1,6 @@
 local nvim_tree_ok, nvim_tree = pcall(require, "nvim-tree")
 if not nvim_tree_ok then
-  return vim.notify("Failed to load plugin `nvim-tree/nvim-tree.lua`")
+  error("Failed to load plugin `nvim-tree/nvim-tree.lua`")
 end
 
 local nvim_tree_api = require("nvim-tree.api")

@@ -1,6 +1,6 @@
 local ok, plugin = pcall(require, "themery")
 if not ok then
-  return vim.notify("Failed to load plugin `zaldih/themery.nvim`")
+  error("Failed to load plugin `zaldih/themery.nvim`")
 end
 
 local ok_nightfox = pcall(require, "themery")
@@ -19,3 +19,4 @@ plugin.setup({
 })
 
 return plugin
+

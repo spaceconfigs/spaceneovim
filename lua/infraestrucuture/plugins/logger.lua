@@ -1,6 +1,6 @@
 local ok, structlog = pcall(require, "structlog")
 if not ok then
-	return vim.notify("Failed to load plugin `Tastyep/structlog.nvim`")
+	error("Failed to load plugin `Tastyep/structlog.nvim`")
 end
 
 structlog.configure({

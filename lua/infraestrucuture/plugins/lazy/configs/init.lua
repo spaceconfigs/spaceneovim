@@ -301,7 +301,7 @@ return {
       cmdline = {
         keymap = {
           ['<down>'] = { 'select_next' },
-          ['<right>'] = { 'accept' },
+          ['<right>'] = { 'accept', 'fallback' },
           ["<left>"] = { "fallback" },
           ['<up>'] = { 'select_prev' },
           ["<cr>"] = { "fallback" },
@@ -599,5 +599,19 @@ return {
         ft = { "markdown" },
       },
     },
-  }
+  },
+  -- {
+  --   "mistricky/codesnap.nvim",
+  --   build = "make",
+  --   opts = {
+  --     mac_window_bar = false,
+  --     title = "CodeSnap.nvim",
+  --     bg_color = "#101010",
+  --     has_breadcrumbs = true,
+  --     has_line_number = true,
+  --     show_workspace = true,
+  --     bg_padding = 10,
+  --     save_path = "~/",
+  --   }
+  -- },
 }

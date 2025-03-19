@@ -1,6 +1,6 @@
 local ok, session_manager = pcall(require, "session_manager")
 if not ok then
-	return vim.notify("Failed to load plugin `Shatur/neovim-session-manager`")
+	error("Failed to load plugin `Shatur/neovim-session-manager`")
 end
 
 local config = require("session_manager.config")

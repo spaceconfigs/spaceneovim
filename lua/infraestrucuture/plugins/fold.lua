@@ -1,6 +1,6 @@
 local ok, plugin = pcall(require, "ufo")
 if not ok then
-	return vim.notify("Failed to load plugin `kevinhwang91/nvim-ufo`")
+	error("Failed to load plugin `kevinhwang91/nvim-ufo`")
 end
 
 -- Fold settings

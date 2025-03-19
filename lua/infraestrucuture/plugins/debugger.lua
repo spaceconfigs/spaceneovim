@@ -1,6 +1,6 @@
 local ok_dap, dap = pcall(require, "dap")
 if not ok_dap then
-  return vim.notify("Failed to load plugin `mfussenegger/nvim-dap`")
+  error("Failed to load plugin `mfussenegger/nvim-dap`")
 end
 
 local widgets = require("dap.ui.widgets")
@@ -16,19 +16,19 @@ result.utils = require("dap.utils")
 
 local ok_nvim_dap_virtual_text, nvim_dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
 if not ok_nvim_dap_virtual_text then
-  return vim.notify("Failed to load plugin `theHamsta/nvim-dap-virtual-text`")
+  error("Failed to load plugin `theHamsta/nvim-dap-virtual-text`")
 end
 
 nvim_dap_virtual_text.setup()
 
 local ok_dapui, dapui = pcall(require, "dapui")
 if not ok_dapui then
-  return vim.notify("Failed to load pluing `rcarriga/nvim-dap-ui`")
+  error("Failed to load plugin `rcarriga/nvim-dap-ui`")
 end
 
 local ok_mason_nvim_dap, mason_nvim_dap = pcall(require, "mason-nvim-dap")
 if not ok_mason_nvim_dap then
-  return vim.notify("Failed to load plugin `jay-babu/mason-nvim-dap.nvim`")
+  error("Failed to load plugin `jay-babu/mason-nvim-dap.nvim`")
 end
 
 mason_nvim_dap.setup({

@@ -38,7 +38,7 @@ local config = {
 
 local ok, plugin = pcall(require, "lazy")
 if not ok then
-  return vim.notify("Failed to load package `folke/lazy.nvim`")
+  error("Failed to load plugin `folke/lazy.nvim`")
 end
 
 plugin.setup(config)

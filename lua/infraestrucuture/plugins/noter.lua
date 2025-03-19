@@ -1,6 +1,6 @@
 local ok, obsidian = pcall(require, "obsidian")
 if not ok then
-	return vim.notify("Failed to load plugin `epwalsh/obsidian.nvim`")
+	error("Failed to load plugin `epwalsh/obsidian.nvim`")
 end
 
 obsidian.setup({

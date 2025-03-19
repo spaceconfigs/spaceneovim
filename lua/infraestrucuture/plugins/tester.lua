@@ -1,6 +1,6 @@
 local neotest_ok, neotest = pcall(require, "neotest")
 if not neotest_ok then
-	return vim.notify("Failed to load plugin `nvim-neotest/neotest")
+	error("Failed to load plugin `nvim-neotest/neotest")
 end
 
 local jest_adapter = require("neotest-jest")({

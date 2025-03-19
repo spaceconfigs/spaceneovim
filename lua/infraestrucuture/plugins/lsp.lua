@@ -5,27 +5,27 @@ local ok_masonlspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 local ok_render_markdown, render_markdown = pcall(require, "render-markdown")
 
 if not ok_mason then
-  vim.notify("Failed to load plugin `williamboman/mason.nvim`")
+  error("Failed to load plugin `williamboman/mason.nvim`")
   return
 end
 
 if not ok_masonlspconfig then
-  vim.notify("Failed to load plugin `williamboman/mason-lspconfig.nvim`")
+  error("Failed to load plugin `williamboman/mason-lspconfig.nvim`")
   return
 end
 
 if not ok_lspconfig then
-  vim.notify("Failed to load plugin `neovim/nvim-lspconfig`")
+  error("Failed to load plugin `neovim/nvim-lspconfig`")
   return
 end
 
 if not ok_cmp_nvim_lsp then
-  vim.notify("Failed to load plugin `Saghen/blink.cmp`")
+  error("Failed to load plugin `Saghen/blink.cmp`")
   return
 end
 
 if not ok_render_markdown then
-  vim.notify("Failed to load plugin `MeanderingProgrammer/render-markdown.nvim`")
+  error("Failed to load plugin `MeanderingProgrammer/render-markdown.nvim`")
   return
 end
 
@@ -60,7 +60,7 @@ mason_lspconfig.setup({
 
 local snacks_ok, snacks = pcall(require, "snacks")
 if not snacks_ok then
-  return vim.notify("Failed to load plugin `folke/snacks.nvim`")
+  error("Failed to load plugin `folke/snacks.nvim`")
 end
 
 return {

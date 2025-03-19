@@ -1,6 +1,6 @@
 local ok_pomo, pomo = pcall(require, "pomo")
 if not ok_pomo then
-	return vim.notify("Failed to load plugin `epwalsh/pomo.nvim`")
+	error("Failed to load plugin `epwalsh/pomo.nvim`")
 end
 
 require("lualine").setup({

@@ -1,6 +1,6 @@
 local ok, hover = pcall(require, "hover")
 if not ok then
-	return vim.notify("Failed to load plugin `lewis6991/hover.nvim`")
+	error("Failed to load plugin `lewis6991/hover.nvim`")
 end
 
 hover.setup({
