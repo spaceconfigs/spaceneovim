@@ -4,12 +4,10 @@ local flash_ok, flash = pcall(require, "flash")
 if not hop_ok then
 	error("Failed to load plugin `phaazon/hop.nvim`")
 end
-hop.setup()
 
 if not flash_ok then
 	error("Failed to load plugin `folke/flash.nvim`")
 end
-flash.setup()
 
 return {
 	hop = hop,

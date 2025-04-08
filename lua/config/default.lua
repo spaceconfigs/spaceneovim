@@ -45,8 +45,6 @@ vim.lsp.set_log_level("off")
 vim.o.showtabline = 1
 vim.o.laststatus = 0
 
-vim.g.mapleader = "<space>"
-vim.g.maplocalleader = "<space>"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 

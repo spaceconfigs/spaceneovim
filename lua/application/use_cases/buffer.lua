@@ -1,7 +1,6 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local tree_adapter = require("infraestrucuture.adapters.tree")
 
 M.setup = function()
 	return require("infraestrucuture.adapters.buffer")
@@ -25,7 +24,7 @@ M.delete = function()
 	}
 	logger_use_case.debug(message)
 	local adapter = M.setup()
-	tree_adapter.close()
+
 	adapter.delete()
 end
 

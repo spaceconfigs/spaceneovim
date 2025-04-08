@@ -3,19 +3,21 @@ local hover_use_case = require("application.use_cases.hover")
 local jumper_use_case = require("application.use_cases.jumper")
 
 local unprefixed_content = {
-  { key = "<S-k>",     description = "Hover",              method = hover_use_case.toggle },
-  { key = "<C-Space>", mode = { "i", "c" },                description = "Complete",             method = completer_use_case.complete },
-  { key = "<M-j>",     description = "Drag line down",     method = ":m .+1==<CR>" },
-  { key = "<M-k>",     description = "Drag line up",       method = ":m .-2==<CR>" },
-  { key = "{",         description = "Next paragraph",     method = "}" },
-  { key = "}",         description = "Previous paragraph", method = "{" },
-  { key = "<M-j>",     mode = "v",                         description = "Drag line down",       method = ":m '>+1<CR>gv=gv" },
-  { key = "<M-k>",     mode = "v",                         description = "Drag line up",         method = ":m '<-2<CR>gv=gv" },
-  { key = "<M-j>",     mode = "i",                         description = "Drag line down",       method = "<Esc>:m .+1<CR>==gi" },
-  { key = "<M-k>",     mode = "i",                         description = "Drag line up",         method = "<Esc>:m .-2<CR>==gi" },
-  { key = "<C-BS>",    mode = { "i", "c" },                description = "Delete previous word", method = "<C-w>" },
-  { key = "<C-H>",     mode = { "i", "c" },                description = "Delete previous word", method = "<C-w>" },
-  { key = "r",         mode = { "o" },                     description = "Remote jump",          method = jumper_use_case.remote },
+  { key = "<S-k>",     description = "Hover",          method = hover_use_case.toggle },
+  { key = "<C-Space>", mode = { "i", "c" },            description = "Complete",             method = completer_use_case.complete },
+  { key = "<M-j>",     description = "Drag line down", method = ":m .+1==<CR>" },
+  { key = "<M-k>",     description = "Drag line up",   method = ":m .-2==<CR>" },
+  { key = "{",         mode = { "n", "v" },            description = "Next paragraph",       method = "}" },
+  { key = "}",         mode = { "n", "v" },            description = "Previous paragraph",   method = "{" },
+  { key = "p",         mode = { "v" },                 description = "Past",                 method = "P" },
+  { key = "P",         mode = { "v" },                 description = "Past",                 method = "p" },
+  { key = "<M-j>",     mode = "v",                     description = "Drag line down",       method = ":m '>+1<CR>gv=gv" },
+  { key = "<M-k>",     mode = "v",                     description = "Drag line up",         method = ":m '<-2<CR>gv=gv" },
+  { key = "<M-j>",     mode = "i",                     description = "Drag line down",       method = "<Esc>:m .+1<CR>==gi" },
+  { key = "<M-k>",     mode = "i",                     description = "Drag line up",         method = "<Esc>:m .-2<CR>==gi" },
+  { key = "<C-BS>",    mode = { "i", "c" },            description = "Delete previous word", method = "<C-w>" },
+  { key = "<C-H>",     mode = { "i", "c" },            description = "Delete previous word", method = "<C-w>" },
+  { key = "r",         mode = { "o" },                 description = "Remote jump",          method = jumper_use_case.remote },
 }
 
 vim.keymap.set('n', 'k', function()

@@ -1,5 +1,13 @@
 local todo_use_case = require("application.use_cases.todo")
 local changer_use_case = require("application.use_cases.changer")
+local documentation_use_case = require("application.use_cases.documentation")
+
+local reader_content = {
+  { key = "r",   description = "Reader" },
+  { key = "rzd", description = "Devdocs list", method = documentation_use_case.open },
+  { key = "rzD", description = "Devdocs list", method = documentation_use_case.install },
+}
+
 
 local org_content = {
   { key = "o",  description = "Org" },
@@ -15,6 +23,7 @@ local contents = {}
 for _, content in pairs({
   org_content,
   changer,
+  reader_content,
 }) do
   for _, bind in pairs(content) do
     table.insert(contents, bind)

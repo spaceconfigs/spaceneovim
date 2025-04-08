@@ -39,7 +39,7 @@ M.search = function(opts)
     local in_live = opts.in_live or false
 
     if location == 'project' then
-      path = file_util.pwd({ location = location })
+      path = file_util.pwd(location)
     end
 
     adapter.search({
@@ -65,7 +65,7 @@ M.search_hover = function(location)
     local text = vim.fn.expand("<cword>")
 
     if location == 'project' then
-      path = file_util.pwd({ location = location })
+      path = file_util.pwd(location)
     end
 
     adapter.search({
@@ -73,6 +73,20 @@ M.search_hover = function(location)
       path = path,
       text = text,
     })
+  end
+end
+
+M.resume = function(opts)
+  return function()
+    local message = {
+      module = "use_cases/searcher",
+      func = "resume",
+      opts = opts,
+    }
+    logger_use_case.debug(message)
+    local adapter = M.setup()
+
+    adapter.resume()
   end
 end
 

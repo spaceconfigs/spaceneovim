@@ -26,28 +26,22 @@ lsp_capabilities.textDocument.foldingRange = {
 
 local capabilities = vim.tbl_deep_extend("force", blink_capabilities, lsp_capabilities)
 
-local language_servers = mason_lspconfig.get_installed_servers()
-for _, server in pairs(language_servers) do
+local installed_servers = mason_lspconfig.get_installed_servers()
+local servers = vim.tbl_filter(function(s)
+  return s ~= "tsserver" and s ~= "ts_ls"
+end, installed_servers)
+
+for _, server in ipairs(servers) do
   local message = {
     module = "adapters/lsp",
-    func = "setup",
+    func   = "setup",
     server = server,
   }
   logger_use_manage.debug(message)
 
   local config = { capabilities = capabilities }
-
-  if server == "jdtls" then
-    local lombok = vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
-    config.cmd = { "jdtls", "--jvm-arg=-javaagent:" .. lombok }
-  end
-
-  if server == "tsserver" then
-    server = "ts_ls"
-  end
-
   if server == "angularls" then
-    config.filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
+    config.filetypes = { "typescript", "html", "htmlangular" }
   end
 
   lspconfig[server].setup(config)

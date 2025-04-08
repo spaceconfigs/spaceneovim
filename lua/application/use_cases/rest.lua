@@ -3,18 +3,40 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.rest")
+  return require("infraestrucuture.adapters.rest")
+end
+
+M.open = function()
+  local message = {
+    module = "use_cases/rest",
+    func = "open",
+  }
+  logger_use_case.debug(message)
+  local adapter = M.setup()
+
+  adapter.open()
 end
 
 M.send = function()
-	local message = {
-		module = "use_cases/workspace",
-		func = "add",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+  local message = {
+    module = "use_cases/rest",
+    func = "send",
+  }
+  logger_use_case.debug(message)
+  local adapter = M.setup()
 
-	adapter.send()
+  adapter.send()
+end
+
+M.replay = function()
+  local message = {
+    module = "use_cases/rest",
+    func = "replay",
+  }
+  logger_use_case.debug(message)
+  local adapter = M.setup()
+
+  adapter.replay()
 end
 
 return M

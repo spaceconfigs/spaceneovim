@@ -1,24 +1,23 @@
 local M = {}
 
-M.pwd = function(opts)
-	opts = opts or {}
-	opts.location = opts.location or "project"
+M.pwd = function(location)
+  location = location or "project"
 
-	if opts.location == "file" then
-		return vim.fn.expand("%:p:h")
-	end
+  if location == "file" then
+    return vim.fn.expand("%:p:h")
+  end
 
-	local cwd = vim.loop.cwd()
-	local path = vim.fs.find(
-		{ ".git", "package.json", "setup.py", "Makefile", "CMakeLists.txt" },
-		{ upward = true, stop = vim.loop.os_homedir(), path = cwd }
-	)[1]
+  local cwd = vim.loop.cwd()
+  local path = vim.fs.find(
+    { ".git", "package.json", "setup.py", "Makefile", "CMakeLists.txt" },
+    { upward = true, stop = vim.loop.os_homedir(), path = cwd }
+  )[1]
 
-	return vim.fn.fnamemodify(path, ":h")
+  return vim.fn.fnamemodify(path, ":h")
 end
 
 M.path = function()
-	return vim.fn.expand("%:p")
+  return vim.fn.expand("%:p")
 end
 
 return M

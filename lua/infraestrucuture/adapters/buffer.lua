@@ -3,8 +3,6 @@ local M = {}
 local logger_use_manage = require("application.use_cases.logger")
 local plugins = require("infraestrucuture.plugins.buffer")
 
-local bufferline = plugins.bufferline
-local bufdelete = plugins.bufdelete
 local snacks = plugins.snacks
 
 M.list = function()
@@ -24,7 +22,7 @@ M.delete = function()
   }
   logger_use_manage.debug(message)
 
-  bufdelete.bufdelete(0)
+  snacks.bufdelete.delete()
 end
 
 M.next = function()
@@ -58,7 +56,7 @@ M.reopen = function()
 end
 
 M.close_others = function()
-  bufferline.close_others()
+  snacks.bufdelete.other()
 end
 
 return M

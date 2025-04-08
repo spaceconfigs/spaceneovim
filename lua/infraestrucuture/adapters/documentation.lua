@@ -10,7 +10,17 @@ M.open = function()
   }
   logger_use_manage.debug(message)
 
-  vim.cmd("DevdocsOpen")
+  plugin.ui.documentations.show()
+end
+
+M.install = function()
+  local message = {
+    module = "adapters/documentation",
+    func = "open",
+  }
+  logger_use_manage.debug(message)
+
+  plugin.ui.documentations.install()
 end
 
 return M

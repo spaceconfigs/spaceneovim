@@ -1,12 +1,11 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
-local file_usecase = require("application.use_cases.logger")
+local file_usecase = require("application.use_cases.file")
 local plugin = require("infraestrucuture.plugins.workspaces")
 local workspaces = plugin.workspaces
 local snacks = plugin.snacks
 
--- snacks.picker.projects()
 M.open = function()
   local message = {
     module = "adapters/workspace",
@@ -14,8 +13,14 @@ M.open = function()
   }
   logger_use_manage.debug(message)
 
-  -- snacks.picker.projects()
-  workspaces.workspaces()
+  snacks.picker.projects({
+    confirm = function(picker, item)
+      picker:close()
+      vim.fn.chdir(item.file)
+
+      file_usecase.list({ location = "project" })()
+    end,
+  })
 end
 
 M.add = function(opts)
@@ -27,17 +32,6 @@ M.add = function(opts)
   logger_use_manage.debug(message)
 
   workspaces.add(opts.path)
-end
-
-M.files = function(opts)
-  local message = {
-    module = "adapters/workspace",
-    func = "files",
-    opts = opts,
-  }
-  logger_use_manage.debug(message)
-
-  file_usecase.list({ location = "profile" })()
 end
 
 return M
