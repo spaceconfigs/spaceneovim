@@ -11,7 +11,30 @@ return {
       },
     }
   },
-  { "natecraddock/workspaces.nvim" },
+  {
+    "natecraddock/workspaces.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      local file_usecase = require("application.use_cases.file")
+      local telescope = require("telescope")
+      local workspaces = require("workspaces")
+
+      workspaces.setup({
+        hooks = {
+          open = function()
+            file_usecase.list({ location = "profile" })()
+            if vim.bo.buftype == 'terminal' then
+              vim.api.nvim_feedkeys('i', 'n', true)
+            end
+          end
+        },
+      })
+
+      workspaces.workspaces = function()
+        telescope.extensions.workspaces.workspaces()
+      end
+    end
+  },
   {
     "folke/lazydev.nvim",
     opts = {},
@@ -107,6 +130,7 @@ return {
       quickfile = { enabled = true },
       terminal = { enabled = true, },
       input = { enabled = true, },
+      bigfile = { enabled = true, },
       image = {
         enabled = true,
         doc = {
@@ -176,6 +200,7 @@ return {
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
     },
+    opts = {}
   },
   {
     "tomasky/bookmarks.nvim",
@@ -224,11 +249,9 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",            -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -300,10 +323,10 @@ return {
       fuzzy = { implementation = "prefer_rust" },
       cmdline = {
         keymap = {
+          ['<up>'] = { 'select_prev', 'fallback' },
           ['<down>'] = { 'select_next' },
           ['<right>'] = { 'accept', 'fallback' },
           ["<left>"] = { "fallback" },
-          ['<up>'] = { 'select_prev' },
           ["<cr>"] = { "fallback" },
           ["<esc>"] = {
             "hide",
@@ -373,7 +396,7 @@ return {
   { "mfussenegger/nvim-lint" },
   { "folke/trouble.nvim" },
   {
-    "nitaicharan/nvim-devdocs",
+    "luckasRanarison/nvim-devdocs",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
@@ -381,6 +404,13 @@ return {
     },
     opts = {}
   },
+  -- {
+  --   "maskudo/devdocs.nvim",
+  --   dependencies = {
+  --     "folke/snacks.nvim",
+  --   },
+  --   opts = {},
+  -- },
   { "stevearc/conform.nvim" },
   { "lewis6991/hover.nvim" },
   { "folke/flash.nvim", },
@@ -528,11 +558,6 @@ return {
     },
   },
   {
-    "LunarVim/bigfile.nvim",
-    event = "BufRead",
-    opts = {},
-  },
-  {
     'echasnovski/mini.nvim',
     lazy = false,
     init = function()
@@ -600,18 +625,23 @@ return {
       },
     },
   },
-  -- {
-  --   "mistricky/codesnap.nvim",
-  --   build = "make",
-  --   opts = {
-  --     mac_window_bar = false,
-  --     title = "CodeSnap.nvim",
-  --     bg_color = "#101010",
-  --     has_breadcrumbs = true,
-  --     has_line_number = true,
-  --     show_workspace = true,
-  --     bg_padding = 10,
-  --     save_path = "~/",
-  --   }
-  -- },
+  {
+    "mistricky/codesnap.nvim",
+    build = "make",
+    opts = {
+      mac_window_bar = false,
+      title = "CodeSnap.nvim",
+      bg_color = "#101010",
+      has_breadcrumbs = true,
+      has_line_number = true,
+      show_workspace = true,
+      bg_padding = 10,
+      save_path = "~/",
+    }
+  },
+  {
+    'devdocs.nvim',
+    name = 'devdocs.nvim',
+    dev = true
+  },
 }
