@@ -3,14 +3,4 @@ if not ok then
 	error("Failed to load plugin `epwalsh/obsidian.nvim`")
 end
 
-obsidian.setup({
-	ui = { enable = false },
-	workspaces = {
-		{
-			name = "Personal",
-			path = vim.fn.expand("~") .. "/Notes",
-		},
-	},
-})
-
 return obsidian

@@ -3,7 +3,7 @@ if not ok then
   error("Failed to load plugin `zaldih/themery.nvim`")
 end
 
-local ok_nightfox = pcall(require, "themery")
+local ok_nightfox = pcall(require, "nightfox")
 
 local themes = {}
 
@@ -19,4 +19,3 @@ plugin.setup({
 })
 
 return plugin
-

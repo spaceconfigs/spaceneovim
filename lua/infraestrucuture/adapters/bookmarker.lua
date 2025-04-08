@@ -44,7 +44,6 @@ M.list = function()
   logger_use_manage.debug(message)
 
   lspmark.load_bookmarks()
-  telescope.lspmark()
   -- snacks.picker.marks({
   --   layout = { preset = "nitaicharan" },
   --   global = false

@@ -24,7 +24,6 @@ M.open = function(options)
     return vim.fn.system(terminal_command)
   end
 
-  vim.cmd('ToggleTerm direction=float dir=' .. options.path )
   -- snacks.terminal.toggle(nil, { interactive = true, cwd = options.path })
 end
 
@@ -36,7 +35,18 @@ M.close = function(options)
   }
   logger_use_manage.debug(message)
 
-  vim.cmd('ToggleTerm direction=float dir=' .. options.path )
+  -- snacks.terminal.toggle(nil, { interactive = true, cwd = options.path })
+end
+
+M.toggle = function(options)
+  local message = {
+    module = "adapters/terminal",
+    func = "close",
+    options = options
+  }
+  logger_use_manage.debug(message)
+
+  vim.cmd('ToggleTerm direction=float dir=' .. options.path)
   -- snacks.terminal.toggle(nil, { interactive = true, cwd = options.path })
 end
 

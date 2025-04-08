@@ -37,11 +37,6 @@ for _, server in pairs(language_servers) do
 
   local config = { capabilities = capabilities }
 
-  if server == "jdtls" then
-    local lombok = vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
-    config.cmd = { "jdtls", "--jvm-arg=-javaagent:" .. lombok }
-  end
-
   if server == "tsserver" then
     server = "ts_ls"
   end

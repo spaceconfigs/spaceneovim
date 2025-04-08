@@ -76,4 +76,18 @@ M.search_hover = function(location)
   end
 end
 
+M.resume = function(opts)
+  return function()
+    local message = {
+      module = "use_cases/searcher",
+      func = "resume",
+      opts = opts,
+    }
+    logger_use_case.debug(message)
+    local adapter = M.setup()
+
+    adapter.resume()
+  end
+end
+
 return M

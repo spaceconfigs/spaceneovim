@@ -11,14 +11,15 @@ return {
       },
     }
   },
-  { "natecraddock/workspaces.nvim" },
+  {
+    "natecraddock/workspaces.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    opts = {}
+  },
   {
     "folke/lazydev.nvim",
     opts = {},
     ft = "lua",
-  },
-  {
-    "mfussenegger/nvim-jdtls",
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -34,7 +35,7 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
   },
-  { "neovim/nvim-lspconfig" },
+  { "neovim/nvim-lspconfig", },
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
@@ -77,13 +78,18 @@ return {
       "rcarriga/nvim-notify",
     },
   },
+
   {
     "windwp/nvim-ts-autotag",
     opts = {},
+    lazy = false,
   },
+
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    ft = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+    opts = {}
   },
 
   {
@@ -92,21 +98,48 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "echasnovski/mini.nvim",
     },
+    opts = {
+      win_options = {
+        conceallevel = {
+          default = vim.api.nvim_get_option_value("conceallevel", {}),
+          rendered = 3,
+        },
+        concealcursor = {
+          default = vim.api.nvim_get_option_value("concealcursor", {}),
+          rendered = "",
+        },
+      },
+    }
   },
+
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+
+  {
+    "akinsho/bufferline.nvim",
+    branch = "main",
+    opts = {
+      options = {
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+      },
+    }
+  },
+
   {
     'folke/snacks.nvim',
     dependencies = {
-      { "folke/todo-comments.nvim", opts = {}, }
+      { "folke/todo-comments.nvim", opts = {}, },
+      { "neovim-session-manager",   opts = {} }
     },
     opts = {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       terminal = { enabled = true, },
       input = { enabled = true, },
+      bigfile = { enabled = true, },
       image = {
         enabled = true,
         doc = {
@@ -159,43 +192,9 @@ return {
       }
     }
   },
-  {
-    "ThePrimeagen/harpoon",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-  {
-    "cbochs/grapple.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-  {
-    "otavioschwanck/arrow.nvim",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-    },
-  },
-  {
-    "tomasky/bookmarks.nvim",
-    dependencies = {
-      {
-        "nvim-telescope/telescope.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-      },
-    },
-  },
-  { "BartSte/nvim-project-marks" },
-  { "chentoast/marks.nvim" },
-  { "hedyhli/outline.nvim" },
-  { "famiu/bufdelete.nvim" },
-  {
-    "akinsho/bufferline.nvim",
-    branch = "main",
-  },
-  { "nvim-lua/plenary.nvim" },
-  { "David-Kunz/gen.nvim" },
+
+  { "hedyhli/outline.nvim",  opts = {} },
+
   {
     "yetone/avante.nvim",
     -- lazy = false,
@@ -224,11 +223,9 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",            -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -256,10 +253,12 @@ return {
       },
     },
   },
+
   {
     "numToStr/Comment.nvim",
     dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
   },
+
   {
     "saghen/blink.cmp",
     version = '*',
@@ -300,10 +299,10 @@ return {
       fuzzy = { implementation = "prefer_rust" },
       cmdline = {
         keymap = {
+          ['<up>'] = { 'select_prev', 'fallback' },
           ['<down>'] = { 'select_next' },
           ['<right>'] = { 'accept', 'fallback' },
           ["<left>"] = { "fallback" },
-          ['<up>'] = { 'select_prev' },
           ["<cr>"] = { "fallback" },
           ["<esc>"] = {
             "hide",
@@ -321,6 +320,7 @@ return {
     },
     opts_extend = { "sources.default" }
   },
+
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
@@ -338,6 +338,7 @@ return {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
+
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
@@ -345,6 +346,7 @@ return {
       "neovim/nvim-lspconfig",
     },
   },
+
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
@@ -352,9 +354,13 @@ return {
       "mfussenegger/nvim-dap",
     }
   },
+
   { "mfussenegger/nvim-dap" },
+
   { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+
   { "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
+
   {
     "theHamsta/nvim-dap-virtual-text",
     dependencies = {
@@ -362,6 +368,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
+
   {
     "nvim-telescope/telescope-dap.nvim",
     dependencies = {
@@ -370,10 +377,13 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
+
   { "mfussenegger/nvim-lint" },
-  { "folke/trouble.nvim" },
+
+  { "folke/trouble.nvim",    opts = {} },
+
   {
-    "nitaicharan/nvim-devdocs",
+    "luckasRanarison/nvim-devdocs",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
@@ -381,10 +391,43 @@ return {
     },
     opts = {}
   },
-  { "stevearc/conform.nvim" },
+
+  -- {
+  --   "maskudo/devdocs.nvim",
+  --   dependencies = {
+  --     "folke/snacks.nvim",
+  --   },
+  --   opts = {},
+  -- },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        ["*"] = { "codespell" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        graphql = { "prettier" },
+        lua = { "stylua" },
+        python = { "isort", "black", stop_after_first = true },
+        java = { "google-java-format" },
+      },
+    }
+  },
+
   { "lewis6991/hover.nvim" },
-  { "folke/flash.nvim", },
-  { "smoka7/hop.nvim", },
+
+  { "folke/flash.nvim",    opts = {} },
+
+  { "smoka7/hop.nvim",     opts = {} },
+
   {
     "folke/which-key.nvim",
     opts = {
@@ -402,14 +445,17 @@ return {
     },
     dependencies = { "echasnovski/mini.nvim" }
   },
-  { "mfussenegger/nvim-lint" },
+
   { "Tastyep/structlog.nvim", },
+
   {
     "nvim-orgmode/orgmode",
     dependencies = {
       { "nvim-treesitter/nvim-treesitter" },
     },
+    opts = {}
   },
+
   {
     "epwalsh/obsidian.nvim",
     version = "*",
@@ -418,8 +464,19 @@ return {
       "hrsh7th/nvim-cmp",
       "nvim-telescope/telescope.nvim",
     },
+    opts = {
+      ui = { enable = false },
+      workspaces = {
+        {
+          name = "Personal",
+          path = vim.fn.expand("~") .. "/Notes",
+        },
+      },
+    }
   },
+
   { "dhruvasagar/vim-table-mode", },
+
   {
     "epwalsh/pomo.nvim",
     version = "*",
@@ -427,17 +484,7 @@ return {
       "rcarriga/nvim-notify",
     },
   },
-  {
-    "wet-sandwich/hyper.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-  {
-    "rest-nvim/rest.nvim",
-    ft = "http",
-  },
-  { "BlackLight/nvim-http", },
+
   {
     "smoka7/multicursors.nvim",
     dependencies = {
@@ -445,13 +492,16 @@ return {
     },
     opts = {},
   },
+
   {
     "Shatur/neovim-session-manager",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
   },
+
   { "nvim-lualine/lualine.nvim", },
+
   {
     "akinsho/toggleterm.nvim",
     version = "*",
@@ -464,6 +514,7 @@ return {
     },
 
   },
+
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -471,9 +522,9 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-jest",
-      "rcasia/neotest-java",
     },
   },
+
   {
     "zaldih/themery.nvim",
     dependencies = {
@@ -488,15 +539,16 @@ return {
       -- { "AlexvZyl/nordic.nvim" },
     }
   },
-  { "nvim-tree/nvim-tree.lua", },
+
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+      "ibhagwan/fzf-lua",       -- optional
     },
   },
-  { "lewis6991/gitsigns.nvim" },
-  { "sindrets/diffview.nvim" },
+
   {
     'pwntester/octo.nvim',
     dependencies = {
@@ -504,14 +556,18 @@ return {
       'folke/snacks.nvim',
       'nvim-tree/nvim-web-devicons',
     },
+    opts = {}
   },
+
+  { "lewis6991/gitsigns.nvim",   opts = {} },
+
   { "sindrets/winshift.nvim" },
   { "declancm/maximize.nvim" },
-  { "stevearc/stickybuf.nvim", opts = {} },
+  { "stevearc/stickybuf.nvim",   opts = {} },
   { "pocco81/true-zen.nvim" },
   { "folke/twilight.nvim" },
   { "folke/zen-mode.nvim" },
-  { "tiagovla/scope.nvim",     opts = {}, lazy = false },
+  { "tiagovla/scope.nvim",       opts = {}, lazy = false },
   {
     "3rd/image.nvim",
     enabled = not is_neovide,
@@ -526,11 +582,6 @@ return {
       highlight_on_key = true,
       dim = true,
     },
-  },
-  {
-    "LunarVim/bigfile.nvim",
-    event = "BufRead",
-    opts = {},
   },
   {
     'echasnovski/mini.nvim',
@@ -600,18 +651,23 @@ return {
       },
     },
   },
-  -- {
-  --   "mistricky/codesnap.nvim",
-  --   build = "make",
-  --   opts = {
-  --     mac_window_bar = false,
-  --     title = "CodeSnap.nvim",
-  --     bg_color = "#101010",
-  --     has_breadcrumbs = true,
-  --     has_line_number = true,
-  --     show_workspace = true,
-  --     bg_padding = 10,
-  --     save_path = "~/",
-  --   }
-  -- },
+  {
+    "mistricky/codesnap.nvim",
+    build = "make",
+    opts = {
+      mac_window_bar = false,
+      title = "CodeSnap.nvim",
+      bg_color = "#101010",
+      has_breadcrumbs = true,
+      has_line_number = true,
+      show_workspace = true,
+      bg_padding = 10,
+      save_path = "~/",
+    }
+  },
+  {
+    'devdocs.nvim',
+    name = 'devdocs.nvim',
+    dev = true
+  },
 }

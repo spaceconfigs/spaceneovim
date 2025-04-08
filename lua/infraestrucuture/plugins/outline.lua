@@ -4,8 +4,6 @@ if not outline_ok then
 	error("Failed to load plugin `hedyhli/outline.nvim`")
 end
 
-outline.setup()
-
 return {
 	outline = outline,
 }
