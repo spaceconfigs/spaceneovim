@@ -1,10 +1,14 @@
-local snacks_ok, snacks = pcall(require, "snacks")
-if not snacks_ok then
-  error("Failed to load plugin `folke/snacks.nvim`")
+local nvim_tree_ok, nvim_tree = pcall(require, "nvim-tree")
+if not nvim_tree_ok then
+	error("Failed to load plugin `nvim-tree/nvim-tree.lua`")
 end
 
-vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "NONE" })
+local api = require("nvim-tree.api")
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
 
 return {
-  snacks = snacks,
+	nvim_tree = api,
 }

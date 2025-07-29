@@ -31,13 +31,17 @@ end
 M.toggle = function(opts)
 	return function()
 		local message = {
-			module = "adapters/todo",
+			module = "use_cases/tree",
 			func = "toggle",
 			opts = opts,
 		}
+    opts = opts or {}
+    opts.location = opts.location or "project"
+
 		logger_use_case.debug(message)
+
 		local adapter = M.setup()
-		local path = file_util.pwd(opts)
+		local path = file_util.pwd(opts.location)
 
 		adapter.toggle({ location = path })
 	end
