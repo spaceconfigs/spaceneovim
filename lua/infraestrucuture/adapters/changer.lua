@@ -11,7 +11,7 @@ M.list = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.undo({ layout = { preset = "nitaicharan" } })
+  snacks.picker.undo()
 end
 
 return M

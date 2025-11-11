@@ -12,6 +12,6 @@ M.find = function(opts)
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.commands({ layout = { preset = "nitaicharan" } })
+  snacks.picker.commands()
 end
 return M

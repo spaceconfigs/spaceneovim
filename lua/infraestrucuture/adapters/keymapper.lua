@@ -1,6 +1,8 @@
 local M = {}
 
-local plugin = require("infraestrucuture.plugins.keymapper")
+local plugins = require("infraestrucuture.plugins.keymapper")
+local which_key = plugins.which_key
+local hydra = plugins.hydra
 local logger_use_manage = require("application.use_cases.logger")
 
 local format_map = function(map)
@@ -48,7 +50,7 @@ M.register = function(map)
 	logger_use_manage.debug(message)
 
 	local formatted = M.format(map)
-	plugin.add(formatted)
+	which_key.add(formatted)
 end
 
 M.register_all = function(maps)
@@ -64,7 +66,15 @@ M.register_all = function(maps)
 	end
 end
 
--- local maps = require("domain.maps")
--- M.regist_all(maps)
+M.create_transient = function(opts)
+	local message = {
+		module = "adapters/keymapper",
+		func = "create_transient",
+		opts = opts,
+	}
+	logger_use_manage.debug(message)
+
+	return hydra(opts)
+end
 
 return M

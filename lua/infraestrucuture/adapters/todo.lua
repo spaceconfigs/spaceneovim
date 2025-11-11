@@ -12,7 +12,7 @@ M.list = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.todo_comments({ layout = { preset = "nitaicharan" }, })
+  snacks.picker.todo_comments()
 end
 
 return M

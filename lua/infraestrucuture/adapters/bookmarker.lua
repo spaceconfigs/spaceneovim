@@ -45,7 +45,6 @@ M.list = function()
 
   lspmark.load_bookmarks()
   -- snacks.picker.marks({
-  --   layout = { preset = "nitaicharan" },
   --   global = false
   -- })
 end

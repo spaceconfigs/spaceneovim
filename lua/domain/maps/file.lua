@@ -5,36 +5,50 @@ local tree_use_case = require("application.use_cases.tree")
 
 local bookmark_content = {
 	{ key = "b", description = "Bookmark" },
-	{ key = "ba", description = "Add Bookmark", method = bookmarker_use_case.add },
-	{ key = "bb", description = "List Bookmarks", method = bookmarker_use_case.list },
-	{ key = "bd", description = "Delete Bookmark", method = bookmarker_use_case.remove },
+	{ key = "ba", description = "[a]dd Bookmark", method = bookmarker_use_case.add },
+	{ key = "bb", description = "List [b]ookmarks", method = bookmarker_use_case.list },
+	{ key = "bd", description = "[d]elete Bookmark", method = bookmarker_use_case.remove },
 }
 
 local config_content = {
 	{ key = "e", description = "Config" },
-	{ key = "ed", description = "Edit Config", method = "<cmd>edit $MYVIMRC<cr>" },
-	{ key = "eR", description = "Reload Config", method = "<cmd>source $MYVIMRC<cr>" },
-	{ key = "eU", description = "Update Packages", method = packager_use_case.update },
+	{ key = "ed", description = "E[d]it Config", method = "<cmd>edit $MYVIMRC<cr>" },
+	{ key = "eR", description = "[R]eload Config", method = "<cmd>source $MYVIMRC<cr>" },
+	{ key = "eU", description = "[U]pdate Packages", method = packager_use_case.update },
 }
 
 local yank_content = {
 	{ key = "y", description = "Copy" },
-	{ key = "yd", description = "Directory", method = file_use_case.copy_folder_path },
-	{ key = "yD", description = "Project directory", method = file_use_case.copy_project_folder_path },
-	{ key = "yn", description = "Name", method = file_use_case.copy_name },
-	{ key = "yN", description = "Name without extetion", method = file_use_case.copy_name_no_extention },
-	{ key = "yy", description = "Path", method = file_use_case.copy_path },
-	{ key = "yY", description = "Project path", method = file_use_case.copy_project_path },
+	{ key = "yd", description = "[d]irectory", method = file_use_case.copy({ item = "directory" }) },
+	{
+		key = "yD",
+		description = "Project [D]irectory",
+		method = file_use_case.copy({ item = "directory", location = "project" }),
+	},
+	{ key = "yl", description = "[l]ine", method = file_use_case.copy({ extensions = "type_line" }) },
+	{
+		key = "yL",
+		description = "Project [L]ine",
+		method = file_use_case.copy({ location = "project", extensions = "type_line" }),
+	},
+	{ key = "yn", description = "[n]ame", method = file_use_case.copy({ item = "file", location = "file" }) },
+	{
+		key = "yN",
+		description = "[N]ame without extetion",
+		method = file_use_case.copy({ item = "file", extensions = "none" }),
+	},
+	{ key = "yy", description = "Path ([y]ank)", method = file_use_case.copy({ item = "file" }) },
+	{ key = "yY", description = "Project path ([Y]ank)", method = file_use_case.copy({ item = "file", location = "project" }) },
 }
 
 local file_content = {
-	{ key = "D", description = "Delete", method = "<cmd>call delete(expand('%')) | bdelete!<cr>" },
-	{ key = "f", description = "Find", method = file_use_case.list({ location = "file" }) },
-	{ key = "r", description = "Recents", method = file_use_case.oldfiles() },
-	{ key = "R", description = "Rename", method = file_use_case.rename },
-	{ key = "s", description = "Save", method = "<cmd>write!<cr>" },
-	{ key = "S", description = "Save All", method = "<cmd>wall!<cr>" },
-	{ key = "t", description = "Tree", method = tree_use_case.toggle({ location = "file" }) },
+	{ key = "D", description = "[D]elete", method = "<cmd>call delete(expand('%')) | bdelete!<cr>" },
+	{ key = "f", description = "[f]ind", method = file_use_case.list({ location = "file" }) },
+	{ key = "r", description = "[r]ecents", method = file_use_case.oldfiles() },
+	{ key = "R", description = "[R]ename", method = file_use_case.rename },
+	{ key = "s", description = "[s]ave", method = "<cmd>write!<cr>" },
+	{ key = "S", description = "[S]ave All", method = "<cmd>wall!<cr>" },
+	{ key = "t", description = "[t]ree", method = tree_use_case.toggle({ location = "file" }) },
 }
 
 local result = {}

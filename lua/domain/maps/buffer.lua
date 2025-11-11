@@ -1,13 +1,13 @@
 local buffer_use_case = require("application.use_cases.buffer")
 
 local buffer_content = {
-	{ key = "<C-d>", description = "Close others", method = buffer_use_case.close_others },
-	{ key = "b", description = "Find", method = buffer_use_case.list },
-	{ key = "d", description = "Close", method = buffer_use_case.delete },
-	{ key = "n", description = "Next", method = buffer_use_case.next },
-	{ key = "m", description = "Message buffer", method = buffer_use_case.messages },
-	{ key = "p", description = "Previous", method = buffer_use_case.previous },
-	{ key = "u", description = "Reopen", method = buffer_use_case.reopen },
+	{ key = "<C-d>", description = "Close others ([d]elete)", method = buffer_use_case.close_others },
+	{ key = "b", description = "Find ([b]uffer)", method = buffer_use_case.list },
+	{ key = "d", description = "Close ([d]elete)", method = buffer_use_case.delete },
+	{ key = "n", description = "[n]ext", method = buffer_use_case.next },
+	{ key = "m", description = "[m]essage buffer", method = buffer_use_case.messages },
+	{ key = "p", description = "[p]revious", method = buffer_use_case.previous },
+	{ key = "u", description = "Reopen ([u]ndo)", method = buffer_use_case.reopen },
 }
 
 local result = {}

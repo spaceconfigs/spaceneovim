@@ -1,52 +1,69 @@
 local M = {}
 
 local logger_use_manage = require("application.use_cases.logger")
+local file_util = require("infraestrucuture.utils.file")
 local plugin = require("infraestrucuture.plugins.file")
-local snacks_opts = require("infraestrucuture.plugins.lazy.settigs.snacks")
 local snacks = plugin.snacks
 
--- snacks.picker.smart({
---   multi = { "recent", "files" },
---   format = "file",     -- use `file` format for all sources
---   matcher = {
---     cwd_bonus = true,  -- boost cwd matches
---     frecency = true,   -- use frecency boosting
---     sort_empty = true, -- sort even when the filter is empty
---   },
---   transform = "unique_file",
---   layout = { preset = "nitaicharan" },
--- })
-
--- snacks.picker.files({
---   layout = { preset = "nitaicharan" },
--- })
-
 M.oldfiles = function(opts)
-  local message = {
-    module = "adapters/file",
-    func = "oldfiles",
-    opts = opts,
-  }
-  logger_use_manage.debug(message)
+	local message = {
+		module = "adapters/file",
+		func = "oldfiles",
+		opts = opts,
+	}
+	logger_use_manage.debug(message)
 
-
-  snacks.picker.recent({ layout = { preset = "nitaicharan" } })
+	snacks.picker.recent()
 end
 
 M.list = function(opts)
-  local message = {
-    module = "adapters/file",
-    func = "list",
-    opts = opts,
-  }
-  logger_use_manage.debug(message)
+	local message = {
+		module = "adapters/file",
+		func = "list",
+		opts = opts,
+	}
+	logger_use_manage.debug(message)
 
-  local cwd = opts and opts.path
-  snacks.picker.smart({
-    multi = { "files" },
-    layout = { preset = "nitaicharan" },
-    cwd = cwd,
-  })
+	local cwd = opts and opts.path
+	snacks.picker.smart({
+		multi = { "files" },
+		cwd = cwd,
+	})
+end
+
+M.copy = function(opts)
+	local message = {
+		module = "adapters/file",
+		func = "copy",
+		opts = opts,
+	}
+	logger_use_manage.debug(message)
+
+	local path = file_util.get_path_from_file(opts.location)
+
+	if not opts.item == "file" then
+		return path
+	end
+
+	local line = vim.fn.line(".")
+	local column = vim.fn.col(".")
+
+	local extentions_functions = {
+		type = function()
+			return path
+		end,
+		type_line = function()
+			return string.format("%s:%s", path, line)
+		end,
+		type_line_column = function()
+			return string.format("%s:%s:%s", path, line, column)
+		end,
+	}
+
+	path = extentions_functions[opts.extensions]()
+	vim.fn.setreg("+", path)
+
+	return path
 end
 
 return M

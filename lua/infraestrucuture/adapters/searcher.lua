@@ -14,7 +14,6 @@ M.search = function(opts)
 
 	if opts.location == "project" then
 		return snacks.picker.grep({
-			layout = { preset = "nitaicharan" },
 			live = opts.text == nil,
 			search = opts.text,
 			cwd = opts.path,
@@ -23,7 +22,6 @@ M.search = function(opts)
 
 	if opts.location == "directory" then
 		return snacks.picker.grep({
-			layout = { preset = "nitaicharan" },
 			live = opts.text == nil,
 			search = opts.text,
 			cwd = opts.path,

@@ -3,6 +3,7 @@ local M = {}
 local logger_use_manage = require("application.use_cases.logger")
 local plugins = require("infraestrucuture.plugins.tree")
 local nvim_tree = plugins.nvim_tree
+local snacks = plugins.snacks
 
 M.open = function()
 	local message = {

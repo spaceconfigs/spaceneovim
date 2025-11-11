@@ -3,33 +3,33 @@ local workspace_use_case = require("application.use_cases.workspace")
 
 local grep_input_content = {
 	{ key = "G", description = "Grep input on project" },
-	{ key = "Gp", description = "", method = workspace_use_case.grep_input },
+	{ key = "Gp", description = "Grep in [p]roject", method = workspace_use_case.grep_input },
 }
 
 local search_content = {
 	{
 		key = "d",
-		description = "Directory",
+		description = "[d]irectory",
 		method = searcher_use_case.search({ location = "directory" }),
 	},
 	{
 		key = "D",
-		description = "Directory",
+		description = "[D]irectory w/ input",
 		method = searcher_use_case.search_hover({ location = "directory" }),
 	},
-	{ key = "l", description = "Resume", method = searcher_use_case.resume() },
+	{ key = "l", description = "Resume ([l]ast)", method = searcher_use_case.resume() },
 	{
 		key = "p",
-		description = "Search in workspace",
+		description = "Search in [p]roject",
 		method = searcher_use_case.search({ location = "project", in_live = true }),
 	},
 	{
 		key = "P",
-		description = "Search project w/ input",
+		description = "Search [P]roject w/ input",
 		method = searcher_use_case.search_hover({ location = "project" }),
 	},
-	{ key = "s", description = "Text", method = searcher_use_case.search({ in_live = true }) },
-	{ key = "S", description = "Search w/ input", method = searcher_use_case.search_hover() },
+	{ key = "s", description = "Text ([s]earch)", method = searcher_use_case.search({ in_live = true }) },
+	{ key = "S", description = "[S]earch w/ input", method = searcher_use_case.search_hover() },
 }
 
 local result = {}

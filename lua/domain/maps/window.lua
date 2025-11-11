@@ -4,38 +4,38 @@ local notification_use_case = require("application.use_cases.notification")
 
 local center_content = {
 	{ key = "c", description = "Center" },
-	{ key = "cC", description = "Buffer", method = zen_use_case.center },
-	{ key = "ca", description = "Area", mode = "v", method = zen_use_case.area },
-	{ key = "cz", description = "Zen", method = zen_use_case.toggle },
+	{ key = "cC", description = "Buffer ([C]enter)", method = zen_use_case.center },
+	{ key = "ca", description = "[a]rea", mode = "v", method = zen_use_case.area },
+	{ key = "cz", description = "[z]en", method = zen_use_case.toggle },
 }
 
 local pop_content = {
 	{ key = "p", description = "Pop-up" },
-	{ key = "pm", description = "Show history", method = notification_use_case.list },
-	{ key = "pP", description = "Dismiss messages", method = notification_use_case.dismiss },
+	{ key = "pm", description = "Show [m]essage history", method = notification_use_case.list },
+	{ key = "pP", description = "Dismiss messages ([P])", method = notification_use_case.dismiss },
 }
 
 local window_content = {
-	{ key = "d", description = "Delete", method = ":quit<cr>" },
-	{ key = "h", description = "Go left", method = window_use_case.go_left },
-	{ key = "H", description = "Move to left", method = window_use_case.move_left },
-	{ key = "j", description = "Go down", method = window_use_case.go_down },
-	{ key = "J", description = "Move down", method = window_use_case.move_down },
-	{ key = "k", description = "Go up", method = window_use_case.go_up },
-	{ key = "K", description = "Move up", method = window_use_case.move_up },
-	{ key = "l", description = "Go left", method = window_use_case.go_right },
-	{ key = "L", description = "Move right", method = window_use_case.move_right },
-	{ key = "m", description = "Maximize", method = window_use_case.toggle },
-	{ key = "s", description = "Split below", method = ":split | wincmd p<cr>" },
-	{ key = "v", description = "Split right", method = ":vsplit | wincmd p<cr>" },
-	{ key = "t", description = "Dedicate", method = window_use_case.dedicate },
-	{ key = "S", description = "Split below", method = ":split<cr>" },
-	{ key = "V", description = "Split right", method = ":vsplit<cr>" },
-	{ key = "]", description = "Shrink width", method = window_use_case.shrink_width },
-	{ key = "[", description = "Expand width", method = window_use_case.expand_width },
-	{ key = "+", description = "Shrink width", method = window_use_case.shrink_height },
-	{ key = "-", description = "Expand height", method = window_use_case.expand_height },
-	{ key = "=", description = "Balance area", method = window_use_case.balance_area },
+	{ key = "d", description = "[d]elete", method = ":quit<cr>" },
+	{ key = "h", mode = { "n", "i", "t" }, description = "Go left ([h])", method = window_use_case.go_left },
+	{ key = "H", description = "Move to left ([H])", method = window_use_case.move_left },
+	{ key = "j", mode = { "n", "i", "t" }, description = "Go down ([j])", method = window_use_case.go_down },
+	{ key = "J", description = "Move down ([J])", method = window_use_case.move_down },
+	{ key = "k", mode = { "n", "i", "t" }, description = "Go up ([k])", method = window_use_case.go_up },
+	{ key = "K", description = "Move up ([K])", method = window_use_case.move_up },
+	{ key = "l", mode = { "n", "i", "t" }, description = "Go right ([l])", method = window_use_case.go_right },
+	{ key = "L", description = "Move right ([L])", method = window_use_case.move_right },
+	{ key = "m", description = "[m]aximize", method = window_use_case.toggle },
+	{ key = "s", description = "[s]plit below", method = ":split | wincmd p<cr>" },
+	{ key = "v", description = "Split right ([v]ertical)", method = ":vsplit | wincmd p<cr>" },
+	{ key = "t", description = "Dedicate ([t]ag)", method = window_use_case.dedicate },
+	{ key = "S", description = "[S]plit below", method = ":split<cr>" },
+	{ key = "V", description = "Split right ([V]ertical)", method = ":vsplit<cr>" },
+	{ key = "]", description = "Shrink width (])", method = window_use_case.shrink_width },
+	{ key = "[", description = "Expand width ([)", method = window_use_case.expand_width },
+	{ key = "+", description = "Shrink height (+)", method = window_use_case.shrink_height },
+	{ key = "-", description = "Expand height (-)", method = window_use_case.expand_height },
+	{ key = "=", description = "Balance area (=)", method = window_use_case.balance_area },
 }
 
 local result = {}

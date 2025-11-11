@@ -22,10 +22,10 @@ M.toggle = function(options)
     options = options or {}
     options.type = options.type or 'internal'
     options.location = options.location or 'file'
-    options.path = file_util.pwd("file")
+    options.path = file_util.project("file")
 
     if options.location == 'project' then
-      options.path = file_util.pwd("project")
+      options.path = file_util.project("project")
     end
 
     adapter.toggle(options)

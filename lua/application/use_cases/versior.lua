@@ -6,15 +6,20 @@ M.setup = function()
 	return require("infraestrucuture.adapters.versior")
 end
 
-M.blame_line = function()
-	local message = {
-		module = "use_cases/versior",
-		func = "blame_line",
-	}
-	logger_use_case.debug(message)
-	local adapter = M.setup()
+M.blame = function(opts)
+	return function()
+		opts = opts or {}
+		opts.location = opts.location or "file"
+		local message = {
+			module = "use_cases/versior",
+			func = "blame",
+			opts = opts,
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
 
-	adapter.blame_line()
+		adapter.blame(opts)
+	end
 end
 
 M.open = function()
@@ -61,7 +66,7 @@ M.browse = function()
 	adapter.browse()
 end
 
-M.branchs = function()
+M.branches = function()
 	local message = {
 		module = "use_cases/versior",
 		func = "unstage_file",
@@ -69,7 +74,7 @@ M.branchs = function()
 	logger_use_case.debug(message)
 	local adapter = M.setup()
 
-	adapter.log()
+	adapter.branches()
 end
 
 M.log = function()

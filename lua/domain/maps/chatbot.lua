@@ -1,17 +1,34 @@
 local use_case = require("application.use_cases.chatbot")
 
-local output_content = {
-	{ key = "o", description = "Output" },
-	{ key = "og", description = "Toggle", method = use_case.toggle },
-	{ key = "oe", mode = "v", description = "Edit", method = use_case.edit },
+local claudecode_content = {
+	{ key = "d", description = "Claude Code" },
+	{ key = "ds", description = "Start", method = use_case.session({ action = "start", provider = "claudecode" }) },
+	{ key = "dc", description = "Continue", method = use_case.session({ action = "continue", provider = "claudecode" }) },
+	{ key = "dr", mode = "v", description = "Edit region", method = use_case.edit({ provider = "claudecode" }) },
+	{ key = "dr", description = "Resume", method = use_case.session({ action = "resume", provider = "claudecode" }) },
+	{ key = "dl", description = "List", method = use_case.session({ action = "list", provider = "claudecode" }) },
+	{ key = "db", description = "Buffer", method = use_case.session({ action = "buffer", provider = "claudecode" }) },
+	{ key = "dt", description = "Toggle", method = use_case.session({ action = "toggle", provider = "claudecode" }) },
+	{ key = "dq", description = "Stop", method = use_case.session({ action = "stop", provider = "claudecode" }) },
 }
-local chatbot_content = {}
+
+local opencode_content = {
+	{ key = "o", description = "Open Code" },
+	{ key = "os", description = "Start", method = use_case.session({ action = "start", provider = "opencode" }) },
+	{ key = "oc", description = "Continue", method = use_case.session({ action = "continue", provider = "opencode" }) },
+	{ key = "or", mode = "v", description = "Edit region", method = use_case.edit({ provider = "opencode" }) },
+	{ key = "or", description = "Resume", method = use_case.session({ action = "resume", provider = "opencode" }) },
+	{ key = "ol", description = "List", method = use_case.session({ action = "list", provider = "opencode" }) },
+	{ key = "ob", description = "Buffer", method = use_case.session({ action = "buffer", provider = "opencode" }) },
+	{ key = "ot", description = "Toggle", method = use_case.session({ action = "toggle", provider = "opencode" }) },
+	{ key = "oq", description = "Stop", method = use_case.session({ action = "stop", provider = "opencode" }) },
+}
 
 local result = {}
 local contents = {}
 for _, content in pairs({
-	output_content,
-	chatbot_content,
+	claudecode_content,
+	opencode_content,
 }) do
 	for _, bind in pairs(content) do
 		table.insert(contents, bind)

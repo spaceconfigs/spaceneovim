@@ -39,7 +39,7 @@ M.search = function(opts)
 		local in_live = opts.in_live or false
 
 		if location == "project" then
-			path = file_util.pwd(location)
+			path = file_util.project(location)
 		end
 
 		if location == "directory" then
@@ -69,7 +69,7 @@ M.search_hover = function(opts)
 		local text = vim.fn.expand("<cword>")
 
 		if location == "project" then
-			path = file_util.pwd(location)
+			path = file_util.project(location)
 		end
 
 		if location == "directory" then

@@ -11,10 +11,8 @@ end
 M.log = function(opts)
 	local adapter = M.setup()
 
-	local level = opts.level
 	local message = opts.message
 	local environment_log_levels_mapper = {
-
 		[environments.PRODUCTION] = {
 			log_levels.WARN,
 			log_levels.ERROR,
@@ -29,20 +27,21 @@ M.log = function(opts)
 	}
 
 	local environment = vim.fn.getenv("NVIM_ENVIRONMENT")
-	local log_level = environment_log_levels_mapper[environment] or {}
-	for _, value in pairs(log_level) do
-		if value ~= level then
+	local levels = environment_log_levels_mapper[environment] or {}
+	for _, level in pairs(levels) do
+		if level ~= opts.level then
 			goto continue
 		end
 
 		notification_use_case.notify({
 			message = message,
-			level = level,
+			level = opts.level,
 		})
-		adapter.log({
-			message = vim.inspect(message),
-			level = level,
-		})
+
+		-- adapter.log({
+		-- 	message = vim.inspect(message),
+		-- 	level = opts.level,
+		-- })
 
 		::continue::
 	end

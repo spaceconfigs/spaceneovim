@@ -27,10 +27,13 @@ return {
 				"nvim-treesitter/nvim-treesitter-context",
 				opts = function()
 					vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "none" })
-					return {}
+					return {
+						multiline_threshold = 1,
+					}
 				end,
 			},
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			"dlvandenberg/tree-sitter-angular",
 		},
 		opts = function()
 			-- make transparent
@@ -39,13 +42,6 @@ return {
 		end,
 	},
 	{ "neovim/nvim-lspconfig" },
-	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-	},
 	{
 		"folke/noice.nvim",
 		event = "BufRead",
@@ -88,12 +84,12 @@ return {
 		lazy = false,
 	},
 
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-		opts = {},
-	},
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+	-- 	opts = {},
+	-- },
 
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
@@ -153,6 +149,7 @@ return {
 			},
 			picker = {
 				enabled = true,
+				layout = "nitaicharan",
 				layouts = {
 					nitaicharan_lines = {
 						layout = {
@@ -183,17 +180,28 @@ return {
 								{
 									win = "preview",
 									height = 0.8,
-									title = "{preview:Preview}",
 									title_pos = "center",
 								},
 								{
 									win = "input",
 									height = 1,
 									border = "none",
-									title = "{title} {live} {flags}",
 									title_pos = "center",
 								},
-								{ win = "list", title = " Results ", title_pos = "center", border = "none" },
+								{ win = "list", title_pos = "center", border = "none" },
+							},
+						},
+					},
+				},
+				sources = {
+					explorer = {
+						layout = {
+							layout = {
+								box = "vertical",
+								backdrop = true,
+								width = 0.8,
+								height = 0.8,
+								{ win = "list", border = "rounded" },
 							},
 						},
 					},
@@ -216,21 +224,17 @@ return {
 		-- lazy = false,
 		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 		opts = {
-			provider = "gemini",
-			gemini = {
-				-- @see https://ai.google.dev/gemini-api/docs/models/gemini
-				model = "gemini-2.0-flash",
-				timeout = 30000,
-				temperature = 0,
-				max_tokens = 4096,
-				api_key_name = "cmd:pass ai.google.dev/token",
-			},
-			behaviour = {
-				auto_suggestions = false, -- Experimental stage
-				auto_set_highlight_group = true,
-				auto_set_keymaps = true,
-				auto_apply_diff_after_generation = false,
-				support_paste_from_clipboard = false,
+			provider = "claude",
+			providers = {
+				claude = {
+					endpoint = "https://api.anthropic.com",
+					model = "claude-sonnet-4-20250514",
+					timeout = 30000, -- Timeout in milliseconds
+					extra_request_body = {
+						temperature = 0.75,
+						max_tokens = 20480,
+					},
+				},
 			},
 		},
 		build = "make", -- if you want to build from source then do make BUILD_FROM_SOURCE=true
@@ -269,7 +273,30 @@ return {
 			},
 		},
 	},
-
+	{
+		"NickvanDyke/opencode.nvim",
+		dependencies = {
+			{ "folke/snacks.nvim", opts = { input = {}, picker = {} } },
+		},
+		config = function()
+			vim.opt.autoread = true
+		end,
+	},
+	{
+		"coder/claudecode.nvim",
+		dependencies = {
+			"folke/snacks.nvim",
+		},
+		opts = {},
+	},
+	{
+		"ravitemer/mcphub.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		build = "bundled_build.lua",
+		opts = { use_bundled_binary = true },
+	},
 	{
 		"numToStr/Comment.nvim",
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -316,7 +343,7 @@ return {
 			cmdline = {
 				keymap = {
 					["<up>"] = { "select_prev", "fallback" },
-					["<down>"] = { "select_next" },
+					["<down>"] = { "select_next", "fallback" },
 					["<right>"] = { "accept", "fallback" },
 					["<left>"] = { "fallback" },
 					["<cr>"] = { "fallback" },
@@ -402,16 +429,6 @@ return {
 
 	{ "folke/trouble.nvim", opts = {} },
 
-	{
-		"luckasRanarison/nvim-devdocs",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		opts = {},
-	},
-
 	-- {
 	--   "maskudo/devdocs.nvim",
 	--   dependencies = {
@@ -433,16 +450,17 @@ return {
 		opts = {
 			formatters_by_ft = {
 				["*"] = { "codespell" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
-				css = { "prettier" },
-				html = { "prettier" },
-				json = { "prettier" },
-				yaml = { "prettier" },
-				markdown = { "prettier" },
-				graphql = { "prettier" },
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+				css = { "prettierd", "prettier", stop_after_first = true },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				htmlangular = { "prettierd", "prettier", stop_after_first = true },
+				json = { "prettierd", "prettier", stop_after_first = true },
+				yaml = { "prettierd", "prettier", stop_after_first = true },
+				markdown = { "prettierd", "prettier", stop_after_first = true },
+				graphql = { "prettierd", "prettier", stop_after_first = true },
 				lua = { "stylua" },
 				python = { "isort", "black", stop_after_first = true },
 				java = { "google-java-format" },
@@ -512,10 +530,7 @@ return {
 	},
 
 	{
-		"smoka7/multicursors.nvim",
-		dependencies = {
-			"smoka7/hydra.nvim",
-		},
+		"nvimtools/hydra.nvim",
 		opts = {},
 	},
 
@@ -770,7 +785,8 @@ return {
 				vim.keymap.set("n", "yr", api.fs.copy.relative_path, opts("Copy Relative Path"))
 			end
 
-			-- pass to setup along with your other options
+			local HEIGHT_RATIO = 0.8
+			local WIDTH_RATIO = 0.5
 			require("nvim-tree").setup({
 				on_attach = my_on_attach,
 				renderer = {
@@ -783,8 +799,49 @@ return {
 				root_dirs = { ".git", "package.json", "Makefile" },
 				view = {
 					centralize_selection = true,
+					float = {
+						enable = true,
+						open_win_config = function()
+							local screen_w = vim.opt.columns:get()
+							local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+							local window_w = screen_w * WIDTH_RATIO
+							local window_h = screen_h * HEIGHT_RATIO
+							local window_w_int = math.floor(window_w)
+							local window_h_int = math.floor(window_h)
+							local center_x = (screen_w - window_w) / 2
+							local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+							return {
+								border = "rounded",
+								relative = "editor",
+								row = center_y,
+								col = center_x,
+								width = window_w_int,
+								height = window_h_int,
+							}
+						end,
+					},
+					width = function()
+						return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
+					end,
 				},
 			})
 		end,
+	},
+	{
+		"benlubas/molten-nvim",
+		build = ":UpdateRemotePlugins",
+		ft = { "python", "julia", "markdown", "quarto","json"  },
+		init = function()
+			vim.g.molten_auto_open_output = true -- open output window when in a cell
+			vim.g.molten_virt_text_output = true -- also keep output as virtual text
+			vim.g.molten_output_win_border = { "", "━", "", "" }
+		end,
+	},
+
+	{
+		"goerz/jupytext.nvim",
+		version = "0.2.0",
+		ft = { "python", "julia", "markdown", "quarto","json"  },
+		opts = {},
 	},
 }

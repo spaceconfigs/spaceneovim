@@ -12,7 +12,7 @@ M.list = function()
   }
   logger_use_manage.debug(message)
 
-  snacks.picker.buffers({ layout = { preset = "nitaicharan" } })
+  snacks.picker.buffers()
 end
 
 M.delete = function()
