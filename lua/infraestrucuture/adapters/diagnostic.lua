@@ -23,14 +23,14 @@ M.show = function(direction)
 	logger_use_manage.debug(message)
 
 	if direction == "previous" then
-		return vim.diagnostic.goto_prev()
+		return vim.diagnostic.jump({ count = -1 })
 	end
 
 	if direction == "next" then
-		return vim.diagnostic.goto_next()
+		return vim.diagnostic.jump({ count = 1 })
 	end
 
-	snacks.picker.diagnostics()
+  vim.diagnostic.open_float()
 end
 
 return M

@@ -9,7 +9,7 @@ end
 M.toggle = function(opts)
 	return function()
 		opts = opts or {}
-		opts.provider = opts.provider or "claudecode"
+		opts.provider = opts.provider or "avante"
 
 		local message = {
 			module = "use_cases/ai",

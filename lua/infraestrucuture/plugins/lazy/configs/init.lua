@@ -21,8 +21,10 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
-    branch = "main",
+    branch = "master",
+    main = "nvim-treesitter.configs",
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-context",
@@ -37,8 +39,8 @@ return {
       "dlvandenberg/tree-sitter-angular",
     },
     opts = function()
-      -- make transparent
       vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "none" })
+
       return {
         ensure_installed = {
           "lua",
@@ -57,7 +59,6 @@ return {
       }
     end,
   },
-  { "neovim/nvim-lspconfig" },
   {
     "folke/noice.nvim",
     event = "BufRead",
@@ -157,6 +158,7 @@ return {
       terminal = { enabled = true },
       input = { enabled = true },
       bigfile = { enabled = true },
+      scroll = { enabled = true },
       image = {
         enabled = true,
         doc = {
@@ -233,14 +235,14 @@ return {
     },
   },
 
-  { "hedyhli/outline.nvim", opts = {} },
+  { "hedyhli/outline.nvim",  opts = {} },
 
   {
     "yetone/avante.nvim",
     -- lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
-      provider = "claude",
+      provider = "gemini",
       providers = {
         claude = {
           endpoint = "https://api.anthropic.com",
@@ -251,6 +253,14 @@ return {
             max_tokens = 20480,
           },
         },
+        gemini = {
+          -- pick a valid Gemini model name
+          model = "gemini-2.5-flash-lite",
+          api_key_name = { "pass", "ai.google.dev/token " },
+          timeout = 30000,
+          temperature = 0,
+          max_tokens = 8192,
+        },
       },
     },
     build = "make", -- if you want to build from source then do make BUILD_FROM_SOURCE=true
@@ -259,8 +269,8 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "hrsh7th/nvim-cmp",         -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",         -- for file_selector provider fzf
+      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",            -- for file_selector provider fzf
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       {
         -- support for image pasting
@@ -334,8 +344,18 @@ return {
       },
     },
     opts = {
+      completion = {
+        ghost_text = {
+          enabled = true,
+          show_with_menu = false,
+        },
+        menu = {
+          auto_show = false,
+        },
+      },
       keymap = {
-        preset = "enter",
+        ["<CR>"] = nil,
+        ["<Right>"] = { "accept", "fallback" },
       },
       appearance = {
         use_nvim_cmp_as_default = true,
@@ -402,11 +422,39 @@ return {
     end,
   },
 
+  { "neovim/nvim-lspconfig", lazy = false },
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig",
+      { "williamboman/mason.nvim", opts = {} },
+    },
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+      },
+      servers = {
+
+        vtsls = {
+          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+          settings = {
+            typescript = {
+              tsserver = { useSeparateSyntaxServer = true },
+              suggest = { completeFunctionCalls = true },
+              preferences = { importModuleSpecifier = "non-relative" },
+            },
+            vtsls = { enableMoveToFileCodeAction = true },
+          },
+        },
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = { globals = { "vim" } },
+              workspace = { checkThirdParty = false },
+              telemetry = { enable = false },
+            },
+          },
+        }
+      },
     },
   },
 
@@ -564,10 +612,10 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = {
+      persist_mode = false,
+      direction = "float",
       float_opts = {
-        border = "none",
-        width = vim.o.columns,
-        height = vim.o.lines,
+        border = "curved",
       },
     },
   },
@@ -600,9 +648,9 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-      "ibhagwan/fzf-lua",    -- optional
+      "ibhagwan/fzf-lua",       -- optional
     },
   },
 
@@ -700,13 +748,18 @@ return {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "MeanderingProgrammer/render-markdown.nvim",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown" },
+      },
     },
+    ft = "hurl",
     opts = {},
   },
   {
     "mistricky/codesnap.nvim",
     build = "make",
+    tag = "v1.6.3",
     opts = {
       mac_window_bar = false,
       title = "CodeSnap.nvim",
@@ -842,22 +895,5 @@ return {
         },
       })
     end,
-  },
-  {
-    "benlubas/molten-nvim",
-    build = ":UpdateRemotePlugins",
-    ft = { "python", "julia", "markdown", "quarto", "json" },
-    init = function()
-      vim.g.molten_auto_open_output = true -- open output window when in a cell
-      vim.g.molten_virt_text_output = true -- also keep output as virtual text
-      vim.g.molten_output_win_border = { "", "━", "", "" }
-    end,
-  },
-
-  {
-    "goerz/jupytext.nvim",
-    version = "0.2.0",
-    ft = { "python", "julia", "markdown", "quarto", "json" },
-    opts = {},
   },
 }
