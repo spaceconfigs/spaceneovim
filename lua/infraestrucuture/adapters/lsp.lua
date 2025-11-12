@@ -1,7 +1,6 @@
 local vim = vim
 local M = {}
 
-require("infraestrucuture.plugins.treesitter")
 local logger_use_manage = require("application.use_cases.logger")
 local jumper_use_manage = require("application.use_cases.jumper")
 local plugin = require("infraestrucuture.plugins.lsp")
