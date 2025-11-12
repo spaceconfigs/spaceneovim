@@ -35,6 +35,7 @@ M.search = function(opts)
 		logger_use_case.debug(message)
 		local adapter = M.setup()
 		local path = file_util.path()
+		opts = opts or {}
 		local location = opts.location or "buffer"
 		local in_live = opts.in_live or false
 
@@ -63,6 +64,7 @@ M.search_hover = function(opts)
 		}
 		logger_use_case.debug(message)
 		local adapter = M.setup()
+		opts = opts or {}
 		local location = opts.location or "buffer"
 
 		local path = vim.api.nvim_buf_get_name(0)

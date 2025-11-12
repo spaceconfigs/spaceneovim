@@ -45,6 +45,10 @@ vim.lsp.set_log_level("off")
 vim.o.showtabline = 1
 vim.o.laststatus = 0
 
+vim.o.conceallevel = 2
+vim.o.concealcursor = "nc"
+
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
