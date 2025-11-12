@@ -5,4 +5,4 @@ echo "-------------> Instalando Neovim"
 # $pminstall sxhkd
 
 echo "-------------> Configurando Neovim"
-ln -sf $(pwd)/Zellij ~/.config/zellij
+ln -sf . ~/.config/install
