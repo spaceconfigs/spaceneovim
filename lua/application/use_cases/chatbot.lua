@@ -75,4 +75,69 @@ M.session = function(opts)
 	end
 end
 
+M.send_prompt = function()
+	return function()
+		local message = {
+			module = "use_cases/chatbot",
+			func = "send_prompt",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.send_prompt()
+	end
+end
+
+M.add_file = function()
+	return function()
+		local message = {
+			module = "use_cases/chatbot",
+			func = "add_file",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.add_file()
+	end
+end
+
+M.select_model = function()
+	return function()
+		local message = {
+			module = "use_cases/chatbot",
+			func = "select_model",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.select_model()
+	end
+end
+
+M.accept_diff = function()
+	return function()
+		local message = {
+			module = "use_cases/chatbot",
+			func = "accept_diff",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.accept_diff()
+	end
+end
+
+M.deny_diff = function()
+	return function()
+		local message = {
+			module = "use_cases/chatbot",
+			func = "deny_diff",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.deny_diff()
+	end
+end
+
 return M

@@ -2,14 +2,19 @@ local use_case = require("application.use_cases.chatbot")
 
 local claudecode_content = {
   { key = "d",  description = "Claude Code" },
-  { key = "ds", description = "Start",      method = use_case.session({ action = "start", provider = "claudecode" }) },
-  { key = "dc", description = "Continue",   method = use_case.session({ action = "continue", provider = "claudecode" }) },
-  { key = "dr", mode = "v",                 description = "Edit region",                                                method = use_case.edit({ provider = "claudecode" }) },
-  { key = "dr", description = "Resume",     method = use_case.session({ action = "resume", provider = "claudecode" }) },
-  { key = "dl", description = "List",       method = use_case.session({ action = "list", provider = "claudecode" }) },
-  { key = "db", description = "Buffer",     method = use_case.session({ action = "buffer", provider = "claudecode" }) },
-  { key = "dt", description = "Toggle",     method = use_case.session({ action = "toggle", provider = "claudecode" }) },
-  { key = "dq", description = "Stop",       method = use_case.session({ action = "stop", provider = "claudecode" }) },
+  { key = "ds", description = "Start",          method = use_case.session({ action = "start", provider = "claudecode" }) },
+  { key = "dp", description = "Send prompt",    method = use_case.send_prompt() },
+  { key = "dc", description = "Continue",       method = use_case.session({ action = "continue", provider = "claudecode" }) },
+  { key = "dr", description = "Resume",         method = use_case.session({ action = "resume", provider = "claudecode" }) },
+  { key = "dl", description = "List sessions",  method = use_case.session({ action = "list", provider = "claudecode" }) },
+  { key = "db", description = "Switch buffer",  method = use_case.session({ action = "buffer", provider = "claudecode" }) },
+  { key = "dt", description = "Toggle window",  method = use_case.session({ action = "toggle", provider = "claudecode" }) },
+  { key = "dq", description = "Stop",           method = use_case.session({ action = "stop", provider = "claudecode" }) },
+  { key = "di", mode = "v", description = "Send selection", method = use_case.edit({ provider = "claudecode" }) },
+  { key = "dm", description = "Select model",   method = use_case.select_model() },
+  { key = "da", description = "Accept diff",    method = use_case.accept_diff() },
+  { key = "dx", description = "Deny diff",      method = use_case.deny_diff() },
+  { key = "df", description = "Add file",       method = use_case.add_file() },
 }
 
 local opencode_content = {

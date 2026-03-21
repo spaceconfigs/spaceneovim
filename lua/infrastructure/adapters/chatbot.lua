@@ -111,4 +111,54 @@ M.zenmode = function(opts)
   vim.cmd(cmd)
 end
 
+M.send_prompt = function()
+  local message = {
+    module = "adapters/chatbot",
+    func = "send_prompt",
+  }
+  logger_use_manage.debug(message)
+
+  vim.cmd("ClaudeCodeSend")
+end
+
+M.add_file = function()
+  local message = {
+    module = "adapters/chatbot",
+    func = "add_file",
+  }
+  logger_use_manage.debug(message)
+
+  vim.cmd("ClaudeCodeAdd %")
+end
+
+M.select_model = function()
+  local message = {
+    module = "adapters/chatbot",
+    func = "select_model",
+  }
+  logger_use_manage.debug(message)
+
+  vim.cmd("ClaudeCodeSelectModel")
+end
+
+M.accept_diff = function()
+  local message = {
+    module = "adapters/chatbot",
+    func = "accept_diff",
+  }
+  logger_use_manage.debug(message)
+
+  vim.cmd("ClaudeCodeDiffAccept")
+end
+
+M.deny_diff = function()
+  local message = {
+    module = "adapters/chatbot",
+    func = "deny_diff",
+  }
+  logger_use_manage.debug(message)
+
+  vim.cmd("ClaudeCodeDiffDeny")
+end
+
 return M
