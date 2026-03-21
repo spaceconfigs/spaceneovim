@@ -83,4 +83,18 @@ M.diagnostics = function()
 	lsp_adapter.diagnostics()
 end
 
+M.add_and_toggle_tree = function()
+	return function()
+		local message = {
+			module = "use_cases/workspace",
+			func = "add_and_toggle_tree",
+		}
+		logger_use_case.debug(message)
+
+		local tree_use_case = require("application.use_cases.tree")
+		M.add()
+		tree_use_case.toggle()()
+	end
+end
+
 return M

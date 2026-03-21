@@ -44,4 +44,25 @@ M.resume = function(opts)
 
 	snacks.picker.resume()
 end
+
+M.search_link_next = function()
+	local message = {
+		module = "adapters/searcher",
+		func = "search_link_next",
+	}
+	logger_use_manage.debug(message)
+
+	vim.fn.search("https\\?=\\?", "")
+end
+
+M.search_link_previous = function()
+	local message = {
+		module = "adapters/searcher",
+		func = "search_link_previous",
+	}
+	logger_use_manage.debug(message)
+
+	vim.fn.search("https\\?=\\?", "b")
+end
+
 return M

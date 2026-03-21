@@ -20,21 +20,22 @@ local terminal_use_case = require("application.use_cases.terminal")
 local commenter_use_case = require("application.use_cases.commenter")
 local buffer_use_case = require("application.use_cases.buffer")
 local commander_use_case = require("application.use_cases.commander")
+local window_use_case = require("application.use_cases.window")
 local ui_map = require("domain.maps.ui")
 local yank_map = require("domain.maps.yank")
 local zoom_map = require("domain.maps.zoom")
 
 local default_map = {
 	{ key = "<leader>", description = "Commands", method = commander_use_case.find },
-	{ key = "1", description = "Window 1", method = ":wincmd 1 w<cr>" },
-	{ key = "2", description = "Window 2", method = ":wincmd 2 w<cr>" },
-	{ key = "3", description = "Window 3", method = ":wincmd 3 w<cr>" },
-	{ key = "4", description = "Window 4", method = ":wincmd 4 w<cr>" },
-	{ key = "5", description = "Window 5", method = ":wincmd 5 w<cr>" },
-	{ key = "6", description = "Window 6", method = ":wincmd 6 w<cr>" },
-	{ key = "7", description = "Window 7", method = ":wincmd 7 w<cr>" },
-	{ key = "8", description = "Window 8", method = ":wincmd 8 w<cr>" },
-	{ key = "9", description = "Window 9", method = ":wincmd 9 w<cr>" },
+	{ key = "1", description = "Window 1", method = window_use_case.go_to(1) },
+	{ key = "2", description = "Window 2", method = window_use_case.go_to(2) },
+	{ key = "3", description = "Window 3", method = window_use_case.go_to(3) },
+	{ key = "4", description = "Window 4", method = window_use_case.go_to(4) },
+	{ key = "5", description = "Window 5", method = window_use_case.go_to(5) },
+	{ key = "6", description = "Window 6", method = window_use_case.go_to(6) },
+	{ key = "7", description = "Window 7", method = window_use_case.go_to(7) },
+	{ key = "8", description = "Window 8", method = window_use_case.go_to(8) },
+	{ key = "9", description = "Window 9", method = window_use_case.go_to(9) },
 	{ key = ";", description = "Comment line", method = commenter_use_case.toggle_current_line },
 	{
 		key = ";",

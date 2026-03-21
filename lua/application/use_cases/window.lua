@@ -208,6 +208,84 @@ M.move_down = function()
 	adapter.move_down()
 end
 
+M.go_to = function(number)
+	return function()
+		local message = {
+			module = "use_cases/window",
+			func = "go_to",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.go_to(number)
+	end
+end
+
+M.close = function()
+	return function()
+		local message = {
+			module = "use_cases/window",
+			func = "close",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.close()
+	end
+end
+
+M.split = function()
+	return function()
+		local message = {
+			module = "use_cases/window",
+			func = "split",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.split()
+	end
+end
+
+M.vsplit = function()
+	return function()
+		local message = {
+			module = "use_cases/window",
+			func = "vsplit",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.vsplit()
+	end
+end
+
+M.split_previous = function()
+	return function()
+		local message = {
+			module = "use_cases/window",
+			func = "split_previous",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.split_previous()
+	end
+end
+
+M.vsplit_previous = function()
+	return function()
+		local message = {
+			module = "use_cases/window",
+			func = "vsplit_previous",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.vsplit_previous()
+	end
+end
+
 M.dedicate = function()
 	local message = {
 		module = "use_cases/window",

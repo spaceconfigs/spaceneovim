@@ -1,9 +1,9 @@
 local jumper_use_case = require("application.use_cases.jumper")
 
 local jump_content = {
-	{ key = "j", mode={"n", "v" }, description = "Timer", method = jumper_use_case.timer },
-	{ key = "w", mode={"n", "v" }, description = "Word", method = jumper_use_case.words },
-	{ key = "l", mode={"n", "v" }, description = "Line", method = jumper_use_case.lines },
+	{ key = "j", mode={"n", "v" }, description = "Timer", method = jumper_use_case.timer() },
+	{ key = "w", mode={"n", "v" }, description = "Word", method = jumper_use_case.words() },
+	{ key = "l", mode={"n", "v" }, description = "Line", method = jumper_use_case.lines() },
 }
 
 local result = {}

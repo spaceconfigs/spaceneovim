@@ -100,4 +100,30 @@ M.resume = function(opts)
 	end
 end
 
+M.search_link_next = function()
+	return function()
+		local message = {
+			module = "use_cases/searcher",
+			func = "search_link_next",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.search_link_next()
+	end
+end
+
+M.search_link_previous = function()
+	return function()
+		local message = {
+			module = "use_cases/searcher",
+			func = "search_link_previous",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.search_link_previous()
+	end
+end
+
 return M

@@ -135,6 +135,66 @@ M.move_far_down = function()
 	vim.cmd("WinShift far_down")
 end
 
+M.go_to = function(number)
+	local message = {
+		module = "adapters/window",
+		func = "go_to",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("wincmd " .. number .. " w")
+end
+
+M.close = function()
+	local message = {
+		module = "adapters/window",
+		func = "close",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("quit")
+end
+
+M.split = function()
+	local message = {
+		module = "adapters/window",
+		func = "split",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("split")
+end
+
+M.vsplit = function()
+	local message = {
+		module = "adapters/window",
+		func = "vsplit",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("vsplit")
+end
+
+M.split_previous = function()
+	local message = {
+		module = "adapters/window",
+		func = "split_previous",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("split | wincmd p")
+end
+
+M.vsplit_previous = function()
+	local message = {
+		module = "adapters/window",
+		func = "vsplit_previous",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("vsplit | wincmd p")
+end
+
 M.dedicate = function()
 	local message = {
 		module = "adapters/window",

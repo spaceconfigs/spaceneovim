@@ -66,4 +66,55 @@ M.copy = function(opts)
 	return path
 end
 
+M.edit_config = function()
+	local message = {
+		module = "adapters/file",
+		func = "edit_config",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("edit $MYVIMRC")
+end
+
+M.source_config = function()
+	local message = {
+		module = "adapters/file",
+		func = "source_config",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("source $MYVIMRC")
+end
+
+M.delete_current = function()
+	local message = {
+		module = "adapters/file",
+		func = "delete_current",
+	}
+	logger_use_manage.debug(message)
+
+	vim.fn.delete(vim.fn.expand("%"))
+	vim.cmd("bdelete!")
+end
+
+M.save = function()
+	local message = {
+		module = "adapters/file",
+		func = "save",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("write!")
+end
+
+M.save_all = function()
+	local message = {
+		module = "adapters/file",
+		func = "save_all",
+	}
+	logger_use_manage.debug(message)
+
+	vim.cmd("wall!")
+end
+
 return M

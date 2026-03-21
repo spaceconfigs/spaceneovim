@@ -98,6 +98,71 @@ M.rename = function()
 	vim.cmd("!w")
 end
 
+M.edit_config = function()
+	return function()
+		local message = {
+			module = "use_cases/file",
+			func = "edit_config",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.edit_config()
+	end
+end
+
+M.source_config = function()
+	return function()
+		local message = {
+			module = "use_cases/file",
+			func = "source_config",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.source_config()
+	end
+end
+
+M.delete_current = function()
+	return function()
+		local message = {
+			module = "use_cases/file",
+			func = "delete_current",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.delete_current()
+	end
+end
+
+M.save = function()
+	return function()
+		local message = {
+			module = "use_cases/file",
+			func = "save",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.save()
+	end
+end
+
+M.save_all = function()
+	return function()
+		local message = {
+			module = "use_cases/file",
+			func = "save_all",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.save_all()
+	end
+end
+
 M.copy = function(opts)
 	return function()
 		opts = opts or {}

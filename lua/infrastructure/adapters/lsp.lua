@@ -70,7 +70,7 @@ M.declaration = function(options)
           snacks.picker.lsp_declarations()
         end)
       end,
-    })
+    })()
   end
 
   snacks.picker.lsp_declarations()
@@ -92,7 +92,7 @@ M.definition = function(options)
           snacks.picker.lsp_definitions()
         end)
       end,
-    })
+    })()
   end
 
   snacks.picker.lsp_definitions()
@@ -114,7 +114,7 @@ M.implementation = function(options)
           vim.lsp.buf.implementation()
         end)
       end,
-    })
+    })()
   end
 
   vim.lsp.buf.implementation()
@@ -137,7 +137,7 @@ M.references = function(options)
           snacks.picker.lsp_references()
         end)
       end,
-    })
+    })()
   end
 
   snacks.picker.lsp_references()
@@ -158,10 +158,30 @@ M.typedefinition = function(options)
           vim.lsp.buf.type_definition()
         end)
       end,
-    })
+    })()
   end
 
   vim.lsp.buf.type_definition()
+end
+
+M.restart = function()
+  local message = {
+    module = "adapters/lsp",
+    func = "restart",
+  }
+  logger_use_manage.debug(message)
+
+  vim.cmd("LspRestart")
+end
+
+M.rename = function()
+  local message = {
+    module = "adapters/lsp",
+    func = "rename",
+  }
+  logger_use_manage.debug(message)
+
+  vim.lsp.buf.rename()
 end
 
 M.show_signature = function()

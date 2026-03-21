@@ -185,6 +185,58 @@ M.info = function()
 	adapter.info()
 end
 
+M.restart = function()
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "restart",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.restart()
+	end
+end
+
+M.rename = function()
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "rename",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.rename()
+	end
+end
+
+M.code_action = function()
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "code_action",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.show_code_action()
+	end
+end
+
+M.signature_help = function()
+	return function()
+		local message = {
+			module = "use_cases/lsp",
+			func = "signature_help",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.show_signature()
+	end
+end
+
 M.get_symbol = function()
 	local message = {
 		module = "use_cases/get_symbol",

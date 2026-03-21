@@ -12,8 +12,8 @@ local bookmark_content = {
 
 local config_content = {
 	{ key = "e", description = "Config" },
-	{ key = "ed", description = "E[d]it Config", method = "<cmd>edit $MYVIMRC<cr>" },
-	{ key = "eR", description = "[R]eload Config", method = "<cmd>source $MYVIMRC<cr>" },
+	{ key = "ed", description = "E[d]it Config", method = file_use_case.edit_config() },
+	{ key = "eR", description = "[R]eload Config", method = file_use_case.source_config() },
 	{ key = "eU", description = "[U]pdate Packages", method = packager_use_case.update },
 }
 
@@ -42,12 +42,12 @@ local yank_content = {
 }
 
 local file_content = {
-	{ key = "D", description = "[D]elete", method = "<cmd>call delete(expand('%')) | bdelete!<cr>" },
+	{ key = "D", description = "[D]elete", method = file_use_case.delete_current() },
 	{ key = "f", description = "[f]ind", method = file_use_case.list({ location = "file" }) },
 	{ key = "r", description = "[r]ecents", method = file_use_case.oldfiles() },
 	{ key = "R", description = "[R]ename", method = file_use_case.rename },
-	{ key = "s", description = "[s]ave", method = "<cmd>write!<cr>" },
-	{ key = "S", description = "[S]ave All", method = "<cmd>wall!<cr>" },
+	{ key = "s", description = "[s]ave", method = file_use_case.save() },
+	{ key = "S", description = "[S]ave All", method = file_use_case.save_all() },
 	{ key = "t", description = "[t]ree", method = tree_use_case.toggle({ location = "file" }) },
 }
 

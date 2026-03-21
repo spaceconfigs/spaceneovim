@@ -1,5 +1,6 @@
 local linenumber_use_case = require("application.use_cases.linenumber")
 local statusline_use_case = require("application.use_cases.statusline")
+local toggler_use_case = require("application.use_cases.toggler")
 
 local statusline_content = {
 	{ key = "m", description = "Statusline" },
@@ -10,11 +11,11 @@ local numberline_content = {
 	{ key = "n", description = "Line-number" },
 	{ key = "na", description = "Absolute line number", method = linenumber_use_case.toggle_absolute },
 	{ key = "nr", description = "Relative line number", method = linenumber_use_case.toggle_relative },
-	{ key = "nv", description = "Visual line number", method = ":set number<cr>" },
+	{ key = "nv", description = "Visual line number", method = toggler_use_case.number() },
 }
 
 local toggler_content = {
-	{ key = "l", description = "Truncate line", method = ":set wrap!<cr>" },
+	{ key = "l", description = "Truncate line", method = toggler_use_case.wrap() },
 }
 
 local result = {}

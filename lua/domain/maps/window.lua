@@ -16,7 +16,7 @@ local pop_content = {
 }
 
 local window_content = {
-	{ key = "d", description = "[d]elete", method = ":quit<cr>" },
+	{ key = "d", description = "[d]elete", method = window_use_case.close() },
 	{ key = "h", mode = { "n", "i", "t" }, description = "Go left ([h])", method = window_use_case.go_left },
 	{ key = "H", description = "Move to left ([H])", method = window_use_case.move_left },
 	{ key = "j", mode = { "n", "i", "t" }, description = "Go down ([j])", method = window_use_case.go_down },
@@ -26,11 +26,11 @@ local window_content = {
 	{ key = "l", mode = { "n", "i", "t" }, description = "Go right ([l])", method = window_use_case.go_right },
 	{ key = "L", description = "Move right ([L])", method = window_use_case.move_right },
 	{ key = "m", description = "[m]aximize", method = window_use_case.toggle },
-	{ key = "s", description = "[s]plit below", method = ":split | wincmd p<cr>" },
-	{ key = "v", description = "Split right ([v]ertical)", method = ":vsplit | wincmd p<cr>" },
+	{ key = "s", description = "[s]plit below", method = window_use_case.split_previous() },
+	{ key = "v", description = "Split right ([v]ertical)", method = window_use_case.vsplit_previous() },
 	{ key = "t", description = "Dedicate ([t]ag)", method = window_use_case.dedicate },
-	{ key = "S", description = "[S]plit below", method = ":split<cr>" },
-	{ key = "V", description = "Split right ([V]ertical)", method = ":vsplit<cr>" },
+	{ key = "S", description = "[S]plit below", method = window_use_case.split() },
+	{ key = "V", description = "Split right ([V]ertical)", method = window_use_case.vsplit() },
 	{ key = "]", description = "Shrink width (])", method = window_use_case.shrink_width },
 	{ key = "[", description = "Expand width ([)", method = window_use_case.expand_width },
 	{ key = "+", description = "Shrink height (+)", method = window_use_case.shrink_height },

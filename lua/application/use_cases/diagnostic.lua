@@ -31,4 +31,17 @@ M.show = function(direction)
 	end
 end
 
+M.loclist = function()
+	return function()
+		local message = {
+			module = "use_cases/diagnostic",
+			func = "loclist",
+		}
+		logger_use_case.debug(message)
+		local adapter = M.setup()
+
+		adapter.loclist()
+	end
+end
+
 return M

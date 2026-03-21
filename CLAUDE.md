@@ -24,7 +24,7 @@ Dependency direction: Domain ← Application ← Infrastructure.
 
 **Plugin wrapper** (`infrastructure/plugins/foo.lua`): `pcall(require, "plugin-name")` with error handling. Returns plugin reference.
 
-**Keybinding map** (`domain/maps/foo.lua`): Declarative table with `key`, `description`, `method` (function or vim cmd), optional `mode`. All maps loaded via `domain/maps/init.lua` and registered by keymapper use case through which-key.
+**Keybinding map** (`domain/maps/foo.lua`): Declarative table with `key`, `description`, `method` (use case function call that returns a function), optional `mode`. All maps loaded via `domain/maps/init.lua` and registered by keymapper use case through which-key. No raw vim commands or `vim.*` references — always delegate through use cases.
 
 ## Plugin Management
 

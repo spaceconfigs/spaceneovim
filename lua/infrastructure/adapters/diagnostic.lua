@@ -33,4 +33,14 @@ M.show = function(direction)
   vim.diagnostic.open_float()
 end
 
+M.loclist = function()
+	local message = {
+		module = "adapters/diagnostic",
+		func = "loclist",
+	}
+	logger_use_manage.debug(message)
+
+	vim.diagnostic.setloclist()
+end
+
 return M

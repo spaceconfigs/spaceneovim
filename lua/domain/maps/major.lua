@@ -1,5 +1,6 @@
-local vim = vim
 local lsp_use_case = require("application.use_cases.lsp")
+local diagnostic_use_case = require("application.use_cases.diagnostic")
+local searcher_use_case = require("application.use_cases.searcher")
 local rest_use_case = require("application.use_cases.rest")
 local noter_use_case = require("application.use_cases.noter")
 local formatter_use_case = require("application.use_cases.formatter")
@@ -26,7 +27,7 @@ local database_content = {
 	{ key = "b", description = "database" },
 	{ key = "bc", description = "[c] Open", method = database_use_case.open },
 	{ key = "bd", description = "Lsp in[f]o", method = lsp_use_case.info },
-	{ key = "br", description = "Lsp [r]estart", method = ":LspRestart<cr>" },
+	{ key = "br", description = "Lsp [r]estart", method = lsp_use_case.restart() },
 }
 
 local capture_content = {
@@ -63,7 +64,7 @@ local goto_content = {
 local help_content = {
 	{ key = "h", description = "Help" },
 	{ key = "hh", description = "Show [h]over", method = hover_use_case.toggle },
-	{ key = "hH", description = "Show signature ([H])", method = vim.lsp.buf.signature_help },
+	{ key = "hH", description = "Show signature ([H])", method = lsp_use_case.signature_help() },
 }
 
 local insert_content = {
@@ -104,8 +105,8 @@ local insert_content = {
 
 local refact_content = {
 	{ key = "r", description = "Refact" },
-	{ key = "rr", description = "[r]ename", method = vim.lsp.buf.rename },
-	{ key = "rq", description = "[q]uickfix", method = vim.diagnostic.setloclist },
+	{ key = "rr", description = "[r]ename", method = lsp_use_case.rename() },
+	{ key = "rq", description = "[q]uickfix", method = diagnostic_use_case.loclist() },
 }
 
 local toggle_content = {
@@ -115,9 +116,9 @@ local toggle_content = {
 }
 
 local major_content = {
-	{ key = "a", description = "Code [a]ction", method = vim.lsp.buf.code_action },
-	{ key = "N", description = "Previous li[n]k", method = "/https\\?=\\?<CR>" },
-	{ key = "P", description = "Next link ([P])", method = "?https\\?=\\?<CR>" },
+	{ key = "a", description = "Code [a]ction", method = lsp_use_case.code_action() },
+	{ key = "N", description = "Previous li[n]k", method = searcher_use_case.search_link_next() },
+	{ key = "P", description = "Next link ([P])", method = searcher_use_case.search_link_previous() },
 	{ key = "j", description = "Open (http [j]ump)", method = rest_use_case.open },
 	{ key = "s", description = "[s]end", method = rest_use_case.send },
 	{ key = "R", description = "[R]eplay", method = rest_use_case.replay },
