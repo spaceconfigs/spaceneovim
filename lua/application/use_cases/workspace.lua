@@ -1,11 +1,11 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local lsp_adapter = require("infraestrucuture.adapters.lsp")
+local lsp_adapter = require("infrastructure.adapters.lsp")
 local file_usecase = require("application.use_cases.file")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.workspace")
+	return require("infrastructure.adapters.workspace")
 end
 
 -- TODO: change it to use `get_path` of utils module

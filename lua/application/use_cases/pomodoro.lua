@@ -9,7 +9,7 @@ M.setup = function()
 	}
 	logger_use_case.debug(message)
 
-	return require("infraestrucuture.adapters.pomodoro")
+	return require("infrastructure.adapters.pomodoro")
 end
 
 M.start = function()

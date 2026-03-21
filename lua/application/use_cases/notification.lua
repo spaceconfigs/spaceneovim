@@ -3,7 +3,7 @@ local M = {}
 local log_levels = require("domain.log_levels")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.notification")
+	return require("infrastructure.adapters.notification")
 end
 
 M.list = function()

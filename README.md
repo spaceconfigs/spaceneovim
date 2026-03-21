@@ -58,7 +58,7 @@ The framework follows a Clean Architecture pattern to ensure a modular, scalable
 │   │       ├── buffer.lua
 │   │       ├── ...
 │   │       └── zoom.lua
-│   └── infraestrucuture
+│   └── infrastructure
 │       ├── adapters
 │       │   ├── bookmarker.lua
 │       │   ├── buffer.lua

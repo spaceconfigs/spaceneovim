@@ -2,7 +2,7 @@ local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
 M.setup = function()
-  return require("infraestrucuture.adapters.changer")
+  return require("infrastructure.adapters.changer")
 end
 
 M.list = function()

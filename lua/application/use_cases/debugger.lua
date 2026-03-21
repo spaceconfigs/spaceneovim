@@ -4,7 +4,7 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.debugger")
+	return require("infrastructure.adapters.debugger")
 end
 
 M.clear_breakpoints = function()

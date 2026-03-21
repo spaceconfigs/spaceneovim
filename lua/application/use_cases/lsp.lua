@@ -9,7 +9,7 @@ M.setup = function()
 	}
 	logger_use_case.debug(message)
 
-	return require("infraestrucuture.adapters.lsp")
+	return require("infrastructure.adapters.lsp")
 end
 
 M.declaration = function(options)

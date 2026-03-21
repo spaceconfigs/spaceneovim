@@ -1,6 +1,6 @@
 local M = {}
 
-local adapter = require("infraestrucuture.adapters.keymapper")
+local adapter = require("infrastructure.adapters.keymapper")
 local logger_use_case = require("application.use_cases.logger")
 
 M.format = function(opts)

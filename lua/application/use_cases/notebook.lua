@@ -6,7 +6,7 @@ local keymapper_use_case = require("application.use_cases.keymapper")
 local notebook_transient = nil
 
 M.setup = function()
-	return require("infraestrucuture.adapters.notebook")
+	return require("infrastructure.adapters.notebook")
 end
 
 M.activate_transient = function()

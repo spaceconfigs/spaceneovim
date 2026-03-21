@@ -9,7 +9,7 @@ M.setup = function()
 	}
 	logger_use_case.debug(message)
 
-	return require("infraestrucuture.adapters.outline")
+	return require("infrastructure.adapters.outline")
 end
 
 M.toggle = function()

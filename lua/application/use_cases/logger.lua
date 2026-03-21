@@ -5,7 +5,7 @@ local log_levels = require("domain.log_levels")
 local notification_use_case = require("application.use_cases.notification")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.logger")
+	return require("infrastructure.adapters.logger")
 end
 
 M.log = function(opts)

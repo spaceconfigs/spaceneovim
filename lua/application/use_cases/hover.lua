@@ -1,10 +1,10 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local adapter = require("infraestrucuture.adapters.hover")
+local adapter = require("infrastructure.adapters.hover")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.hover")
+	return require("infrastructure.adapters.hover")
 end
 
 M.toggle = function()

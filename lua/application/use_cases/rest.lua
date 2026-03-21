@@ -3,7 +3,7 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 
 M.setup = function()
-  return require("infraestrucuture.adapters.rest")
+  return require("infrastructure.adapters.rest")
 end
 
 M.open = function()

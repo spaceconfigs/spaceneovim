@@ -2,10 +2,10 @@ local vim = vim
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local file_util = require("infraestrucuture.utils.file")
+local file_util = require("infrastructure.utils.file")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.file")
+	return require("infrastructure.adapters.file")
 end
 
 M.oldfiles = function(opts)

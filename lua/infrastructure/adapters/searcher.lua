@@ -1,0 +1,47 @@
+local M = {}
+
+local logger_use_manage = require("application.use_cases.logger")
+local plugin = require("infrastructure.plugins.searcher")
+local snacks = plugin.snacks
+
+M.search = function(opts)
+	local message = {
+		module = "adapters/searcher",
+		func = "search",
+		opts = opts,
+	}
+	logger_use_manage.debug(message)
+
+	if opts.location == "project" then
+		return snacks.picker.grep({
+			live = opts.text == nil,
+			search = opts.text,
+			cwd = opts.path,
+		})
+	end
+
+	if opts.location == "directory" then
+		return snacks.picker.grep({
+			live = opts.text == nil,
+			search = opts.text,
+			cwd = opts.path,
+		})
+	end
+
+	snacks.picker.lines({
+		layout = { preset = "nitaicharan_lines" },
+		pattern = opts.text,
+	})
+end
+
+M.resume = function(opts)
+	local message = {
+		module = "adapters/searcher",
+		func = "resume",
+		opts = opts,
+	}
+	logger_use_manage.debug(message)
+
+	snacks.picker.resume()
+end
+return M

@@ -3,7 +3,7 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.bookmarker")
+	return require("infrastructure.adapters.bookmarker")
 end
 
 M.add = function()

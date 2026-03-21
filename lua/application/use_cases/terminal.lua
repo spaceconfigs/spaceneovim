@@ -1,12 +1,12 @@
 local M = {}
 
 local logger_use_case = require("application.use_cases.logger")
-local file_util = require("infraestrucuture.utils.file")
+local file_util = require("infrastructure.utils.file")
 
 vim.g.terminal_opened = false
 
 M.setup = function()
-  return require("infraestrucuture.adapters.terminal")
+  return require("infrastructure.adapters.terminal")
 end
 
 M.toggle = function(options)

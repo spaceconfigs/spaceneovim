@@ -3,7 +3,7 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.commenter")
+	return require("infrastructure.adapters.commenter")
 end
 
 M.toggle_current_line_visual_mode = function()

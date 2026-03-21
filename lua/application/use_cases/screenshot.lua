@@ -3,7 +3,7 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.screenshot")
+	return require("infrastructure.adapters.screenshot")
 end
 
 M.copy = function(options)

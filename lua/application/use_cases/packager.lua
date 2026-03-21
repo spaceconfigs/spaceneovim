@@ -1,6 +1,6 @@
 local M = {}
 
-local adapter = require("infraestrucuture.adapters.packager")
+local adapter = require("infrastructure.adapters.packager")
 
 M.install = function()
 	adapter.install()

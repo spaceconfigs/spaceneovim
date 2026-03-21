@@ -3,7 +3,7 @@ local M = {}
 local logger_use_case = require("application.use_cases.logger")
 
 M.setup = function()
-	return require("infraestrucuture.adapters.chatbot")
+	return require("infrastructure.adapters.chatbot")
 end
 
 M.toggle = function(opts)
