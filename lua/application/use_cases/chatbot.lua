@@ -5,87 +5,86 @@ M.setup = function()
 	return require("infrastructure.adapters.chatbot")
 end
 
-M.toggle = function(opts)
-	opts = opts or {}
-	opts.provider = opts.provider or "claudecode"
-
+M.toggle = function()
 	local adapter = M.setup()
-
-	adapter.toggle(opts)
+	adapter.toggle()
 end
 
-M.edit = function(opts)
-	opts = opts or {}
-	opts.provider = opts.provider or "claudecode"
-
+M.focus = function()
 	local adapter = M.setup()
-
-	adapter.edit(opts)
+	adapter.focus()
 end
 
-M.zenmode = function(opts)
-	opts = opts or {}
-	opts.action = opts.action or "toggle"
-	opts.provider = opts.provider or "claudecode"
+M.send = function()
+	local mode = vim.fn.mode()
+	local is_visual = mode == "v" or mode == "V" or mode == "\22"
 
-	local adapter = M.setup()
+	if is_visual then
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "nx", false)
+	end
 
-	adapter.zenmode(opts)
+	vim.ui.input({ prompt = "Send to Claude: " }, function(input)
+		if not input or input == "" then return end
+		local adapter = M.setup()
+		adapter.send(input, is_visual)
+	end)
+
+	vim.schedule(function()
+		local win = vim.api.nvim_get_current_win()
+		vim.api.nvim_create_autocmd("WinLeave", {
+			once = true,
+			callback = function()
+				if vim.api.nvim_win_is_valid(win) then
+					vim.api.nvim_win_close(win, true)
+				end
+			end,
+		})
+	end)
 end
 
-M.session = function(opts)
-	opts = opts or {}
-	opts.action = opts.action or "toggle"
-	opts.provider = opts.provider or "claudecode"
-
+M.add_buffer = function()
 	local adapter = M.setup()
-
-	adapter.session(opts)
+	adapter.add_buffer()
 end
 
-M.send_prompt = function(opts)
-	opts = opts or {}
-	opts.provider = opts.provider or "claudecode"
-
+M.add_file = function()
 	local adapter = M.setup()
-
-	adapter.send_prompt(opts)
+	adapter.add_file()
 end
 
-M.add_file = function(opts)
-	opts = opts or {}
-	opts.provider = opts.provider or "claudecode"
-
+M.add = function()
 	local adapter = M.setup()
-
-	adapter.add_file(opts)
+	adapter.add()
 end
 
-M.select_model = function(opts)
-	opts = opts or {}
-	opts.provider = opts.provider or "claudecode"
-
+M.select_model = function()
 	local adapter = M.setup()
-
-	adapter.select_model(opts)
+	adapter.select_model()
 end
 
-M.accept_diff = function(opts)
-	opts = opts or {}
-	opts.provider = opts.provider or "claudecode"
-
+M.diff_accept = function()
 	local adapter = M.setup()
-
-	adapter.accept_diff(opts)
+	adapter.diff_accept()
 end
 
-M.deny_diff = function(opts)
-	opts = opts or {}
-	opts.provider = opts.provider or "claudecode"
-
+M.diff_deny = function()
 	local adapter = M.setup()
+	adapter.diff_deny()
+end
 
-	adapter.deny_diff(opts)
+M.status = function()
+	local adapter = M.setup()
+	adapter.status()
+end
+
+M.resume = function()
+	local adapter = M.setup()
+	adapter.resume()
+end
+
+M.continue = function()
+	local adapter = M.setup()
+	adapter.continue()
 end
 
 return make_logged("use_cases/chatbot", M)

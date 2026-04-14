@@ -1,94 +1,86 @@
-local vim = vim
 local M = {}
 
 local make_logged = require("application.helpers.make_logged")
-local plugin = require("infrastructure.plugins.chatbot")
+require("infrastructure.plugins.chatbot")
 
-M.toggle = function(opts)
-  local mapper = {
-    claudecode = "ClaudeCode",
-  }
-
-  vim.cmd(mapper[opts.provider])
+M.toggle = function()
+  local terminal = require("claudecode.terminal")
+  local prev_win = vim.api.nvim_get_current_win()
+  terminal.simple_toggle()
+  vim.schedule(function()
+    if vim.api.nvim_win_is_valid(prev_win) then
+      vim.api.nvim_set_current_win(prev_win)
+    end
+  end)
 end
 
-M.session = function(opts)
-  local mapper = {
-    claudecode = {
-      start = "ClaudeCode",
-      continue = "ClaudeCode --continue",
-      resume = "ClaudeCode --resume",
-      list = "ClaudeCode --resume",
-      buffer = "ClaudeCode",
-      toggle = "ClaudeCode",
-      stop = "ClaudeCode",
-    },
-  }
-
-  local action = mapper[opts.provider][opts.action]
-  vim.cmd(action)
+M.focus = function()
+  vim.cmd("ClaudeCodeFocus")
 end
 
-M.edit = function(opts)
-  local mapper = {
-    claudecode = "ClaudeCode",
-  }
+M.send = function(text, is_visual)
+  local terminal = require("claudecode.terminal")
 
-  vim.cmd(mapper[opts.provider])
+  if is_visual then
+    vim.cmd("'<,'>ClaudeCodeSend")
+  end
+
+  local bufnr = terminal.get_active_terminal_bufnr()
+
+  if bufnr then
+    local delay = is_visual and 200 or 0
+    vim.defer_fn(function()
+      bufnr = terminal.get_active_terminal_bufnr()
+      if not bufnr then return end
+      local chan = vim.api.nvim_buf_get_option(bufnr, "channel")
+      if chan then vim.fn.chansend(chan, text .. "\r") end
+    end, delay)
+    return
+  end
+
+  vim.cmd("ClaudeCode")
+  vim.defer_fn(function()
+    bufnr = terminal.get_active_terminal_bufnr()
+    if not bufnr then return end
+    local chan = vim.api.nvim_buf_get_option(bufnr, "channel")
+    if chan then vim.fn.chansend(chan, text .. "\r") end
+  end, 500)
 end
 
-M.zenmode = function(opts)
-  local mapper = {
-    claudecode = {
-      toggle = "ClaudeCode",
-      start = "ClaudeCode",
-      continue = "ClaudeCode --continue",
-      resume = "ClaudeCode --resume",
-    },
-  }
-
-  local cmd = mapper[opts.provider][opts.action]
-  vim.cmd(cmd)
+M.add_buffer = function()
+  vim.cmd("ClaudeCodeAdd %")
 end
 
-M.send_prompt = function(opts)
-  local mapper = {
-    claudecode = "ClaudeCodeSend",
-  }
-
-  vim.cmd(mapper[opts.provider])
+M.add_file = function()
+  vim.cmd("ClaudeCodeTreeAdd")
 end
 
-M.add_file = function(opts)
-  local mapper = {
-    claudecode = "ClaudeCodeAdd",
-  }
-
-  vim.cmd(mapper[opts.provider])
+M.add = function()
+  vim.cmd("ClaudeCodeAdd")
 end
 
-M.select_model = function(opts)
-  local mapper = {
-    claudecode = "ClaudeCodeSelectModel",
-  }
-
-  vim.cmd(mapper[opts.provider])
+M.select_model = function()
+  vim.cmd("ClaudeCodeSelectModel")
 end
 
-M.accept_diff = function(opts)
-  local mapper = {
-    claudecode = "ClaudeCodeDiffAccept",
-  }
-
-  vim.cmd(mapper[opts.provider])
+M.diff_accept = function()
+  vim.cmd("ClaudeCodeDiffAccept")
 end
 
-M.deny_diff = function(opts)
-  local mapper = {
-    claudecode = "ClaudeCodeDiffDeny",
-  }
+M.diff_deny = function()
+  vim.cmd("ClaudeCodeDiffDeny")
+end
 
-  vim.cmd(mapper[opts.provider])
+M.status = function()
+  vim.cmd("ClaudeCodeStatus")
+end
+
+M.resume = function()
+  vim.cmd("ClaudeCode --resume")
+end
+
+M.continue = function()
+  vim.cmd("ClaudeCode --continue")
 end
 
 return make_logged("adapters/chatbot", M)

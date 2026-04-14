@@ -19,22 +19,20 @@ local changer = {
   { key = "u", description = "Undo tree", method = changer_controller.list() },
 }
 
-local claudecode_content = {
-  { key = "c",  description = "Claude Code" },
-  { key = "cc", description = "Toggle",        method = chatbot_controller.toggle({ provider = "claudecode" }) },
-  { key = "cs", description = "Start",         method = chatbot_controller.session({ action = "start", provider = "claudecode" }) },
-  { key = "cp", mode = "v",                    description = "Send prompt",    method = chatbot_controller.send_prompt({ provider = "claudecode" }) },
-  { key = "cn", description = "Continue",      method = chatbot_controller.session({ action = "continue", provider = "claudecode" }) },
-  { key = "cr", description = "Resume",        method = chatbot_controller.session({ action = "resume", provider = "claudecode" }) },
-  { key = "cl", description = "List sessions", method = chatbot_controller.session({ action = "list", provider = "claudecode" }) },
-  { key = "cb", description = "Switch buffer", method = chatbot_controller.session({ action = "buffer", provider = "claudecode" }) },
-  { key = "ct", description = "Toggle window", method = chatbot_controller.session({ action = "toggle", provider = "claudecode" }) },
-  { key = "cq", description = "Stop",          method = chatbot_controller.session({ action = "stop", provider = "claudecode" }) },
-  { key = "ci", mode = "v",                    description = "Send selection", method = chatbot_controller.edit({ provider = "claudecode" }) },
-  { key = "cm", description = "Select model",  method = chatbot_controller.select_model({ provider = "claudecode" }) },
-  { key = "ca", description = "Accept diff",   method = chatbot_controller.accept_diff({ provider = "claudecode" }) },
-  { key = "cx", description = "Deny diff",     method = chatbot_controller.deny_diff({ provider = "claudecode" }) },
-  { key = "cf", description = "Add file",      method = chatbot_controller.add_file({ provider = "claudecode" }) },
+local chatbot_content = {
+  { key = "c",    description = "AI" },
+  { key = "cc",   description = "Toggle",                method = chatbot_controller.toggle() },
+  { key = "cs",   mode = "v",                            description = "Send selection",     method = chatbot_controller.send() },
+  { key = "cb",   description = "Send buffer",            method = chatbot_controller.add_buffer() },
+  { key = "ca",   description = "Add text to context",    method = chatbot_controller.add() },
+  { key = "cf",   description = "Add file to context",    method = chatbot_controller.add_file() },
+  { key = "cl",   description = "Select model",           method = chatbot_controller.select_model() },
+  { key = "cF",   description = "Focus chat window",      method = chatbot_controller.focus() },
+  { key = "$a",   description = "Accept diff",            method = chatbot_controller.diff_accept() },
+  { key = "$d",   description = "Deny diff",              method = chatbot_controller.diff_deny() },
+  { key = "cr",   description = "Resume session",         method = chatbot_controller.resume() },
+  { key = "cC",   description = "Continue session",       method = chatbot_controller.continue() },
+  { key = "cS",   description = "Status",                 method = chatbot_controller.status() },
 }
 
 local result = {}
@@ -43,7 +41,7 @@ for _, content in pairs({
   org_content,
   changer,
   reader_content,
-  claudecode_content,
+  chatbot_content,
 }) do
   for _, bind in pairs(content) do
     table.insert(contents, bind)
