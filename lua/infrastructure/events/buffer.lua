@@ -9,4 +9,11 @@ vim.api.nvim_create_autocmd('BufRead', {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('BufferInitGroup', { clear = true }),
+  callback = function(args)
+    hook.onBufferInit(args.match)
+  end,
+})
+
 return M
