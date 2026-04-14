@@ -11,4 +11,10 @@ M.quit = function(opts)
 	adapter.quit(opts)
 end
 
+M.restart = function()
+	local adapter = M.setup()
+
+	adapter.restart()
+end
+
 return make_logged("use_cases/quit", M)

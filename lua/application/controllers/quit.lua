@@ -8,4 +8,10 @@ M.quit = function(opts)
   end
 end
 
+M.restart = function()
+  return function()
+    quit_use_case.restart()
+  end
+end
+
 return make_controller_logged("quit", M)

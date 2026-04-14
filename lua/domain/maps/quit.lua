@@ -3,6 +3,7 @@ local quit_controller = require("application.controllers.quit")
 local quit_content = {
 	{ key = "q", description = "Kill", method = quit_controller.quit({}) },
 	{ key = "s", description = "Save and quit", method = quit_controller.quit({ save = true }) },
+	{ key = "R", description = "Restart", method = quit_controller.restart() },
 }
 
 local result = {}
