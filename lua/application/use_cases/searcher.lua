@@ -39,6 +39,29 @@ M.search = function(opts)
 	})
 end
 
+M.search_selection = function(opts)
+	local adapter = M.setup()
+	opts = opts or {}
+	local location = opts.location or "buffer"
+
+	local start_pos = vim.fn.getpos("'<")
+	local end_pos = vim.fn.getpos("'>")
+	local lines = vim.fn.getregion(start_pos, end_pos, { type = vim.fn.visualmode() })
+	local text = table.concat(lines, "\n")
+
+	local path = file_util.path()
+
+	if location == "project" then
+		path = file_util.project(location)
+	end
+
+	adapter.search({
+		location = location,
+		path = path,
+		text = text,
+	})
+end
+
 M.search_hover = function(opts)
 	local adapter = M.setup()
 	opts = opts or {}

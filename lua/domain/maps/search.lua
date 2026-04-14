@@ -32,6 +32,19 @@ local search_content = {
 	{ key = "S", description = "[S]earch w/ input", method = searcher_controller.search_hover() },
 }
 
+local search_selection_content = {
+	{
+		key = "s",
+		description = "Selection in buffer",
+		method = searcher_controller.search_selection(),
+	},
+	{
+		key = "S",
+		description = "Selection in project",
+		method = searcher_controller.search_selection({ location = "project" }),
+	},
+}
+
 local result = {}
 table.insert(result, {
 	key = "<leader>s",
@@ -57,6 +70,27 @@ for _, content in pairs(contents) do
 	local bind = vim.deepcopy(content)
 	bind.key = "<leader>s" .. bind.key
 	bind.mode = "n"
+	bind.buffer = nil
+	bind.silent = true
+	bind.noremap = true
+	bind.nowait = false
+	table.insert(result, bind)
+end
+
+table.insert(result, {
+	key = "<leader>s",
+	description = "Search",
+	mode = "v",
+	buffer = nil,
+	silent = true,
+	noremap = true,
+	nowait = false,
+})
+
+for _, content in pairs(search_selection_content) do
+	local bind = vim.deepcopy(content)
+	bind.key = "<leader>s" .. bind.key
+	bind.mode = "v"
 	bind.buffer = nil
 	bind.silent = true
 	bind.noremap = true

@@ -14,6 +14,12 @@ M.search = function(opts)
 	end
 end
 
+M.search_selection = function(opts)
+	return function()
+		searcher_use_case.search_selection(opts)
+	end
+end
+
 M.search_hover = function(opts)
 	return function()
 		searcher_use_case.search_hover(opts)
