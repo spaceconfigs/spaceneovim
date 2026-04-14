@@ -35,22 +35,27 @@ local capabilities = vim.tbl_deep_extend("force", blink_capabilities, lsp_capabi
 local servers = mason_lspconfig.get_installed_servers()
 
 local server_overrides = {
+  eslint = {
+    root_dir = function(bufnr, on_dir)
+      local root = vim.fs.root(bufnr,
+        { "eslint.config.js", "eslint.config.mjs", "eslint.config.cjs", ".eslintrc.json", ".eslintrc.js", ".eslintrc" })
+
+      if root then on_dir(root) end
+    end,
+  },
   ts_ls = {
     root_dir = function(bufnr, on_dir)
-      local lock_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" }
-      local project_root = vim.fs.root(bufnr, lock_markers) or vim.fs.root(bufnr, { ".git" })
-      local deno_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
-      local deno_lock_root = vim.fs.root(bufnr, { "deno.lock" })
+      local node_markers = { "package.json", "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" }
+      local deno_markers = { "deno.json", "deno.jsonc", "deno.lock" }
 
-      if deno_lock_root and (not project_root or #deno_lock_root > #project_root) then
+      local node_root = vim.fs.root(bufnr, node_markers)
+      local deno_root = vim.fs.root(bufnr, deno_markers)
+
+      if deno_root and (not node_root or #deno_root > #node_root) then
         return
       end
 
-      if deno_root and project_root and #deno_root > #project_root then
-        return
-      end
-
-      on_dir(project_root or vim.fn.getcwd())
+      on_dir(node_root or vim.fs.root(bufnr, { ".git" }))
     end,
   },
 }
@@ -58,6 +63,7 @@ local server_overrides = {
 for _, server in ipairs(servers) do
   local config = vim.tbl_deep_extend("force", { capabilities = capabilities }, server_overrides[server] or {})
 
+  -- require('lspconfig')[server].setup(config)
   vim.lsp.config(server, config)
   vim.lsp.enable(servers)
 end

@@ -16,5 +16,4 @@ M.wrap = function()
 
 	adapter.wrap()
 end
-
 return make_logged("use_cases/toggler", M)

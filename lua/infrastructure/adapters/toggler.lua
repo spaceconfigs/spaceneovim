@@ -9,5 +9,4 @@ end
 M.wrap = function()
 	vim.cmd("set wrap!")
 end
-
 return make_logged("adapters/toggler", M)

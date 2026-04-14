@@ -29,7 +29,6 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.cursorline = false
 vim.opt.number = true
-vim.opt.laststatus = 3
 vim.opt.showcmd = false
 vim.opt.ruler = false
 vim.opt.relativenumber = true
@@ -41,7 +40,7 @@ vim.opt.title = true
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.cmdheight = 0
 
-vim.lsp.set_log_level("off")
+vim.lsp.log.set_level("OFF")
 vim.o.showtabline = 1
 vim.o.laststatus = 0
 

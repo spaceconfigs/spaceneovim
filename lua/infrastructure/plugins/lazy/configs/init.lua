@@ -23,8 +23,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     build = ":TSUpdate",
-    branch = "master",
-    main = "nvim-treesitter.configs",
+    -- branch = "master",
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-context",
@@ -38,10 +37,8 @@ return {
       { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
       "dlvandenberg/tree-sitter-angular",
     },
-    opts = function()
-      vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "none" })
-
-      return {
+    config = function()
+      require("nvim-treesitter").setup({
         ensure_installed = {
           "lua",
           "vim",
@@ -50,14 +47,15 @@ return {
           "html",
           "markdown_inline",
         },
-        sync_install = false,
         auto_install = true,
-        highlight = {
-          enable = true,
-        },
-        additional_vim_regex_highlighting = false,
-      }
-    end,
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+    end
   },
   {
     "folke/noice.nvim",
@@ -241,11 +239,11 @@ return {
     "coder/claudecode.nvim",
     opts = {
       terminal = {
-        provider = "snacks",
+        split_width_percentage = 0.40,
         snacks_win_opts = {
-          position = "float",
-          width = 0.9,
-          height = 0.9,
+          wo = {
+            winhighlight = "Normal:Normal,NormalFloat:Normal",
+          },
         },
       },
     },
@@ -538,6 +536,10 @@ return {
       direction = "float",
       float_opts = {
         border = "curved",
+      },
+      highlights = {
+        NormalFloat = { link = "Normal" },
+        FloatBorder = { link = "FloatBorder" },
       },
     },
   },

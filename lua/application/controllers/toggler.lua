@@ -13,5 +13,4 @@ M.wrap = function()
 		toggler_use_case.wrap()
 	end
 end
-
 return make_controller_logged("toggler", M)

@@ -19,6 +19,12 @@ M.open = function()
 end
 
 M.stage_files = function()
+	local filepath = vim.fn.expand("%:p")
+	vim.fn.system("git ls-files --error-unmatch " .. vim.fn.shellescape(filepath) .. " 2>/dev/null")
+	if vim.v.shell_error ~= 0 then
+		return vim.fn.system("git add " .. vim.fn.shellescape(filepath))
+	end
+
 	gitsigns.stage_buffer()
 end
 
